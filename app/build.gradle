@@ -19,16 +19,24 @@ android {
 }
 
 buildscript {
-    ext.supportLibraryVersion = '1.0.0-beta01'
+    ext.supportLibraryVersion = '1.0.0'
     ext.butterknifeVersion = '10.1.0'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
+    implementation "com.google.android.material:material:$supportLibraryVersion"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation "androidx.test:runner:$supportLibraryVersion"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+
+    implementation "androidx.recyclerview:recyclerview:$supportLibraryVersion"
+    implementation "androidx.cardview:cardview:$supportLibraryVersion"
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 }
