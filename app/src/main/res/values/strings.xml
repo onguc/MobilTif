@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MobilTif</string>
     <string name="action_settings">Settings</string>
+
+    <string name="et_hint_username">Kullanıcı Adı</string>
+    <string name="et_hint_password">Şifre</string>
+    <string name="btn_login">Giriş Yap</string>
+    <string name="sign_up">Hesabınız yok mu?  <a href="www.ww.ww"> HESAP OLUŞTURMAK İÇİN TIKLAYIN</a> </string>
+    <string name="err_msg_username">Kullanıcı Adı Boş Olamaz</string>
+    <string name="err_msg_password">Şifre Boş Olamaz</string>
 </resources>

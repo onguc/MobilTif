@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+
+    android:background="@color/cardview_shadow_start_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_shadow_start_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMudurlukAdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="Müdürlük Adı"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTasinirAdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:text="Taşınır Adı"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMudurlukAdi"
+            app:layout_constraintStart_toEndOf="@+id/tvMudurlukAdi"
+            app:layout_constraintTop_toTopOf="@+id/tvMudurlukAdi"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvTarih"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="8dp"
+            android:text="Tarih"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTasinirAdi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTasinirAdi"
+            app:layout_constraintTop_toTopOf="@+id/tvTasinirAdi"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvBirim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Birim"
+            app:layout_constraintStart_toStartOf="@+id/tvMudurlukAdi"
+            app:layout_constraintTop_toBottomOf="@+id/tvMudurlukAdi" />
+
+        <TextView
+            android:id="@+id/tvMiktar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Miktar"
+            app:layout_constraintBottom_toBottomOf="@+id/tvBirim"
+            app:layout_constraintStart_toStartOf="@+id/tvTasinirAdi"
+            app:layout_constraintTop_toTopOf="@+id/tvBirim"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,60 @@
+package com.uniyaz.mobiltif.retrofit;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.uniyaz.mobiltif.data.domain.Department;
+import com.uniyaz.mobiltif.data.domain.LoginInfo;
+import com.uniyaz.mobiltif.data.domain.ResponseInfo;
+import com.uniyaz.mobiltif.data.domain.Room;
+import com.uniyaz.mobiltif.data.domain.Tasinir;
+
+import java.util.List;
+
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+
+/**
+ * Created by ONGUC on 18.03.2019.
+ */
+
+public interface RetrofitInterface {
+
+    String uri = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/";
+
+
+    @POST("auth/login")
+    Call<LoginInfo> loginAndGetToken(@Body RequestBody loginInfo);
+
+
+    //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
+    @POST("json/kbs/FindAllKbsServisDto")
+    Call<ResponseInfo<List<Department>>> getDepartmList(@Header("AuthorizationTicket") String authTicket, @Body RequestBody servisTuru);
+
+    //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
+    @POST("json/vys/FindAllVysSayimTasinirKod")
+    Call<ResponseInfo<List<Tasinir>>> getTasinirList(@Header("AuthorizationTicket") String authTicket);
+
+
+    @POST("json/vys/FindAllVysSayimOda")
+    Call<ResponseInfo<List<Room>>> getRoomList(@Header("AuthorizationTicket") String authTicket);
+
+    @POST("json/vys/SaveVysSayimOdaList")
+    Call<ResponseInfo<Boolean>> saveRoomList(@Header("AuthorizationTicket") String authTicket, @Body RequestBody roomDtoList);
+
+
+    Gson gson = new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .setLenient()
+            .create();
+
+    RetrofitInterface retrofitInterface = new Retrofit.Builder()
+            .baseUrl(uri)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(RetrofitInterface.class);
+}
