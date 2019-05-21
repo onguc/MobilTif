@@ -3,11 +3,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.uniyaz.demirbassayim.ui.components.TouchImageView
+    <com.uniyaz.mobiltif.ui.components.TouchImageView
         android:id="@+id/ivShowImageFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY">
 
-    </com.uniyaz.demirbassayim.ui.components.TouchImageView>
+    </com.uniyaz.mobiltif.ui.components.TouchImageView>
 </FrameLayout>

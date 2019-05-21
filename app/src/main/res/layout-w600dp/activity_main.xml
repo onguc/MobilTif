@@ -62,7 +62,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/spnrDurumu"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tilBulunduguYer"
         app:layout_constraintTop_toBottomOf="@+id/tilBulunduguYer">
@@ -78,14 +77,6 @@
             android:paddingLeft="@dimen/padding_field" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/spnrDurumu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/array_durum"
-        app:layout_constraintBottom_toBottomOf="@+id/tilTasinirKoduVeMalzAdi"
-        app:layout_constraintEnd_toEndOf="@+id/spnrMudurluk"
-        app:layout_constraintTop_toTopOf="@+id/tilTasinirKoduVeMalzAdi" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEtSayimNo"
@@ -113,7 +104,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/tilEtSayimNo"
-        app:layout_constraintEnd_toEndOf="@+id/spnrDurumu"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/spnrMudurluk"
         app:layout_constraintTop_toTopOf="@+id/tilEtSayimNo"
@@ -134,114 +124,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <Spinner
-        android:id="@+id/spnrBirimi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:entries="@array/array_birim"
-        app:layout_constraintEnd_toEndOf="@+id/tilEtSayimNo"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tilEtSayimNo"
-        app:layout_constraintTop_toBottomOf="@+id/tilEtSayimNo" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEtMiktar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/spnrBirimi"
-        app:layout_constraintEnd_toEndOf="@+id/tilEnvanterNoQrCode"
-        app:layout_constraintStart_toStartOf="@+id/tilEnvanterNoQrCode"
-        app:layout_constraintTop_toTopOf="@+id/spnrBirimi">
-
-        <EditText
-            android:id="@+id/etMiktar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Miktar"
-            android:inputType="number"
-            android:paddingStart="@dimen/padding_field"
-            android:paddingLeft="@dimen/padding_field" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEtAciklama"
-        android:layout_width="0dp"
-        android:layout_height="188dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/spnrDurumu"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/spnrBirimi"
-        app:layout_constraintTop_toBottomOf="@+id/spnrBirimi">
-
-        <EditText
-            android:id="@+id/etAciklama"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:hint="Açıklama"
-            android:inputType="textMultiLine"
-            android:paddingStart="@dimen/padding_field"
-            android:paddingLeft="@dimen/padding_field" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <include
-        android:id="@+id/includeAppBarLayout"
-        layout="@layout/tab_layout"
-        android:layout_width="0dp"
-        android:layout_height="224dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/tilEtAciklama"
-        app:layout_constraintStart_toStartOf="@+id/tilEtAciklama"
-        app:layout_constraintTop_toBottomOf="@+id/tilEtAciklama" />
-
-
-    <Button
-        android:id="@+id/btnTemizle"
-        android:layout_width="114dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="384dp"
-        android:layout_marginTop="32dp"
-
-        android:background="#c41924"
-        android:drawableLeft="@drawable/ic_trash"
-        android:paddingStart="5dp"
-        android:paddingLeft="5dp"
-        android:text="TEMİZLE"
-        app:layout_constraintStart_toStartOf="@+id/includeAppBarLayout"
-        app:layout_constraintTop_toBottomOf="@+id/includeAppBarLayout" />
-
-    <Button
-        android:id="@+id/btnKaydet"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="20dp"
-        android:background="#1bbc9b"
-        android:drawableLeft="@drawable/ic_save_file_option"
-        android:paddingStart="5dp"
-        android:paddingLeft="5dp"
-        android:text="KAYDET"
-        app:layout_constraintBottom_toBottomOf="@+id/btnTemizle"
-        app:layout_constraintEnd_toEndOf="@+id/includeAppBarLayout"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btnTemizle"
-        app:layout_constraintTop_toTopOf="@+id/btnTemizle" />
-
-    <include
-        android:id="@+id/include2"
-        layout="@layout/progress_bar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnDoldur"
