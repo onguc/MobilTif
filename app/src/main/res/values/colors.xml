@@ -11,4 +11,6 @@
     <color name="loginEdittext">#ffffff</color>
     <color name="login_text_color">#ffffff</color>
     <color name="loginButtonNormal">#FFC107</color>
+    <color name="demirbarEdittext">#7e97af </color>
+    <color name="demirbarBackground">#0d3a64 </color>
 </resources>

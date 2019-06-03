@@ -47,7 +47,7 @@ public class EnvanterPhotoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_envanter_fotograf, container, false);
         photoIslem = new PhotoIslem(EnumPhotoLacation.ENVANTER);
-        photoIslem.createView(view, getActivity(), this, photoList);
+//        photoIslem.createView(view, getActivity(), this, photoList);
         return view;
     }
 
@@ -68,7 +68,7 @@ public class EnvanterPhotoFragment extends Fragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        photoIslem.startImageCaptureAfterPermission(requestCode, permissions, grantResults);
+//        photoIslem.startImageCaptureAfterPermission(requestCode, permissions, grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 

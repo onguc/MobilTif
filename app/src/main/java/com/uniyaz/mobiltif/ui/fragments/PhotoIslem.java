@@ -1,12 +1,10 @@
 package com.uniyaz.mobiltif.ui.fragments;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -20,7 +18,6 @@ import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.IPhoto;
 import com.uniyaz.mobiltif.data.enums.EnumPhotoLacation;
 import com.uniyaz.mobiltif.ui.adapters.PhotoAdapter;
-import com.uniyaz.mobiltif.utils.PermissionUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +32,6 @@ import java.util.List;
 public class PhotoIslem {
     String currentPhotoPath = "";
     public static final int CAPTURE_IMAGE = 222;
-    Activity activity;
     Fragment fragment;
     Uri fileUri;
     PhotoAdapter adapter;
@@ -46,11 +42,7 @@ public class PhotoIslem {
         this.enumPhotoLacation = enumPhotoLacation;
     }
 
-    public void createView(View view, Activity activity, Fragment fragment, List<IPhoto> photoList) {
-        this.activity = activity;
-        this.fragment = fragment;
-
-        RecyclerView recyclerView = view.findViewById(R.id.recylerview);
+    public void createView(RecyclerView recyclerView, Activity activity, List<IPhoto> photoList) {
 
         Listener listener = new Listener() {
             @Override
@@ -61,11 +53,6 @@ public class PhotoIslem {
             @Override
             public Activity getActivity() {
                 return activity;
-            }
-
-            @Override
-            public void capture() {
-                startImageCapture();
             }
 
             @Override
@@ -81,24 +68,11 @@ public class PhotoIslem {
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void startImageCaptureAfterPermission(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (grantResults.length > 0) {
-            boolean isGranted = isGranted(grantResults);
-            if (isGranted) {
-                if (requestCode == PermissionUtils.REQUEST_ID_CAMERA_PERMISSION) {
-                    startImageCapture();
-                }
-            }
-        }
+    public void createView(RecyclerView recyclerView, Activity activity, Fragment fragment, List<IPhoto> photoList) {
+        this.fragment = fragment;
+        createView(recyclerView, activity, photoList);
     }
 
-    private void startImageCapture() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        this.fileUri = createAndGetFileUri();
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-        fragment.startActivityForResult(intent, CAPTURE_IMAGE);
-    }
 
     private boolean isGranted(@NonNull int[] grantResults) {
         boolean isGranted = true;
@@ -112,24 +86,6 @@ public class PhotoIslem {
     }
 
 
-    private Uri createAndGetFileUri() {
-        try {
-            File photoFile = createImageFile();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                fileUri = FileProvider.getUriForFile(activity.getApplicationContext(),
-                        BuildConfig.APPLICATION_ID + ".provider",
-                        photoFile);
-            } else {
-                fileUri = Uri.fromFile(photoFile);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fileUri;
-    }
 
     private File createImageFile() throws IOException {
 
@@ -174,7 +130,6 @@ public class PhotoIslem {
 
         Fragment getFragment();
 
-        void capture();
     }
 
 }

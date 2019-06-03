@@ -48,7 +48,7 @@ public class RoomPhotFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_oda_fotograf, container, false);
         photoIslem = new PhotoIslem(EnumPhotoLacation.ROOM);
-        photoIslem.createView(view, getActivity(), this, photoList);
+//        photoIslem.createView(view, getActivity(), this, photoList);
         return view;
     }
 
@@ -72,11 +72,11 @@ public class RoomPhotFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        photoIslem.startImageCaptureAfterPermission(requestCode, permissions, grantResults);
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        photoIslem.startImageCaptureAfterPermission(requestCode, permissions, grantResults);
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
     public List<IPhoto> getPhotoList() {
         return photoList;

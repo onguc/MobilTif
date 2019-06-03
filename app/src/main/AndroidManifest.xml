@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,18 +13,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activities.DemirbasActivity"></activity>
         <activity
             android:name=".ui.activities.StartActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.MainActivity" android:screenOrientation="portrait" />
-        <activity android:name=".ui.activities.LoginActivity" android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

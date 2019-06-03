@@ -102,9 +102,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
                         }
                     }
 
-                    if (PermissionUtils.checkCameraPermission(listener.getActivity(), listener.getFragment())) {
-                        listener.capture();
-                    }
+//                    if (PermissionUtils.checkCameraPermission(listener.getActivity(), listener.getFragment())) {
+//                        listener.capture();
+//                    }
 //                    if (PermissionUtils.checkReadExternalStorage(listener.getActivity())) {
 //                        int x = 0;
 //                    }
