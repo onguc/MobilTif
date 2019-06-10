@@ -28,17 +28,21 @@ public class StartActivity extends AppCompatActivity implements IStartActivity {
 
         initializeInstanceDb();
 
+
+        goMainActivity();
+//        goControlLoginActivity();
+        finish();
+    }
+
+    private void goControlLoginActivity() {
         presenter = new StartActivityPresenter(this);
         User user = presenter.getSavedUser();
-
-//        goMainActivity();
         if (user == null || user.isNull()) {
             goLoginActivity();
         } else {
             StaticUtils.user = user;
             goMainActivity();
         }
-        finish();
     }
 
 

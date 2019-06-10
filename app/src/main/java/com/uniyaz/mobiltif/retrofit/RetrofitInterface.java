@@ -3,6 +3,7 @@ package com.uniyaz.mobiltif.retrofit;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.uniyaz.mobiltif.data.domain.Department;
+import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.LoginInfo;
 import com.uniyaz.mobiltif.data.domain.ResponseInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
@@ -29,6 +30,11 @@ public interface RetrofitInterface {
 
     @POST("auth/login")
     Call<LoginInfo> loginAndGetToken(@Body RequestBody loginInfo);
+
+    @POST("json/vys/FindAllDemirbasListByQrCodeRoom")
+    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
+
+    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
 
 
     //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
@@ -57,4 +63,5 @@ public interface RetrofitInterface {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);
+
 }

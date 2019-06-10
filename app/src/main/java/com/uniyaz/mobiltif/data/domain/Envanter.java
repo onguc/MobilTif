@@ -44,6 +44,16 @@ public class Envanter extends BaseModel implements Cloneable {
     private Room room;
     private Tasinir tasinir;
 
+    private String adi;
+    private String sicilNo;
+    private String servisAmbar;
+    private String tutar;
+    private String zimmetliPersonel;
+    private String teminEdilenFirma;
+    private Date faturaTarihi;
+    private String faturaNo;
+
+
     @Override
     public String getIdString() {
         return String.valueOf(id);
@@ -168,5 +178,69 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setTasinir(Tasinir tasinir) {
         this.tasinir = tasinir;
+    }
+
+    public String getAdi() {
+        return adi;
+    }
+
+    public void setAdi(String adi) {
+        this.adi = adi;
+    }
+
+    public String getSicilNo() {
+        return sicilNo;
+    }
+
+    public void setSicilNo(String sicilNo) {
+        this.sicilNo = sicilNo;
+    }
+
+    public String getServisAmbar() {
+        return servisAmbar;
+    }
+
+    public void setServisAmbar(String servisAmbar) {
+        this.servisAmbar = servisAmbar;
+    }
+
+    public String getTutar() {
+        return tutar;
+    }
+
+    public void setTutar(String tutar) {
+        this.tutar = tutar;
+    }
+
+    public String getZimmetliPersonel() {
+        return zimmetliPersonel;
+    }
+
+    public void setZimmetliPersonel(String zimmetliPersonel) {
+        this.zimmetliPersonel = zimmetliPersonel;
+    }
+
+    public String getTeminEdilenFirma() {
+        return teminEdilenFirma;
+    }
+
+    public void setTeminEdilenFirma(String teminEdilenFirma) {
+        this.teminEdilenFirma = teminEdilenFirma;
+    }
+
+    public Date getFaturaTarihi() {
+        return faturaTarihi;
+    }
+
+    public void setFaturaTarihi(Date faturaTarihi) {
+        this.faturaTarihi = faturaTarihi;
+    }
+
+    public String getFaturaNo() {
+        return faturaNo;
+    }
+
+    public void setFaturaNo(String faturaNo) {
+        this.faturaNo = faturaNo;
     }
 }

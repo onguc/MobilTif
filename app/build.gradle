@@ -20,6 +20,9 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 buildscript {
@@ -39,6 +42,7 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$supportLibraryVersion"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
+
     implementation "androidx.recyclerview:recyclerview:$supportLibraryVersion"
     implementation "androidx.cardview:cardview:$supportLibraryVersion"
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
@@ -46,4 +50,5 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
 }

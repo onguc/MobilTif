@@ -6,36 +6,37 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
-import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
-import com.uniyaz.mobiltif.data.domain.Room;
-import com.uniyaz.mobiltif.data.domain.Tasinir;
-import com.uniyaz.mobiltif.data.enums.EnumAP;
-import com.uniyaz.mobiltif.data.enums.EnumBirim;
 import com.uniyaz.mobiltif.iface.IMain;
-import com.uniyaz.mobiltif.listeners.EditableTextWatcher;
-import com.uniyaz.mobiltif.listeners.RightDrawableOnClickListener;
 import com.uniyaz.mobiltif.presenter.MainPresenter;
 import com.uniyaz.mobiltif.ui.components.CustomProgressBar;
-import com.uniyaz.mobiltif.ui.fragments.EnvanterPhotoFragment;
-import com.uniyaz.mobiltif.ui.fragments.RoomPhotFragment;
+import com.uniyaz.mobiltif.ui.fragments.DemirbasDetayFragment;
+import com.uniyaz.mobiltif.ui.fragments.DemirbasListFragment;
 import com.uniyaz.mobiltif.utils.PermissionUtils;
 import com.uniyaz.mobiltif.utils.TextCustomUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,114 +48,99 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements IMain {
 
-    @BindView(R.id.etQrCodeRoom)
-    EditText etQrCodeRoom;
-    @BindView(R.id.spnrMudurluk)
-    Spinner spnrMudurluk;
-    @BindView(R.id.actvTasinirKoduVeMalzAdi)
-    AutoCompleteTextView actvTasinirKdMlzmAdi;
-    @BindView(R.id.etSayimNo)
-    EditText etSayimNo;
-    @BindView(R.id.etQrCodeEnvanter)
-    EditText etQrCodeEnvanter;
 
-    EditText etAciklama;
     @BindView(R.id.progressBar)
     CustomProgressBar progressBar;
-//    @BindView(R.id.viewpager)
-//    ViewPager viewPager;
-//    @BindView(R.id.tabLayout)
-//    TabLayout tabLayout;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     MainPresenter presenter;
-    RoomPhotFragment roomPhotFragment;
-    EnvanterPhotoFragment envanterPhotoFragment;
-
-    private ArrayAdapter<EnumAP> durumuAdapter;
-    private ArrayAdapter<EnumBirim> birimAdapter;
-    private ArrayAdapter<Department> departmenAdapter;
-
-    private Room registeredRoom;
-    private Tasinir selectedTasinir = null;
-    private Envanter selectedEnvanter;
-    boolean isClickedEnvanterList = false;
 
     private final int REQUEST_CODE_QR_FOR_ROOM = 1;
     private final int REQUEST_CODE_QR_FOR_ENVANTER = 2;
 
+    private FragmentManager fragmentManager;
+    DemirbasDetayFragment demirbasDetayFragment;
+    DemirbasListFragment demirbasListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        selectedEnvanter = new Envanter();
         presenter = new MainPresenter(this);
-        presenter.getTasinirList();
-
-//        defineViews();
-        addListeners();
+        fragmentManager = getSupportFragmentManager();
+        ViewDataBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setSupportActionBar(toolbar);
+        defineCallRoomAndEnvanter();
         presenter.getDepartmentList();
+    }
+
+    PopupWindow popupWindow;
+    private int clickedButton = 0;
+
+    private void defineCallRoomAndEnvanter() {
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        View popupView = getLayoutInflater().inflate(R.layout.popup_call_room_and_envanter, null);
+        popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        Button btnCallRoom = popupView.findViewById(R.id.btnCallRoom);
+        Button btnCallEnvanter = popupView.findViewById(R.id.btnCallEnvanter);
+
+        View.OnClickListener onClickListener = v -> {
+            switch (v.getId()) {
+                case R.id.btnCallRoom:
+                    clickedButton = 1;
+                    if (PermissionUtils.checkQrCodeRoomPermission(activity)) {
+                        goScanActivity(REQUEST_CODE_QR_FOR_ROOM);
+                    }
+                    break;
+                case R.id.btnCallEnvanter:
+                    clickedButton = 2;
+                    if (PermissionUtils.checkQrCodeEnvanterPermission(activity)) {
+                        goScanActivity(REQUEST_CODE_QR_FOR_ENVANTER);
+                    }
+            }
+        };
+        btnCallRoom.setOnClickListener(onClickListener);
+        btnCallEnvanter.setOnClickListener(onClickListener);
+    }
+
+    private void showPopupCallRoomAndEnvanter() {
+        popupWindow.showAtLocation(findViewById(R.id.clayout), Gravity.CENTER, 0, 0);
+    }
+
+    private void hidePopupCallRoomAndEnvanter() {
+        popupWindow.dismiss();
     }
 
     Activity activity = this;
 
-    private void addListeners() {
-
-        etQrCodeRoom.setOnTouchListener(new RightDrawableOnClickListener() {
-            @Override
-            public boolean onDrawableTouch(MotionEvent event) {
-                if (PermissionUtils.checkQrCodeRoomPermission(activity)) {
-                    goScanActivity(REQUEST_CODE_QR_FOR_ROOM);
-                }
-                return true;
-            }
-        });
-
-        etQrCodeRoom.addTextChangedListener((EditableTextWatcher) text -> {
-            if (TextCustomUtils.isDigitsOnly(text)) {
-                int qrCode = Integer.parseInt(text);
-                registeredRoom = presenter.getRoomByQrCode(qrCode);
-
-                if (registeredRoom == null || registeredRoom.getQrCode() == null) {
-                    registeredRoom = null;
-                    spnrMudurluk.setSelection(0);
-                    spnrMudurluk.setEnabled(true);
-                    roomPhotFragment.addAndRefreshPhotoList(null);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (resultCode != RESULT_CANCELED)
+            if (requestCode == REQUEST_CODE_QR_FOR_ROOM || requestCode == REQUEST_CODE_QR_FOR_ENVANTER) {
+                String qrCode = intent.getStringExtra("SCAN_RESULT");
+                if (qrCode == null) {
+                    Toast.makeText(this, "QrCode Değeri Boş Geliyor", Toast.LENGTH_LONG).show();
                 } else {
-                    spnrMudurluk.setSelection(departmenAdapter.getPosition(registeredRoom.getDepartment()));
-                    spnrMudurluk.setEnabled(false);
-
-//                    List<PhotoRoom> iPhotos = presenter.getPhotoRoomListByRoomId(qrCode);
-//                    roomPhotFragment.addAndRefreshPhotoList(iPhotos);
+                    if (TextCustomUtils.isDigitsOnly(qrCode)) {
+                        if (requestCode == REQUEST_CODE_QR_FOR_ROOM) {
+                            presenter.callEnvanterListByQrCodeRoom(qrCode);
+                        } else if (requestCode == REQUEST_CODE_QR_FOR_ENVANTER) {
+                            presenter.callEnvanterByQrCode(qrCode);
+                        }
+                    } else {
+                        showWarningDialog("Uyumsuz QR Kodu!");
+                    }
                 }
             }
-        });
 
-        etQrCodeEnvanter.setOnTouchListener(new RightDrawableOnClickListener() {
-            @Override
-            public boolean onDrawableTouch(MotionEvent event) {
-                if (PermissionUtils.checkQrCodeEnvanterPermission(activity)) {
-                    goScanActivity(REQUEST_CODE_QR_FOR_ENVANTER);
-                }
-                return true;
-            }
-        });
-
-        etQrCodeEnvanter.addTextChangedListener((EditableTextWatcher) text -> {
-            if (TextCustomUtils.isDigitsOnly(text)) {
-                int qrCode = Integer.parseInt(text);
-                if (!isClickedEnvanterList) {
-//                    if (presenter.isEnvaterQrCodeExist(qrCode)) {
-//                        showWarningDialog("Uyarı", qrCode + " QR Kodlu Demirbaş Zaten Kayıtlı!");
-//                        etQrCodeEnvanter.setText("");
-//                    }
-                }
-            }
-            isClickedEnvanterList = false;
-        });
+        super.onActivityResult(requestCode, resultCode, intent);
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -174,65 +160,33 @@ public class MainActivity extends AppCompatActivity implements IMain {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
-        if (requestCode == REQUEST_CODE_QR_FOR_ROOM || requestCode == REQUEST_CODE_QR_FOR_ENVANTER) {
-            String qrCode = intent.getStringExtra("SCAN_RESULT");
-            if (qrCode == null) {
-                Toast.makeText(this, "uyarı boş", Toast.LENGTH_LONG).show();
-            } else {
-                if (TextCustomUtils.isDigitsOnly(qrCode)) {
-                    if (requestCode == REQUEST_CODE_QR_FOR_ROOM) {
-                        etQrCodeRoom.setText(qrCode);
-                    } else if (requestCode == REQUEST_CODE_QR_FOR_ENVANTER) {
-                        etQrCodeEnvanter.setText(qrCode);
-                    }
-                } else {
-                    showWarningDialog("Uyumsuz QR Kodu!");
-                }
-            }
-        }
-
-        super.onActivityResult(requestCode, resultCode, intent);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     final int CAMERA_ID = 0;
     final String PROMPT = "Barkod Tara";
 
     private void goScanActivity(int code) {
-        new IntentIntegrator(this).setRequestCode(code).setBeepEnabled(false).initiateScan();
-//        IntentIntegrator intentIntegrator = new IntentIntegrator(this);
-//        intentIntegrator
-//                .setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
-//                .setPrompt(PROMPT)
-//                .setCameraId(CAMERA_ID)
-//                .setBeepEnabled(false)
-//                .setBarcodeImageEnabled(false)
-//                .setRequestCode(code)
-//                .initiateScan();
-
+        new IntentIntegrator(this)
+                .setRequestCode(code)
+                .setBeepEnabled(false)
+                .initiateScan();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-    }
-
-    private String getSelectedTasinirValue() {
-        return selectedTasinir.getTasinirKodu() + "     -       " + selectedTasinir.getName();
-    }
-
-    public boolean onClickBtnSync(MenuItem menuItem) {
-        presenter.synch();
-        return true;
     }
 
     boolean onClickBtnSendRemote(MenuItem menuItem) {
@@ -254,8 +208,13 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
 
-    boolean onClickLogOut(MenuItem menuItem) {
+    public boolean onClickLogOut(MenuItem menuItem) {
         logOut();
+        return true;
+    }
+
+    public boolean onClickCallPopup(MenuItem menuItem) {
+        showPopupCallRoomAndEnvanter();
         return true;
     }
 
@@ -272,26 +231,21 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
 
-    private Room saveAndGetRoom() {
-        if (registeredRoom == null || registeredRoom.getQrCode() == null) {
-            Department department = (Department) spnrMudurluk.getSelectedItem();
-            String qrCodeString = etQrCodeRoom.getText().toString();
-            Integer qrCode = Integer.parseInt(qrCodeString);
-
-            Room room = new Room();
-            room.setDepartment(department);
-            room.setQrCode(qrCode);
-            int returnedValue = presenter.saveRoom(room);
-            if (returnedValue > 0)
-                return room;
-        }
-        return registeredRoom;
-    }
-
-
     @Override
     public void onSuccess() {
 
+    }
+
+    @Override
+    public void onSuccessForEnvater(Envanter envanter) {
+        demirbasDetayFragment = DemirbasDetayFragment.getNewInstance(envanter);
+        startFragmentByBackStack(demirbasDetayFragment);
+    }
+
+    @Override
+    public void onSuccessForRoom(List<Envanter> envanterList) {
+        demirbasListFragment = DemirbasListFragment.getNewInstance(envanterList);
+        startFragmentByBackStack(demirbasListFragment);
     }
 
     @Override
@@ -321,6 +275,21 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void showWarningDialog(String title, String explanation) {
+//        setVisibleProgressBar(false);
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(explanation)
+                .show();
+    }
 
+    private void startFragmentByBackStack(Fragment fragment) {
+        if (fragment != null) {
+            final FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction
+                    .replace(R.id.frame_layout, fragment, "fragment")
+                    .addToBackStack("fragment")
+                    .commit();
+            fragmentManager.executePendingTransactions();
+        }
     }
 }

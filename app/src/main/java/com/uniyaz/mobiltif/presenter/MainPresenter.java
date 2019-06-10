@@ -3,9 +3,8 @@ package com.uniyaz.mobiltif.presenter;
 import android.widget.ProgressBar;
 
 import com.uniyaz.mobiltif.data.domain.Department;
+import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.ResponseInfo;
-import com.uniyaz.mobiltif.data.domain.Room;
-import com.uniyaz.mobiltif.data.domain.Tasinir;
 import com.uniyaz.mobiltif.data.repo.DepartmentRepo;
 import com.uniyaz.mobiltif.data.repo.RoomRepo;
 import com.uniyaz.mobiltif.data.repo.TasinirRepo;
@@ -55,45 +54,8 @@ public class MainPresenter {
         }
     }
 
-
-    public void getTasinirList() {
-        tasinirRepo = new TasinirRepo();
-        List<Tasinir> tasinirList = tasinirRepo.getAll();
-        if (tasinirList == null || tasinirList.size() == 0) {
-            fillTasinirFromRemote();
-        } else {
-            StaticUtils.refreshTasinirList(tasinirList);
-            view.notifyTasinir();
-        }
-    }
-
-    public void getRoomList() {
-        roomRepo = new RoomRepo();
-        List<Room> roomList = roomRepo.getAll();
-        if (roomList == null || roomList.size() == 0) {
-            fillRoomFromRemote();
-        } else {
-            StaticUtils.refreshRoomList(roomList);
-        }
-    }
-
-    public Room getRoomByReferanceCode(String referanceCode) {
-        if (roomRepo == null) roomRepo = new RoomRepo();
-        return roomRepo.getById(referanceCode);
-    }
-
-    public Tasinir getTasinirById(Long idTasinir) {
-        return tasinirRepo.getById(String.valueOf(idTasinir));
-    }
-
     public String getAuthTicket() {
         return objectUtil.getObjectFromSharedPreferences(keyAuthorizationTicket, String.class);
-    }
-
-    public void synch() {
-        fillTasinirFromRemote();
-        fillDepartmentFromRemote();
-//        fillRoomFromRemote();
     }
 
 
@@ -120,55 +82,43 @@ public class MainPresenter {
         });
     }
 
-    private void fillRoomFromRemote() {
-        Call<ResponseInfo<List<Room>>> roomListCall = RetrofitInterface.retrofitInterface.getRoomList(getAuthTicket());
-        roomListCall.enqueue(new Callback<ResponseInfo<List<Room>>>() {
+
+    public void callEnvanterListByQrCodeRoom(String qrCode) {
+        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "qrCodeRoom=" + qrCode);
+        Call<ResponseInfo<List<Envanter>>> callEnvanterList = RetrofitInterface.retrofitInterface.getEnvanterListByQrCodeRoom(getAuthTicket(), bodyQrCodeRoom);
+        callEnvanterList.enqueue(new Callback<ResponseInfo<List<Envanter>>>() {
             @Override
-            public void onResponse(Call<ResponseInfo<List<Room>>> call, Response<ResponseInfo<List<Room>>> response) {
-                ResponseResult<List<Room>> responseResult = roomList -> {
-                    roomRepo.synchronizeAll(roomList);
-                    StaticUtils.refreshRoomList(roomList);
-                    StaticUtils.successControl.setSuccessRoom(true);
+            public void onResponse(Call<ResponseInfo<List<Envanter>>> call, Response<ResponseInfo<List<Envanter>>> response) {
+                ResponseResult<List<Envanter>> responseResult = envanterList -> {
+                    view.onSuccessForRoom(envanterList);
                 };
                 responseResult.onReult(response, view);
             }
 
             @Override
-            public void onFailure(Call<ResponseInfo<List<Room>>> call, Throwable t) {
-                view.showWarningDialog("Erro In OnFailure Room:\n " + t.getMessage());
+            public void onFailure(Call<ResponseInfo<List<Envanter>>> call, Throwable t) {
+                view.showWarningDialog("Error", "callEnvanterListByQrCodeRoom->message: " + t.getMessage());
             }
         });
     }
 
-    private void fillTasinirFromRemote() {
-        Call<ResponseInfo<List<Tasinir>>> tasinirListCall = RetrofitInterface.retrofitInterface.getTasinirList(getAuthTicket());
-        tasinirListCall.enqueue(new Callback<ResponseInfo<List<Tasinir>>>() {
+    public void callEnvanterByQrCode(String qrCode) {
+        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "qrCodeEnvanter=" + qrCode);
+        Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthTicket(), bodyQrCode);
+        callEnvanter.enqueue(new Callback<ResponseInfo<Envanter>>() {
             @Override
-            public void onResponse(Call<ResponseInfo<List<Tasinir>>> call, Response<ResponseInfo<List<Tasinir>>> response) {
-                ResponseResult<List<Tasinir>> responseResult = tasinirList -> {
-                    if (tasinirRepo == null) tasinirRepo = new TasinirRepo();
-                    tasinirRepo.synchronizeAll(tasinirList);
-                    StaticUtils.refreshTasinirList(tasinirList);
-                    StaticUtils.successControl.setSuccessTasinir(true);
+            public void onResponse(Call<ResponseInfo<Envanter>> call, Response<ResponseInfo<Envanter>> response) {
+                ResponseResult<Envanter> responseResult = envanter -> {
+                    view.onSuccessForEnvater(envanter);
                 };
-
                 responseResult.onReult(response, view);
             }
 
             @Override
-            public void onFailure(Call<ResponseInfo<List<Tasinir>>> call, Throwable t) {
-                view.showWarningDialog("Error In OnFailure Tasinir:\n " + t.getMessage());
+            public void onFailure(Call<ResponseInfo<Envanter>> call, Throwable t) {
+                view.showWarningDialog("Error", "callEnvanterByQrCode->message: " + t.getMessage());
             }
         });
-    }
-
-    public int saveRoom(Room room) {
-        return new RoomRepo().synchronize(room);
-    }
-
-
-    public Room getRoomByQrCode(Integer qrCodeValue) {
-        return new RoomRepo().getRoomByQrCode(qrCodeValue);
     }
 
 

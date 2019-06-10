@@ -1,10 +1,9 @@
 package com.uniyaz.mobiltif.ui.activities;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
 
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.IPhoto;
@@ -28,7 +27,7 @@ public class DemirbasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demirbas);
+        setContentView(R.layout.fragment_demibas_detay);
         ButterKnife.bind(this);
 
         photoList = new ArrayList<>();
