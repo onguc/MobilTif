@@ -20,7 +20,6 @@ public class LoginViewModel extends BaseObservable {
     private String successMessage = "Login was successful";
     private String errorMessage = "Email or Password not valid";
 
-    public MutableLiveData<Integer> progress = new MutableLiveData<>();
     private boolean showProgressBar;
 
 
@@ -102,28 +101,17 @@ public class LoginViewModel extends BaseObservable {
         return true;
     }
 
-    @Bindable
-    public MutableLiveData<Integer> getProgress() {
-        return progress;
-    }
-
     public void showProgressBar() {
-        progress.setValue(0); //visible
         showProgressBar = true;
-//        showProgressBar = true;
-        notifyPropertyChanged(androidx.databinding.library.baseAdapters.BR.showProgressBar);
-        notifyPropertyChanged(androidx.databinding.library.baseAdapters.BR.progress);
+        notifyPropertyChanged(BR.showProgressBar);
         loginActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     public void hideProgressBar() {
-        progress.setValue(8); //gone
-        showProgressBar=false;
+        showProgressBar = false;
+        notifyPropertyChanged(BR.showProgressBar);
         loginActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-//        showProgressBar = false;
-        notifyPropertyChanged(androidx.databinding.library.baseAdapters.BR.showProgressBar);
-        notifyPropertyChanged(androidx.databinding.library.baseAdapters.BR.progress);
     }
 
     @Bindable
