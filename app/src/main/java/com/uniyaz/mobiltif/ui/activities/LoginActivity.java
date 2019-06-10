@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
 
         activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginViewModel = new LoginViewModel(this);
-        loginViewModel.showProgressBar();
+        loginViewModel.hideProgressBar();
 //        progressBarViewModel = new ProgressBarViewModel();
         userDto = loginViewModel.getUserDto();
         activityLoginBinding.setViewModel(loginViewModel);
