@@ -63,6 +63,13 @@ public class LoginPresenter {
 
 
     public void loginControl(UserDto userDto) {
+        if ("aaa".equals(userDto.getUsername())) {
+            view.showWarningDialog("deneme");
+            return;
+        } else if ("abc".equals(userDto.getUsername())) {
+        } else {
+            return;
+        }
 //        String olmasiGereken="servicePrefix=http://abc.com&kullaniciAdi=uniyaz&sifre=1q24et";
         String userNamePassword = "servicePrefix=" + userDto.getServicePrefix() + "&kullaniciAdi=" + userDto.getUsername() + "&sifre=" + userDto.getPassword();
         RequestBody body = RequestBody.create(MediaType.parse("text/plain"), userNamePassword);

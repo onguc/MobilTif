@@ -5,6 +5,16 @@ package com.uniyaz.mobiltif.data.enums;
  */
 
 public enum EnumAP {
-    AKTIF,
-    PASIF
-}
+    AKTIF("Aktif"),
+    PASIF("Pasif");
+
+    String enumAp;
+
+    EnumAP(String enumAP) {
+        this.enumAp = enumAP;
+    }
+
+    @Override
+    public String toString() {
+        return enumAp;
+    }}

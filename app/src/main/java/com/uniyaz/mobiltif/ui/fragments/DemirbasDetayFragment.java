@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,9 +46,12 @@ public class DemirbasDetayFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_demibas_detay, container, false);
-        defineView(view);
-        return view;
+        ViewDataBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
+
+        View root = dataBinding.getRoot();
+//        View view = inflater.inflate(R.layout.fragment_demibas_detay, container, false);
+//        defineView(view);
+        return root;
     }
 
     private void defineView(View view) {

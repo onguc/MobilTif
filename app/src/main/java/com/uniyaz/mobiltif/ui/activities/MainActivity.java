@@ -26,6 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.iface.IMain;
@@ -67,14 +68,17 @@ public class MainActivity extends AppCompatActivity implements IMain {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+//        setContentView(R.layout.activity_main);
+//        ButterKnife.bind(this);
+        ViewDataBinding viewDataBinding1 = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
         presenter = new MainPresenter(this);
         fragmentManager = getSupportFragmentManager();
-        ViewDataBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(toolbar);
         defineCallRoomAndEnvanter();
         presenter.getDepartmentList();
+//        showPopupCallRoomAndEnvanter();
+
     }
 
     PopupWindow popupWindow;

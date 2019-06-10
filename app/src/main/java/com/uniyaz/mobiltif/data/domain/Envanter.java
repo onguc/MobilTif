@@ -1,10 +1,5 @@
 package com.uniyaz.mobiltif.data.domain;
 
-import com.uniyaz.mobiltif.data.enums.EnumAP;
-import com.uniyaz.mobiltif.data.enums.EnumBirim;
-
-import java.util.Date;
-
 /**
  * Created by İrfan Öngüç on 19.05.2019
  */
@@ -35,9 +30,13 @@ public class Envanter extends BaseModel implements Cloneable {
     private Long kodTasinir;
     private Long sayimNo;
     private String qrCode;
-    private EnumBirim birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
-    private EnumAP durumu;
-    private Date sayimTarihi;
+    //    private EnumBirim birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
+    private String birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
+
+    //    private EnumAP durumu;
+    private String durumu;
+    //    private Date sayimTarihi;
+    private String sayimTarihi;
     private Long idSayimYapanPersonel;
     private String aciklama;
     private Boolean isSentToServer;
@@ -50,7 +49,7 @@ public class Envanter extends BaseModel implements Cloneable {
     private String tutar;
     private String zimmetliPersonel;
     private String teminEdilenFirma;
-    private Date faturaTarihi;
+    private String faturaTarihi;
     private String faturaNo;
 
 
@@ -99,27 +98,39 @@ public class Envanter extends BaseModel implements Cloneable {
         this.qrCode = qrCode;
     }
 
-    public EnumBirim getBirimi() {
-        return birimi;
+    //    public EnumBirim getBirimi() {
+//        return birimi;
+//    }
+    public String getBirimi() {
+        return "ADET";
     }
 
-    public void setBirimi(EnumBirim birimi) {
+    public void setBirimi(String birimi) {
         this.birimi = birimi;
     }
 
-    public EnumAP getDurumu() {
+//    public EnumAP getDurumu() {
+//        return durumu;
+//    }
+//
+//    public void setDurumu(EnumAP durumu) {
+//        this.durumu = durumu;
+//    }
+
+
+    public String getDurumu() {
         return durumu;
     }
 
-    public void setDurumu(EnumAP durumu) {
+    public void setDurumu(String durumu) {
         this.durumu = durumu;
     }
 
-    public Date getSayimTarihi() {
+    public String getSayimTarihi() {
         return sayimTarihi;
     }
 
-    public void setSayimTarihi(Date sayimTarihi) {
+    public void setSayimTarihi(String sayimTarihi) {
         this.sayimTarihi = sayimTarihi;
     }
 
@@ -228,11 +239,11 @@ public class Envanter extends BaseModel implements Cloneable {
         this.teminEdilenFirma = teminEdilenFirma;
     }
 
-    public Date getFaturaTarihi() {
+    public String getFaturaTarihi() {
         return faturaTarihi;
     }
 
-    public void setFaturaTarihi(Date faturaTarihi) {
+    public void setFaturaTarihi(String faturaTarihi) {
         this.faturaTarihi = faturaTarihi;
     }
 

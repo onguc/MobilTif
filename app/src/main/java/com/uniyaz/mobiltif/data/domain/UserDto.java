@@ -7,6 +7,7 @@ package com.uniyaz.mobiltif.data.domain;
 public class UserDto {
     private String username;
     private String password;
+    private Boolean isChecked;
 
     public String getUsername() {
         return username;
@@ -26,5 +27,13 @@ public class UserDto {
 
     public final String getServicePrefix() {
         return "http://cas.uni-yaz.com:8071/cas/v1/tickets";
+    }
+
+    public Boolean getChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(Boolean checked) {
+        isChecked = checked;
     }
 }

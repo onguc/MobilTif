@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<RelativeLayout
-    android:id="@+id/loadingPanel"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-<com.uniyaz.mobiltif.ui.components.CustomProgressBar
-    android:id="@+id/progressBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:indeterminate="false"
-    android:visibility="gone" />
-</RelativeLayout>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.uniyaz.mobiltif.viewmodel.ProgressBarViewModel" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/loadingPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <!--<com.uniyaz.mobiltif.ui.components.CustomProgressBar-->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:visibility="@{viewModel.progress}"
+            />
+    </RelativeLayout>
+</layout>
