@@ -11,7 +11,8 @@ import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.data.domain.UserDto;
 import com.uniyaz.mobiltif.ui.activities.LoginActivity;
 
-public class LoginViewModel extends BaseObservable {
+public class
+LoginViewModel extends BaseObservable {
     private UserDto userDto;
     private boolean checked;
     //    ActivityLoginBinding activityLoginBinding;
