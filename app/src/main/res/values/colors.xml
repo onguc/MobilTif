@@ -13,4 +13,7 @@
     <color name="loginButtonNormal">#FFC107</color>
     <color name="demirbarEdittext">#7e97af </color>
     <color name="demirbarBackground">#0d3a64 </color>
+    
+    <color name="colorItemEnvanterCardBGround">#ffffff</color>
+    <color name="colorItemEnvanterCizgi">#000</color>
 </resources>

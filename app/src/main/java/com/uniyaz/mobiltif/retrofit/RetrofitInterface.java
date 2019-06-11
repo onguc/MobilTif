@@ -25,8 +25,8 @@ import retrofit2.http.POST;
 
 public interface RetrofitInterface {
 
-    //    String uri = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/";
-    String uri = "http://tarihisozluk.site/TarihZumresi/rest/tifislem";   //test
+//    String uri = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/";
+    String uri = "http://tarihisozluk.site/TarihZumresi/rest/tifislem/";   //test
 
     @POST("auth/login")
     Call<LoginInfo> loginAndGetToken(@Body RequestBody loginInfo);

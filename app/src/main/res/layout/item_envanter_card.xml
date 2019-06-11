@@ -1,71 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="3dp"
-    android:layout_marginBottom="3dp"
 
+    android:layout_marginBottom="3dp"
     android:background="@color/cardview_shadow_start_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_shadow_start_color"
+        android:background="@color/colorItemEnvanterCardBGround"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvMudurlukAdi"
+        <RadioButton
+            android:id="@+id/radioButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:text="Müdürlük Adı"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTasinirAdi"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvUst"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:text="Taşınır Adı"
-            app:layout_constraintBottom_toBottomOf="@+id/tvMudurlukAdi"
-            app:layout_constraintStart_toEndOf="@+id/tvMudurlukAdi"
-            app:layout_constraintTop_toTopOf="@+id/tvMudurlukAdi"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/tvTarih"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="8dp"
-            android:text="Tarih"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTasinirAdi"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvTasinirAdi"
-            app:layout_constraintTop_toTopOf="@+id/tvTasinirAdi"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@+id/radioButton"
+            app:layout_constraintTop_toTopOf="@+id/radioButton" />
+
+        <View
+            android:id="@+id/viewCizgi"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorItemEnvanterCizgi"
+            app:layout_constraintEnd_toEndOf="@+id/tvUst"
+            app:layout_constraintStart_toStartOf="@+id/tvUst"
+            app:layout_constraintTop_toBottomOf="@+id/tvUst" />
 
         <TextView
-            android:id="@+id/tvBirim"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvAlt"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Birim"
-            app:layout_constraintStart_toStartOf="@+id/tvMudurlukAdi"
-            app:layout_constraintTop_toBottomOf="@+id/tvMudurlukAdi" />
-
-        <TextView
-            android:id="@+id/tvMiktar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Miktar"
-            app:layout_constraintBottom_toBottomOf="@+id/tvBirim"
-            app:layout_constraintStart_toStartOf="@+id/tvTasinirAdi"
-            app:layout_constraintTop_toTopOf="@+id/tvBirim"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/radioButton"
+            app:layout_constraintEnd_toEndOf="@+id/viewCizgi"
+            app:layout_constraintStart_toStartOf="@+id/viewCizgi"
+            app:layout_constraintTop_toBottomOf="@+id/viewCizgi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

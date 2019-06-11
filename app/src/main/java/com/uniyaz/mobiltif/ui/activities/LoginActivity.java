@@ -1,6 +1,6 @@
 package com.uniyaz.mobiltif.ui.activities;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.UserDto;
 import com.uniyaz.mobiltif.databinding.ActivityLoginBinding;
@@ -18,32 +19,13 @@ import com.uniyaz.mobiltif.presenter.LoginPresenter;
 import com.uniyaz.mobiltif.utils.PermissionUtils;
 import com.uniyaz.mobiltif.utils.StaticUtils;
 import com.uniyaz.mobiltif.viewmodel.LoginViewModel;
-import com.uniyaz.mobiltif.viewmodel.ProgressBarViewModel;
 
 
 public class LoginActivity extends AppCompatActivity implements ILogin {
-//    private AccessTokenTracker accessTokenTracker;
-
-//    @BindView(R.id.etUsername)
-//    EditText etUsername;
-//    @BindView(R.id.etPassword)
-//    EditText etPassword;
-//    TextView tvResult;
-//    @BindView(R.id.cbRememberMe)
-//    CheckBox cbRememberMe;
-
-    private ProgressDialog progressDialog;
-
-//    @BindView(R.id.progressBar)
-//    ProgressBar progressBar;
-
-//    private TextView tvSignUp;
-//    private TextView tvForgetPassword;
 
 
     private LoginPresenter presenter;
     private LoginViewModel loginViewModel;
-    private ProgressBarViewModel progressBarViewModel;
     ActivityLoginBinding activityLoginBinding;
     UserDto userDto;
 
@@ -51,32 +33,33 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        PermissionUtils.checkInternetPermission(this);
+
         loginViewModel = new LoginViewModel(this);
         loginViewModel.hideProgressBar();
-//        progressBarViewModel = new ProgressBarViewModel();
         userDto = loginViewModel.getUserDto();
+
+        activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         activityLoginBinding.setViewModel(loginViewModel);
         activityLoginBinding.setActivity(this);
         activityLoginBinding.executePendingBindings();
 
-        PermissionUtils.checkInternetPermission(this);
-//        //keyhash = GYudxhKbpIR7rolceo2k3tS2Xig=
         presenter = new LoginPresenter(this);
 //
 //
-////        String authTicket = presenter.getAuthTicket();
-        UserDto userDto = presenter.getUserDto();
-        if (userDto != null) {
-            presenter.loginControl(userDto);
-
+//        UserDto dto = presenter.getUserDto();
+//        if (userDto != null) {
+//            presenter.loginControl(userDto);
+//        }
+//
+        String savedUserName = presenter.getSavedUserName();
+        if (savedUserName != null && !"".equals(savedUserName.trim())) {
+            userDto.setUsername(savedUserName);
+            loginViewModel.setChecked(true);
+            loginViewModel.notifyPropertyChanged(BR.username);
+            loginViewModel.notifyPropertyChanged(BR.checked);
         }
-//
-//        String savedUserName = presenter.getSavedUserName();
-//        if (savedUserName != null && !"".equals(savedUserName.trim()))
-//            cbRememberMe.setChecked(true);
-//
-//        etUsername.setText(savedUserName);
+
     }
 
     public void onBtnLoginClicked() {
@@ -86,9 +69,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
         if (!validatePassword()) {
             return;
         }
-        loginViewModel.hideProgressBar();
-//        setVisibleProgressBar(true);
-
+        loginViewModel.showProgressBar();
         presenter.loginControl(userDto);
     }
 
@@ -99,41 +80,13 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
 //        }
 //    }
 
-    //    private void setVisibleProgressBar(boolean visible) {
-//        if (visible) {
-//            progressBar.setVisibility(View.VISIBLE);
-//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-//                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-//        } else {
-//            progressBar.setVisibility(View.GONE);
-//            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-//        }
-//    }
-//
-//
-//    @OnClick(R.id.btnLogin)
-//    void onClickBtnLogin() {
-//        if (!validateUsername()) {
-//            return;
-//        }
-//        if (!validatePassword()) {
-//            return;
-//        }
-//        setVisibleProgressBar(true);
-//
-//        UserDto userDto = new UserDto();
-//        userDto.setUsername(etUsername.getText().toString());
-//        userDto.setPassword(etPassword.getText().toString());
-//        presenter.loginControl(userDto);
-//    }
-//
-//
-//    private void goMainActivity() {
-//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//    }
-//
+    private void goMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    //
 //
     private boolean validateUsername() {
         String userName = userDto.getUsername();
@@ -175,14 +128,13 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
         } else {
             presenter.saveUserName(null);
         }
-//        goMainActivity();
+        loginViewModel.hideProgressBar();
+        goMainActivity();
     }
 
     @Override
     public void showWarningDialog(String title, String statusInfo) {
-//        progressBar.setVisibility(View.GONE);
-        loginViewModel.showProgressBar();
-//        setVisibleProgressBar(false);
+        loginViewModel.hideProgressBar();
         new AlertDialog
                 .Builder(LoginActivity.this)
                 .setTitle(title)

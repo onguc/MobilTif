@@ -11,8 +11,7 @@ import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.data.domain.UserDto;
 import com.uniyaz.mobiltif.ui.activities.LoginActivity;
 
-public class
-LoginViewModel extends BaseObservable {
+public class LoginViewModel extends BaseObservable {
     private UserDto userDto;
     private boolean checked;
     //    ActivityLoginBinding activityLoginBinding;
@@ -61,6 +60,7 @@ LoginViewModel extends BaseObservable {
         return userDto.getPassword();
     }
 
+    @Bindable
     public boolean isChecked() {
         return checked;
     }
@@ -74,33 +74,11 @@ LoginViewModel extends BaseObservable {
         notifyPropertyChanged(BR.password);
     }
 
-
-    public boolean isInputDataValid() {
-        return !TextUtils.isEmpty(getUsername()) && getPassword().length() > 5;
-    }
-
     public UserDto getUserDto() {
         return userDto;
     }
 
-    private boolean validateUsername() {
-        if (userDto.getUsername().trim().isEmpty()) {
-//            etUsername.setError(getString(R.string.err_msg_username));
-//            requestFocus(etUsername);
-            return false;
-        } else {
-            return true;
-        }
-    }
 
-    private boolean validatePassword() {
-        if (userDto.getPassword().isEmpty() || userDto.getPassword().trim().isEmpty()) {
-//            etPassword.setError(getString(R.string.err_msg_password));
-//            requestFocus(etPassword);
-            return false;
-        }
-        return true;
-    }
 
     public void showProgressBar() {
         showProgressBar = true;

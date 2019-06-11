@@ -16,6 +16,9 @@ import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.IPhoto;
 import com.uniyaz.mobiltif.data.enums.EnumPhotoLacation;
+import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
+import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBinding;
+import com.uniyaz.mobiltif.viewmodel.EnvanterViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,9 +49,13 @@ public class DemirbasDetayFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewDataBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
 
-        View root = dataBinding.getRoot();
+        EnvanterViewModel viewModel = new EnvanterViewModel(envanter);
+        FragmentDemibasDetayBinding bindig = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
+        bindig.setViewModel(viewModel);
+
+        View root = bindig.getRoot();
+
 //        View view = inflater.inflate(R.layout.fragment_demibas_detay, container, false);
 //        defineView(view);
         return root;

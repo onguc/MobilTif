@@ -2,10 +2,12 @@ package com.uniyaz.mobiltif.ui.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,30 +19,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
-import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
+import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
 import com.uniyaz.mobiltif.iface.IMain;
 import com.uniyaz.mobiltif.presenter.MainPresenter;
-import com.uniyaz.mobiltif.ui.components.CustomProgressBar;
 import com.uniyaz.mobiltif.ui.fragments.DemirbasDetayFragment;
 import com.uniyaz.mobiltif.ui.fragments.DemirbasListFragment;
 import com.uniyaz.mobiltif.utils.PermissionUtils;
 import com.uniyaz.mobiltif.utils.TextCustomUtils;
+import com.uniyaz.mobiltif.viewmodel.MainViewModel;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
@@ -50,11 +46,11 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements IMain {
 
 
-    @BindView(R.id.progressBar)
-    CustomProgressBar progressBar;
+//    @BindView(R.id.progressBar)
+//    CustomProgressBar progressBar;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     MainPresenter presenter;
 
@@ -64,25 +60,32 @@ public class MainActivity extends AppCompatActivity implements IMain {
     private FragmentManager fragmentManager;
     DemirbasDetayFragment demirbasDetayFragment;
     DemirbasListFragment demirbasListFragment;
+    PopupWindow popupWindow;
+    ActivityMainBinding activityMainBinding;
+    MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        ButterKnife.bind(this);
-        ViewDataBinding viewDataBinding1 = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        viewModel = new MainViewModel(this);
+//        ActivityMainBinding activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        activityMainBinding.setViewModel(viewModel);
+
 
         presenter = new MainPresenter(this);
         fragmentManager = getSupportFragmentManager();
-        setSupportActionBar(toolbar);
+        setSupportActionBar(activityMainBinding.toolbar);
         defineCallRoomAndEnvanter();
-        presenter.getDepartmentList();
-//        showPopupCallRoomAndEnvanter();
-
+        /**
+         * view hemen yüklemediği için yüklenmesini bekliyoruz.
+         * Yükledikten sonra popup gösterilecek.
+         */
+        activityMainBinding.includedContentMain.clayout.post(()->{
+            showPopupCallRoomAndEnvanter();
+        });
     }
 
-    PopupWindow popupWindow;
-    private int clickedButton = 0;
 
     private void defineCallRoomAndEnvanter() {
         boolean focusable = true; // lets taps outside the popup also dismiss it
@@ -97,13 +100,11 @@ public class MainActivity extends AppCompatActivity implements IMain {
         View.OnClickListener onClickListener = v -> {
             switch (v.getId()) {
                 case R.id.btnCallRoom:
-                    clickedButton = 1;
                     if (PermissionUtils.checkQrCodeRoomPermission(activity)) {
                         goScanActivity(REQUEST_CODE_QR_FOR_ROOM);
                     }
                     break;
                 case R.id.btnCallEnvanter:
-                    clickedButton = 2;
                     if (PermissionUtils.checkQrCodeEnvanterPermission(activity)) {
                         goScanActivity(REQUEST_CODE_QR_FOR_ENVANTER);
                     }
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
     private void showPopupCallRoomAndEnvanter() {
-        popupWindow.showAtLocation(findViewById(R.id.clayout), Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(activityMainBinding.includedContentMain.clayout, Gravity.CENTER, 0, 0);
     }
 
     private void hidePopupCallRoomAndEnvanter() {
@@ -193,24 +194,6 @@ public class MainActivity extends AppCompatActivity implements IMain {
         super.onPause();
     }
 
-    boolean onClickBtnSendRemote(MenuItem menuItem) {
-
-        new AlertDialog
-                .Builder(this)
-                .setTitle("Uyarı")
-                .setMessage("Sunucuya Göndermek İstediğinizden Emin misiniz?")
-                .setPositiveButton("Gönder", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-//                        setVisibleProgressBar(true);
-//                        presenter.sendToRemote();
-                    }
-                })
-                .setNegativeButton("İptal", null)
-                .show();
-
-        return true;
-    }
-
 
     public boolean onClickLogOut(MenuItem menuItem) {
         logOut();
@@ -229,10 +212,10 @@ public class MainActivity extends AppCompatActivity implements IMain {
         startActivity(intent);
     }
 
-    private void showSnackbar(String message) {
-        Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_LONG)
-                .show();
-    }
+//    private void showSnackbar(String message) {
+//        Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_LONG)
+//                .show();
+//    }
 
 
     @Override
@@ -242,8 +225,11 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void onSuccessForEnvater(Envanter envanter) {
+        hidePopupCallRoomAndEnvanter();
         demirbasDetayFragment = DemirbasDetayFragment.getNewInstance(envanter);
         startFragmentByBackStack(demirbasDetayFragment);
+        String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas);
+        viewModel.setTitleToolbar(titleDemirbarDetay);
     }
 
     @Override
@@ -269,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void logOut() {
-
+        goLoginActivity();
     }
 
     @Override

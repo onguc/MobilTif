@@ -5,39 +5,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-    <variable
-        name="envanter"
-        type="com.uniyaz.mobiltif.data.domain.Envanter" />
-</data>
+
+        <variable
+            name="viewModel"
+            type="com.uniyaz.mobiltif.viewmodel.EnvanterViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/include2"
-            layout="@layout/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAdi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_demirbas"
-            app:layout_constraintEnd_toEndOf="@+id/include2"
-            app:layout_constraintStart_toStartOf="@+id/include2"
-            app:layout_constraintTop_toBottomOf="@+id/include2">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/etAdi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/demirbarEdittext"
-                android:text="@={envanter.adi}"
-                android:hint="Adı" />
+                android:hint="Adı"
+                android:text="@={viewModel.envanter.adi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -54,8 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/demirbarEdittext"
-                android:text="@={envanter.sicilNo}"
-                android:hint="Sicil No" />
+                android:hint="Sicil No"
+                android:text="@={viewModel.envanter.sicilNo}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -72,8 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/demirbarEdittext"
-                android:text="@={envanter.servisAmbar}"
-                android:hint="Servis/Ambar" />
+                android:hint="Servis/Ambar"
+                android:text="@={viewModel.envanter.servisAmbar}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
@@ -83,8 +76,8 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="Tutar"
-            android:text="@={envanter.tutar}"
             android:inputType="textPersonName"
+            android:text="@={viewModel.envanter.tutar}"
             app:layout_constraintStart_toStartOf="@+id/tilServisAmbar"
             app:layout_constraintTop_toBottomOf="@+id/tilServisAmbar" />
 
@@ -95,8 +88,8 @@
             android:layout_marginStart="8dp"
             android:ems="10"
             android:hint="Birim"
-            android:text="@={envanter.birimi}"
             android:inputType="textPersonName"
+            android:text="@={viewModel.envanter.birimi}"
             app:layout_constraintEnd_toEndOf="@+id/tilServisAmbar"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/etTutar"
@@ -109,8 +102,8 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Zimmetli Personel"
-            android:text="@={envanter.zimmetliPersonel}"
             android:inputType="textPersonName"
+            android:text="@={viewModel.envanter.zimmetliPersonel}"
             app:layout_constraintEnd_toEndOf="@+id/etTutar"
             app:layout_constraintStart_toStartOf="@+id/etTutar"
             app:layout_constraintTop_toBottomOf="@+id/etTutar" />
@@ -122,8 +115,8 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="Durumu"
-            android:text="@={envanter.durumu}"
             android:inputType="textPersonName"
+            android:text="@={viewModel.envanter.durumu}"
             app:layout_constraintEnd_toEndOf="@+id/etZimmetliPersonel"
             app:layout_constraintStart_toStartOf="@+id/etZimmetliPersonel"
             app:layout_constraintTop_toBottomOf="@+id/etZimmetliPersonel" />
@@ -132,10 +125,10 @@
             android:id="@+id/etAciklama"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="@={envanter.aciklama}"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
+            android:text="@={viewModel.envanter.aciklama}"
             app:layout_constraintBottom_toBottomOf="@+id/etDurumu"
             app:layout_constraintEnd_toEndOf="@+id/etBirim"
             app:layout_constraintHorizontal_bias="0.0"
@@ -151,8 +144,8 @@
             android:layout_marginEnd="253dp"
             android:ems="10"
             android:hint="Temin Edilen Firma"
-            android:text="@={envanter.teminEdilenFirma}"
             android:inputType="textPersonName"
+            android:text="@={viewModel.envanter.teminEdilenFirma}"
             app:layout_constraintEnd_toEndOf="@+id/etAciklama"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etDurumu" />
@@ -164,8 +157,8 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="Fatura Tarihi"
-            android:text="@={envanter.faturaTarihi}"
             android:inputType="date"
+            android:text="@={viewModel.envanter.faturaTarihi}"
             app:layout_constraintEnd_toEndOf="@+id/etDurumu"
             app:layout_constraintStart_toStartOf="@+id/etTEFirma"
             app:layout_constraintTop_toBottomOf="@+id/etTEFirma" />
@@ -176,8 +169,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fatura No"
-            android:text="@={envanter.faturaNo}"
             android:inputType="number"
+            android:text="@={viewModel.envanter.faturaNo}"
             app:layout_constraintEnd_toEndOf="@+id/etAciklama"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/etAciklama"
@@ -206,7 +199,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/recylerview"
             app:layout_constraintTop_toBottomOf="@+id/recylerview" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

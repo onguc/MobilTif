@@ -17,7 +17,7 @@ public class ResponseInfo<T> {
     @SerializedName("success")
     private Boolean success;
 
-    @SerializedName(value = "response", alternate = {"kbsServisDtoList", "vysSayimTasinirKodDtoList", "vysSayimOdaDtoList"})
+    @SerializedName(value = "response", alternate = {"envanter", "envanterList", "vysSayimOdaDtoList"})
     private T response;
 
     @SerializedName("pages")
