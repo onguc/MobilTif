@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment;
 
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
+import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasListBinding;
 import com.uniyaz.mobiltif.ui.adapters.EnvanterAdapter;
 import com.uniyaz.mobiltif.viewmodel.DemirbasListViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DemirbasListFragment extends Fragment {
@@ -44,10 +46,19 @@ public class DemirbasListFragment extends Fragment {
         binding.setViewModel(viewModel);
         View root = binding.getRoot();
 
+
+        defineView(binding);
+        return root;
+    }
+
+    private void defineView(FragmentDemibasListBinding binding) {
         EnvanterAdapter adapter = new EnvanterAdapter(envanterList);
         binding.rvDemirbasList.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        return root;
 
+        List<ImageInfo> imageInfoList = new ArrayList<>();
+        ImageInfo imageInfo = new ImageInfo();
+        imageInfoList.add(imageInfo);
+        new PhotoIslem().createView(binding.rvOdaPhotoList, getActivity(), imageInfoList);
     }
 }

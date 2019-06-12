@@ -2,7 +2,8 @@
 
 <!----><!--</ScrollView>-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout">
 
     <data>
 
@@ -11,195 +12,200 @@
             type="com.uniyaz.mobiltif.viewmodel.EnvanterViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAdi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_demirbas"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/etAdi"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAdi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_demirbas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/etAdi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/demirbasEdittext"
+                    android:hint="Adı"
+                    android:text="@={viewModel.envanter.adi}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSicilNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbasEdittext"
-                android:hint="Adı"
-                android:text="@={viewModel.envanter.adi}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="@dimen/margin_top_demirbas"
+                app:layout_constraintEnd_toEndOf="@+id/tilAdi"
+                app:layout_constraintStart_toStartOf="@+id/tilAdi"
+                app:layout_constraintTop_toBottomOf="@+id/tilAdi">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilSicilNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_demirbas"
-            app:layout_constraintEnd_toEndOf="@+id/tilAdi"
-            app:layout_constraintStart_toStartOf="@+id/tilAdi"
-            app:layout_constraintTop_toBottomOf="@+id/tilAdi">
+                <EditText
+                    android:id="@+id/etSicilNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/demirbasEdittext"
+                    android:hint="Sicil No"
+                    android:text="@={viewModel.envanter.sicilNo}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etSicilNo"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilServisAmbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbasEdittext"
-                android:hint="Sicil No"
-                android:text="@={viewModel.envanter.sicilNo}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="@dimen/margin_top_demirbas"
+                app:layout_constraintEnd_toEndOf="@+id/tilSicilNo"
+                app:layout_constraintStart_toStartOf="@+id/tilSicilNo"
+                app:layout_constraintTop_toBottomOf="@+id/tilSicilNo">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilServisAmbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_demirbas"
-            app:layout_constraintEnd_toEndOf="@+id/tilSicilNo"
-            app:layout_constraintStart_toStartOf="@+id/tilSicilNo"
-            app:layout_constraintTop_toBottomOf="@+id/tilSicilNo">
+                <EditText
+                    android:id="@+id/etServisAmbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/demirbasEdittext"
+                    android:hint="Servis/Ambar"
+                    android:text="@={viewModel.envanter.servisAmbar}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
-                android:id="@+id/etServisAmbar"
-                android:layout_width="match_parent"
+                android:id="@+id/etTutar"
+                android:layout_width="203dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Tutar"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.envanter.tutar}"
+                app:layout_constraintStart_toStartOf="@+id/tilServisAmbar"
+                app:layout_constraintTop_toBottomOf="@+id/tilServisAmbar" />
+
+            <EditText
+                android:id="@+id/etBirim"
+                android:layout_width="151dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:hint="Birim"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.envanter.birimi}"
+                app:layout_constraintEnd_toEndOf="@+id/tilServisAmbar"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/etTutar"
+                app:layout_constraintTop_toTopOf="@+id/etTutar" />
+
+            <EditText
+                android:id="@+id/etZimmetliPersonel"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbasEdittext"
-                android:hint="Servis/Ambar"
-                android:text="@={viewModel.envanter.servisAmbar}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Zimmetli Personel"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.envanter.zimmetliPersonel}"
+                app:layout_constraintEnd_toEndOf="@+id/etTutar"
+                app:layout_constraintStart_toStartOf="@+id/etTutar"
+                app:layout_constraintTop_toBottomOf="@+id/etTutar" />
 
-        <EditText
-            android:id="@+id/etTutar"
-            android:layout_width="203dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="Tutar"
-            android:inputType="textPersonName"
-            android:text="@={viewModel.envanter.tutar}"
-            app:layout_constraintStart_toStartOf="@+id/tilServisAmbar"
-            app:layout_constraintTop_toBottomOf="@+id/tilServisAmbar" />
+            <EditText
+                android:id="@+id/etDurumu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Durumu"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.envanter.durumu}"
+                app:layout_constraintEnd_toEndOf="@+id/etZimmetliPersonel"
+                app:layout_constraintStart_toStartOf="@+id/etZimmetliPersonel"
+                app:layout_constraintTop_toBottomOf="@+id/etZimmetliPersonel" />
 
-        <EditText
-            android:id="@+id/etBirim"
-            android:layout_width="151dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:ems="10"
-            android:hint="Birim"
-            android:inputType="textPersonName"
-            android:text="@={viewModel.envanter.birimi}"
-            app:layout_constraintEnd_toEndOf="@+id/tilServisAmbar"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/etTutar"
-            app:layout_constraintTop_toTopOf="@+id/etTutar" />
+            <EditText
+                android:id="@+id/etAciklama"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:text="@={viewModel.envanter.aciklama}"
+                app:layout_constraintBottom_toBottomOf="@+id/etDurumu"
+                app:layout_constraintEnd_toEndOf="@+id/etBirim"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/etBirim"
+                app:layout_constraintTop_toTopOf="@+id/etZimmetliPersonel"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/etZimmetliPersonel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Zimmetli Personel"
-            android:inputType="textPersonName"
-            android:text="@={viewModel.envanter.zimmetliPersonel}"
-            app:layout_constraintEnd_toEndOf="@+id/etTutar"
-            app:layout_constraintStart_toStartOf="@+id/etTutar"
-            app:layout_constraintTop_toBottomOf="@+id/etTutar" />
+            <EditText
+                android:id="@+id/etTEFirma"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="253dp"
+                android:ems="10"
+                android:hint="Temin Edilen Firma"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.envanter.teminEdilenFirma}"
+                app:layout_constraintEnd_toEndOf="@+id/etAciklama"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDurumu" />
 
-        <EditText
-            android:id="@+id/etDurumu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="Durumu"
-            android:inputType="textPersonName"
-            android:text="@={viewModel.envanter.durumu}"
-            app:layout_constraintEnd_toEndOf="@+id/etZimmetliPersonel"
-            app:layout_constraintStart_toStartOf="@+id/etZimmetliPersonel"
-            app:layout_constraintTop_toBottomOf="@+id/etZimmetliPersonel" />
+            <EditText
+                android:id="@+id/etFaturaTarihi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Fatura Tarihi"
+                android:inputType="date"
+                android:text="@={viewModel.envanter.faturaTarihi}"
+                app:layout_constraintEnd_toEndOf="@+id/etDurumu"
+                app:layout_constraintStart_toStartOf="@+id/etTEFirma"
+                app:layout_constraintTop_toBottomOf="@+id/etTEFirma" />
 
-        <EditText
-            android:id="@+id/etAciklama"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:text="@={viewModel.envanter.aciklama}"
-            app:layout_constraintBottom_toBottomOf="@+id/etDurumu"
-            app:layout_constraintEnd_toEndOf="@+id/etBirim"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/etBirim"
-            app:layout_constraintTop_toTopOf="@+id/etZimmetliPersonel"
-            app:layout_constraintVertical_bias="0.0" />
+            <EditText
+                android:id="@+id/etFaturaNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Fatura No"
+                android:inputType="number"
+                android:text="@={viewModel.envanter.faturaNo}"
+                app:layout_constraintEnd_toEndOf="@+id/etAciklama"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/etAciklama"
+                app:layout_constraintTop_toTopOf="@+id/etFaturaTarihi" />
 
-        <EditText
-            android:id="@+id/etTEFirma"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="253dp"
-            android:ems="10"
-            android:hint="Temin Edilen Firma"
-            android:inputType="textPersonName"
-            android:text="@={viewModel.envanter.teminEdilenFirma}"
-            app:layout_constraintEnd_toEndOf="@+id/etAciklama"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDurumu" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDemirbasPhotoList"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/etFaturaNo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFaturaTarihi"></androidx.recyclerview.widget.RecyclerView>
 
-        <EditText
-            android:id="@+id/etFaturaTarihi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="Fatura Tarihi"
-            android:inputType="date"
-            android:text="@={viewModel.envanter.faturaTarihi}"
-            app:layout_constraintEnd_toEndOf="@+id/etDurumu"
-            app:layout_constraintStart_toStartOf="@+id/etTEFirma"
-            app:layout_constraintTop_toBottomOf="@+id/etTEFirma" />
 
-        <EditText
-            android:id="@+id/etFaturaNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fatura No"
-            android:inputType="number"
-            android:text="@={viewModel.envanter.faturaNo}"
-            app:layout_constraintEnd_toEndOf="@+id/etAciklama"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/etAciklama"
-            app:layout_constraintTop_toTopOf="@+id/etFaturaTarihi" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="@+id/rvDemirbasPhotoList"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rvDemirbasPhotoList"
+                app:layout_constraintTop_toBottomOf="@+id/rvDemirbasPhotoList"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recylerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/etFaturaNo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etFaturaTarihi">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="Button"
-            app:layout_constraintEnd_toEndOf="@+id/recylerview"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/recylerview"
-            app:layout_constraintTop_toBottomOf="@+id/recylerview" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

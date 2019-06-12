@@ -8,31 +8,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
-import com.uniyaz.mobiltif.data.domain.IPhoto;
-import com.uniyaz.mobiltif.data.enums.EnumPhotoLacation;
-import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
+import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBinding;
 import com.uniyaz.mobiltif.viewmodel.EnvanterViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 public class DemirbasDetayFragment extends Fragment {
 
-    List<IPhoto> photoList;
-    PhotoIslem photoIslem;
+    List<ImageInfo> imageInfoList;
 
     Envanter envanter;
 
-    @BindView(R.id.recylerview)
+    //    @BindView(R.id.recylerview)
     RecyclerView recyclerView;
 
     public static DemirbasDetayFragment getNewInstance(Envanter envanter) {
@@ -53,17 +47,16 @@ public class DemirbasDetayFragment extends Fragment {
         EnvanterViewModel viewModel = new EnvanterViewModel(envanter);
         FragmentDemibasDetayBinding bindig = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
         bindig.setViewModel(viewModel);
-
+        recyclerView = bindig.rvDemirbasPhotoList;
         View root = bindig.getRoot();
-
-//        View view = inflater.inflate(R.layout.fragment_demibas_detay, container, false);
-//        defineView(view);
+        defineView();
         return root;
     }
 
-    private void defineView(View view) {
-        photoList = new ArrayList<>();
-        photoIslem = new PhotoIslem(EnumPhotoLacation.ENVANTER);
-        photoIslem.createView(recyclerView, getActivity(), photoList);
+    private void defineView() {
+        imageInfoList = new ArrayList<>();
+        ImageInfo imageInfo = new ImageInfo();
+        imageInfoList.add(imageInfo);
+        new PhotoIslem().createView(recyclerView, getActivity(), imageInfoList);
     }
 }

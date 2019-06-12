@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
     tools:context=".CallRoomAndEnvanterFragment">
 
 
     <Button
         android:id="@+id/btnCallRoom"
-        android:layout_width="135dp"
+        android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:text="Oda Ara"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,10 +23,10 @@
 
     <Button
         android:id="@+id/btnCallEnvanter"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="20dp"
         android:text="Envanter Ara"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnCallRoom"
