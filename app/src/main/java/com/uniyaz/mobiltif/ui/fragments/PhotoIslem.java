@@ -22,6 +22,11 @@ public class PhotoIslem {
     }
 
     public void createView(RecyclerView recyclerView, Activity activity, List<ImageInfo> bitmapList) {
+        for (int i = 0; i < 5; i++) {
+            ImageInfo imageInfo = new ImageInfo();
+            bitmapList.add(imageInfo);
+        }
+
         adapter = new PhotoAdapter(bitmapList);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity.getApplicationContext());

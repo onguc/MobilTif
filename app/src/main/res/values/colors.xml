@@ -13,7 +13,10 @@
     <color name="loginButtonNormal">#FFC107</color>
     <color name="demirbasEdittext">#7e97af </color>
     <color name="demirbasBackground">#0d3a64 </color>
+    <color name="backgroundToolbar">#F2F2F2</color>
     
     <color name="colorItemEnvanterCardBGround">#ffffff</color>
     <color name="colorItemEnvanterCizgi">#000</color>
+
+    <color name="colorWhite">#fff</color>
 </resources>

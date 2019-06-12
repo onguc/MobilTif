@@ -25,7 +25,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="@color/backgroundToolbar"
                 app:navigationIcon="@mipmap/ic_icon"
                 app:title="@{viewModel.titleToolbar}"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"

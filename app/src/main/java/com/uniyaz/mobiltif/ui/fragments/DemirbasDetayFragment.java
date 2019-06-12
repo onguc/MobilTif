@@ -55,8 +55,6 @@ public class DemirbasDetayFragment extends Fragment {
 
     private void defineView() {
         imageInfoList = new ArrayList<>();
-        ImageInfo imageInfo = new ImageInfo();
-        imageInfoList.add(imageInfo);
         new PhotoIslem().createView(recyclerView, getActivity(), imageInfoList);
     }
 }

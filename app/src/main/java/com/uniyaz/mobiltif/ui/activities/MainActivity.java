@@ -230,14 +230,22 @@ public class MainActivity extends AppCompatActivity implements IMain {
     @Override
     public void onSuccessForEnvater(Envanter envanter) {
         hidePopupCallRoomAndEnvanter();
-        demirbasDetayFragment = DemirbasDetayFragment.getNewInstance(envanter);
-        startFragmentByBackStack(demirbasDetayFragment);
+
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas);
         viewModel.setTitleToolbar(titleDemirbarDetay);
+
+        demirbasDetayFragment = DemirbasDetayFragment.getNewInstance(envanter);
+        startFragmentByBackStack(demirbasDetayFragment);
+        hidePopupCallRoomAndEnvanter();
     }
 
     @Override
     public void onSuccessForRoom(List<Envanter> envanterList) {
+        hidePopupCallRoomAndEnvanter();
+
+        String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas_list);
+        viewModel.setTitleToolbar(titleDemirbarDetay);
+
         Department department = new Department();
         department.setCode("111");
         department.setId(444);
