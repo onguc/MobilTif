@@ -28,7 +28,7 @@
                 android:id="@+id/etAdi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbarEdittext"
+                android:background="@color/demirbasEdittext"
                 android:hint="Adı"
                 android:text="@={viewModel.envanter.adi}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -46,7 +46,7 @@
                 android:id="@+id/etSicilNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbarEdittext"
+                android:background="@color/demirbasEdittext"
                 android:hint="Sicil No"
                 android:text="@={viewModel.envanter.sicilNo}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +64,7 @@
                 android:id="@+id/etServisAmbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbarEdittext"
+                android:background="@color/demirbasEdittext"
                 android:hint="Servis/Ambar"
                 android:text="@={viewModel.envanter.servisAmbar}" />
         </com.google.android.material.textfield.TextInputLayout>

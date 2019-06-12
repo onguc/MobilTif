@@ -2,12 +2,9 @@ package com.uniyaz.mobiltif.ui.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +23,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
+import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
+import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
 import com.uniyaz.mobiltif.iface.IMain;
 import com.uniyaz.mobiltif.presenter.MainPresenter;
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
          * view hemen yüklemediği için yüklenmesini bekliyoruz.
          * Yükledikten sonra popup gösterilecek.
          */
-        activityMainBinding.includedContentMain.clayout.post(()->{
+        activityMainBinding.includedContentMain.clayout.post(() -> {
             showPopupCallRoomAndEnvanter();
         });
     }
@@ -234,7 +233,16 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void onSuccessForRoom(List<Envanter> envanterList) {
-        demirbasListFragment = DemirbasListFragment.getNewInstance(envanterList);
+        Department department = new Department();
+        department.setCode("111");
+        department.setId(444);
+        department.setName("Departman1");
+
+        Room room = new Room();
+        room.setDepartment(department);
+        room.setName("Oda Test 1");
+        room.setQrCode(333);
+        demirbasListFragment = DemirbasListFragment.getNewInstance(envanterList, room);
         startFragmentByBackStack(demirbasListFragment);
     }
 

@@ -12,8 +12,9 @@ public class DemirbasListViewModel extends BaseObservable {
     private Room room;
     private List<Envanter> demirbasList;
 
-    public DemirbasListViewModel(List<Envanter> envanterList, Room room){
+    public DemirbasListViewModel(List<Envanter> envanterList, Room room) {
         this.demirbasList = envanterList;
+        this.room = room;
     }
 
     @Bindable
@@ -21,6 +22,7 @@ public class DemirbasListViewModel extends BaseObservable {
         return demirbasList;
     }
 
+    @Bindable
     public Room getRoom() {
         return room;
     }
