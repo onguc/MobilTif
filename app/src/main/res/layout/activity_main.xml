@@ -27,6 +27,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/backgroundToolbar"
                 app:navigationIcon="@mipmap/ic_icon"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:title="@{viewModel.titleToolbar}"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 />
