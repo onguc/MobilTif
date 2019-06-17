@@ -86,6 +86,7 @@ public class MainPresenter {
     public void callEnvanterListByQrCodeRoom(String qrCode) {
         RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "qrCodeRoom=" + qrCode);
         Call<ResponseInfo<List<Envanter>>> callEnvanterList = RetrofitInterface.retrofitInterface.getEnvanterListByQrCodeRoom(getAuthTicket(), bodyQrCodeRoom);
+        view.showProgressBar();
         callEnvanterList.enqueue(new Callback<ResponseInfo<List<Envanter>>>() {
             @Override
             public void onResponse(Call<ResponseInfo<List<Envanter>>> call, Response<ResponseInfo<List<Envanter>>> response) {
@@ -105,6 +106,7 @@ public class MainPresenter {
     public void callEnvanterByQrCode(String qrCode) {
         RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "qrCodeEnvanter=" + qrCode);
         Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthTicket(), bodyQrCode);
+        view.showProgressBar();
         callEnvanter.enqueue(new Callback<ResponseInfo<Envanter>>() {
             @Override
             public void onResponse(Call<ResponseInfo<Envanter>> call, Response<ResponseInfo<Envanter>> response) {

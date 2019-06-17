@@ -1,15 +1,28 @@
 package com.uniyaz.mobiltif.ui.adapters;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.util.Base64;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
+import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBinding;
+import com.uniyaz.mobiltif.ui.components.TouchImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +33,12 @@ import java.util.List;
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder> {
 
     List<ImageInfo> imageInfoList;
+    Activity activity;
 
-    public PhotoAdapter(List<ImageInfo> imageInfoList) {
+    public PhotoAdapter(Activity activity, List<ImageInfo> imageInfoList) {
         if (imageInfoList == null) imageInfoList = new ArrayList<>();
         this.imageInfoList = imageInfoList;
+        this.activity = activity;
     }
 
     @NonNull
@@ -58,20 +73,33 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
             this.binding = binding;
             imgViewChapture = binding.imgViewChapture;
 
-//            imgViewChapture.setImageBitmap();
-//            imgViewChapture.setOnClickListener(v -> {
-//                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-//                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-//                boolean focusable = true; // lets taps outside the popup also dismiss it
-//
-//                View popupView = inflater.inflate(R.layout.popup_show_image, null);
-////                    Bitmap imageInfo = BitmapInfo.handleSamplingAndRotationBitmap(listener.getActivity(), photoUri);
-//                Bitmap imageInfo = null;
-//                TouchImageView imageView = popupView.findViewById(R.id.ivShowImageFragment);
-//                imageView.setImageBitmap(imageInfo);
-//                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-//                popupWindow.showAtLocation(imgViewChapture, Gravity.CENTER, 0, 0);
-//            });
+            if (imageInfo != null && imageInfo.getBitmap() != null) {
+                imgViewChapture.setImageBitmap(imageInfo.getBitmap());
+            }
+
+            imgViewChapture.setOnClickListener(v -> {
+                int width = LinearLayout.LayoutParams.MATCH_PARENT;
+                int height = LinearLayout.LayoutParams.MATCH_PARENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+
+
+
+
+                View popupView = activity.getLayoutInflater().inflate(R.layout.popup_show_image, null);
+                TouchImageView imageView = popupView.findViewById(R.id.ivShowImageFragment);
+                imageView.setImageBitmap(imageInfo.getBitmap());
+
+                GlideUrl glideUrl = new GlideUrl("", new LazyHeaders.Builder()
+                        .addHeader("Authorization", "")
+                        .build());
+                Glide.with(activity).load(glideUrl).into(imageView);
+
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                popupWindow.showAtLocation(imgViewChapture, Gravity.CENTER, 0, 0);
+                byte[] denemes = Base64.decode("deneme", Base64.DEFAULT);
+            });
+
+//            Glide.with(activity).load(activity).centerCrop().placeholder(R.drawable.background_fragment_demirbas).into(imgViewChapture);
         }
 
         public void setData(ImageInfo imageInfo) {

@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
@@ -182,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
     final String PROMPT = "Barkod Tara";
 
     private void goScanActivity(int code) {
-        if(code == REQUEST_CODE_QR_FOR_ENVANTER){
+        if (code == REQUEST_CODE_QR_FOR_ENVANTER) {
             presenter.callEnvanterByQrCode("01");
         } else {
             presenter.callEnvanterListByQrCodeRoom("01");
@@ -227,9 +226,9 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     }
 
-    @Override
     public void onSuccessForEnvater(Envanter envanter) {
         hidePopupCallRoomAndEnvanter();
+        viewModel.hideProgressBar();
 
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas);
         viewModel.setTitleToolbar(titleDemirbarDetay);
@@ -242,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
     @Override
     public void onSuccessForRoom(List<Envanter> envanterList) {
         hidePopupCallRoomAndEnvanter();
-
+        viewModel.hideProgressBar();
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas_list);
         viewModel.setTitleToolbar(titleDemirbarDetay);
 
@@ -255,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
         room.setDepartment(department);
         room.setName("Oda Test 1");
         room.setQrCode(333);
-        demirbasListFragment = DemirbasListFragment.getNewInstance(envanterList, room);
+        demirbasListFragment = DemirbasListFragment.getNewInstance(this, envanterList, room);
         startFragmentByBackStack(demirbasListFragment);
     }
 
@@ -285,8 +284,13 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
     @Override
+    public void showProgressBar() {
+        viewModel.showProgressBar();
+    }
+
+    @Override
     public void showWarningDialog(String title, String explanation) {
-//        setVisibleProgressBar(false);
+        viewModel.hideProgressBar();
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(explanation)
@@ -303,4 +307,14 @@ public class MainActivity extends AppCompatActivity implements IMain {
             fragmentManager.executePendingTransactions();
         }
     }
+
+    public boolean goEnvanterDetayFragment(Envanter envanter) {
+        onSuccessForEnvater(envanter);
+        return true;
+    }
+
+//    public boolean onClickCallPopup(MenuItem menuItem) {
+//        showPopupCallRoomAndEnvanter();
+//        return true;
+//    }
 }

@@ -4,10 +4,13 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterCardBinding;
+import com.uniyaz.mobiltif.ui.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +18,20 @@ import java.util.List;
 public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.EnvanterViewHolder> {
 
     private List<Envanter> envanterList;
+    MainActivity mainActivity;
 
-    public EnvanterAdapter(List<Envanter> envanterList) {
+    public EnvanterAdapter(MainActivity mainActivity, List<Envanter> envanterList) {
         if (envanterList == null) envanterList = new ArrayList<>();
         this.envanterList = envanterList;
+        this.mainActivity = mainActivity;
     }
 
     @NonNull
     @Override
     public EnvanterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
-        ItemEnvanterCardBinding cardBinding = ItemEnvanterCardBinding.inflate(inflater, parent, false);
+        ItemEnvanterCardBinding cardBinding = DataBindingUtil.inflate(inflater, R.layout.item_envanter_card, parent, false);
+//        ItemEnvanterCardBinding cardBinding = ItemEnvanterCardBinding.inflate(inflater, parent, false); // bu da olur{
         return new EnvanterViewHolder(cardBinding);
     }
 
@@ -41,7 +46,6 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
     }
 
 
-
     public class EnvanterViewHolder extends RecyclerView.ViewHolder {
 
         ItemEnvanterCardBinding cardBinding;
@@ -53,6 +57,7 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
 
         public void bindDto(Envanter envanter) {
             cardBinding.setDemirbas(envanter);
+            cardBinding.setActivity(mainActivity);
             cardBinding.executePendingBindings();
         }
     }
