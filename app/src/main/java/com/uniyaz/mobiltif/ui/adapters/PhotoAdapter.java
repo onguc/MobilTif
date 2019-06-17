@@ -53,8 +53,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ImageInfo bitmap = imageInfoList.get(position);
-        holder.setData(bitmap);
+        ImageInfo imageInfo = imageInfoList.get(position);
+        holder.setData(imageInfo);
     }
 
     @Override
@@ -89,10 +89,10 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
                 TouchImageView imageView = popupView.findViewById(R.id.ivShowImageFragment);
                 imageView.setImageBitmap(imageInfo.getBitmap());
 
-                GlideUrl glideUrl = new GlideUrl("", new LazyHeaders.Builder()
-                        .addHeader("Authorization", "")
-                        .build());
-                Glide.with(activity).load(glideUrl).into(imageView);
+//                GlideUrl glideUrl = new GlideUrl("", new LazyHeaders.Builder()
+//                        .addHeader("Authorization", "")
+//                        .build());
+//                Glide.with(activity).load(glideUrl).into(imageView);
 
                 final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
                 popupWindow.showAtLocation(imgViewChapture, Gravity.CENTER, 0, 0);

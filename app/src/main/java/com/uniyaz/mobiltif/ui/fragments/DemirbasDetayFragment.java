@@ -59,12 +59,13 @@ public class DemirbasDetayFragment extends Fragment {
     private void defineView(Envanter envanter) {
         imageInfoList = new ArrayList<>();
         List<byte[]> resimler = envanter.getResimler();
-        for (byte[] resim: resimler){
-            Bitmap bitmap = BitmapFactory.decodeByteArray(resim, 0, resim.length);
-            ImageInfo info = new ImageInfo();
-            info.setBitmap(bitmap);
-            imageInfoList.add(info);
-        }
+        if (resimler != null)
+            for (byte[] resim : resimler) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(resim, 0, resim.length);
+                ImageInfo info = new ImageInfo();
+                info.setBitmap(bitmap);
+                imageInfoList.add(info);
+            }
         new PhotoIslem().createView(recyclerView, getActivity(), imageInfoList);
     }
 }

@@ -55,6 +55,7 @@ public class Envanter extends BaseModel implements Cloneable {
     private String faturaTarihi;
     private String faturaNo;
 
+    private List<String> resimUrlList;
 
     @Override
     public String getIdString() {
@@ -264,5 +265,13 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setResimler(List<byte[]> resimler) {
         this.resimler = resimler;
+    }
+
+    public List<String> getResimUrlList() {
+        return resimUrlList;
+    }
+
+    public void setResimUrlList(List<String> resimUrlList) {
+        this.resimUrlList = resimUrlList;
     }
 }
