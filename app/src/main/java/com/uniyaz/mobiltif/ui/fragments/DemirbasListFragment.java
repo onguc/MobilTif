@@ -17,6 +17,7 @@ import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasListBinding;
+import com.uniyaz.mobiltif.ui.activities.MainActivity;
 import com.uniyaz.mobiltif.ui.adapters.EnvanterAdapter;
 import com.uniyaz.mobiltif.viewmodel.DemirbasListViewModel;
 
@@ -27,11 +28,13 @@ public class DemirbasListFragment extends Fragment {
 
     private List<Envanter> envanterList;
     private Room room;
+    private MainActivity mainActivity;
 
-    public static DemirbasListFragment getNewInstance(List<Envanter> envanterList, Room room) {
+    public static DemirbasListFragment getNewInstance(MainActivity mainActivity, List<Envanter> envanterList, Room room) {
         DemirbasListFragment demirbasListFragment = new DemirbasListFragment();
         demirbasListFragment.envanterList = envanterList;
         demirbasListFragment.room = room;
+        demirbasListFragment.mainActivity = mainActivity;
         return demirbasListFragment;
     }
 
@@ -57,8 +60,8 @@ public class DemirbasListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        EnvanterAdapter adapter = new EnvanterAdapter(envanterList);
-        RecyclerView recyclerView  = binding.rvDemirbasList;
+        EnvanterAdapter adapter = new EnvanterAdapter(mainActivity, envanterList);
+        RecyclerView recyclerView = binding.rvDemirbasList;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
 //        adapter.notifyDataSetChanged();

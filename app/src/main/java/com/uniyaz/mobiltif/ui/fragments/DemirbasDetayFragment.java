@@ -1,5 +1,7 @@
 package com.uniyaz.mobiltif.ui.fragments;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBinding;
+import com.uniyaz.mobiltif.utils.BitmapInfo;
 import com.uniyaz.mobiltif.viewmodel.EnvanterViewModel;
 
 import java.util.ArrayList;
@@ -49,12 +52,19 @@ public class DemirbasDetayFragment extends Fragment {
         bindig.setViewModel(viewModel);
         recyclerView = bindig.rvDemirbasPhotoList;
         View root = bindig.getRoot();
-        defineView();
+        defineView(envanter);
         return root;
     }
 
-    private void defineView() {
+    private void defineView(Envanter envanter) {
         imageInfoList = new ArrayList<>();
+        List<byte[]> resimler = envanter.getResimler();
+        for (byte[] resim: resimler){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(resim, 0, resim.length);
+            ImageInfo info = new ImageInfo();
+            info.setBitmap(bitmap);
+            imageInfoList.add(info);
+        }
         new PhotoIslem().createView(recyclerView, getActivity(), imageInfoList);
     }
 }

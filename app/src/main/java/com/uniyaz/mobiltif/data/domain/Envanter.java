@@ -1,5 +1,7 @@
 package com.uniyaz.mobiltif.data.domain;
 
+import java.util.List;
+
 /**
  * Created by İrfan Öngüç on 19.05.2019
  */
@@ -30,6 +32,7 @@ public class Envanter extends BaseModel implements Cloneable {
     private Long kodTasinir;
     private Long sayimNo;
     private String qrCode;
+    private List<byte[]> resimler;
     //    private EnumBirim birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
     private String birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
 
@@ -253,5 +256,13 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setFaturaNo(String faturaNo) {
         this.faturaNo = faturaNo;
+    }
+
+    public List<byte[]> getResimler() {
+        return resimler;
+    }
+
+    public void setResimler(List<byte[]> resimler) {
+        this.resimler = resimler;
     }
 }

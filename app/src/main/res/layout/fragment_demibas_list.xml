@@ -42,7 +42,7 @@
                 android:id="@+id/tvServisAmbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={viewModel.room.department.name}" />
+                android:text="@{viewModel.room.department.name}" />
 
             <TextView
                 android:layout_width="match_parent"

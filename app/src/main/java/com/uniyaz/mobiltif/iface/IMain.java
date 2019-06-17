@@ -27,4 +27,6 @@ public interface IMain extends ICommon {
     void logOut();
 
     Activity getActivity();
+
+    void showProgressBar();
 }

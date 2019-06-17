@@ -8,6 +8,9 @@
         <variable
             name="demirbas"
             type="com.uniyaz.mobiltif.data.domain.Envanter" />
+        <variable
+            name="activity"
+            type="com.uniyaz.mobiltif.ui.activities.MainActivity" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -84,6 +87,7 @@
                 android:drawableLeft="@drawable/ic_search_for_btn"
                 android:text="Detay"
                 android:textSize="8sp"
+                android:onClick="@{(view)->activity.goEnvanterDetayFragment(demirbas)}"
                 app:layout_constraintEnd_toStartOf="@+id/btnResim"
                 app:layout_constraintTop_toTopOf="@+id/btnResim" />
         </androidx.constraintlayout.widget.ConstraintLayout>
