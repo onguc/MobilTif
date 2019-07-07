@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.TifIslem1Fragment">
+        <data>
+            <variable
+                name="viewModel"
+                type="com.uniyaz.mobiltif.viewmodel.TifIslem3ViewModel" />
+        </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilIslemTarihi"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="İşlem Tarihi"
+                android:text="@{viewModel.islemTarihi}"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDayanakBelgeTarihi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilIslemTarihi"
+            app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
+            app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Giriş Yapılan Ambar"
+                android:text="@{viewModel.dayanakBelgeTarihi}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilKayittanDusmeNedeni"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilDayanakBelgeTarihi"
+            app:layout_constraintStart_toStartOf="@+id/tilDayanakBelgeTarihi"
+            app:layout_constraintTop_toBottomOf="@+id/tilDayanakBelgeTarihi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ambar Sorumlusu"
+                android:text="@{viewModel.kayittanDusmeNedeni}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDigerKayittanDusmeNedeni"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilKayittanDusmeNedeni"
+            app:layout_constraintStart_toStartOf="@+id/tilKayittanDusmeNedeni"
+            app:layout_constraintTop_toBottomOf="@+id/tilKayittanDusmeNedeni">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.digerKayittanDusmeNedeni}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilImhaOlurAciklamasi"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilDigerKayittanDusmeNedeni"
+            app:layout_constraintStart_toStartOf="@+id/tilDigerKayittanDusmeNedeni"
+            app:layout_constraintTop_toBottomOf="@+id/tilDigerKayittanDusmeNedeni">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.imhaOlurAciklamasi}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDigerImhaOlurAciklamasi"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilImhaOlurAciklamasi"
+            app:layout_constraintStart_toStartOf="@+id/tilImhaOlurAciklamasi"
+            app:layout_constraintTop_toBottomOf="@+id/tilImhaOlurAciklamasi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.digerImhaOlurAciklamasi}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilKomisyonBaskani"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilDigerImhaOlurAciklamasi"
+            app:layout_constraintStart_toStartOf="@+id/tilDigerImhaOlurAciklamasi"
+            app:layout_constraintTop_toBottomOf="@+id/tilDigerImhaOlurAciklamasi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.komisyonBaskani}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilKomisyonBaskani"
+            app:layout_constraintStart_toStartOf="@+id/tilKomisyonBaskani"
+            app:layout_constraintTop_toBottomOf="@+id/tilKomisyonBaskani">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.komisyonUyesi1TKY_Yetkilisi}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilKomisyonUyesi2"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
+            app:layout_constraintStart_toStartOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
+            app:layout_constraintTop_toBottomOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.komisyonUyesi2}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilHarcamaYetkilisi"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilKomisyonUyesi2"
+            app:layout_constraintStart_toStartOf="@+id/tilKomisyonUyesi2"
+            app:layout_constraintTop_toBottomOf="@+id/tilKomisyonUyesi2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.harcamaYetkilisi}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
