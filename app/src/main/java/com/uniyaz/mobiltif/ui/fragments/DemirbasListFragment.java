@@ -66,7 +66,7 @@ public class DemirbasListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 //        adapter.notifyDataSetChanged();
 
-        List<ImageInfo> imageInfoList = new ArrayList<>();
+        List<String> imageInfoList = new ArrayList<>();
         new PhotoIslem().createView(binding.rvOdaPhotoList, getActivity(), imageInfoList);
     }
 }

@@ -1,5 +1,7 @@
 package com.uniyaz.mobiltif.data.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -26,17 +28,27 @@ public class Envanter extends BaseModel implements Cloneable {
         isSentToServer = false;
     }
 
+    @SerializedName("id")
     private Long id;
+    @SerializedName("tasinirAdi")
+    private String tasinirAdi;
+    @SerializedName("tasinirKodu")
+    private String tasinirKodu;
+    private String sicilNo;
+    @SerializedName("kbsServis")
+    private String servis;
+    @SerializedName("vysTasinirAmbar")
+    private String ambar;
+
+
     private Integer idRoom;
     private Integer count;
-    private Long kodTasinir;
     private Long sayimNo;
     private String qrCode;
-    private List<byte[]> resimler;
     //    private EnumBirim birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
     private String birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
 
-    //    private EnumAP durumu;
+    //    private EnumDurum durumu;
     private String durumu;
     //    private Date sayimTarihi;
     private String sayimTarihi;
@@ -47,13 +59,14 @@ public class Envanter extends BaseModel implements Cloneable {
     private Tasinir tasinir;
 
     private String adi;
-    private String sicilNo;
-    private String servisAmbar;
     private String tutar;
     private String zimmetliPersonel;
     private String teminEdilenFirma;
     private String faturaTarihi;
     private String faturaNo;
+
+    @SerializedName("demirbasResimUrlSet")
+    private List<String> urlResimList;
 
 
     @Override
@@ -61,12 +74,53 @@ public class Envanter extends BaseModel implements Cloneable {
         return String.valueOf(id);
     }
 
-    public Long getIdLong() {
+
+    public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTasinirAdi() {
+        return tasinirAdi;
+    }
+
+    public void setTasinirAdi(String tasinirAdi) {
+        this.tasinirAdi = tasinirAdi;
+    }
+
+    public String getTasinirKodu() {
+        return tasinirKodu;
+    }
+
+    public void setTasinirKodu(String tasinirKodu) {
+        this.tasinirKodu = tasinirKodu;
+    }
+
+    public String getSicilNo() {
+        return sicilNo;
+    }
+
+    public void setSicilNo(String sicilNo) {
+        this.sicilNo = sicilNo;
+    }
+
+    public String getServis() {
+        return servis;
+    }
+
+    public void setServis(String servis) {
+        this.servis = servis;
+    }
+
+    public String getAmbar() {
+        return ambar;
+    }
+
+    public void setAmbar(String ambar) {
+        this.ambar = ambar;
     }
 
     public Integer getIdRoom() {
@@ -77,12 +131,12 @@ public class Envanter extends BaseModel implements Cloneable {
         this.idRoom = idRoom;
     }
 
-    public Long getKodTasinir() {
-        return kodTasinir;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setKodTasinir(Long kodTasinir) {
-        this.kodTasinir = kodTasinir;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Long getSayimNo() {
@@ -101,25 +155,13 @@ public class Envanter extends BaseModel implements Cloneable {
         this.qrCode = qrCode;
     }
 
-    //    public EnumBirim getBirimi() {
-//        return birimi;
-//    }
     public String getBirimi() {
-        return "ADET";
+        return birimi;
     }
 
     public void setBirimi(String birimi) {
         this.birimi = birimi;
     }
-
-//    public EnumAP getDurumu() {
-//        return durumu;
-//    }
-//
-//    public void setDurumu(EnumAP durumu) {
-//        this.durumu = durumu;
-//    }
-
 
     public String getDurumu() {
         return durumu;
@@ -161,23 +203,6 @@ public class Envanter extends BaseModel implements Cloneable {
         isSentToServer = sentToServer;
     }
 
-    public void setSentToServer(int sentToServer) {
-        this.isSentToServer = sentToServer == 1 ? true : false;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
     public Room getRoom() {
         return room;
     }
@@ -200,22 +225,6 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setAdi(String adi) {
         this.adi = adi;
-    }
-
-    public String getSicilNo() {
-        return sicilNo;
-    }
-
-    public void setSicilNo(String sicilNo) {
-        this.sicilNo = sicilNo;
-    }
-
-    public String getServisAmbar() {
-        return servisAmbar;
-    }
-
-    public void setServisAmbar(String servisAmbar) {
-        this.servisAmbar = servisAmbar;
     }
 
     public String getTutar() {
@@ -258,11 +267,25 @@ public class Envanter extends BaseModel implements Cloneable {
         this.faturaNo = faturaNo;
     }
 
-    public List<byte[]> getResimler() {
-        return resimler;
+    public List<String> getUrlResimList() {
+        return urlResimList;
     }
 
-    public void setResimler(List<byte[]> resimler) {
-        this.resimler = resimler;
+    public void setUrlResimList(List<String> urlResimList) {
+        this.urlResimList = urlResimList;
+    }
+
+    private String servisAmbar;
+
+    public String getServisAmbar() {
+        if (servis == null)
+            return ambar;
+        if (ambar == null)
+            return servis;
+        return servis + "/" + ambar;
+    }
+
+    public void setServisAmbar(String servisAmbar) {
+        this.servisAmbar = servisAmbar;
     }
 }

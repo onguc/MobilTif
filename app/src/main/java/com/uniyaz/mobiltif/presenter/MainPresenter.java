@@ -22,6 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.uniyaz.mobiltif.presenter.LoginPresenter.keyAuthorizationTicket;
+import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationForTest;
 
 /**
  * Created by İrfan Öngüç on 19.05.2019
@@ -58,10 +59,13 @@ public class MainPresenter {
         return objectUtil.getObjectFromSharedPreferences(keyAuthorizationTicket, String.class);
     }
 
+//    public String getAuthorizationForTest(){
+//        return "applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0";
+//    }
 
     private void fillDepartmentFromRemote() {
         RequestBody bodyServisTuru = RequestBody.create(MediaType.parse("text/plain"), "enumKbsServisTuru=MUDURLUK");
-        Call<ResponseInfo<List<Department>>> deparmentListCall = RetrofitInterface.retrofitInterface.getDepartmList(getAuthTicket(), bodyServisTuru);
+        Call<ResponseInfo<List<Department>>> deparmentListCall = RetrofitInterface.retrofitInterface.getDepartmList(getAuthorizationForTest(), bodyServisTuru);
         deparmentListCall.enqueue(new Callback<ResponseInfo<List<Department>>>() {
             @Override
             public void onResponse(Call<ResponseInfo<List<Department>>> call, Response<ResponseInfo<List<Department>>> response) {
@@ -85,7 +89,7 @@ public class MainPresenter {
 
     public void callEnvanterListByQrCodeRoom(String qrCode) {
         RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "qrCodeRoom=" + qrCode);
-        Call<ResponseInfo<List<Envanter>>> callEnvanterList = RetrofitInterface.retrofitInterface.getEnvanterListByQrCodeRoom(getAuthTicket(), bodyQrCodeRoom);
+        Call<ResponseInfo<List<Envanter>>> callEnvanterList = RetrofitInterface.retrofitInterface.getEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
         view.showProgressBar();
         callEnvanterList.enqueue(new Callback<ResponseInfo<List<Envanter>>>() {
             @Override
@@ -104,8 +108,8 @@ public class MainPresenter {
     }
 
     public void callEnvanterByQrCode(String qrCode) {
-        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "qrCodeEnvanter=" + qrCode);
-        Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthTicket(), bodyQrCode);
+        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode);
+        Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthorizationForTest(), bodyQrCode);
         view.showProgressBar();
         callEnvanter.enqueue(new Callback<ResponseInfo<Envanter>>() {
             @Override
@@ -124,7 +128,7 @@ public class MainPresenter {
     }
 
 
-    private interface ResponseResult<T> {
+    public interface ResponseResult<T> {
         void onSuccess(T t);
 
         default void onReult(Response<ResponseInfo<T>> response, IMain view) {

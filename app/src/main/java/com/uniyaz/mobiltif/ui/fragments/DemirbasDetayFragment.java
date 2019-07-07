@@ -17,7 +17,6 @@ import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBinding;
-import com.uniyaz.mobiltif.utils.BitmapInfo;
 import com.uniyaz.mobiltif.viewmodel.EnvanterViewModel;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import java.util.List;
 
 public class DemirbasDetayFragment extends Fragment {
 
-    List<ImageInfo> imageInfoList;
+//    List<ImageInfo> imageInfoList;
 
     Envanter envanter;
 
@@ -33,6 +32,8 @@ public class DemirbasDetayFragment extends Fragment {
     RecyclerView recyclerView;
 
     public static DemirbasDetayFragment getNewInstance(Envanter envanter) {
+        if (envanter == null)
+            return null;
         DemirbasDetayFragment demirbasDetayFragment = new DemirbasDetayFragment();
         demirbasDetayFragment.envanter = envanter;
         return demirbasDetayFragment;
@@ -57,14 +58,14 @@ public class DemirbasDetayFragment extends Fragment {
     }
 
     private void defineView(Envanter envanter) {
-        imageInfoList = new ArrayList<>();
-        List<byte[]> resimler = envanter.getResimler();
-        for (byte[] resim: resimler){
-            Bitmap bitmap = BitmapFactory.decodeByteArray(resim, 0, resim.length);
-            ImageInfo info = new ImageInfo();
-            info.setBitmap(bitmap);
-            imageInfoList.add(info);
-        }
-        new PhotoIslem().createView(recyclerView, getActivity(), imageInfoList);
+//        imageInfoList = new ArrayList<>();
+//        List<byte[]> resimler = envanter.getResimler();
+//        for (byte[] resim : resimler) {
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(resim, 0, resim.length);
+//            ImageInfo info = new ImageInfo();
+//            info.setBitmap(bitmap);
+//            imageInfoList.add(info);
+//        }
+        new PhotoIslem().createView(recyclerView, getActivity(), envanter.getUrlResimList());
     }
 }
