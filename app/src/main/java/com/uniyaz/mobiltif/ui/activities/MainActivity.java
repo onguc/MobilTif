@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
