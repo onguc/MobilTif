@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,12 +24,14 @@ import com.uniyaz.mobiltif.viewmodel.DemirbasListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DemirbasListFragment extends Fragment {
 
     private List<Envanter> envanterList;
     private Room room;
     private MainActivity mainActivity;
+    EnvanterAdapter adapter;
 
     public static DemirbasListFragment getNewInstance(MainActivity mainActivity, List<Envanter> envanterList, Room room) {
         DemirbasListFragment demirbasListFragment = new DemirbasListFragment();
@@ -60,13 +63,18 @@ public class DemirbasListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        EnvanterAdapter adapter = new EnvanterAdapter(mainActivity, envanterList);
+        adapter = new EnvanterAdapter(mainActivity, envanterList);
         RecyclerView recyclerView = binding.rvDemirbasList;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
 //        adapter.notifyDataSetChanged();
 
-        List<ImageInfo> imageInfoList = new ArrayList<>();
+        List<String> imageInfoList = new ArrayList<>();
         new PhotoIslem().createView(binding.rvOdaPhotoList, getActivity(), imageInfoList);
+    }
+
+    public boolean onClickOnlineTifIslem(){
+        Map<Integer, Envanter> selectedEnvanterlist = adapter.getSelectedEnvanterlist();
+        return true;
     }
 }

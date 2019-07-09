@@ -84,4 +84,8 @@ public class StaticUtils {
         roomList.clear();
     }
 
+    public static String getAuthorizationForTest(){
+        return "applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0";
+    }
+
 }

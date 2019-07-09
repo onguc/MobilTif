@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.TifIslem1Fragment">
+        <data>
+            <variable
+                name="viewModel"
+                type="com.uniyaz.mobiltif.viewmodel.TifIslem1ViewModel" />
+        </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilIslemTarihi"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="İşlem Tarihi"
+                android:text="@{viewModel.islemTarihi}"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDayanakBelgeTarihi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilIslemTarihi"
+            app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
+            app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Giriş Yapılan Ambar"
+                android:text="@{viewModel.girisYapilanAmbar}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilKayittanDusmeNedeni"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilDayanakBelgeTarihi"
+            app:layout_constraintStart_toStartOf="@+id/tilDayanakBelgeTarihi"
+            app:layout_constraintTop_toBottomOf="@+id/tilDayanakBelgeTarihi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ambar Sorumlusu"
+                android:text="@{viewModel.ambarSorumlusu}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDigerKayittanDusmeNedeni"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilKayittanDusmeNedeni"
+            app:layout_constraintStart_toStartOf="@+id/tilKayittanDusmeNedeni"
+            app:layout_constraintTop_toBottomOf="@+id/tilKayittanDusmeNedeni">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Açıklama"
+                android:text="@{viewModel.aciklama}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

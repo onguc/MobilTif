@@ -20,7 +20,7 @@ public class PhotoIslem {
     public PhotoIslem() {
     }
 
-    public void createView(RecyclerView recyclerView, Activity activity, List<ImageInfo> bitmapList) {
+    public void createView(RecyclerView recyclerView, Activity activity, List<String> imageUrlList) {
 //        for (int i = 0; i < 5; i++) {
 //            ImageInfo imageInfo = new ImageInfo();
 //            Bitmap bitmap = BitmapFactory.decodeResource(activity.getResources(), R.drawable.test);
@@ -37,7 +37,7 @@ public class PhotoIslem {
 //            bitmapList.add(imageInfo);
 //        }
 
-        adapter = new PhotoAdapter(activity, bitmapList);
+        adapter = new PhotoAdapter(activity, imageUrlList);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity.getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

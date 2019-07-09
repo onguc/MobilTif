@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.uniyaz.mobiltif.viewmodel.EnvanterCardViewModel" />
+
+        <variable
+            name="activity"
+            type="com.uniyaz.mobiltif.ui.activities.MainActivity" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="@{()->viewModel.onClick()}"
+
+        android:background="@color/cardview_shadow_start_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorItemEnvanterCardBGround"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/viewNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:checked="@={viewModel.selected}"
+                android:clickable="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvUst"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{viewModel.ust}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/viewNumber"
+                app:layout_constraintTop_toTopOf="@+id/viewNumber" />
+
+            <View
+                android:id="@+id/viewCizgi"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorItemEnvanterCizgi"
+                app:layout_constraintEnd_toEndOf="@+id/tvUst"
+                app:layout_constraintStart_toStartOf="@+id/tvUst"
+                app:layout_constraintTop_toBottomOf="@+id/tvUst" />
+
+            <TextView
+                android:id="@+id/tvAlt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{viewModel.alt}"
+                app:layout_constraintBottom_toBottomOf="@+id/viewNumber"
+                app:layout_constraintEnd_toEndOf="@+id/viewCizgi"
+                app:layout_constraintStart_toStartOf="@+id/viewCizgi"
+                app:layout_constraintTop_toBottomOf="@+id/viewCizgi" />
+
+            <Button
+                android:id="@+id/btnResim"
+                android:layout_width="61dp"
+                android:layout_height="29dp"
+                android:layout_marginEnd="8dp"
+                android:drawableLeft="@drawable/ic_search_for_btn"
+                android:text="Resim"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvAlt"
+                app:layout_constraintTop_toBottomOf="@+id/tvAlt" />
+
+            <Button
+                android:id="@+id/btnDetay"
+                android:layout_width="61dp"
+                android:layout_height="29dp"
+                android:drawableLeft="@drawable/ic_search_for_btn"
+                android:onClick="@{(view)->activity.goEnvanterDetayFragment(viewModel.envanter)}"
+                android:text="Detay"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnResim"
+                app:layout_constraintTop_toTopOf="@+id/btnResim" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

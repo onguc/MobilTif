@@ -1,7 +1,7 @@
 package com.uniyaz.mobiltif.data.dto;
 
 import com.google.gson.annotations.SerializedName;
-import com.uniyaz.mobiltif.data.enums.EnumAP;
+import com.uniyaz.mobiltif.data.enums.EnumDurum;
 import com.uniyaz.mobiltif.data.enums.EnumBirim;
 
 import java.util.Date;
@@ -23,7 +23,7 @@ public class EnvanterDto {
     private Long kodTasinir;
     private Long sayimNo;
     private EnumBirim birim; // adet, kg, litre vs.  sunucudan listesi çekilecek
-    private EnumAP durumu;
+    private EnumDurum durumu;
     private Date sayimTarihi;
     private Long idSayimYapanPersonel;
     @SerializedName("aciklama")
@@ -71,11 +71,11 @@ public class EnvanterDto {
         this.birim = birim;
     }
 
-    public EnumAP getDurumu() {
+    public EnumDurum getDurumu() {
         return durumu;
     }
 
-    public void setDurumu(EnumAP durumu) {
+    public void setDurumu(EnumDurum durumu) {
         this.durumu = durumu;
     }
 

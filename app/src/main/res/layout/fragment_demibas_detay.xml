@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--<ScrollView --><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="@color/demirbarBackground"--><!--tools:context=".DemirbasActivity">-->
+
+<!----><!--</ScrollView>-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout">
@@ -17,15 +19,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilAdi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbasEdittext"
                 android:layout_marginTop="@dimen/margin_top_demirbas"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +43,6 @@
                 android:id="@+id/tilSicilNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbasEdittext"
                 android:layout_marginTop="@dimen/margin_top_demirbas"
                 app:layout_constraintEnd_toEndOf="@+id/tilAdi"
                 app:layout_constraintStart_toStartOf="@+id/tilAdi"
@@ -64,8 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_demirbas"
-                android:background="@color/demirbasEdittext"
-
                 app:layout_constraintEnd_toEndOf="@+id/tilSicilNo"
                 app:layout_constraintStart_toStartOf="@+id/tilSicilNo"
                 app:layout_constraintTop_toBottomOf="@+id/tilSicilNo">
@@ -260,6 +256,9 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@+id/tilFaturaNo"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFaturaTarihi">
+
+            </androidx.recyclerview.widget.RecyclerView>
                 app:layout_constraintTop_toBottomOf="@+id/tilFaturaTarihi"></androidx.recyclerview.widget.RecyclerView>
 
 

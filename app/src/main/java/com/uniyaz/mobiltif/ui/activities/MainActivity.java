@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     private void goScanActivity(int code) {
         if (code == REQUEST_CODE_QR_FOR_ENVANTER) {
-            presenter.callEnvanterByQrCode("01");
+            presenter.callEnvanterByQrCode("61");
         } else {
             presenter.callEnvanterListByQrCodeRoom("01");
         }
