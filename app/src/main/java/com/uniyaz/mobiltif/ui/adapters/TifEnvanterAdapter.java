@@ -39,16 +39,17 @@ public class TifEnvanterAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ItemTifEnvanterCardBinding binding;
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            binding = ItemTifEnvanterCardBinding.inflate(layoutInflater, parent, false);
-
+        LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        binding = ItemTifEnvanterCardBinding.inflate(layoutInflater, parent, false);
+//         if (convertView == null) {
+//
+//
 //            convertView = LayoutInflater.from(activity).inflate(R.layout.item_tif_envanter_card, null);
 //            binding = DataBindingUtil.bind(convertView);
 //            convertView.setTag(binding);
-        } else {
-            binding = (ItemTifEnvanterCardBinding) convertView.getTag();
-        }
+//       } else {
+//             binding = (ItemTifEnvanterCardBinding) convertView.getTag();
+//         }
         binding.setViewModel((TifEnvanterCardViewModel) getItem(position));
 
         return binding.getRoot();

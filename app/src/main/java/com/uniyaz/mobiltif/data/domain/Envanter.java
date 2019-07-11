@@ -46,7 +46,8 @@ public class Envanter extends BaseModel implements Cloneable {
     private Long kodTasinir;
     private Long sayimNo;
     private String qrCode;
-    private List<byte[]> resimler;
+    @SerializedName("demirbasResimUrlSet")
+    private List<String> urlResimList;
     //    private EnumBirim birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
     private String birimi; // adet, kg, litre vs.  sunucudan listesi çekilecek
 
@@ -66,6 +67,8 @@ public class Envanter extends BaseModel implements Cloneable {
     private String teminEdilenFirma;
     private String faturaTarihi;
     private String faturaNo;
+
+    private String servisAmbar;
 
 
     @Override
@@ -96,14 +99,6 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setTasinirKodu(String tasinirKodu) {
         this.tasinirKodu = tasinirKodu;
-    }
-
-    public String getSicilNo() {
-        return sicilNo;
-    }
-
-    public void setSicilNo(String sicilNo) {
-        this.sicilNo = sicilNo;
     }
 
     public String getServis() {
@@ -254,14 +249,6 @@ public class Envanter extends BaseModel implements Cloneable {
         this.sicilNo = sicilNo;
     }
 
-    public String getServisAmbar() {
-        return servisAmbar;
-    }
-
-    public void setServisAmbar(String servisAmbar) {
-        this.servisAmbar = servisAmbar;
-    }
-
     public String getTutar() {
         return tutar;
     }
@@ -309,8 +296,6 @@ public class Envanter extends BaseModel implements Cloneable {
     public void setUrlResimList(List<String> urlResimList) {
         this.urlResimList = urlResimList;
     }
-
-    private String servisAmbar;
 
     public String getServisAmbar() {
         if (servis == null)

@@ -1,5 +1,9 @@
 package com.uniyaz.mobiltif.data.domain;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 /**
  * Created by İrfan Öngüç on 19.05.2019
  */
@@ -24,6 +28,9 @@ public class Room extends BaseModel {
     private String name;
     private Department department;
     private Boolean isSentToServer;
+
+    @SerializedName("demirbasResimUrlSet")
+    private List<String> urlResimList;
 
 
     public Integer getQrCode() {
@@ -62,9 +69,19 @@ public class Room extends BaseModel {
         this.isSentToServer = sentToServer == 1 ? true : false;
     }
 
+    public List<String> getUrlResimList() {
+        return urlResimList;
+    }
+
+    public void setUrlResimList(List<String> urlResimList) {
+        this.urlResimList = urlResimList;
+    }
+
     @Override
     public String getIdString() {
         if (qrCode == null) return null;
         return qrCode.toString();
     }
+
+
 }

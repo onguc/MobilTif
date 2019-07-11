@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
@@ -36,6 +35,7 @@ import com.uniyaz.mobiltif.utils.TextCustomUtils;
 import com.uniyaz.mobiltif.viewmodel.MainViewModel;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     Activity activity = this;
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (resultCode != RESULT_CANCELED)
@@ -185,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
         if (code == REQUEST_CODE_QR_FOR_ENVANTER) {
             presenter.callEnvanterByQrCode("61");
         } else {
-            presenter.callEnvanterListByQrCodeRoom("01");
+            presenter.callEnvanterListByQrCodeRoom("61");
         }
 //        new IntentIntegrator(this)
 //                .setRequestCode(code)
@@ -298,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
                 .show();
     }
 
-    private void startFragmentByBackStack(Fragment fragment) {
+    public void startFragmentByBackStack(Fragment fragment) {
         if (fragment != null) {
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction
@@ -314,6 +316,10 @@ public class MainActivity extends AppCompatActivity implements IMain {
         return true;
     }
 
+    public boolean goClickOnlineTifIslem(){
+        Map<Integer, Envanter> selectedEnvanterlist = null;
+        return true;
+    }
 //    public boolean onClickCallPopup(MenuItem menuItem) {
 //        showPopupCallRoomAndEnvanter();
 //        return true;

@@ -14,12 +14,13 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="0dp"
         android:background="@color/cardview_shadow_start_color">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:background="@color/colorItemEnvanterCardBGround"
             android:orientation="vertical">
 
@@ -27,17 +28,16 @@
                 android:id="@+id/viewNumber"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="#197b30"
+                android:gravity="center"
                 android:text="1"
                 android:textColor="#ffffff"
-                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintVertical_bias="0.0" />
 
 
             <TextView
@@ -45,11 +45,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="122234 / Masa / 155 05 09 08 06 01"
-                app:layout_constraintStart_toStartOf="@+id/viewCizgi"
-                app:layout_constraintEnd_toEndOf="@+id/viewCizgi"
                 app:layout_constraintBottom_toTopOf="@id/viewCizgi"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="@+id/viewCizgi"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/viewCizgi"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.972" />
             <!--android:text="@{demirbas.idString + demirbas.tasinir + demirbas.faturaNo}"-->
 
 
@@ -57,7 +61,8 @@
                 android:id="@+id/viewCizgi"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="10dp"
                 android:background="@color/colorItemEnvanterCizgi"
                 app:layout_constraintBottom_toBottomOf="@+id/viewNumber"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,15 +75,15 @@
                 android:id="@+id/tvAlt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="100 * 60 Dikdörtgen Masa Siyah"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/viewCizgi"
-                app:layout_constraintStart_toStartOf="@+id/viewCizgi"
-                app:layout_constraintTop_toBottomOf="@+id/viewCizgi" />
+                app:layout_constraintEnd_toEndOf="@+id/tvUst"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvUst"
+                app:layout_constraintTop_toBottomOf="@+id/viewCizgi"
+                app:layout_constraintVertical_bias="0.028" />
             <!--android:text="@{demirbas.adi}"-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 

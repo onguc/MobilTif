@@ -88,7 +88,7 @@ public class MainPresenter {
 
 
     public void callEnvanterListByQrCodeRoom(String qrCode) {
-        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "qrCodeRoom=" + qrCode);
+        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode);
         Call<ResponseInfo<List<Envanter>>> callEnvanterList = RetrofitInterface.retrofitInterface.getEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
         view.showProgressBar();
         callEnvanterList.enqueue(new Callback<ResponseInfo<List<Envanter>>>() {

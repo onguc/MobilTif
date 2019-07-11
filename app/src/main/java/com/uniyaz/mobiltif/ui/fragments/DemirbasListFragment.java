@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
-import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasListBinding;
 import com.uniyaz.mobiltif.ui.activities.MainActivity;
@@ -25,6 +23,8 @@ import com.uniyaz.mobiltif.viewmodel.DemirbasListViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class DemirbasListFragment extends Fragment {
 
@@ -51,6 +51,7 @@ public class DemirbasListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         DemirbasListViewModel viewModel = new DemirbasListViewModel(envanterList, room);
         FragmentDemibasListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_list, container, false);
+        binding.setFragment(this);
         binding.setViewModel(viewModel);
         View root = binding.getRoot();
 
@@ -69,12 +70,19 @@ public class DemirbasListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 //        adapter.notifyDataSetChanged();
 
-        List<String> imageInfoList = new ArrayList<>();
-        new PhotoIslem().createView(binding.rvOdaPhotoList, getActivity(), imageInfoList);
+        List<String> urlResimList = room.getUrlResimList();
+        new PhotoIslem().createView(binding.rvOdaPhotoList, getActivity(), urlResimList);
     }
 
-    public boolean onClickOnlineTifIslem(){
+    public void onBtnOnlineTifIslemClicked() {
+        List<Envanter> envanters = new ArrayList<>();
         Map<Integer, Envanter> selectedEnvanterlist = adapter.getSelectedEnvanterlist();
-        return true;
+        SortedSet<Integer> sortedSet = new TreeSet<>(selectedEnvanterlist.keySet());
+        for (Integer key : sortedSet) {
+            envanters.add(selectedEnvanterlist.get(key));
+        }
+        TifFragment tifFragment = TifFragment.getNewInstance(envanters);
+        MainActivity activity = (MainActivity) getActivity();
+        activity.startFragmentByBackStack(tifFragment);
     }
 }

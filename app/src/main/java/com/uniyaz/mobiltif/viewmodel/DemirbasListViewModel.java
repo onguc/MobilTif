@@ -26,4 +26,9 @@ public class DemirbasListViewModel extends BaseObservable {
     public Room getRoom() {
         return room;
     }
+
+    public boolean onBtnOnlineTifIslemClicked2() {
+        int y = 0;
+        return false;
+    }
 }

@@ -25,23 +25,24 @@ import retrofit2.http.POST;
 
 public interface RetrofitInterface {
 
-    boolean isUriFlex = false;
+    boolean isUriFlex = true;
     String uriFlex = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/json/vys/";
     String uri = "http://tarihisozluk.site/TarihZumresi/rest/tifislem/";   //test
 
     @POST("../../auth/login")
     Call<LoginInfo> loginAndGetToken(@Body RequestBody loginInfo);
 
-    //    @POST("json/vys/FindAllDemirbasListByQrCodeRoom")
-    @POST("getEnvanterListByQrCodeRoom.php")
-    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
-//    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
 
-
-//    @POST("getEnvanterByQrCode.php")
+    //    @POST("getEnvanterByQrCode.php")
     @POST("FindVysTasinirDemirbasByEtiketNo")
     Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
 //    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
+
+
+    @POST("FindAllVysTasinirDemirbasByOdaEtiketNo")
+        //@POST("getEnvanterListByQrCodeRoom.php")
+    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
+//    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
 
 
     //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
@@ -71,7 +72,7 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            .baseUrl(isUriFlex?uriFlex:uri)
+            .baseUrl(isUriFlex ? uriFlex : uri)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);

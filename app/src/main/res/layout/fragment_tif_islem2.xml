@@ -31,7 +31,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDayanakBelgeTarihi"
+            android:id="@+id/tilGirisYapilanAmbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -42,34 +42,34 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Giriş Yapılan Ambar"
+                android:hint="Muhatap"
                 android:text="@{viewModel.muhatap}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilKayittanDusmeNedeni"
+            android:id="@+id/tilAmbarSorumlusu"
             android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilDayanakBelgeTarihi"
-            app:layout_constraintStart_toStartOf="@+id/tilDayanakBelgeTarihi"
-            app:layout_constraintTop_toBottomOf="@+id/tilDayanakBelgeTarihi">
+            app:layout_constraintEnd_toEndOf="@+id/tilGirisYapilanAmbar"
+            app:layout_constraintStart_toStartOf="@+id/tilGirisYapilanAmbar"
+            app:layout_constraintTop_toBottomOf="@+id/tilGirisYapilanAmbar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ambar Sorumlusu"
+                android:hint="Dayanak Belge Tarihi"
                 android:text="@{viewModel.dayanakBelgeTarihi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDigerKayittanDusmeNedeni"
+            android:id="@+id/tilAciklama"
             android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilKayittanDusmeNedeni"
-            app:layout_constraintStart_toStartOf="@+id/tilKayittanDusmeNedeni"
-            app:layout_constraintTop_toBottomOf="@+id/tilKayittanDusmeNedeni">
+            app:layout_constraintEnd_toEndOf="@+id/tilAmbarSorumlusu"
+            app:layout_constraintStart_toStartOf="@+id/tilAmbarSorumlusu"
+            app:layout_constraintTop_toBottomOf="@+id/tilAmbarSorumlusu">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
