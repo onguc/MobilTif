@@ -10,25 +10,26 @@ import java.util.List;
 
 public class DemirbasListViewModel extends BaseObservable {
     private Room room;
-    private List<Envanter> demirbasList;
 
     public DemirbasListViewModel(List<Envanter> envanterList, Room room) {
-        this.demirbasList = envanterList;
         this.room = room;
     }
 
-    @Bindable
-    public List<Envanter> getDemirbasList() {
-        return demirbasList;
-    }
 
     @Bindable
     public Room getRoom() {
         return room;
     }
 
-    public boolean onBtnOnlineTifIslemClicked2() {
-        int y = 0;
-        return false;
+    public String getServisAmbar(){
+        return room.getServisAdi() + " / Ambar İsmi Demirbaşta var ama odada yok!";
+    }
+
+    public String getEtiketNoOdaAdi(){
+        return room.getQrCode()+"/"+room.getName();
+    }
+
+    public String getAdetBilgi(){
+        return room.getDemirbasAdet()+" Adet Demirbaş Bulunmaktadır.";
     }
 }

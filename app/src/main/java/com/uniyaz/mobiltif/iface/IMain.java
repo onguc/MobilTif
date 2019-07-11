@@ -3,6 +3,7 @@ package com.uniyaz.mobiltif.iface;
 import android.app.Activity;
 
 import com.uniyaz.mobiltif.data.domain.Envanter;
+import com.uniyaz.mobiltif.data.domain.Room;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface IMain extends ICommon {
 
     void onSuccessForEnvater(Envanter envanter);
 
-    void onSuccessForRoom(List<Envanter> envanterList);
+    void onSuccessForRoom(Room room);
 
 
     void onSuccess(String message);

@@ -5,6 +5,7 @@ import android.widget.ProgressBar;
 import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.ResponseInfo;
+import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.repo.DepartmentRepo;
 import com.uniyaz.mobiltif.data.repo.RoomRepo;
 import com.uniyaz.mobiltif.data.repo.TasinirRepo;
@@ -89,19 +90,19 @@ public class MainPresenter {
 
     public void callEnvanterListByQrCodeRoom(String qrCode) {
         RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode);
-        Call<ResponseInfo<List<Envanter>>> callEnvanterList = RetrofitInterface.retrofitInterface.getEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
+        Call<ResponseInfo<Room>> callEnvanterList = RetrofitInterface.retrofitInterface.getRoomAndEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
         view.showProgressBar();
-        callEnvanterList.enqueue(new Callback<ResponseInfo<List<Envanter>>>() {
+        callEnvanterList.enqueue(new Callback<ResponseInfo<Room>>() {
             @Override
-            public void onResponse(Call<ResponseInfo<List<Envanter>>> call, Response<ResponseInfo<List<Envanter>>> response) {
-                ResponseResult<List<Envanter>> responseResult = envanterList -> {
-                    view.onSuccessForRoom(envanterList);
+            public void onResponse(Call<ResponseInfo<Room>> call, Response<ResponseInfo<Room>> response) {
+                ResponseResult<Room> responseResult = room -> {
+                    view.onSuccessForRoom(room);
                 };
                 responseResult.onReult(response, view);
             }
 
             @Override
-            public void onFailure(Call<ResponseInfo<List<Envanter>>> call, Throwable t) {
+            public void onFailure(Call<ResponseInfo<Room>> call, Throwable t) {
                 view.showWarningDialog("Error", "callEnvanterListByQrCodeRoom->message: " + t.getMessage());
             }
         });

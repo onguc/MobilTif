@@ -1,6 +1,7 @@
 package com.uniyaz.mobiltif.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +34,11 @@ public class DemirbasListFragment extends Fragment {
     private MainActivity mainActivity;
     EnvanterAdapter adapter;
 
-    public static DemirbasListFragment getNewInstance(MainActivity mainActivity, List<Envanter> envanterList, Room room) {
+    public static DemirbasListFragment getNewInstance(MainActivity mainActivity, Room room) {
+        if (room == null) return null;
         DemirbasListFragment demirbasListFragment = new DemirbasListFragment();
-        demirbasListFragment.envanterList = envanterList;
         demirbasListFragment.room = room;
+        demirbasListFragment.envanterList = room.getEnvanterList();
         demirbasListFragment.mainActivity = mainActivity;
         return demirbasListFragment;
     }
@@ -75,8 +77,15 @@ public class DemirbasListFragment extends Fragment {
     }
 
     public void onBtnOnlineTifIslemClicked() {
-        List<Envanter> envanters = new ArrayList<>();
         Map<Integer, Envanter> selectedEnvanterlist = adapter.getSelectedEnvanterlist();
+        if (selectedEnvanterlist == null) {
+            Log.e("DemirbasListFragment", "onBtnOnlineTifIslemcliced-> HATA: selectedEnvanterList is Null!");
+            return;
+        } else if (selectedEnvanterlist.size() == 0) {
+            mainActivity.showWarningDialog("Uyarı", "Envanter Seçiniz!");
+            return;
+        }
+        List<Envanter> envanters = new ArrayList<>();
         SortedSet<Integer> sortedSet = new TreeSet<>(selectedEnvanterlist.keySet());
         for (Integer key : sortedSet) {
             envanters.add(selectedEnvanterlist.get(key));

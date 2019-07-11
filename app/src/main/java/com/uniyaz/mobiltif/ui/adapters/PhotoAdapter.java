@@ -32,7 +32,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 
     List<String> imageUrlList;
     Activity activity;
-    PhotoAdapterPresenter presenter;
 
     public PhotoAdapter(Activity activity, List<String> imageUrlList) {
         if (imageUrlList == null) imageUrlList = new ArrayList<>();
@@ -90,7 +89,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 
         public void setData(String imageUrl) {
             if (imageUrl != null) {
-                presenter.loadImage(imageUrl, imgViewChapture);
+                new PhotoAdapterPresenter().loadImage(imageUrl, imgViewChapture);
 //                GlideUrl glideUrl = new GlideUrl(imageUrl, new LazyHeaders.Builder()
 //                        .addHeader("Authorization", getAuthorizationForTest())
 //                        .build());

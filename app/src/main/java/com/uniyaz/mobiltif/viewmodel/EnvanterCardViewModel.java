@@ -11,6 +11,7 @@ import com.uniyaz.mobiltif.ui.adapters.EnvanterAdapter;
 
 public class EnvanterCardViewModel extends BaseObservable {
     private Envanter envanter;
+
     @Bindable
     boolean selected = false;
     private int index;
@@ -38,7 +39,7 @@ public class EnvanterCardViewModel extends BaseObservable {
     }
 
     public String getUst() {
-        return envanter.getIdString() + " / " + envanter.getTasinirAdi() + " / " + envanter.getFaturaNo();
+        return envanter.getIdString() + " / " + envanter.getTasinirAdi() + " / " + envanter.getTasinirKodu();
     }
 
     public String getAlt() {

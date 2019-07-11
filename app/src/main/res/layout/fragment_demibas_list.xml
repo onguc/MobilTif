@@ -49,7 +49,7 @@
                 android:id="@+id/tvServisAmbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.room.department.name}" />
+                android:text="@{viewModel.servisAmbar}" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,12 +61,12 @@
                 android:id="@+id/tvEtiketNoOdaAdi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(viewModel.room.qrCode)}" />
+                android:text="@{viewModel.etiketNoOdaAdi}" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(viewModel.demirbasList.size())}"
+                android:text="@{viewModel.adetBilgi}"
                 android:textStyle="bold" />
         </LinearLayout>
 

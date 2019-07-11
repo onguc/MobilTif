@@ -33,6 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="@color/demirbasEdittext"
             android:entries="@array/arrayIslemTurleri"
             android:onItemSelected="@{(parent,view,pos,id)->fragment.onItemSelectedSpinner(parent,view,pos,id)}"
             app:layout_constraintEnd_toEndOf="@+id/lvTifList"

@@ -2,6 +2,7 @@ package com.uniyaz.mobiltif.data.domain;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,14 +25,23 @@ public class Room extends BaseModel {
     /**
      * etiket kod diye geçmektedir. Ayrıca id olarak kullanılmaktadır.
      */
+    @SerializedName("etiketNo")
     private Integer qrCode; //etiket Kod  ayrıca id'dir
+    @SerializedName("odaAdi")
     private String name;
     private Department department;
     private Boolean isSentToServer;
+    @SerializedName("servisAdi")
+    private String servisAdi;
 
-    @SerializedName("demirbasResimUrlSet")
+    @SerializedName("odaResimUrlSet")
     private List<String> urlResimList;
 
+    @SerializedName("demirbasAdedi")
+    private Integer demirbasAdet;
+
+    @SerializedName("vysTasinirDemirbasDtoList")
+    List<Envanter> envanterList;
 
     public Integer getQrCode() {
         return qrCode;
@@ -75,6 +85,32 @@ public class Room extends BaseModel {
 
     public void setUrlResimList(List<String> urlResimList) {
         this.urlResimList = urlResimList;
+    }
+
+    public String getServisAdi() {
+        return servisAdi;
+    }
+
+    public void setServisAdi(String servisAdi) {
+        this.servisAdi = servisAdi;
+    }
+
+    public Integer getDemirbasAdet() {
+        return demirbasAdet;
+    }
+
+    public void setDemirbasAdet(Integer demirbasAdet) {
+        this.demirbasAdet = demirbasAdet;
+    }
+
+    public List<Envanter> getEnvanterList() {
+        if (envanterList == null)
+            envanterList = new ArrayList<>();
+        return envanterList;
+    }
+
+    public void setEnvanterList(List<Envanter> envanterList) {
+        this.envanterList = envanterList;
     }
 
     @Override

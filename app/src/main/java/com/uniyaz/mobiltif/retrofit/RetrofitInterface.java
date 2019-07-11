@@ -39,10 +39,10 @@ public interface RetrofitInterface {
 //    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
 
 
-    @POST("FindAllVysTasinirDemirbasByOdaEtiketNo")
-        //@POST("getEnvanterListByQrCodeRoom.php")
-    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
-//    Call<ResponseInfo<List<Envanter>>> getEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
+    @POST("FindVysVarlikLokasyonDtoByOdaEtiketNo")
+        //@POST("getRoomAndEnvanterListByQrCodeRoom.php")
+    Call<ResponseInfo<Room>> getRoomAndEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
+//    Call<ResponseInfo<List<Envanter>>> getRoomAndEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
 
 
     //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})

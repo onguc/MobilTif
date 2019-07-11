@@ -242,22 +242,13 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
     @Override
-    public void onSuccessForRoom(List<Envanter> envanterList) {
+    public void onSuccessForRoom(Room room) {
         hidePopupCallRoomAndEnvanter();
         viewModel.hideProgressBar();
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas_list);
         viewModel.setTitleToolbar(titleDemirbarDetay);
 
-        Department department = new Department();
-        department.setCode("111");
-        department.setId(444);
-        department.setName("Departman1");
-
-        Room room = new Room();
-        room.setDepartment(department);
-        room.setName("Oda Test 1");
-        room.setQrCode(333);
-        demirbasListFragment = DemirbasListFragment.getNewInstance(this, envanterList, room);
+        demirbasListFragment = DemirbasListFragment.getNewInstance(this, room);
         startFragmentByBackStack(demirbasListFragment);
     }
 
