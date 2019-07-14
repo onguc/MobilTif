@@ -33,7 +33,7 @@
                 <EditText
                     android:id="@+id/etAdi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
                     android:background="@color/demirbasEdittext"
                     android:hint="Adı"
                     android:text="@={viewModel.envanter.adi}" />
@@ -51,7 +51,7 @@
                 <EditText
                     android:id="@+id/etSicilNo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
                     android:background="@color/demirbasEdittext"
                     android:hint="Sicil No"
                     android:text="@={viewModel.envanter.sicilNo}" />
@@ -69,7 +69,7 @@
                 <EditText
                     android:id="@+id/etServisAmbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
                     android:background="@color/demirbasEdittext"
                     android:hint="Servis/Ambar"
                     android:text="@={viewModel.envanter.servisAmbar}" />
@@ -80,7 +80,6 @@
                 android:layout_width="203dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_demirbas"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilSicilNo"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -90,7 +89,8 @@
                 <EditText
                     android:id="@+id/etTutar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Tutar"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.envanter.tutar}" />
@@ -102,7 +102,6 @@
                 android:layout_width="151dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilServisAmbar"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -112,7 +111,8 @@
                 <EditText
                     android:id="@+id/etBirim"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Birim"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.envanter.birimi}" />
@@ -122,9 +122,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilZimmetliPersonel"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
                 android:layout_marginTop="10dp"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilTutar"
                 app:layout_constraintStart_toStartOf="@+id/tilTutar"
@@ -134,6 +133,7 @@
                     android:id="@+id/etZimmetliPersonel1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Zimmetli Personel"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.envanter.zimmetliPersonel}" />
@@ -145,7 +145,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilZimmetliPersonel"
                 app:layout_constraintStart_toStartOf="@+id/tilZimmetliPersonel"
@@ -154,7 +153,8 @@
                 <EditText
                     android:id="@+id/etDurumu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Durumu"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.envanter.durumu}" />
@@ -165,7 +165,6 @@
                 android:id="@+id/tilAciklama"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintBottom_toBottomOf="@+id/tilDurumu"
                 app:layout_constraintEnd_toEndOf="@+id/tilBirim"
@@ -177,7 +176,8 @@
                 <EditText
                     android:id="@+id/etAciklama"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:gravity="start|top"
                     android:hint="Açıklama"
                     android:inputType="textMultiLine"
@@ -190,7 +190,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilAciklama"
                 app:layout_constraintStart_toStartOf="parent"
@@ -199,7 +198,8 @@
                 <EditText
                     android:id="@+id/etTEFirma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Temin Edilen Firma"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.envanter.teminEdilenFirma}" />
@@ -211,7 +211,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilDurumu"
                 app:layout_constraintStart_toStartOf="@+id/tilTEFirma"
@@ -220,7 +219,8 @@
                 <EditText
                     android:id="@+id/etFaturaTarihi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Fatura Tarihi"
                     android:inputType="date"
                     android:text="@={viewModel.envanter.faturaTarihi}" />
@@ -231,7 +231,6 @@
                 android:id="@+id/tilFaturaNo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/demirbasEdittext"
                 android:ems="10"
                 app:layout_constraintEnd_toEndOf="@+id/tilAciklama"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -241,7 +240,8 @@
                 <EditText
                     android:id="@+id/etFaturaNo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editTextHeight"
+                    android:background="@color/demirbasEdittext"
                     android:hint="Fatura No"
                     android:inputType="number"
                     android:text="@={viewModel.envanter.faturaNo}" />

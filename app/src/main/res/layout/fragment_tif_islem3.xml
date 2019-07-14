@@ -15,7 +15,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilIslemTarihi"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAmbarSorumlusu"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilGirisYapilanAmbar"
@@ -64,7 +64,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAciklama"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilAmbarSorumlusu"
@@ -80,7 +80,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilImhaOlurAciklamasi"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilAciklama"
@@ -96,7 +96,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilDigerImhaOlurAciklamasi"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilImhaOlurAciklamasi"
@@ -112,7 +112,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilKomisyonBaskani"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilDigerImhaOlurAciklamasi"
@@ -128,7 +128,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilKomisyonBaskani"
@@ -144,7 +144,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilKomisyonUyesi2"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
@@ -160,7 +160,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilHarcamaYetkilisi"
-            android:layout_width="395dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/tilKomisyonUyesi2"
