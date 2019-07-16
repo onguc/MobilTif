@@ -8,10 +8,10 @@ import com.uniyaz.mobiltif.data.domain.Room;
 
 import java.util.List;
 
-public class DemirbasListViewModel extends BaseObservable {
+public class RoomViewModel extends BaseObservable {
     private Room room;
 
-    public DemirbasListViewModel(List<Envanter> envanterList, Room room) {
+    public RoomViewModel(Room room) {
         this.room = room;
     }
 
@@ -22,7 +22,7 @@ public class DemirbasListViewModel extends BaseObservable {
     }
 
     public String getServisAmbar(){
-        return room.getServisAdi() + " / Ambar İsmi Demirbaşta var ama odada yok!";
+        return room.getServisAdi() + " / Ambar İsmi!";
     }
 
     public String getEtiketNoOdaAdi(){

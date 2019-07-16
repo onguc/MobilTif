@@ -4,4 +4,8 @@
     <dimen name="margin_top_demirbas">5dp</dimen>
 
     <dimen name="editTextHeight">40dp</dimen>
+
+    <dimen name="marginStart">10dp</dimen>
+    <dimen name="marginEnd">10dp</dimen>
+
 </resources>

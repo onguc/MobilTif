@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/backgroundToolbar"
+        app:titleTextColor="@color/colorBlack"
         app:title="@string/toolbar_title_demirbas"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 

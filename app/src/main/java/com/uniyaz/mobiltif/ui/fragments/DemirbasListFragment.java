@@ -17,9 +17,10 @@ import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasListBinding;
+import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBinding;
 import com.uniyaz.mobiltif.ui.activities.MainActivity;
 import com.uniyaz.mobiltif.ui.adapters.EnvanterAdapter;
-import com.uniyaz.mobiltif.viewmodel.DemirbasListViewModel;
+import com.uniyaz.mobiltif.viewmodel.RoomViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,6 @@ import java.util.TreeSet;
 
 public class DemirbasListFragment extends Fragment {
 
-    private List<Envanter> envanterList;
     private Room room;
     private MainActivity mainActivity;
     EnvanterAdapter adapter;
@@ -38,7 +38,6 @@ public class DemirbasListFragment extends Fragment {
         if (room == null) return null;
         DemirbasListFragment demirbasListFragment = new DemirbasListFragment();
         demirbasListFragment.room = room;
-        demirbasListFragment.envanterList = room.getEnvanterList();
         demirbasListFragment.mainActivity = mainActivity;
         return demirbasListFragment;
     }
@@ -51,10 +50,8 @@ public class DemirbasListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        DemirbasListViewModel viewModel = new DemirbasListViewModel(envanterList, room);
         FragmentDemibasListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_list, container, false);
         binding.setFragment(this);
-        binding.setViewModel(viewModel);
         View root = binding.getRoot();
 
 
@@ -66,7 +63,7 @@ public class DemirbasListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        adapter = new EnvanterAdapter(mainActivity, envanterList);
+        adapter = new EnvanterAdapter(mainActivity, room);
         RecyclerView recyclerView = binding.rvDemirbasList;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);

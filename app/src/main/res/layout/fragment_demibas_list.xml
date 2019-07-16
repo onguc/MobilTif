@@ -6,104 +6,82 @@
     android:id="@+id/layout2">
 
     <data>
-
-        <variable
-            name="viewModel"
-            type="com.uniyaz.mobiltif.viewmodel.DemirbasListViewModel" />
-
         <variable
             name="fragment"
             type="com.uniyaz.mobiltif.ui.fragments.DemirbasListFragment" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_fragment_demirbas">
-    >
+        android:fillViewport="true">
 
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="@color/colorWhite"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/background_fragment_demirbas">
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDemirbasList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/tvOdaResimleri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvOdaResimleri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Servis / Ambar :"
-                android:textStyle="bold|italic" />
+                android:text="Oda Resimleri"
+                app:layout_constraintBottom_toTopOf="@+id/viewCizgi"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rvDemirbasList"
+                app:layout_constraintTop_toBottomOf="@+id/tvUst"
+                app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/tvServisAmbar"
-                android:layout_width="match_parent"
+            <View
+                android:id="@+id/viewCizgi"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:background="@color/colorItemEnvanterCizgi"
+                app:layout_constraintBottom_toTopOf="@id/rvOdaPhotoList"
+                app:layout_constraintEnd_toEndOf="tvOdaResimleri"
+                app:layout_constraintStart_toStartOf="@+id/tvOdaResimleri" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvOdaPhotoList"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.servisAmbar}" />
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/btnTifIslemleri"
+                app:layout_constraintEnd_toEndOf="@+id/rvDemirbasList"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/rvDemirbasList" />
 
-            <TextView
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btnTifIslemleri"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Etiket No / Oda Adı :"
-                android:textStyle="bold|italic" />
-
-            <TextView
-                android:id="@+id/tvEtiketNoOdaAdi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.etiketNoOdaAdi}" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.adetBilgi}"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDemirbasList"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/rvOdaPhotoList"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvOdaPhotoList"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/btnTifIslemleri"
-            app:layout_constraintEnd_toEndOf="@+id/rvDemirbasList"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/rvDemirbasList" />
-
-        <Button
-            android:id="@+id/btnTifIslemleri"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Online Tif İşlemleri"
-            android:onClick="@{()->fragment.onBtnOnlineTifIslemClicked()    }"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/rvDemirbasList"
-            app:layout_constraintStart_toStartOf="@+id/rvDemirbasList" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/background_btn_tif_islemleri"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:onClick="@{()->fragment.onBtnOnlineTifIslemClicked()    }"
+                android:text="Online Tif İşlemleri"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/rvDemirbasList"
+                app:layout_constraintStart_toStartOf="@+id/rvDemirbasList" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

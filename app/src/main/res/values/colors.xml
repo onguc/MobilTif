@@ -11,12 +11,12 @@
     <color name="loginEdittext">#ffffff</color>
     <color name="login_text_color">#ffffff</color>
     <color name="loginButtonNormal">#FFC107</color>
-    <color name="demirbasEdittext">#7e97af </color>
-    <color name="demirbasBackground">#0d3a64 </color>
+    <color name="demirbasEdittext">#cde6fb </color>
     <color name="backgroundToolbar">#F2F2F2</color>
     
     <color name="colorItemEnvanterCardBGround">#ffffff</color>
     <color name="colorItemEnvanterCizgi">#000</color>
 
     <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
 </resources>

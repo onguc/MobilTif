@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.TifIslem1Fragment">
 
@@ -15,76 +14,71 @@
             type="com.uniyaz.mobiltif.ui.fragments.TifFragment" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingStart="10dp">
 
-            <ListView
-                android:id="@+id/lvTifList"
-                android:layout_width="0dp"
-                android:layout_height="258dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <RelativeLayout
-                android:id="@+id/spinnerTest"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/demirbasEdittext"
-                app:layout_constraintEnd_toEndOf="@+id/lvTifList"
-                app:layout_constraintStart_toStartOf="@+id/lvTifList"
-                app:layout_constraintTop_toBottomOf="@+id/lvTifList"
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
                 >
+                <ListView
+                    android:id="@+id/lvTifList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    />
+            </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="0dp"
-                    android:onItemSelected="@{(parent,view,pos,id)->fragment.onItemSelectedSpinner(parent,view,pos,id)}"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/spinner_bg"
                     android:entries="@array/arrayIslemTurleri"
-                    android:textSize="16sp" />
-                <ImageView
-                    android:layout_width="wrap_content"
+                    android:onItemSelected="@{(parent,view,pos,id)->fragment.onItemSelectedSpinner(parent,view,pos,id)}"
+                    android:spinnerMode="dropdown"
+                    android:textSize="16sp"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <FrameLayout
+                    android:id="@+id/f_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_logout" />
+                    >
 
-            </RelativeLayout>
-            <!--<Spinner-->
-            <!--android:id="@+id/spinner"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--style="@style/Widget.AppCompat.DropDownItem.Spinner"-->
-            <!--android:entries="@array/arrayIslemTurleri"-->
-            <!--android:onItemSelected="@{(parent,view,pos,id)->fragment.onItemSelectedSpinner(parent,view,pos,id)}"-->
-            <!--app:layout_constraintEnd_toEndOf="@+id/lvTifList"-->
-            <!--app:layout_constraintStart_toStartOf="@+id/lvTifList"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/lvTifList" />-->
+                </FrameLayout>
+            </TableRow>
 
-            <FrameLayout
-                android:id="@+id/f_layout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/spinnerTest"
-                app:layout_constraintStart_toStartOf="@+id/spinnerTest"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerTest"></FrameLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <Button
+                    android:id="@+id/btnIslemiGerceklestir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="İşlemi Gerçekleştir"
+                    />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 </layout>

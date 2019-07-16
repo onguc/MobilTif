@@ -29,10 +29,10 @@ public class EnvanterCardViewModel extends BaseObservable {
     }
 
     public boolean onClick() {
-        if(selected){
+        if (selected) {
             adapter.removeSelectedEnvanter(index);
         } else {
-            adapter.addSelectedEnvanter(index,envanter);
+            adapter.addSelectedEnvanter(index, envanter);
         }
         setSelected(!selected);
         return true;
@@ -43,7 +43,9 @@ public class EnvanterCardViewModel extends BaseObservable {
     }
 
     public String getAlt() {
-        return envanter.getAdi();
+        return "Masaüstü alcatel Lucent Siyah Dijital";
+//        return envanter.getTasinirAdi();
+//        return envanter.getAdi();
     }
 
     public Envanter getEnvanter() {

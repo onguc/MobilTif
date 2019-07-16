@@ -55,8 +55,8 @@ public class TifFragment extends Fragment implements ITif {
 
     public void onItemSelectedSpinner(AdapterView<?> parent, View view, int position, long id) {
         String selectedItem = (String) parent.getSelectedItem();
-        if (getString(R.string.islemTuru0).equals(selectedItem)) {
-
+        if ("".equals(selectedItem) || null == selectedItem) {
+            int x = 0;
         } else if (getString(R.string.islemTuru1).equals(selectedItem)) {
             TifIslem1Fragment fragment = new TifIslem1Fragment();
             startFragmentByBackStack(fragment);
