@@ -40,7 +40,12 @@
                 android:id="@+id/tvOdaResimleri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginStart"
+                android:layout_marginEnd="@dimen/marginEnd"
                 android:text="Oda Resimleri"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/viewCizgi"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/rvDemirbasList"
@@ -51,9 +56,10 @@
                 android:id="@+id/viewCizgi"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
+                android:layout_marginEnd="120dp"
                 android:background="@color/colorItemEnvanterCizgi"
                 app:layout_constraintBottom_toTopOf="@id/rvOdaPhotoList"
-                app:layout_constraintEnd_toEndOf="tvOdaResimleri"
+                app:layout_constraintEnd_toEndOf="@+id/tvOdaResimleri"
                 app:layout_constraintStart_toStartOf="@+id/tvOdaResimleri" />
 
             <androidx.recyclerview.widget.RecyclerView

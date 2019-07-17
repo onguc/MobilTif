@@ -10,12 +10,12 @@
             type="com.uniyaz.mobiltif.viewmodel.TifEnvanterCardViewModel" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:background="@color/cardview_shadow_start_color">
+    <!--<androidx.cardview.widget.CardView-->
+        <!--android:id="@+id/cardView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorItemEnvanterCardBGround"-->
+        <!--&gt;-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -87,5 +87,5 @@
             <!--android:text="@{demirbas.adi}"-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    <!--</androidx.cardview.widget.CardView>-->
 </layout>

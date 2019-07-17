@@ -42,7 +42,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Giriş Yapılan Ambar"
+                android:hint="Dayanak Belge Tarihi"
                 android:text="@{viewModel.dayanakBelgeTarihi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +58,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ambar Sorumlusu"
+                android:hint="Kayıttan Düşme Nedeni"
                 android:text="@{viewModel.kayittanDusmeNedeni}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +74,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="Diğer Kayıttan Düşme Nedeni"
                 android:text="@{viewModel.digerKayittanDusmeNedeni}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +90,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="İmha Olur Açıklaması"
                 android:text="@{viewModel.imhaOlurAciklamasi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,7 +106,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="Diğer İmha Olur Açıklaması"
                 android:text="@{viewModel.digerImhaOlurAciklamasi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,7 +122,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="*Komisyon Başkanı"
                 android:text="@{viewModel.komisyonBaskani}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,7 +138,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="*Komisyon Üyesi 1 / TKY Yetkilisi"
                 android:text="@{viewModel.komisyonUyesi1TKY_Yetkilisi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +154,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="*Komisyon Üyesi 2"
                 android:text="@{viewModel.komisyonUyesi2}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,7 +170,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama"
+                android:hint="*Harcama Yetkilisi"
                 android:text="@{viewModel.harcamaYetkilisi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 

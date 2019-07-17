@@ -42,7 +42,7 @@ public class TifFragment extends Fragment implements ITif {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif, container, false);
         binding.setViewModel(viewModel);
         binding.setFragment(this);
-        TifEnvanterAdapter adapter = new TifEnvanterAdapter(envanters);
+        TifEnvanterAdapter adapter = new TifEnvanterAdapter(this,envanters);
         binding.lvTifList.setAdapter(adapter);
 
         View view = binding.getRoot();
@@ -106,6 +106,6 @@ public class TifFragment extends Fragment implements ITif {
 
     @Override
     public Context getApplicationContext() {
-        return null;
+        return getContext();
     }
 }

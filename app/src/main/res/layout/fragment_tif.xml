@@ -14,71 +14,14 @@
             type="com.uniyaz.mobiltif.ui.fragments.TifFragment" />
     </data>
 
-    <ScrollView
+
+    <ListView
+        android:id="@+id/lvTifList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        >
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
-                >
-                <ListView
-                    android:id="@+id/lvTifList"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/spinner_bg"
-                    android:entries="@array/arrayIslemTurleri"
-                    android:onItemSelected="@{(parent,view,pos,id)->fragment.onItemSelectedSpinner(parent,view,pos,id)}"
-                    android:spinnerMode="dropdown"
-                    android:textSize="16sp"
-                    />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                <FrameLayout
-                    android:id="@+id/f_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-
-                </FrameLayout>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                <Button
-                    android:id="@+id/btnIslemiGerceklestir"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="İşlemi Gerçekleştir"
-                    />
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/marginStart"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/marginEnd"
+        android:layout_marginBottom="8dp"
+        android:divider="@color/colorItemEnvanterCardBGround" />
 </layout>
