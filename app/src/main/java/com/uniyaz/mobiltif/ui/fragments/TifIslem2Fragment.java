@@ -9,10 +9,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.uniyaz.mobiltif.R;
+import com.uniyaz.mobiltif.data.dto.TifIslem1Dto;
+import com.uniyaz.mobiltif.data.dto.TifIslem2Dto;
 import com.uniyaz.mobiltif.databinding.FragmentTifIslem2Binding;
+import com.uniyaz.mobiltif.iface.ITifIslem;
 import com.uniyaz.mobiltif.viewmodel.TifIslem2ViewModel;
 
-public class TifIslem2Fragment extends Fragment {
+public class TifIslem2Fragment extends Fragment implements ITifIslem<TifIslem2Dto> {
+    TifIslem2ViewModel islem2ViewModel;
 
     public TifIslem2Fragment() {
         // Required empty public constructor
@@ -32,12 +36,21 @@ public class TifIslem2Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TifIslem2ViewModel viewModel = new TifIslem2ViewModel();
+        islem2ViewModel = new TifIslem2ViewModel();
         FragmentTifIslem2Binding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_islem2, container, false);
-        binding.setViewModel(viewModel);
+        binding.setViewModel(islem2ViewModel);
         View view = binding.getRoot();
 
         return view;
     }
 
+    @Override
+    public TifIslem2Dto getIslemDto() {
+        TifIslem2Dto dto = new TifIslem2Dto();
+        dto.setIslemTarihi(islem2ViewModel.getIslemTarihi());
+        dto.setIdMuhatap(islem2ViewModel.getMuhatap().getId());
+        dto.setDayanakBelgeTarihi(islem2ViewModel.getDayanakBelgeTarihi());
+        dto.setAciklama(islem2ViewModel.getAciklama());
+        return dto;
+    }
 }

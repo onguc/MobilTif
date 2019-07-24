@@ -24,9 +24,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="İşlem Tarihi"
-                android:text="@{viewModel.islemTarihi}"
+                android:text="@={viewModel.islemTarihi}"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,9 +42,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Muhatap"
-                android:text="@{viewModel.muhatap}"/>
+                android:text="@={viewModel.muhatapName}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -57,9 +59,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Dayanak Belge Tarihi"
-                android:text="@{viewModel.dayanakBelgeTarihi}"/>
+                android:text="@={viewModel.dayanakBelgeTarihi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -73,9 +76,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextAciklamaHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Açıklama"
-                android:text="@{viewModel.aciklama}"/>
+                android:text="@={viewModel.aciklama}"/>
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

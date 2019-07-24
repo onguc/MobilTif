@@ -4,7 +4,7 @@
 
     <string name="et_hint_username">Kullanıcı Adı</string>
     <string name="et_hint_password">Şifre</string>
-    <string name="btn_login">Giriş Yap</string>
+    <string name="btn_login">Giriş</string>
     <string name="sign_up">Hesabınız yok mu?  <a href="www.ww.ww"> HESAP OLUŞTURMAK İÇİN TIKLAYIN</a> </string>
     <string name="err_msg_username">Kullanıcı Adı Boş Olamaz</string>
     <string name="err_msg_password">Şifre Boş Olamaz</string>
@@ -16,9 +16,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="islemTuru1">İşlem 1</string>
-    <string name="islemTuru2">İşlem 2</string>
-    <string name="islemTuru3">İşlem 3</string>
+    <string name="islemTuru1">TRANSFER</string>
+    <string name="islemTuru2">HİBE</string>
+    <string name="islemTuru3">HURDAYA AYIRMA</string>
 
     <string name="islemTuru_prompt">İşem Türü Seçiniz...</string>
     <string-array name="arrayIslemTurleri">

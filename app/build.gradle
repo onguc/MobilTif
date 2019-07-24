@@ -52,6 +52,9 @@ dependencies {
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
+    implementation 'com.annimon:stream:1.2.1'
+    implementation 'gr.escsoft.michaelprimez.searchablespinner:SearchableSpinner:1.0.9'
+    implementation 'com.github.andreilisun:swipedismissdialog:0.1'
     //implementation 'com.github.bumptech.glide:glide:4.9.0'
     //annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 

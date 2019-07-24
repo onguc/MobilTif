@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.TifIslem1Fragment">
 
     <data>
-
-        <variable
-            name="viewModel"
-            type="com.uniyaz.mobiltif.viewmodel.TifViewModel" />
-
         <variable
             name="fragment"
             type="com.uniyaz.mobiltif.ui.fragments.TifFragment" />
     </data>
 
-
-    <ListView
-        android:id="@+id/lvTifList"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/marginStart"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/marginEnd"
-        android:layout_marginBottom="8dp"
-        android:divider="@color/colorItemEnvanterCardBGround" />
+        android:layout_margin="@dimen/marginStart"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTifList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/btnIslemiGerceklestir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnIslemiGerceklestir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_btn_islemi_gerceklestir"
+            android:onClick="@{()->fragment.onClicBtnIslemiGerceklestir()}"
+            android:text="İŞLEMİ GERÇEKLEŞTİR"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rvTifList"
+            app:layout_constraintStart_toStartOf="@+id/rvTifList" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -1,7 +1,9 @@
 package com.uniyaz.mobiltif.ui.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -13,8 +15,8 @@ import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterCardSelectableBinding;
 import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBinding;
-import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBindingImpl;
 import com.uniyaz.mobiltif.ui.activities.MainActivity;
+import com.uniyaz.mobiltif.ui.fragments.OdaFragment;
 import com.uniyaz.mobiltif.viewmodel.EnvanterCardViewModel;
 import com.uniyaz.mobiltif.viewmodel.RoomViewModel;
 
@@ -31,20 +33,22 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
     int count = 0;
 
     private final int TYPE_ROOM = 0;
-    private final int TYPE_ENVANTER=1;
-    private final int TYPE_ANYTHINK=2;
+    private final int TYPE_BACKGROUND = 1;
+    private final int TYPE_ENVANTER = 2;
 
 
     MainActivity mainActivity;
-
+    OdaFragment odaFragment;
     private EnvanterAdapter adapter;
 
 
-    public EnvanterAdapter(MainActivity mainActivity, Room oda) {
+    public EnvanterAdapter(MainActivity mainActivity, OdaFragment odaFragment, Room oda) {
         if (oda == null) oda = new Room();
+        this.odaFragment = odaFragment;
         this.room = oda;
         envanterList = new ArrayList<>();
         envanterList.add(oda);
+        envanterList.add(TYPE_BACKGROUND);
         envanterList.addAll(oda.getEnvanterList());
         if (envanterList == null) envanterList = new ArrayList<>();
         this.mainActivity = mainActivity;
@@ -56,14 +60,17 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
     @Override
     public EnvanterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        if(viewType==TYPE_ROOM){
+        if (viewType == TYPE_ROOM) {
             ItemOdaBilgiBinding cardBindingOda = DataBindingUtil.inflate(inflater, R.layout.item_oda_bilgi, parent, false);
             return new EnvanterViewHolder(cardBindingOda);
 
-        } else if(viewType ==TYPE_ENVANTER){
+        } else if (viewType == TYPE_ENVANTER) {
             ItemEnvanterCardSelectableBinding cardBindingEnvanter = DataBindingUtil.inflate(inflater, R.layout.item_envanter_card_selectable, parent, false);
             return new EnvanterViewHolder(cardBindingEnvanter);
 
+        } else if (viewType == TYPE_BACKGROUND) {
+            View view = inflater.inflate(R.layout.bg_arrow_bottom, parent, false);
+            return new EnvanterViewHolder(view);
         } else {
             return null;
         }
@@ -90,7 +97,7 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
         } else if (o instanceof Envanter) {
             return TYPE_ENVANTER;
         } else
-            return TYPE_ANYTHINK;
+            return TYPE_BACKGROUND;
     }
 
     public class EnvanterViewHolder extends RecyclerView.ViewHolder {
@@ -98,12 +105,16 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
         ViewDataBinding viewDataBinding;
         int x;
 
-        public EnvanterViewHolder(ViewDataBinding viewDataBinding) {
+        private EnvanterViewHolder(View view) {
+            super(view);
+        }
+
+        private EnvanterViewHolder(ViewDataBinding viewDataBinding) {
             super(viewDataBinding.getRoot());
             this.viewDataBinding = viewDataBinding;
         }
 
-        public void bindDto(Object object, int index) {
+        private void bindDto(Object object, int index) {
             if (object instanceof Room) {
                 Room room = (Room) object;
                 RoomViewModel viewModel = new RoomViewModel(room);
@@ -141,10 +152,13 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
 
     public void addSelectedEnvanter(int index, Envanter envanter) {
         selectedEnvanterlist.put(index, envanter);
+        odaFragment.setBackGroundBtnOnlineTifIslemleri(R.drawable.bg_btn_active);
     }
 
     public void removeSelectedEnvanter(int index) {
         selectedEnvanterlist.remove(index);
+        if (selectedEnvanterlist == null || selectedEnvanterlist.size() == 0)
+            odaFragment.setBackGroundBtnOnlineTifIslemleri(R.drawable.bg_btn_passive);
     }
 
     public Map<Integer, Envanter> getSelectedEnvanterlist() {

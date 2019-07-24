@@ -34,11 +34,13 @@ public class Envanter extends BaseModel implements Cloneable {
     private String tasinirAdi;
     @SerializedName("tasinirKodu")
     private String tasinirKodu;
-    private String sicilNo;
     @SerializedName("kbsServis")
     private String servis;
     @SerializedName("vysTasinirAmbar")
     private String ambar;
+
+    private Integer yil;
+    private Integer siraNo;
 
 
     private Integer idRoom;
@@ -56,17 +58,24 @@ public class Envanter extends BaseModel implements Cloneable {
     //    private Date sayimTarihi;
     private String sayimTarihi;
     private Long idSayimYapanPersonel;
+    @SerializedName("malzemeAciklama")
     private String aciklama;
     private Boolean isSentToServer;
     private Room room;
     private Tasinir tasinir;
 
     private String adi;
+    @SerializedName("degeri")
     private String tutar;
+    @SerializedName("pbsPersonelTeslimAlan")
     private String zimmetliPersonel;
+    @SerializedName("gelisYeri")
     private String teminEdilenFirma;
+    @SerializedName("ilkGirisTarihi")
     private String faturaTarihi;
     private String faturaNo;
+    @SerializedName("ureticiSerino")
+    private String seriNo;
 
     private String servisAmbar;
 
@@ -241,14 +250,6 @@ public class Envanter extends BaseModel implements Cloneable {
         this.adi = adi;
     }
 
-    public String getSicilNo() {
-        return sicilNo;
-    }
-
-    public void setSicilNo(String sicilNo) {
-        this.sicilNo = sicilNo;
-    }
-
     public String getTutar() {
         return tutar;
     }
@@ -307,5 +308,29 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setServisAmbar(String servisAmbar) {
         this.servisAmbar = servisAmbar;
+    }
+
+    public Integer getYil() {
+        return yil;
+    }
+
+    public void setYil(Integer yil) {
+        this.yil = yil;
+    }
+
+    public Integer getSiraNo() {
+        return siraNo;
+    }
+
+    public void setSiraNo(Integer siraNo) {
+        this.siraNo = siraNo;
+    }
+
+    public String getSeriNo() {
+        return seriNo;
+    }
+
+    public void setSeriNo(String seriNo) {
+        this.seriNo = seriNo;
     }
 }

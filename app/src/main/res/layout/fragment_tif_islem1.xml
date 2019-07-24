@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.TifIslem1Fragment">
-        <data>
-            <variable
-                name="viewModel"
-                type="com.uniyaz.mobiltif.viewmodel.TifIslem1ViewModel" />
-        </data>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.uniyaz.mobiltif.viewmodel.TifIslem1ViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.uniyaz.mobiltif.ui.fragments.TifIslem1Fragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,10 +31,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="İşlem Tarihi"
-                android:text="@{viewModel.islemTarihi}"
-                />
+                android:text="@={viewModel.islemTarihi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -39,43 +46,69 @@
             app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
             app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.uniyaz.mobiltif.ui.components.CustomAutoCompleteTextView
+                android:id="@+id/actGirisYapilanAmbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
+                android:completionThreshold="1"
+                android:drawableRight="@drawable/bg_spinner"
                 android:hint="Giriş Yapılan Ambar"
-                android:text="@{viewModel.girisYapilanAmbar}"/>
+                android:text="@={viewModel.girisYapilanAmbar}" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAmbarSorumlusu"
-            android:layout_width="0dp"
+        <!--<gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner-->
+            <!--android:id="@+id/actGirisYapilanAmbar"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/editTextHeight"-->
+            <!--android:background="@drawable/bg_edittext"-->
+            <!--app:SearchHintText="deneme"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/tvGirisYapilanAmbar"-->
+            <!--app:layout_constraintHorizontal_bias="0.0"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/tvGirisYapilanAmbar"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tvGirisYapilanAmbar">-->
+
+        <!--</gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner>-->
+
+        <TextView
+            android:id="@+id/tvAmbarSorumlusu"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:text="*Ambar Sorumlusu"
+            style="@style/InputLabel"
             app:layout_constraintEnd_toEndOf="@+id/tilGirisYapilanAmbar"
             app:layout_constraintStart_toStartOf="@+id/tilGirisYapilanAmbar"
-            app:layout_constraintTop_toBottomOf="@+id/tilGirisYapilanAmbar">
+            app:layout_constraintTop_toBottomOf="@+id/tilGirisYapilanAmbar"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ambar Sorumlusu"
-                android:text="@{viewModel.ambarSorumlusu}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+            android:id="@+id/actAmbarSorumlusu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext"
+            android:hint="Ambar Sorumlusu"
+            app:SearchHintText="Arayın..."
+            app:layout_constraintEnd_toEndOf="@+id/tvAmbarSorumlusu"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvAmbarSorumlusu"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmbarSorumlusu" />
+        
+        
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAciklama"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilAmbarSorumlusu"
-            app:layout_constraintStart_toStartOf="@+id/tilAmbarSorumlusu"
-            app:layout_constraintTop_toBottomOf="@+id/tilAmbarSorumlusu">
+            app:layout_constraintEnd_toEndOf="@+id/actAmbarSorumlusu"
+            app:layout_constraintStart_toStartOf="@+id/actAmbarSorumlusu"
+            app:layout_constraintTop_toBottomOf="@+id/actAmbarSorumlusu">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextAciklamaHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Açıklama"
-                android:text="@{viewModel.aciklama}"/>
+                android:text="@={viewModel.aciklama}" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

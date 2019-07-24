@@ -19,4 +19,6 @@
 
     <color name="colorWhite">#fff</color>
     <color name="colorBlack">#000</color>
+
+    <color name="colorBtnOrange">#ec7e1c</color>
 </resources>

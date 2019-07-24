@@ -142,9 +142,7 @@ public class MainPresenter {
                     view.showWarningDialog(responseInfo.getStatusInfo());
                 } else {
                     onSuccess(responseInfo.getResponse());
-                    if (StaticUtils.successControl.isSuccessAll()) {
-                        view.onSuccess();
-                    }
+                    view.onSuccess();
                 }
             }
         }

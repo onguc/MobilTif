@@ -8,9 +8,13 @@ import com.uniyaz.mobiltif.data.domain.LoginInfo;
 import com.uniyaz.mobiltif.data.domain.ResponseInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.domain.Tasinir;
+import com.uniyaz.mobiltif.data.dto.AmbarDto;
+import com.uniyaz.mobiltif.data.dto.PersonelDto;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -45,6 +49,13 @@ public interface RetrofitInterface {
 //    Call<ResponseInfo<List<Envanter>>> getRoomAndEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
 
 
+    @POST("FindAllVysTasinirAmbar")
+    Call<ResponseInfo<List<AmbarDto>>> getAllAmbarDtoList(@Header("Authorization") String authTicket);
+
+    @POST("FindAllPbsPersonelKayitYetkilisiByVysTasinirAmbarId")
+    Call<ResponseInfo<List<PersonelDto>>> getAllPersonelDtoList(@Header("Authorization") String authTicket, @Body RequestBody bodyIdAmbar);
+
+
     //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
     @POST("json/kbs/FindAllKbsServisDto")
     Call<ResponseInfo<List<Department>>> getDepartmList(@Header("Authorization") String authTicket, @Body RequestBody servisTuru);
@@ -54,26 +65,26 @@ public interface RetrofitInterface {
     @POST("json/vys/FindAllVysSayimTasinirKod")
     Call<ResponseInfo<List<Tasinir>>> getTasinirList(@Header("AuthorizationTicket") String authTicket);
 
-
-    @POST("json/vys/FindAllVysSayimOda")
-    Call<ResponseInfo<List<Room>>> getRoomList(@Header("AuthorizationTicket") String authTicket);
-
-    @POST("json/vys/SaveVysSayimOdaList")
-    Call<ResponseInfo<Boolean>> saveRoomList(@Header("AuthorizationTicket") String authTicket, @Body RequestBody roomDtoList);
-
-
     @POST("FindAllVysTasinirDemirbasImagesByUrl")
     Call<ResponseInfo<byte[]>> loadImage(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
 
+    @POST("SaveVysTasinirTransferIslem")
+    Call<ResponseInfo> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
 
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .setLenient()
             .create();
 
+    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .build();
+
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
             .baseUrl(isUriFlex ? uriFlex : uri)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
             .build()
             .create(RetrofitInterface.class);
 

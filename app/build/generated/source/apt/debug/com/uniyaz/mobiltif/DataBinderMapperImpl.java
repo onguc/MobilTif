@@ -7,20 +7,20 @@ import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import com.uniyaz.mobiltif.databinding.ActivityLoginBindingImpl;
+import com.uniyaz.mobiltif.databinding.ActivityLoginGelistirBindingImpl;
 import com.uniyaz.mobiltif.databinding.ActivityMainBindingImpl;
 import com.uniyaz.mobiltif.databinding.ContentMainBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBindingImpl;
-import com.uniyaz.mobiltif.databinding.FragmentDemibasListBindingImpl;
-import com.uniyaz.mobiltif.databinding.FragmentTif2BindingImpl;
+import com.uniyaz.mobiltif.databinding.FragmentOdaBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentTifBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentTifIslem1BindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentTifIslem2BindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentTifIslem3BindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterCardSelectableBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterTifCardBindingImpl;
-import com.uniyaz.mobiltif.databinding.ItemIslemBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBindingImpl;
+import com.uniyaz.mobiltif.databinding.ItemTifIslemBindingImpl;
 import com.uniyaz.mobiltif.databinding.ProgressBarBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
@@ -35,17 +35,17 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_ACTIVITYLOGIN = 1;
 
-  private static final int LAYOUT_ACTIVITYMAIN = 2;
+  private static final int LAYOUT_ACTIVITYLOGINGELISTIR = 2;
 
-  private static final int LAYOUT_CONTENTMAIN = 3;
+  private static final int LAYOUT_ACTIVITYMAIN = 3;
 
-  private static final int LAYOUT_FRAGMENTDEMIBASDETAY = 4;
+  private static final int LAYOUT_CONTENTMAIN = 4;
 
-  private static final int LAYOUT_FRAGMENTDEMIBASLIST = 5;
+  private static final int LAYOUT_FRAGMENTDEMIBASDETAY = 5;
 
-  private static final int LAYOUT_FRAGMENTTIF = 6;
+  private static final int LAYOUT_FRAGMENTODA = 6;
 
-  private static final int LAYOUT_FRAGMENTTIF2 = 7;
+  private static final int LAYOUT_FRAGMENTTIF = 7;
 
   private static final int LAYOUT_FRAGMENTTIFISLEM1 = 8;
 
@@ -57,11 +57,11 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_ITEMENVANTERTIFCARD = 12;
 
-  private static final int LAYOUT_ITEMISLEM = 13;
+  private static final int LAYOUT_ITEMODABILGI = 13;
 
-  private static final int LAYOUT_ITEMODABILGI = 14;
+  private static final int LAYOUT_ITEMPHOTOCARD = 14;
 
-  private static final int LAYOUT_ITEMPHOTOCARD = 15;
+  private static final int LAYOUT_ITEMTIFISLEM = 15;
 
   private static final int LAYOUT_PROGRESSBAR = 16;
 
@@ -69,20 +69,20 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_login, LAYOUT_ACTIVITYLOGIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_login_gelistir, LAYOUT_ACTIVITYLOGINGELISTIR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.content_main, LAYOUT_CONTENTMAIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_demibas_detay, LAYOUT_FRAGMENTDEMIBASDETAY);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_demibas_list, LAYOUT_FRAGMENTDEMIBASLIST);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_oda, LAYOUT_FRAGMENTODA);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif, LAYOUT_FRAGMENTTIF);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif2, LAYOUT_FRAGMENTTIF2);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_islem1, LAYOUT_FRAGMENTTIFISLEM1);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_islem2, LAYOUT_FRAGMENTTIFISLEM2);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_islem3, LAYOUT_FRAGMENTTIFISLEM3);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_envanter_card_selectable, LAYOUT_ITEMENVANTERCARDSELECTABLE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_envanter_tif_card, LAYOUT_ITEMENVANTERTIFCARD);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_islem, LAYOUT_ITEMISLEM);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_oda_bilgi, LAYOUT_ITEMODABILGI);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_photo_card, LAYOUT_ITEMPHOTOCARD);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_tif_islem, LAYOUT_ITEMTIFISLEM);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.progress_bar, LAYOUT_PROGRESSBAR);
   }
 
@@ -100,6 +100,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityLoginBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_login is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ACTIVITYLOGINGELISTIR: {
+          if ("layout/activity_login_gelistir_0".equals(tag)) {
+            return new ActivityLoginGelistirBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_login_gelistir is invalid. Received: " + tag);
         }
         case  LAYOUT_ACTIVITYMAIN: {
           if ("layout/activity_main_0".equals(tag)) {
@@ -119,23 +125,17 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for fragment_demibas_detay is invalid. Received: " + tag);
         }
-        case  LAYOUT_FRAGMENTDEMIBASLIST: {
-          if ("layout/fragment_demibas_list_0".equals(tag)) {
-            return new FragmentDemibasListBindingImpl(component, view);
+        case  LAYOUT_FRAGMENTODA: {
+          if ("layout/fragment_oda_0".equals(tag)) {
+            return new FragmentOdaBindingImpl(component, view);
           }
-          throw new IllegalArgumentException("The tag for fragment_demibas_list is invalid. Received: " + tag);
+          throw new IllegalArgumentException("The tag for fragment_oda is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTTIF: {
           if ("layout/fragment_tif_0".equals(tag)) {
             return new FragmentTifBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for fragment_tif is invalid. Received: " + tag);
-        }
-        case  LAYOUT_FRAGMENTTIF2: {
-          if ("layout/fragment_tif2_0".equals(tag)) {
-            return new FragmentTif2BindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for fragment_tif2 is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTTIFISLEM1: {
           if ("layout/fragment_tif_islem1_0".equals(tag)) {
@@ -167,12 +167,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for item_envanter_tif_card is invalid. Received: " + tag);
         }
-        case  LAYOUT_ITEMISLEM: {
-          if ("layout/item_islem_0".equals(tag)) {
-            return new ItemIslemBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for item_islem is invalid. Received: " + tag);
-        }
         case  LAYOUT_ITEMODABILGI: {
           if ("layout/item_oda_bilgi_0".equals(tag)) {
             return new ItemOdaBilgiBindingImpl(component, view);
@@ -184,6 +178,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ItemPhotoCardBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for item_photo_card is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ITEMTIFISLEM: {
+          if ("layout/item_tif_islem_0".equals(tag)) {
+            return new ItemTifIslemBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for item_tif_islem is invalid. Received: " + tag);
         }
         case  LAYOUT_PROGRESSBAR: {
           if ("layout/progress_bar_0".equals(tag)) {
@@ -236,24 +236,26 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(16);
+    static final SparseArray<String> sKeys = new SparseArray<String>(18);
 
     static {
       sKeys.put(0, "_all");
       sKeys.put(1, "showProgressBar");
-      sKeys.put(2, "activity");
-      sKeys.put(3, "toastMessage");
-      sKeys.put(4, "contentMainViewModel");
-      sKeys.put(5, "envanter");
-      sKeys.put(6, "titleToolbar");
-      sKeys.put(7, "room");
-      sKeys.put(8, "fragment");
-      sKeys.put(9, "password");
-      sKeys.put(10, "viewModel");
-      sKeys.put(11, "checked");
-      sKeys.put(12, "progressBarViewModel");
-      sKeys.put(13, "selected");
-      sKeys.put(14, "username");
+      sKeys.put(2, "girisYapilanAmbar");
+      sKeys.put(3, "activity");
+      sKeys.put(4, "toastMessage");
+      sKeys.put(5, "contentMainViewModel");
+      sKeys.put(6, "envanter");
+      sKeys.put(7, "titleToolbar");
+      sKeys.put(8, "room");
+      sKeys.put(9, "ambarName");
+      sKeys.put(10, "fragment");
+      sKeys.put(11, "password");
+      sKeys.put(12, "viewModel");
+      sKeys.put(13, "checked");
+      sKeys.put(14, "progressBarViewModel");
+      sKeys.put(15, "selected");
+      sKeys.put(16, "username");
     }
   }
 
@@ -262,20 +264,20 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
     static {
       sKeys.put("layout/activity_login_0", com.uniyaz.mobiltif.R.layout.activity_login);
+      sKeys.put("layout/activity_login_gelistir_0", com.uniyaz.mobiltif.R.layout.activity_login_gelistir);
       sKeys.put("layout/activity_main_0", com.uniyaz.mobiltif.R.layout.activity_main);
       sKeys.put("layout/content_main_0", com.uniyaz.mobiltif.R.layout.content_main);
       sKeys.put("layout/fragment_demibas_detay_0", com.uniyaz.mobiltif.R.layout.fragment_demibas_detay);
-      sKeys.put("layout/fragment_demibas_list_0", com.uniyaz.mobiltif.R.layout.fragment_demibas_list);
+      sKeys.put("layout/fragment_oda_0", com.uniyaz.mobiltif.R.layout.fragment_oda);
       sKeys.put("layout/fragment_tif_0", com.uniyaz.mobiltif.R.layout.fragment_tif);
-      sKeys.put("layout/fragment_tif2_0", com.uniyaz.mobiltif.R.layout.fragment_tif2);
       sKeys.put("layout/fragment_tif_islem1_0", com.uniyaz.mobiltif.R.layout.fragment_tif_islem1);
       sKeys.put("layout/fragment_tif_islem2_0", com.uniyaz.mobiltif.R.layout.fragment_tif_islem2);
       sKeys.put("layout/fragment_tif_islem3_0", com.uniyaz.mobiltif.R.layout.fragment_tif_islem3);
       sKeys.put("layout/item_envanter_card_selectable_0", com.uniyaz.mobiltif.R.layout.item_envanter_card_selectable);
       sKeys.put("layout/item_envanter_tif_card_0", com.uniyaz.mobiltif.R.layout.item_envanter_tif_card);
-      sKeys.put("layout/item_islem_0", com.uniyaz.mobiltif.R.layout.item_islem);
       sKeys.put("layout/item_oda_bilgi_0", com.uniyaz.mobiltif.R.layout.item_oda_bilgi);
       sKeys.put("layout/item_photo_card_0", com.uniyaz.mobiltif.R.layout.item_photo_card);
+      sKeys.put("layout/item_tif_islem_0", com.uniyaz.mobiltif.R.layout.item_tif_islem);
       sKeys.put("layout/progress_bar_0", com.uniyaz.mobiltif.R.layout.progress_bar);
     }
   }

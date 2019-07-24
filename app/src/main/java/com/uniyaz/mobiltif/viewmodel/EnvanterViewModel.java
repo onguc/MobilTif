@@ -16,4 +16,8 @@ public class EnvanterViewModel extends BaseObservable {
     public Envanter getEnvanter() {
         return envanter;
     }
+
+    public String getSicilNo(){
+        return envanter.getTasinirKodu()+"."+envanter.getYil()+"."+envanter.getSiraNo();
+    }
 }

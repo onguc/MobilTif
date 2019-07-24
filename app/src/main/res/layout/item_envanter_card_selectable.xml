@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/background_item"
+        android:background="@drawable/bg_item"
         android:onClick="@{()->viewModel.onClick()}"
 
         android:paddingBottom="5dp"
@@ -27,7 +27,7 @@
         >
 
         <RadioButton
-            android:id="@+id/viewNumber"
+            android:id="@+id/rbSelect"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -89,7 +89,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="5dp"
             android:paddingStart="5dp"
-            android:background="@drawable/background_btn_demirbas_detay"
+            android:background="@drawable/bg_btn_active"
             android:drawableLeft="@drawable/ic_search_for_btn"
             android:onClick="@{(view)->activity.goEnvanterDetayFragment(viewModel.envanter)}"
             android:textAllCaps="false"
@@ -105,7 +105,7 @@
             android:layout_width="61dp"
             android:layout_height="20dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/background_btn_resim_goster"
+            android:background="@drawable/bg_btn_resim_goster"
             android:drawableLeft="@mipmap/picture"
             android:paddingStart="5dp"
             android:textAllCaps="false"

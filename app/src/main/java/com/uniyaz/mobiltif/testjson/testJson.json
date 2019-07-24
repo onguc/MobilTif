@@ -1,0 +1,23 @@
+{
+  "vysTasinirTransferRequestDto": {
+    "idEnvanterList": [
+      1,
+      2,
+      3
+    ],
+    "islemTuru": "islem3",
+    "islem3": {
+      "islemTarihi": "2019-07-22 15:44:43",
+      "dayanakBelgeTarihi": "2019-07-22 15:44:43",
+      "kayittanDusmeNedeni": "düşme nedeni",
+      "digerKayittanDusmeNedeni": "diğer düşme nedeni",
+      "imhaOlurAciklamasi": "imha olur açıklaması",
+      "digerImhaOlurAciklamasi": "diğer imha olur açıklaması buraya yazılır...",
+      "idKomisyonBaskani": 22,
+      "idKomisyonUyesi1TKY_Yetkilisi": 23,
+      "idKomisyonUyesi2": 24,
+      "idHarcamaYetkilisi": 25
+    }
+  }
+}
+

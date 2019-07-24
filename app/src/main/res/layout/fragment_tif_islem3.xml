@@ -25,8 +25,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_edittext"
                 android:hint="İşlem Tarihi"
-                android:text="@{viewModel.islemTarihi}"
+                android:text="@={viewModel.islemTarihi}"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,9 +44,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
+                android:translationY="10dp"
                 android:hint="Dayanak Belge Tarihi"
-                android:text="@{viewModel.dayanakBelgeTarihi}"/>
+                android:text="@={viewModel.dayanakBelgeTarihi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -57,9 +62,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Kayıttan Düşme Nedeni"
-                android:text="@{viewModel.kayittanDusmeNedeni}"/>
+                android:text="@={viewModel.kayittanDusmeNedeni}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -73,9 +79,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Diğer Kayıttan Düşme Nedeni"
-                android:text="@{viewModel.digerKayittanDusmeNedeni}"/>
+                android:text="@={viewModel.digerKayittanDusmeNedeni}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,9 +96,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="İmha Olur Açıklaması"
-                android:text="@{viewModel.imhaOlurAciklamasi}"/>
+                android:text="@={viewModel.imhaOlurAciklamasi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -105,9 +113,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="Diğer İmha Olur Açıklaması"
-                android:text="@{viewModel.digerImhaOlurAciklamasi}"/>
+                android:text="@={viewModel.digerImhaOlurAciklamasi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,9 +130,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="*Komisyon Başkanı"
-                android:text="@{viewModel.komisyonBaskani}"/>
+                android:text="@={viewModel.komisyonBaskaniAdi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -137,9 +147,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="*Komisyon Üyesi 1 / TKY Yetkilisi"
-                android:text="@{viewModel.komisyonUyesi1TKY_Yetkilisi}"/>
+                android:text="@={viewModel.komisyonUyesi1TKY_YetkilisiAdi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -153,9 +164,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="*Komisyon Üyesi 2"
-                android:text="@{viewModel.komisyonUyesi2}"/>
+                android:text="@={viewModel.komisyonUyesi2Adi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -169,9 +181,10 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/editTextHeight"
+                android:background="@drawable/bg_edittext"
                 android:hint="*Harcama Yetkilisi"
-                android:text="@{viewModel.harcamaYetkilisi}"/>
+                android:text="=@{viewModel.harcamaYetkilisiAdi}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

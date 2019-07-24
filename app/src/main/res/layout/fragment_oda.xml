@@ -8,7 +8,7 @@
     <data>
         <variable
             name="fragment"
-            type="com.uniyaz.mobiltif.ui.fragments.DemirbasListFragment" />
+            type="com.uniyaz.mobiltif.ui.fragments.OdaFragment" />
     </data>
 
     <ScrollView
@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_fragment_demirbas">
+            android:background="@drawable/bg_fragment_demirbas">
             >
 
             <androidx.recyclerview.widget.RecyclerView
@@ -80,10 +80,10 @@
                 android:layout_marginStart="@dimen/marginStart"
                 android:layout_marginEnd="@dimen/marginEnd"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/background_btn_tif_islemleri"
+                android:background="@drawable/bg_btn_passive"
                 android:textColor="@color/colorWhite"
                 android:textAllCaps="false"
-                android:onClick="@{()->fragment.onBtnOnlineTifIslemClicked()    }"
+                android:onClick="@{()->fragment.onClickBtnOnlineTifIslemleri()}"
                 android:text="Online Tif İşlemleri"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/rvDemirbasList"

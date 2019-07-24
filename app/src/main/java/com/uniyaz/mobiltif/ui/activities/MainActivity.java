@@ -22,19 +22,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.uniyaz.mobiltif.R;
-import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
 import com.uniyaz.mobiltif.iface.IMain;
 import com.uniyaz.mobiltif.presenter.MainPresenter;
 import com.uniyaz.mobiltif.ui.fragments.DemirbasDetayFragment;
-import com.uniyaz.mobiltif.ui.fragments.DemirbasListFragment;
+import com.uniyaz.mobiltif.ui.fragments.OdaFragment;
 import com.uniyaz.mobiltif.utils.PermissionUtils;
 import com.uniyaz.mobiltif.utils.TextCustomUtils;
 import com.uniyaz.mobiltif.viewmodel.MainViewModel;
 
-import java.util.List;
 import java.util.Map;
 
 
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     private FragmentManager fragmentManager;
     DemirbasDetayFragment demirbasDetayFragment;
-    DemirbasListFragment demirbasListFragment;
+    OdaFragment odaFragment;
     PopupWindow popupWindow;
     ActivityMainBinding activityMainBinding;
     MainViewModel viewModel;
@@ -226,11 +224,10 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void onSuccess() {
-
+        viewModel.hideProgressBar();
     }
 
     public void onSuccessForEnvater(Envanter envanter) {
-        hidePopupCallRoomAndEnvanter();
         viewModel.hideProgressBar();
 
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas);
@@ -248,8 +245,8 @@ public class MainActivity extends AppCompatActivity implements IMain {
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas_list);
         viewModel.setTitleToolbar(titleDemirbarDetay);
 
-        demirbasListFragment = DemirbasListFragment.getNewInstance(this, room);
-        startFragmentByBackStack(demirbasListFragment);
+        odaFragment = OdaFragment.getNewInstance(this, room);
+        startFragmentByBackStack(odaFragment);
     }
 
     @Override
@@ -279,6 +276,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void showProgressBar() {
+        hidePopupCallRoomAndEnvanter();
         viewModel.showProgressBar();
     }
 

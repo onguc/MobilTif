@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorItemEnvanterCardBGround"
-        android:padding="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <Spinner
@@ -21,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@drawable/spinner_bg"
+            android:background="@drawable/bg_spinner"
             android:entries="@array/arrayIslemTurleri"
             android:onItemSelected="@{(parent,view,pos,id)->fragment.onItemSelectedSpinner(parent,view,pos,id)}"
             android:spinnerMode="dropdown"
@@ -31,14 +30,6 @@
             android:id="@+id/f_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></FrameLayout>
-
-        <Button
-            android:id="@+id/btnIslemiGerceklestir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:text="İşlemi Gerçekleştir" />
 
     </LinearLayout>
 </layout>

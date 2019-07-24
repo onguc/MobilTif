@@ -5,9 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,11 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.Room;
-import com.uniyaz.mobiltif.databinding.FragmentDemibasListBinding;
-import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBinding;
+import com.uniyaz.mobiltif.databinding.FragmentOdaBinding;
 import com.uniyaz.mobiltif.ui.activities.MainActivity;
 import com.uniyaz.mobiltif.ui.adapters.EnvanterAdapter;
-import com.uniyaz.mobiltif.viewmodel.RoomViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +28,21 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class DemirbasListFragment extends Fragment {
+public class OdaFragment extends Fragment {
 
     private Room room;
     private MainActivity mainActivity;
     EnvanterAdapter adapter;
+    Button btnTifIslemleri;
 
-    public static DemirbasListFragment getNewInstance(MainActivity mainActivity, Room room) {
+    public static OdaFragment getNewInstance(MainActivity mainActivity, Room room) {
         if (room == null) return null;
-        DemirbasListFragment demirbasListFragment = new DemirbasListFragment();
-        demirbasListFragment.room = room;
-        demirbasListFragment.mainActivity = mainActivity;
-        return demirbasListFragment;
+        OdaFragment odaFragment = new OdaFragment();
+        odaFragment.room = room;
+        odaFragment.mainActivity = mainActivity;
+        return odaFragment;
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class DemirbasListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentDemibasListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_list, container, false);
+        FragmentOdaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_oda, container, false);
         binding.setFragment(this);
         View root = binding.getRoot();
 
@@ -59,24 +61,25 @@ public class DemirbasListFragment extends Fragment {
         return root;
     }
 
-    private void defineView(FragmentDemibasListBinding binding) {
+    private void defineView(FragmentOdaBinding binding) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-
-        adapter = new EnvanterAdapter(mainActivity, room);
+        btnTifIslemleri = binding.btnTifIslemleri;
+        adapter = new EnvanterAdapter(mainActivity, this, room);
         RecyclerView recyclerView = binding.rvDemirbasList;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+
 //        adapter.notifyDataSetChanged();
 
         List<String> urlResimList = room.getUrlResimList();
         new PhotoIslem().createView(binding.rvOdaPhotoList, getActivity(), urlResimList);
     }
 
-    public void onBtnOnlineTifIslemClicked() {
+    public void onClickBtnOnlineTifIslemleri() {
         Map<Integer, Envanter> selectedEnvanterlist = adapter.getSelectedEnvanterlist();
         if (selectedEnvanterlist == null) {
-            Log.e("DemirbasListFragment", "onBtnOnlineTifIslemcliced-> HATA: selectedEnvanterList is Null!");
+            Log.e("OdaFragment", "onBtnOnlineTifIslemcliced-> HATA: selectedEnvanterList is Null!");
             return;
         } else if (selectedEnvanterlist.size() == 0) {
             mainActivity.showWarningDialog("Uyarı", "Envanter Seçiniz!");
@@ -90,5 +93,9 @@ public class DemirbasListFragment extends Fragment {
         TifFragment tifFragment = TifFragment.getNewInstance(envanters);
         MainActivity activity = (MainActivity) getActivity();
         activity.startFragmentByBackStack(tifFragment);
+    }
+
+    public void setBackGroundBtnOnlineTifIslemleri(int resource) {
+        btnTifIslemleri.setBackgroundResource(resource);
     }
 }
