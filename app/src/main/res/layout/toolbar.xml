@@ -11,9 +11,9 @@
         app:navigationIcon="@mipmap/ic_icon"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/backgroundToolbar"
+        android:background="@color/colorBackgroundToolbar"
         app:titleTextColor="@color/colorBlack"
         app:title="@string/toolbar_title_demirbas"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
 </com.google.android.material.appbar.AppBarLayout>

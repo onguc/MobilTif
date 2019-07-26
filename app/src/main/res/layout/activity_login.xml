@@ -31,11 +31,11 @@
             app:layout_constraintTop_toTopOf="@+id/constraint">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="128dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -43,49 +43,27 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/besiktas_logo_foreground" />
 
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="8dp"
-                android:text="BEŞİKTAŞ"
-                android:textColor="@color/colorWhite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="BELEDİYESİ"
-                android:textColor="@color/colorWhite"
-                app:layout_constraintEnd_toEndOf="@+id/tv1"
-                app:layout_constraintStart_toStartOf="@+id/tv1"
-                app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="144dp"
                 android:text="ONLİNE TİF İŞLEMLERİ"
                 android:textColor="@color/colorWhite"
-                android:textSize="20sp"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/llTop"
-                app:layout_constraintEnd_toEndOf="@+id/textView3"
-                app:layout_constraintHorizontal_bias="0.507"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.793" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/llBottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="344dp"
             android:background="@drawable/bg_ll_bottom"
             android:paddingBottom="40dp"
             app:layout_constraintBottom_toBottomOf="@+id/constraint"
@@ -95,11 +73,10 @@
             <EditText
                 android:id="@+id/etUsername"
                 android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="8dp"
-
+                android:layout_height="42dp"
+                android:layout_marginStart="35dp"
                 android:layout_marginTop="60dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="35dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@mipmap/ic_login_user"
                 android:drawablePadding="5dp"
@@ -114,8 +91,8 @@
             <EditText
                 android:id="@+id/etPassword"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="25dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@mipmap/ic_login_lock"
                 android:drawableLeft="@mipmap/ic_login_lock"
@@ -134,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/login_text_color"
                 android:buttonTint="@color/colorWhite"
@@ -151,24 +128,26 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="76dp"
+                android:layout_marginTop="56dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/bg_btn_active"
                 android:onClick="@{()->activity.onBtnLoginClicked()}"
                 android:text="@string/btn_login"
                 android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/view1"
                 app:layout_constraintEnd_toEndOf="@+id/etPassword"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/etPassword"
                 app:layout_constraintTop_toBottomOf="@+id/etPassword"
                 app:layout_constraintVertical_bias="0.0" />
 
             <View
                 android:id="@+id/view1"
-                android:layout_width="200dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="18dp"
                 android:background="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="@+id/btnLogin"
                 app:layout_constraintStart_toStartOf="@+id/btnLogin"
@@ -177,7 +156,7 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="100dp"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="@+id/view1"

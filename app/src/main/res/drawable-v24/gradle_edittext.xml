@@ -7,7 +7,7 @@
         android:endColor="@color/loginEdittext"
         android:startColor="@color/loginEdittext" />
 
-    <corners android:radius="10dip" />
+    <corners android:radius="5dip" />
 
 
 </shape>

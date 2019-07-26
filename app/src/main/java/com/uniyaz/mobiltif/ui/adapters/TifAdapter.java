@@ -95,7 +95,7 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
         public void bindDto(Object object, int index) {
             if (object instanceof Envanter) {
                 Envanter envanter = (Envanter) object;
-                TifEnvanterCardViewModel viewModel = new TifEnvanterCardViewModel(envanter, index);
+                TifEnvanterCardViewModel viewModel = new TifEnvanterCardViewModel(envanter, index+1);
                 ItemEnvanterTifCardBinding binding = (ItemEnvanterTifCardBinding) this.viewDataBinding;
                 binding.setViewModel(viewModel);
                 binding.executePendingBindings();

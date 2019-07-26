@@ -6,6 +6,7 @@
         android:id="@+id/menuFindByQrCode"
         android:icon="@drawable/ic_logout"
         android:onClick="onClickLogOut"
+        app:showAsAction="never"
         android:title="Çıkış Yap">
     </item>
     <item
