@@ -64,7 +64,7 @@
             android:background="@color/colorItemEnvanterCizgi"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/viewNumber"
+            app:layout_constraintStart_toEndOf="@+id/rbSelect"
             app:layout_constraintTop_toBottomOf="@+id/tvUst" />
 
 
@@ -89,7 +89,7 @@
             android:layout_height="20dp"
             android:layout_marginEnd="5dp"
             android:paddingStart="5dp"
-            android:background="@drawable/bg_btn_active"
+            android:background="@drawable/bg_btn_islemi_gerceklestir"
             android:drawableLeft="@drawable/ic_search_for_btn"
             android:onClick="@{(view)->activity.goEnvanterDetayFragment(viewModel.envanter)}"
             android:textAllCaps="false"

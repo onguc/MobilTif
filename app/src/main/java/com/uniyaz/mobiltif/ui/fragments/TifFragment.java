@@ -85,7 +85,6 @@ public class TifFragment extends Fragment implements ITif {
         } else if (getString(R.string.islemTuru3).equals(selectedItem)) {
             TifIslem3Fragment fragment = TifIslem3Fragment.newInstance();
             startFragmentByBackStack(fragment);
-
         }
     }
 

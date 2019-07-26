@@ -12,7 +12,6 @@ public class EnvanterViewModel extends BaseObservable {
         this.envanter = envanter;
     }
 
-    @Bindable
     public Envanter getEnvanter() {
         return envanter;
     }

@@ -9,20 +9,6 @@ import java.util.List;
  */
 
 public class Envanter extends BaseModel implements Cloneable {
-    public static final String TABLE_NAME = "Envanter";
-    public final static String keyId = "id";
-    public final static String keyIdRoom = "id_oda";
-    public final static String keyKodTasinir = "kod_tasinir";
-    public final static String keySayimNo = "sayim_no";
-    public final static String keyQrCode = "etiket_kod";
-    public final static String keyBirimi = "birim";
-    public final static String keyDurumu = "durumu";
-    public final static String keySayimTairhi = "sayim_tarihi";
-    public final static String keyIdSayimYapanPersonel = "id_sayim_yapan_personel";
-    public final static String keyAciklama = "aciklama";
-    public final static String keyIsSentToServer = "sunucuya_gonderildi_mi";
-    public final static String keyCount = "adet";
-
 
     public Envanter() {
         isSentToServer = false;
@@ -64,7 +50,6 @@ public class Envanter extends BaseModel implements Cloneable {
     private Room room;
     private Tasinir tasinir;
 
-    private String adi;
     @SerializedName("degeri")
     private String tutar;
     @SerializedName("pbsPersonelTeslimAlan")
@@ -240,14 +225,6 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setTasinir(Tasinir tasinir) {
         this.tasinir = tasinir;
-    }
-
-    public String getAdi() {
-        return adi;
-    }
-
-    public void setAdi(String adi) {
-        this.adi = adi;
     }
 
     public String getTutar() {

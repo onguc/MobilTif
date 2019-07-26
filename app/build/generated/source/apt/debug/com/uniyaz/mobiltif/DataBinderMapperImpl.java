@@ -236,7 +236,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(18);
+    static final SparseArray<String> sKeys = new SparseArray<String>(17);
 
     static {
       sKeys.put(0, "_all");
@@ -245,17 +245,16 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put(3, "activity");
       sKeys.put(4, "toastMessage");
       sKeys.put(5, "contentMainViewModel");
-      sKeys.put(6, "envanter");
-      sKeys.put(7, "titleToolbar");
-      sKeys.put(8, "room");
-      sKeys.put(9, "ambarName");
-      sKeys.put(10, "fragment");
-      sKeys.put(11, "password");
-      sKeys.put(12, "viewModel");
-      sKeys.put(13, "checked");
-      sKeys.put(14, "progressBarViewModel");
-      sKeys.put(15, "selected");
-      sKeys.put(16, "username");
+      sKeys.put(6, "titleToolbar");
+      sKeys.put(7, "room");
+      sKeys.put(8, "ambarName");
+      sKeys.put(9, "fragment");
+      sKeys.put(10, "password");
+      sKeys.put(11, "viewModel");
+      sKeys.put(12, "checked");
+      sKeys.put(13, "progressBarViewModel");
+      sKeys.put(14, "selected");
+      sKeys.put(15, "username");
     }
   }
 

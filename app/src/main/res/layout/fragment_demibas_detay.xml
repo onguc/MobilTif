@@ -222,6 +222,25 @@
                         android:text="@={viewModel.envanter.teminEdilenFirma}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilSeriNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginTopEditText"
+                    android:ems="10"
+                    app:layout_constraintEnd_toEndOf="@+id/tilTEFirma"
+                    app:layout_constraintStart_toStartOf="@+id/tilTEFirma"
+                    app:layout_constraintTop_toBottomOf="@+id/tilTEFirma">
+
+                    <EditText
+                        android:id="@+id/etSeriNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/editTextHeight"
+                        android:background="@drawable/bg_edittext"
+                        android:hint="Seri No"
+                        android:inputType="textPersonName"
+                        android:text="@={viewModel.envanter.seriNo}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilFaturaTarihi"
@@ -230,8 +249,8 @@
                     android:layout_marginTop="@dimen/marginTopEditText"
                     android:ems="10"
                     app:layout_constraintEnd_toEndOf="@+id/tilDurumu"
-                    app:layout_constraintStart_toStartOf="@+id/tilTEFirma"
-                    app:layout_constraintTop_toBottomOf="@+id/tilTEFirma">
+                    app:layout_constraintStart_toStartOf="@+id/tilDurumu"
+                    app:layout_constraintTop_toBottomOf="@+id/tilSeriNo">
 
                     <EditText
                         android:id="@+id/etFaturaTarihi"
