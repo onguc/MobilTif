@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -21,11 +23,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
 import com.uniyaz.mobiltif.iface.IMain;
+import com.uniyaz.mobiltif.listeners.RightDrawableOnClickListener;
 import com.uniyaz.mobiltif.presenter.MainPresenter;
 import com.uniyaz.mobiltif.ui.fragments.DemirbasDetayFragment;
 import com.uniyaz.mobiltif.ui.fragments.OdaFragment;
@@ -87,12 +91,15 @@ public class MainActivity extends AppCompatActivity implements IMain {
     private void defineCallRoomAndEnvanter() {
         boolean focusable = true; // lets taps outside the popup also dismiss it
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
         View popupView = getLayoutInflater().inflate(R.layout.popup_call_room_and_envanter, null);
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-        Button btnCallRoom = popupView.findViewById(R.id.btnCallRoom);
-        Button btnCallEnvanter = popupView.findViewById(R.id.btnCallEnvanter);
+        ImageButton btnCallRoom = popupView.findViewById(R.id.btnCallRoom);
+        ImageButton btnCallEnvanter = popupView.findViewById(R.id.btnCallEnvanter);
+        EditText etCallQrCodeOda = popupView.findViewById(R.id.etCallQrCodeOda);
+        EditText etCallQrCodeDemirbas = popupView.findViewById(R.id.etCallQrCodeDemirbas);
+
 
         View.OnClickListener onClickListener = v -> {
             switch (v.getId()) {
@@ -109,10 +116,36 @@ public class MainActivity extends AppCompatActivity implements IMain {
         };
         btnCallRoom.setOnClickListener(onClickListener);
         btnCallEnvanter.setOnClickListener(onClickListener);
+
+        etCallQrCodeOda.setOnTouchListener(new RightDrawableOnClickListener() {
+            @Override
+            public boolean onDrawableTouch(MotionEvent event, String qrCodeString) {
+                if (TextCustomUtils.isDigitsOnly(qrCodeString)) {
+                    int qrCode = Integer.parseInt(qrCodeString);
+                    callByQrCode(REQUEST_CODE_QR_FOR_ROOM, qrCode);
+                    return true;
+                } else
+                    return false;
+
+            }
+        });
+
+        etCallQrCodeDemirbas.setOnTouchListener(new RightDrawableOnClickListener() {
+            @Override
+            public boolean onDrawableTouch(MotionEvent event, String qrCodeString) {
+                if (TextCustomUtils.isDigitsOnly(qrCodeString)) {
+                    int qrCode = Integer.parseInt(qrCodeString);
+                    callByQrCode(REQUEST_CODE_QR_FOR_ENVANTER, qrCode);
+                    return true;
+                } else
+                    return false;
+
+            }
+        });
     }
 
     private void showPopupCallRoomAndEnvanter() {
-        popupWindow.showAtLocation(activityMainBinding.includedContentMain.clayout, Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(activityMainBinding.toolbar, Gravity.CENTER, 0, 0);
     }
 
     private void hidePopupCallRoomAndEnvanter() {
@@ -120,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
     Activity activity = this;
-
 
 
     @Override
@@ -133,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
                 } else {
                     if (TextCustomUtils.isDigitsOnly(qrCode)) {
                         if (requestCode == REQUEST_CODE_QR_FOR_ROOM) {
-                            presenter.callEnvanterListByQrCodeRoom(qrCode);
+                            presenter.callRoomByQrCode(qrCode);
                         } else if (requestCode == REQUEST_CODE_QR_FOR_ENVANTER) {
                             presenter.callEnvanterByQrCode(qrCode);
                         }
@@ -182,15 +214,18 @@ public class MainActivity extends AppCompatActivity implements IMain {
     final String PROMPT = "Barkod Tara";
 
     private void goScanActivity(int code) {
-        if (code == REQUEST_CODE_QR_FOR_ENVANTER) {
-            presenter.callEnvanterByQrCode("61");
+        new IntentIntegrator(this)
+                .setRequestCode(code)
+                .setBeepEnabled(false)
+                .initiateScan();
+    }
+
+    private void callByQrCode(int requestCode, int qrCode) {
+        if (requestCode == REQUEST_CODE_QR_FOR_ENVANTER) {
+            presenter.callEnvanterByQrCode(String.valueOf(qrCode));
         } else {
-            presenter.callEnvanterListByQrCodeRoom("61");
+            presenter.callRoomByQrCode(String.valueOf(qrCode));
         }
-//        new IntentIntegrator(this)
-//                .setRequestCode(code)
-//                .setBeepEnabled(false)
-//                .initiateScan();
     }
 
     @Override
@@ -305,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
         return true;
     }
 
-    public boolean goClickOnlineTifIslem(){
+    public boolean goClickOnlineTifIslem() {
         Map<Integer, Envanter> selectedEnvanterlist = null;
         return true;
     }

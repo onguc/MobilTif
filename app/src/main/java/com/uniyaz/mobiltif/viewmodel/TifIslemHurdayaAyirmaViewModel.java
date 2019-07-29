@@ -3,6 +3,9 @@ package com.uniyaz.mobiltif.viewmodel;
 import androidx.databinding.BaseObservable;
 
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
+import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+
+import java.util.Date;
 
 public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     private String islemTarihi;
@@ -20,6 +23,11 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     private PersonelDto komisyonUyesi1TKY;
     private PersonelDto komisyonUyesi2;
     private PersonelDto harcamaYetkilisi;
+
+    public TifIslemHurdayaAyirmaViewModel() {
+        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        setIslemTarihi(convertedStringFromDate);
+    }
 
     public String getIslemTarihi() {
         return islemTarihi;

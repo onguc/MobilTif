@@ -88,7 +88,7 @@ public class MainPresenter {
     }
 
 
-    public void callEnvanterListByQrCodeRoom(String qrCode) {
+    public void callRoomByQrCode(String qrCode) {
         RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode);
         Call<ResponseInfo<Room>> callEnvanterList = RetrofitInterface.retrofitInterface.getRoomAndEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
         view.showProgressBar();
@@ -103,7 +103,7 @@ public class MainPresenter {
 
             @Override
             public void onFailure(Call<ResponseInfo<Room>> call, Throwable t) {
-                view.showWarningDialog("Error", "callEnvanterListByQrCodeRoom->message: " + t.getMessage());
+                view.showWarningDialog("Error", "callRoomByQrCode->message: " + t.getMessage());
             }
         });
     }

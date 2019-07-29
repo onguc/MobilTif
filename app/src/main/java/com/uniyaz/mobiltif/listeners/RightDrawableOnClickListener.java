@@ -13,10 +13,7 @@ public abstract class RightDrawableOnClickListener implements View.OnTouchListen
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        final int DRAWABLE_LEFT = 0;
-        final int DRAWABLE_TOP = 1;
         final int DRAWABLE_RIGHT = 2;
-        final int DRAWABLE_BOTTOM = 3;
 
         EditText editText = (EditText) v;
         final Drawable[] drawables = editText.getCompoundDrawables();
@@ -24,12 +21,13 @@ public abstract class RightDrawableOnClickListener implements View.OnTouchListen
             Drawable drawable = drawables[DRAWABLE_RIGHT];
             if (event.getAction() == MotionEvent.ACTION_DOWN && drawable != null) {
                 if (event.getRawX() >= (editText.getRight() - drawable.getBounds().width())) {
-                    return onDrawableTouch(event);
+                    String qrCode = editText.getText().toString();
+                    return onDrawableTouch(event,qrCode);
                 }
             }
         }
         return false;
     }
 
-    public abstract boolean onDrawableTouch(final MotionEvent event);
+    public abstract boolean onDrawableTouch(final MotionEvent event, String qrCode);
 }

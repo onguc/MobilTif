@@ -35,6 +35,6 @@ public class TranslateDateFormat {
     }
 
     private static SimpleDateFormat getSimpleDateFormat(){
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return new SimpleDateFormat("dd.MM.yyyy");
     }
 }

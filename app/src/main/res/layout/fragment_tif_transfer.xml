@@ -51,7 +51,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
-                android:completionThreshold="1"
                 android:drawableRight="@drawable/bg_spinner"
                 android:hint="Giriş Yapılan Ambar"
                 android:text="@={viewModel.girisYapilanAmbar}" />

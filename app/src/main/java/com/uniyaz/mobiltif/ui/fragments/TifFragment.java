@@ -106,7 +106,7 @@ public class TifFragment extends Fragment implements ITif {
         }
         dto.setIdEnvanterList(idEnvanterList);
         dto.setIslemTuru(islemTuru);
-        dto.setIslem(iTifIslem.getIslemDto());
+        dto.setVysTasinirTransferRequestDto(iTifIslem.getIslemDto());
         presenter.saveVysTasinirTransferIslem(dto);
     }
 

@@ -5,12 +5,17 @@ import androidx.databinding.Bindable;
 
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
+import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+
+import java.util.Date;
 
 public class TifIslemTransferViewModel extends BaseObservable {
 
-    public TifIslemTransferViewModel(){
-
+    public TifIslemTransferViewModel() {
+        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        setIslemTarihi(convertedStringFromDate);
     }
+
     private String islemTarihi;
     @Bindable
     private String girisYapilanAmbar;
@@ -18,6 +23,7 @@ public class TifIslemTransferViewModel extends BaseObservable {
     private String aciklama;
     private AmbarDto selectedAmbarDto;
     private PersonelDto selectedPersonelDto;
+
 
     public String getIslemTarihi() {
         return islemTarihi;

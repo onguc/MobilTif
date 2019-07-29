@@ -7,7 +7,8 @@ public class TifDto<T> {
     @SerializedName("vysTasinirDemirbasIdList")
     private Long[] idEnvanterList;
     private String islemTuru;
-    private T islem;
+    @SerializedName(value = "islem", alternate = {"vysTasinirTransferRequestDto,vysTasinirZimmetRequestDto"})
+    private T vysTasinirTransferRequestDto;
 
     public Long[] getIdEnvanterList() {
         return idEnvanterList;
@@ -25,11 +26,11 @@ public class TifDto<T> {
         this.islemTuru = islemTuru;
     }
 
-    public T getIslem() {
-        return islem;
+    public T getVysTasinirTransferRequestDto() {
+        return vysTasinirTransferRequestDto;
     }
 
-    public void setIslem(T islem) {
-        this.islem = islem;
+    public void setVysTasinirTransferRequestDto(T vysTasinirTransferRequestDto) {
+        this.vysTasinirTransferRequestDto = vysTasinirTransferRequestDto;
     }
 }

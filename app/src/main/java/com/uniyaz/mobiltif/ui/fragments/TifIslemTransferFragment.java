@@ -30,7 +30,6 @@ import com.uniyaz.mobiltif.viewmodel.TifIslemTransferViewModel;
 import java.util.List;
 
 import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
-import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 
 public class TifIslemTransferFragment extends Fragment implements ITif, ITifIslem<TifIslemTransferDto> {
 
@@ -216,8 +215,10 @@ public class TifIslemTransferFragment extends Fragment implements ITif, ITifIsle
     public TifIslemTransferDto getIslemDto() {
         TifIslemTransferDto dto = new TifIslemTransferDto();
         dto.setIslemTarihi(islemTransferViewModel.getIslemTarihi());
-        dto.setIdAmbarSorumlusu(islemTransferViewModel.getSelectedPersonelDto().getId());
-        dto.setIdGirisYapilanAmbar(islemTransferViewModel.getSelectedAmbarDto().getId());
+        if (islemTransferViewModel.getSelectedPersonelDto() != null)
+            dto.setIdAmbarSorumlusu(islemTransferViewModel.getSelectedPersonelDto().getId());
+        if (islemTransferViewModel.getSelectedAmbarDto() != null)
+            dto.setIdGirisYapilanAmbar(islemTransferViewModel.getSelectedAmbarDto().getId());
         dto.setAciklama(islemTransferViewModel.getAciklama());
         return dto;
     }
