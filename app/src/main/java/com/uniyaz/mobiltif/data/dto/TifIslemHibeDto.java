@@ -1,16 +1,16 @@
-package com.uniyaz.mobiltif.viewmodel;
+package com.uniyaz.mobiltif.data.dto;
 
-import androidx.databinding.BaseObservable;
+import java.util.Date;
 
-import com.uniyaz.mobiltif.data.dto.PersonelDto;
+/**
+ * Created by İrfan Öngüç on 23.07.2019
+ */
 
-public class TifIslem2ViewModel extends BaseObservable {
+public class TifIslemHibeDto {
     private String islemTarihi;
-    private String muhatapName;
+    private Long idMuhatap;
     private String dayanakBelgeTarihi;
     private String aciklama;
-    private PersonelDto muhatap;
-
 
     public String getIslemTarihi() {
         return islemTarihi;
@@ -20,12 +20,12 @@ public class TifIslem2ViewModel extends BaseObservable {
         this.islemTarihi = islemTarihi;
     }
 
-    public String getMuhatapName() {
-        return muhatapName;
+    public Long getIdMuhatap() {
+        return idMuhatap;
     }
 
-    public void setMuhatapName(String muhatapName) {
-        this.muhatapName = muhatapName;
+    public void setIdMuhatap(Long idMuhatap) {
+        this.idMuhatap = idMuhatap;
     }
 
     public String getDayanakBelgeTarihi() {
@@ -42,13 +42,5 @@ public class TifIslem2ViewModel extends BaseObservable {
 
     public void setAciklama(String aciklama) {
         this.aciklama = aciklama;
-    }
-
-    public PersonelDto getMuhatap() {
-        return muhatap;
-    }
-
-    public void setMuhatap(PersonelDto muhatap) {
-        this.muhatap = muhatap;
     }
 }

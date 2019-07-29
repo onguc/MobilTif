@@ -4,7 +4,7 @@ import androidx.databinding.BaseObservable;
 
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 
-public class TifIslem3ViewModel extends BaseObservable {
+public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     private String islemTarihi;
     private String dayanakBelgeTarihi;
     private String kayittanDusmeNedeni;

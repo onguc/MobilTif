@@ -2,15 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragments.TifIslem1Fragment">
+    tools:context=".ui.fragments.TifIslemTransferFragment">
         <data>
             <variable
                 name="viewModel"
-                type="com.uniyaz.mobiltif.viewmodel.TifIslem2ViewModel" />
+                type="com.uniyaz.mobiltif.viewmodel.TifIslemHibeViewModel" />
         </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <com.google.android.material.textfield.TextInputLayout

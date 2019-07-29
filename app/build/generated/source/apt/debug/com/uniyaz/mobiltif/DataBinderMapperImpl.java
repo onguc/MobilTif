@@ -13,9 +13,9 @@ import com.uniyaz.mobiltif.databinding.ContentMainBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentOdaBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentTifBindingImpl;
-import com.uniyaz.mobiltif.databinding.FragmentTifIslem1BindingImpl;
-import com.uniyaz.mobiltif.databinding.FragmentTifIslem2BindingImpl;
-import com.uniyaz.mobiltif.databinding.FragmentTifIslem3BindingImpl;
+import com.uniyaz.mobiltif.databinding.FragmentTifHibeBindingImpl;
+import com.uniyaz.mobiltif.databinding.FragmentTifHurdayaAyirmaBindingImpl;
+import com.uniyaz.mobiltif.databinding.FragmentTifTransferBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterCardSelectableBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterTifCardBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBindingImpl;
@@ -47,11 +47,11 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTTIF = 7;
 
-  private static final int LAYOUT_FRAGMENTTIFISLEM1 = 8;
+  private static final int LAYOUT_FRAGMENTTIFHIBE = 8;
 
-  private static final int LAYOUT_FRAGMENTTIFISLEM2 = 9;
+  private static final int LAYOUT_FRAGMENTTIFHURDAYAAYIRMA = 9;
 
-  private static final int LAYOUT_FRAGMENTTIFISLEM3 = 10;
+  private static final int LAYOUT_FRAGMENTTIFTRANSFER = 10;
 
   private static final int LAYOUT_ITEMENVANTERCARDSELECTABLE = 11;
 
@@ -75,9 +75,9 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_demibas_detay, LAYOUT_FRAGMENTDEMIBASDETAY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_oda, LAYOUT_FRAGMENTODA);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif, LAYOUT_FRAGMENTTIF);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_islem1, LAYOUT_FRAGMENTTIFISLEM1);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_islem2, LAYOUT_FRAGMENTTIFISLEM2);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_islem3, LAYOUT_FRAGMENTTIFISLEM3);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_hibe, LAYOUT_FRAGMENTTIFHIBE);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_hurdaya_ayirma, LAYOUT_FRAGMENTTIFHURDAYAAYIRMA);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_tif_transfer, LAYOUT_FRAGMENTTIFTRANSFER);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_envanter_card_selectable, LAYOUT_ITEMENVANTERCARDSELECTABLE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_envanter_tif_card, LAYOUT_ITEMENVANTERTIFCARD);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_oda_bilgi, LAYOUT_ITEMODABILGI);
@@ -137,23 +137,23 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for fragment_tif is invalid. Received: " + tag);
         }
-        case  LAYOUT_FRAGMENTTIFISLEM1: {
-          if ("layout/fragment_tif_islem1_0".equals(tag)) {
-            return new FragmentTifIslem1BindingImpl(component, view);
+        case  LAYOUT_FRAGMENTTIFHIBE: {
+          if ("layout/fragment_tif_hibe_0".equals(tag)) {
+            return new FragmentTifHibeBindingImpl(component, view);
           }
-          throw new IllegalArgumentException("The tag for fragment_tif_islem1 is invalid. Received: " + tag);
+          throw new IllegalArgumentException("The tag for fragment_tif_hibe is invalid. Received: " + tag);
         }
-        case  LAYOUT_FRAGMENTTIFISLEM2: {
-          if ("layout/fragment_tif_islem2_0".equals(tag)) {
-            return new FragmentTifIslem2BindingImpl(component, view);
+        case  LAYOUT_FRAGMENTTIFHURDAYAAYIRMA: {
+          if ("layout/fragment_tif_hurdaya_ayirma_0".equals(tag)) {
+            return new FragmentTifHurdayaAyirmaBindingImpl(component, view);
           }
-          throw new IllegalArgumentException("The tag for fragment_tif_islem2 is invalid. Received: " + tag);
+          throw new IllegalArgumentException("The tag for fragment_tif_hurdaya_ayirma is invalid. Received: " + tag);
         }
-        case  LAYOUT_FRAGMENTTIFISLEM3: {
-          if ("layout/fragment_tif_islem3_0".equals(tag)) {
-            return new FragmentTifIslem3BindingImpl(component, view);
+        case  LAYOUT_FRAGMENTTIFTRANSFER: {
+          if ("layout/fragment_tif_transfer_0".equals(tag)) {
+            return new FragmentTifTransferBindingImpl(component, view);
           }
-          throw new IllegalArgumentException("The tag for fragment_tif_islem3 is invalid. Received: " + tag);
+          throw new IllegalArgumentException("The tag for fragment_tif_transfer is invalid. Received: " + tag);
         }
         case  LAYOUT_ITEMENVANTERCARDSELECTABLE: {
           if ("layout/item_envanter_card_selectable_0".equals(tag)) {
@@ -269,9 +269,9 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/fragment_demibas_detay_0", com.uniyaz.mobiltif.R.layout.fragment_demibas_detay);
       sKeys.put("layout/fragment_oda_0", com.uniyaz.mobiltif.R.layout.fragment_oda);
       sKeys.put("layout/fragment_tif_0", com.uniyaz.mobiltif.R.layout.fragment_tif);
-      sKeys.put("layout/fragment_tif_islem1_0", com.uniyaz.mobiltif.R.layout.fragment_tif_islem1);
-      sKeys.put("layout/fragment_tif_islem2_0", com.uniyaz.mobiltif.R.layout.fragment_tif_islem2);
-      sKeys.put("layout/fragment_tif_islem3_0", com.uniyaz.mobiltif.R.layout.fragment_tif_islem3);
+      sKeys.put("layout/fragment_tif_hibe_0", com.uniyaz.mobiltif.R.layout.fragment_tif_hibe);
+      sKeys.put("layout/fragment_tif_hurdaya_ayirma_0", com.uniyaz.mobiltif.R.layout.fragment_tif_hurdaya_ayirma);
+      sKeys.put("layout/fragment_tif_transfer_0", com.uniyaz.mobiltif.R.layout.fragment_tif_transfer);
       sKeys.put("layout/item_envanter_card_selectable_0", com.uniyaz.mobiltif.R.layout.item_envanter_card_selectable);
       sKeys.put("layout/item_envanter_tif_card_0", com.uniyaz.mobiltif.R.layout.item_envanter_tif_card);
       sKeys.put("layout/item_oda_bilgi_0", com.uniyaz.mobiltif.R.layout.item_oda_bilgi);

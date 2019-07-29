@@ -6,9 +6,9 @@ import androidx.databinding.Bindable;
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 
-public class TifIslem1ViewModel extends BaseObservable {
+public class TifIslemTransferViewModel extends BaseObservable {
 
-    public TifIslem1ViewModel(){
+    public TifIslemTransferViewModel(){
 
     }
     private String islemTarihi;

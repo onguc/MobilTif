@@ -77,13 +77,13 @@ public class TifFragment extends Fragment implements ITif {
         String selectedItem = (String) parent.getSelectedItem();
         islemTuru = selectedItem;
         if (getString(R.string.islemTuru1).equals(selectedItem)) {
-            TifIslem1Fragment fragment = TifIslem1Fragment.newInstance();
+            TifIslemTransferFragment fragment = TifIslemTransferFragment.newInstance();
             startFragmentByBackStack(fragment);
         } else if (getString(R.string.islemTuru2).equals(selectedItem)) {
-            TifIslem2Fragment fragment = TifIslem2Fragment.newInstance();
+            TifIslemHibeFragment fragment = TifIslemHibeFragment.newInstance();
             startFragmentByBackStack(fragment);
         } else if (getString(R.string.islemTuru3).equals(selectedItem)) {
-            TifIslem3Fragment fragment = TifIslem3Fragment.newInstance();
+            TifIslemHurdayaAyirmaFragment fragment = TifIslemHurdayaAyirmaFragment.newInstance();
             startFragmentByBackStack(fragment);
         }
     }

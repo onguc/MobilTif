@@ -1,6 +1,8 @@
 package com.uniyaz.mobiltif.data.dto;
 
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -270,4 +272,9 @@ public class PersonelDto {
         this.gorevUnvani = gorevUnvani;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return getIsim();
+    }
 }

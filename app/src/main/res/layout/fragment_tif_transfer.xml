@@ -2,22 +2,22 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragments.TifIslem1Fragment">
+    tools:context=".ui.fragments.TifIslemTransferFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.uniyaz.mobiltif.viewmodel.TifIslem1ViewModel" />
+            type="com.uniyaz.mobiltif.viewmodel.TifIslemTransferViewModel" />
 
         <variable
             name="fragment"
-            type="com.uniyaz.mobiltif.ui.fragments.TifIslem1Fragment" />
+            type="com.uniyaz.mobiltif.ui.fragments.TifIslemTransferFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,18 +80,16 @@
             app:layout_constraintStart_toStartOf="@+id/tilGirisYapilanAmbar"
             app:layout_constraintTop_toBottomOf="@+id/tilGirisYapilanAmbar"/>
 
-        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+        <Spinner
             android:id="@+id/actAmbarSorumlusu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_edittext"
-            android:hint="Ambar Sorumlusu"
-            app:SearchHintText="Arayın..."
+            android:background="@drawable/bg_spinner"
+            android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="@+id/tvAmbarSorumlusu"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvAmbarSorumlusu"
             app:layout_constraintTop_toBottomOf="@+id/tvAmbarSorumlusu" />
-        
         
 
         <com.google.android.material.textfield.TextInputLayout

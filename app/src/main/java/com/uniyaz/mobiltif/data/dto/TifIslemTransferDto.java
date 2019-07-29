@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by İrfan Öngüç on 23.07.2019
  */
 
-public class TifIslem1Dto {
+public class TifIslemTransferDto {
     private String islemTarihi;
 
     @SerializedName("vysTasinirAmbarId")

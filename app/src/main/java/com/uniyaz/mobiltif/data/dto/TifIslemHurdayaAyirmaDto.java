@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by İrfan Öngüç on 23.07.2019
  */
 
-public class TifIslem3Dto {
+public class TifIslemHurdayaAyirmaDto {
 
     private String islemTarihi;
     private String dayanakBelgeTarihi;
