@@ -29,8 +29,8 @@ public class StartActivity extends AppCompatActivity implements IStartActivity {
         initializeInstanceDb();
 
 
-        goMainActivity();
-//        goControlLoginActivity();
+        //goMainActivity();
+        goControlLoginActivity();
         finish();
     }
 

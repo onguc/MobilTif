@@ -10,8 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -31,6 +31,7 @@ import com.uniyaz.mobiltif.databinding.ActivityMainBinding;
 import com.uniyaz.mobiltif.iface.IMain;
 import com.uniyaz.mobiltif.listeners.RightDrawableOnClickListener;
 import com.uniyaz.mobiltif.presenter.MainPresenter;
+import com.uniyaz.mobiltif.ui.components.CustomButtonSearch;
 import com.uniyaz.mobiltif.ui.fragments.DemirbasDetayFragment;
 import com.uniyaz.mobiltif.ui.fragments.OdaFragment;
 import com.uniyaz.mobiltif.utils.PermissionUtils;
@@ -90,13 +91,13 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     private void defineCallRoomAndEnvanter() {
         boolean focusable = true; // lets taps outside the popup also dismiss it
-        int width = LinearLayout.LayoutParams.MATCH_PARENT;
-        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         View popupView = getLayoutInflater().inflate(R.layout.popup_call_room_and_envanter, null);
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-        ImageButton btnCallRoom = popupView.findViewById(R.id.btnCallRoom);
-        ImageButton btnCallEnvanter = popupView.findViewById(R.id.btnCallEnvanter);
+        CustomButtonSearch btnCallRoom = popupView.findViewById(R.id.btnCallRoom);
+        CustomButtonSearch btnCallEnvanter = popupView.findViewById(R.id.btnCallEnvanter);
         EditText etCallQrCodeOda = popupView.findViewById(R.id.etCallQrCodeOda);
         EditText etCallQrCodeDemirbas = popupView.findViewById(R.id.etCallQrCodeDemirbas);
 
