@@ -19,8 +19,9 @@
     <string name="islemTuru1">TRANSFER</string>
     <string name="islemTuru2">HİBE</string>
     <string name="islemTuru3">HURDAYA AYIRMA</string>
-    <string name="islemTuru4">ZİMMET</string>
+    <string name="islemTuru4">ZİMMET DEVRİ</string>
     <string name="islemTuru5">ZİMMET İADE</string>
+    <string name="islemTuru6">ZİMMET</string>
 
     <string name="islemTuru_prompt">İşem Türü Seçiniz...</string>
     <string-array name="arrayIslemTurleri">
@@ -29,6 +30,7 @@
         <item>@string/islemTuru3</item>
         <item>@string/islemTuru4</item>
         <item>@string/islemTuru5</item>
+        <item>@string/islemTuru6</item>
     </string-array>
 
 </resources>

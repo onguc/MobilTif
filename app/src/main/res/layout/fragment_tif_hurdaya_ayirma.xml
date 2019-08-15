@@ -33,7 +33,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilGirisYapilanAmbar"
+            android:id="@+id/tilDevirYapilacakPersonel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -54,9 +54,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilGirisYapilanAmbar"
-            app:layout_constraintStart_toStartOf="@+id/tilGirisYapilanAmbar"
-            app:layout_constraintTop_toBottomOf="@+id/tilGirisYapilanAmbar">
+            app:layout_constraintEnd_toEndOf="@+id/tilDevirYapilacakPersonel"
+            app:layout_constraintStart_toStartOf="@+id/tilDevirYapilacakPersonel"
+            app:layout_constraintTop_toBottomOf="@+id/tilDevirYapilacakPersonel">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

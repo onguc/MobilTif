@@ -3,6 +3,7 @@ package com.uniyaz.mobiltif.ui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -11,17 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
+import com.uniyaz.mobiltif.data.enums.EnumIslemTuru;
 import com.uniyaz.mobiltif.databinding.ItemEnvanterTifCardBinding;
 import com.uniyaz.mobiltif.databinding.ItemTifIslemBinding;
 import com.uniyaz.mobiltif.ui.fragments.TifFragment;
 import com.uniyaz.mobiltif.viewmodel.TifEnvanterCardViewModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
     List<Object> envanterList;
+    List<Envanter> envanters;
     TifFragment fragment;
+    int countZimmetliEnvanter = 0;
 
     private final int TYPE_ENVANTER = 0;
     private final int TYPE_BACKGROUND = 1;
@@ -29,9 +34,16 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
 
     public TifAdapter(TifFragment fragment, List<Envanter> envanters) {
         this.envanterList = new ArrayList<>(envanters);
+        this.envanters = envanters;
         this.fragment = fragment;
         envanterList.add(TYPE_BACKGROUND);
         envanterList.add(fragment);
+
+        for (Envanter envanter : envanters) {
+            if (envanter.getZimmetliMi()) {
+                countZimmetliEnvanter++;
+            }
+        }
     }
 
     @Override
@@ -56,6 +68,20 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
 
         } else if (viewType == TYPE_FRAGMENT) {
             ItemTifIslemBinding islemBinding = DataBindingUtil.inflate(inflater, R.layout.item_tif_islem, parent, false);
+            List<EnumIslemTuru> listEnum = Arrays.asList(EnumIslemTuru.values());
+            if (countZimmetliEnvanter == 0) {
+                listEnum.remove(EnumIslemTuru.ZIMMET);
+            } else if (countZimmetliEnvanter == envanters.size()) {
+                listEnum.remove(EnumIslemTuru.ZIMMET_DEVRI);
+                listEnum.remove(EnumIslemTuru.ZIMMET_IADE);
+            } else {
+                listEnum.remove(EnumIslemTuru.ZIMMET);
+                listEnum.remove(EnumIslemTuru.ZIMMET_DEVRI);
+                listEnum.remove(EnumIslemTuru.ZIMMET_IADE);
+            }
+            ArrayAdapter<EnumIslemTuru> islemTuruAdapter = new ArrayAdapter<EnumIslemTuru>(fragment.getContext(), android.R.layout.simple_list_item_1, listEnum);
+
+            islemBinding.spinner.setAdapter(islemTuruAdapter);
             islemBinding.executePendingBindings(); // ilk spinner geldiğind onItemSelected içine girmiyordu. olması için eklendi.
             islemBinding.setFragment(fragment);
             return new TifViewHolder(islemBinding);
@@ -95,7 +121,7 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
         public void bindDto(Object object, int index) {
             if (object instanceof Envanter) {
                 Envanter envanter = (Envanter) object;
-                TifEnvanterCardViewModel viewModel = new TifEnvanterCardViewModel(envanter, index+1);
+                TifEnvanterCardViewModel viewModel = new TifEnvanterCardViewModel(envanter, index + 1);
                 ItemEnvanterTifCardBinding binding = (ItemEnvanterTifCardBinding) this.viewDataBinding;
                 binding.setViewModel(viewModel);
                 binding.executePendingBindings();

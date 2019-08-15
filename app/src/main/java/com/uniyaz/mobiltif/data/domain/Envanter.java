@@ -63,6 +63,8 @@ public class Envanter extends BaseModel implements Cloneable {
     private String seriNo;
 
     private String servisAmbar;
+    @SerializedName("zimmetliMi")
+    private boolean zimmetliMi;
 
 
     @Override
@@ -309,5 +311,13 @@ public class Envanter extends BaseModel implements Cloneable {
 
     public void setSeriNo(String seriNo) {
         this.seriNo = seriNo;
+    }
+
+    public boolean getZimmetliMi() {
+        return zimmetliMi;
+    }
+
+    public void setZimmetliMi(boolean zimmetliMi) {
+        this.zimmetliMi = zimmetliMi;
     }
 }

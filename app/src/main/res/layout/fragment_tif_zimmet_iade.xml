@@ -6,7 +6,7 @@
         <data>
             <variable
                 name="viewModel"
-                type="com.uniyaz.mobiltif.viewmodel.TifIslemHibeViewModel" />
+                type="com.uniyaz.mobiltif.viewmodel.TifIslemZimmetIadeViewModel" />
         </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,48 +31,15 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDevirYapilacakPersonel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilIslemTarihi"
-            app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
-            app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="Muhatap"
-                android:text="@={viewModel.muhatapName}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAmbarSorumlusu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilDevirYapilacakPersonel"
-            app:layout_constraintStart_toStartOf="@+id/tilDevirYapilacakPersonel"
-            app:layout_constraintTop_toBottomOf="@+id/tilDevirYapilacakPersonel">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="Dayanak Belge Tarihi"
-                android:text="@={viewModel.dayanakBelgeTarihi}"/>
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAciklama"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilAmbarSorumlusu"
-            app:layout_constraintStart_toStartOf="@+id/tilAmbarSorumlusu"
-            app:layout_constraintTop_toBottomOf="@+id/tilAmbarSorumlusu">
+            app:layout_constraintEnd_toEndOf="@+id/tilIslemTarihi"
+            app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
+            app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

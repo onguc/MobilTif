@@ -34,7 +34,7 @@ import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
 public class TifIslemTransferFragment extends Fragment implements ITif, ITifIslem<TifIslemTransferDto> {
 
     private TifIslemTransferViewModel islemTransferViewModel;
-    private AutoCompleteTextView actGirisYapilanAmbar;
+    private Spinner actGirisYapilanAmbar;
     private SearchableSpinner sspnrGirisYapilanAmbar;
     private AutoCompleteTextView actAmbarSorumlusu;
     private Spinner spnrAmbarSorumlusu;
@@ -68,45 +68,26 @@ public class TifIslemTransferFragment extends Fragment implements ITif, ITifIsle
         binding.setViewModel(islemTransferViewModel);
 //        this.sspnrGirisYapilanAmbar = binding.actGirisYapilanAmbar;
         this.actGirisYapilanAmbar = binding.actGirisYapilanAmbar;
-        actGirisYapilanAmbar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AmbarDto selectedItem = (AmbarDto) parent.getAdapter().getItem(position);
-                islemTransferViewModel.setSelectedAmbarDto(selectedItem);
-                presenter.getAllPersonelDtoList(selectedItem.getId());
-                spnrAmbarSorumlusu.setSelected(false);
-                isSelected = true;
-            }
-        });
+
 
         actGirisYapilanAmbar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                actGirisYapilanAmbar.setText("");
+                //actGirisYapilanAmbar.setText("");
                 return false;
             }
         });
-        actGirisYapilanAmbar.setOnDismissListener(new AutoCompleteTextView.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                if ("".equals(actGirisYapilanAmbar.getText().toString())) {
-                    if (islemTransferViewModel.getSelectedAmbarDto() != null) {
-                        islemTransferViewModel.setGirisYapilanAmbar(islemTransferViewModel.getSelectedAmbarDto().getAdi());
-                    }
-                }
 
-                if (!isSelected) {
-                    if (islemTransferViewModel.getSelectedAmbarDto() != null) {
-                        islemTransferViewModel.setGirisYapilanAmbar(islemTransferViewModel.getSelectedAmbarDto().getAdi());
-                    }
-                }
-            }
-        });
 
         actGirisYapilanAmbar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int x = 0;
+                AmbarDto selectedItem = (AmbarDto) parent.getAdapter().getItem(position);
+                islemTransferViewModel.setSelectedAmbarDto(selectedItem);
+                presenter.getAllPersonelDtoList(selectedItem.getId());
+                spnrAmbarSorumlusu.setSelected(false);
+                isSelected = true;
             }
 
             @Override

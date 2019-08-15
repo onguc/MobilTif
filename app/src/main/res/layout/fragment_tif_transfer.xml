@@ -37,24 +37,27 @@
                 android:text="@={viewModel.islemTarihi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilGirisYapilanAmbar"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tvGirisYapilanAmbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:text="*Giriş Yapılan Ambar"
+            style="@style/InputLabel"
             app:layout_constraintEnd_toEndOf="@+id/tilIslemTarihi"
             app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
-            app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
+            app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi"/>
 
-            <com.uniyaz.mobiltif.ui.components.CustomAutoCompleteTextView
-                android:id="@+id/actGirisYapilanAmbar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:drawableRight="@drawable/bg_spinner"
-                android:hint="Giriş Yapılan Ambar"
-                android:text="@={viewModel.girisYapilanAmbar}" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <Spinner
+            android:id="@+id/actGirisYapilanAmbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_spinner"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="@+id/tvGirisYapilanAmbar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvGirisYapilanAmbar"
+            app:layout_constraintTop_toBottomOf="@+id/tvGirisYapilanAmbar" />
+
 
         <!--<gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner-->
             <!--android:id="@+id/actGirisYapilanAmbar"-->
@@ -75,9 +78,9 @@
             android:layout_height="wrap_content"
             android:text="*Ambar Sorumlusu"
             style="@style/InputLabel"
-            app:layout_constraintEnd_toEndOf="@+id/tilGirisYapilanAmbar"
-            app:layout_constraintStart_toStartOf="@+id/tilGirisYapilanAmbar"
-            app:layout_constraintTop_toBottomOf="@+id/tilGirisYapilanAmbar"/>
+            app:layout_constraintEnd_toEndOf="@+id/actGirisYapilanAmbar"
+            app:layout_constraintStart_toStartOf="@+id/actGirisYapilanAmbar"
+            app:layout_constraintTop_toBottomOf="@+id/actGirisYapilanAmbar"/>
 
         <Spinner
             android:id="@+id/actAmbarSorumlusu"

@@ -1,12 +1,13 @@
 package com.uniyaz.mobiltif.data.dto;
 
 import com.google.gson.annotations.SerializedName;
+import com.uniyaz.mobiltif.data.enums.EnumIslemTuru;
 
 public class TifDto<T> {
 
     @SerializedName("vysTasinirDemirbasIdList")
     private Long[] idEnvanterList;
-    private String islemTuru;
+    private EnumIslemTuru islemTuru;
     @SerializedName(value = "islem", alternate = {"vysTasinirTransferRequestDto,vysTasinirZimmetRequestDto"})
     private T vysTasinirTransferRequestDto;
 
@@ -18,11 +19,11 @@ public class TifDto<T> {
         this.idEnvanterList = idEnvanterList;
     }
 
-    public String getIslemTuru() {
+    public EnumIslemTuru getIslemTuru() {
         return islemTuru;
     }
 
-    public void setIslemTuru(String islemTuru) {
+    public void setIslemTuru(EnumIslemTuru islemTuru) {
         this.islemTuru = islemTuru;
     }
 

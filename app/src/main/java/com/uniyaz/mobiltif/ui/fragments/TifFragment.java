@@ -25,9 +25,11 @@ import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.data.dto.TifDto;
+import com.uniyaz.mobiltif.data.enums.EnumIslemTuru;
 import com.uniyaz.mobiltif.databinding.FragmentTifBinding;
 import com.uniyaz.mobiltif.iface.ITif;
 import com.uniyaz.mobiltif.iface.ITifIslem;
+import com.uniyaz.mobiltif.pattern.FragmentCreationFactory;
 import com.uniyaz.mobiltif.presenter.TifPresenter;
 import com.uniyaz.mobiltif.ui.activities.MainActivity;
 import com.uniyaz.mobiltif.ui.adapters.TifAdapter;
@@ -41,7 +43,7 @@ public class TifFragment extends Fragment implements ITif {
     private List<Envanter> envanters;
     private TifDto tifDto;
     ITifIslem iTifIslem;
-    private String islemTuru;
+    private EnumIslemTuru enumIslemTuru;
     private MainActivity mainActivity;
 
     private List<AmbarDto> ambarDtoList;
@@ -74,18 +76,10 @@ public class TifFragment extends Fragment implements ITif {
 
 
     public void onItemSelectedSpinner(AdapterView<?> parent, View view, int position, long id) {
-        String selectedItem = (String) parent.getSelectedItem();
-        islemTuru = selectedItem;
-        if (getString(R.string.islemTuru1).equals(selectedItem)) {
-            TifIslemTransferFragment fragment = TifIslemTransferFragment.newInstance();
-            startFragmentByBackStack(fragment);
-        } else if (getString(R.string.islemTuru2).equals(selectedItem)) {
-            TifIslemHibeFragment fragment = TifIslemHibeFragment.newInstance();
-            startFragmentByBackStack(fragment);
-        } else if (getString(R.string.islemTuru3).equals(selectedItem)) {
-            TifIslemHurdayaAyirmaFragment fragment = TifIslemHurdayaAyirmaFragment.newInstance();
-            startFragmentByBackStack(fragment);
-        }
+        EnumIslemTuru selectedItem = (EnumIslemTuru) parent.getSelectedItem();
+        enumIslemTuru = selectedItem;
+        Fragment fragment = FragmentCreationFactory.createAndGetFragment(enumIslemTuru);
+        startFragmentByBackStack(fragment);
     }
 
     public void onClicBtnIslemiGerceklestir() {
@@ -105,7 +99,7 @@ public class TifFragment extends Fragment implements ITif {
             idEnvanterList = Stream.of(envanters).map(p -> p.getId()).toArray(Long[]::new);
         }
         dto.setIdEnvanterList(idEnvanterList);
-        dto.setIslemTuru(islemTuru);
+        dto.setIslemTuru(enumIslemTuru);
         dto.setVysTasinirTransferRequestDto(iTifIslem.getIslemDto());
         presenter.saveVysTasinirTransferIslem(dto);
     }
