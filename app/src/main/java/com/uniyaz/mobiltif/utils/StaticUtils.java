@@ -5,6 +5,7 @@ import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.domain.Tasinir;
 import com.uniyaz.mobiltif.data.domain.User;
 import com.uniyaz.mobiltif.data.domain.UserDto;
+import com.uniyaz.mobiltif.iface.IMain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +16,9 @@ import java.util.List;
 
 public class StaticUtils {
 
-    public static User user =null;
-
-
-
+    public static User user = null;
+    public static IMain iMain;
+    public static String kullaniciAdi = "uniyaz";
     private static List<Tasinir> tasinirList = new ArrayList<>();
     private static List<Department> departmentList = new ArrayList<>();
     private static List<Room> roomList = new ArrayList<>();
@@ -84,7 +84,7 @@ public class StaticUtils {
         roomList.clear();
     }
 
-    public static String getAuthorizationForTest(){
+    public static String getAuthorizationForTest() {
         return "applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0";
     }
 

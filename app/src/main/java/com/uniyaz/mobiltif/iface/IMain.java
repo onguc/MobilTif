@@ -21,10 +21,6 @@ public interface IMain extends ICommon {
 
     void onSuccess(String message);
 
-    void notifyDepartment();
-
-    void notifyTasinir();
-
     void logOut();
 
     Activity getActivity();

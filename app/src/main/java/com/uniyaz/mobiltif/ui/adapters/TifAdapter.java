@@ -40,7 +40,7 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
         envanterList.add(fragment);
 
         for (Envanter envanter : envanters) {
-            if (envanter.getZimmetliMi()) {
+            if (envanter.isZimmetli()) {
                 countZimmetliEnvanter++;
             }
         }
@@ -68,7 +68,8 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
 
         } else if (viewType == TYPE_FRAGMENT) {
             ItemTifIslemBinding islemBinding = DataBindingUtil.inflate(inflater, R.layout.item_tif_islem, parent, false);
-            List<EnumIslemTuru> listEnum = Arrays.asList(EnumIslemTuru.values());
+            List<EnumIslemTuru> listEnum = new ArrayList<>(Arrays.asList(EnumIslemTuru.values()));
+
             if (countZimmetliEnvanter == 0) {
                 listEnum.remove(EnumIslemTuru.ZIMMET);
             } else if (countZimmetliEnvanter == envanters.size()) {

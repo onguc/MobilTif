@@ -9,6 +9,8 @@ public class TifEnvanterCardViewModel extends BaseObservable {
     public TifEnvanterCardViewModel(Envanter envanter, int index) {
         labelUst = envanter.getId() + "/" + envanter.getTasinirAdi() + "/" + envanter.getTasinirKodu();
         labelAlt = envanter.getAmbar();
+        if (envanter.isZimmetli())
+            labelAlt = labelUst + "\n<b>(Zimmetli Malzeme)</b>";
         this.index = String.valueOf(index);
     }
 

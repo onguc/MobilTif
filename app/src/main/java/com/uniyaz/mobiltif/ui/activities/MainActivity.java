@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -35,10 +34,9 @@ import com.uniyaz.mobiltif.ui.components.CustomButtonSearch;
 import com.uniyaz.mobiltif.ui.fragments.DemirbasDetayFragment;
 import com.uniyaz.mobiltif.ui.fragments.OdaFragment;
 import com.uniyaz.mobiltif.utils.PermissionUtils;
+import com.uniyaz.mobiltif.utils.StaticUtils;
 import com.uniyaz.mobiltif.utils.TextCustomUtils;
 import com.uniyaz.mobiltif.viewmodel.MainViewModel;
-
-import java.util.Map;
 
 
 /**
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 //        ActivityMainBinding activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setViewModel(viewModel);
-
+        StaticUtils.iMain = this;
 
         presenter = new MainPresenter(this);
         fragmentManager = getSupportFragmentManager();
@@ -260,11 +258,15 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void onSuccess() {
+        hideProgressBar();
+    }
+
+    private void hideProgressBar() {
         viewModel.hideProgressBar();
     }
 
     public void onSuccessForEnvater(Envanter envanter) {
-        viewModel.hideProgressBar();
+        hideProgressBar();
 
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas);
         viewModel.setTitleToolbar(titleDemirbarDetay);
@@ -277,7 +279,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
     @Override
     public void onSuccessForRoom(Room room) {
         hidePopupCallRoomAndEnvanter();
-        viewModel.hideProgressBar();
+        hideProgressBar();
         String titleDemirbarDetay = getString(R.string.toolbar_title_demirbas_list);
         viewModel.setTitleToolbar(titleDemirbarDetay);
 
@@ -287,16 +289,6 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void onSuccess(String message) {
-
-    }
-
-    @Override
-    public void notifyDepartment() {
-
-    }
-
-    @Override
-    public void notifyTasinir() {
 
     }
 
@@ -318,7 +310,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     @Override
     public void showWarningDialog(String title, String explanation) {
-        viewModel.hideProgressBar();
+        hideProgressBar();
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(explanation)
@@ -340,13 +332,4 @@ public class MainActivity extends AppCompatActivity implements IMain {
         onSuccessForEnvater(envanter);
         return true;
     }
-
-    public boolean goClickOnlineTifIslem() {
-        Map<Integer, Envanter> selectedEnvanterlist = null;
-        return true;
-    }
-//    public boolean onClickCallPopup(MenuItem menuItem) {
-//        showPopupCallRoomAndEnvanter();
-//        return true;
-//    }
 }

@@ -88,6 +88,7 @@ public class LoginPresenter {
                 } else {
                     if (loginInfo.getSuccess()) {
                         StaticUtils.authTicket = loginInfo.getAuthorizationTicket();
+                        StaticUtils.kullaniciAdi = userDto.getUsername();
                         view.onSuccess();
                     } else if ("0900".equals(loginInfo.getResultCode())) {
                         view.showWarningDialog("Kullanıcı Adı ya da Şifre Yanlış!");

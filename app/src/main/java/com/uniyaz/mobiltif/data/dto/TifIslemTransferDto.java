@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class TifIslemTransferDto {
+
     private String islemTarihi;
 
     @SerializedName("vysTasinirAmbarId")
@@ -14,9 +15,6 @@ public class TifIslemTransferDto {
 
     @SerializedName("pbsPersonelKayitSorumlusuId")
     private Long idAmbarSorumlusu;
-
-    @SerializedName("islemiYapanPbsPersonelId")
-    private Long idIslemiYapanPersonel;
 
     @SerializedName("aciklama")
     private String aciklama;
@@ -51,13 +49,5 @@ public class TifIslemTransferDto {
 
     public void setAciklama(String aciklama) {
         this.aciklama = aciklama;
-    }
-
-    public Long getIdIslemiYapanPersonel() {
-        return idIslemiYapanPersonel;
-    }
-
-    public void setIdIslemiYapanPersonel(Long idIslemiYapanPersonel) {
-        this.idIslemiYapanPersonel = idIslemiYapanPersonel;
     }
 }

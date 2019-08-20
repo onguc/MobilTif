@@ -68,7 +68,7 @@ public interface RetrofitInterface {
     @POST("FindAllVysTasinirDemirbasImagesByUrl")
     Call<ResponseInfo<byte[]>> loadImage(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
 
-    @POST("SaveVysTasinirTransferIslem")
+    @POST("MobilTifIslem")//SaveVysTasinirTransferIslem
     Call<ResponseInfo> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
 
     Gson gson = new GsonBuilder()

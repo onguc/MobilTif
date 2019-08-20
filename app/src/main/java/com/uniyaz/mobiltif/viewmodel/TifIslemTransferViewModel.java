@@ -20,6 +20,7 @@ public class TifIslemTransferViewModel extends BaseObservable {
     @Bindable
     private String girisYapilanAmbar;
     private String ambarSorumlusu;
+    @Bindable
     private String aciklama;
     private AmbarDto selectedAmbarDto;
     private PersonelDto selectedPersonelDto;

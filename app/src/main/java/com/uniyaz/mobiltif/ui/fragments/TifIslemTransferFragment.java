@@ -1,55 +1,42 @@
 package com.uniyaz.mobiltif.ui.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.uniyaz.mobiltif.R;
-import com.uniyaz.mobiltif.data.domain.Envanter;
-import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.data.dto.TifIslemTransferDto;
 import com.uniyaz.mobiltif.databinding.FragmentTifTransferBinding;
-import com.uniyaz.mobiltif.iface.ITif;
+import com.uniyaz.mobiltif.iface.ITifCommon;
 import com.uniyaz.mobiltif.iface.ITifIslem;
-import com.uniyaz.mobiltif.presenter.TifPresenter;
+import com.uniyaz.mobiltif.presenter.TifIslemTransferPresenter;
 import com.uniyaz.mobiltif.ui.adapters.AmbarAdapter;
 import com.uniyaz.mobiltif.ui.adapters.PersonelAdapter;
 import com.uniyaz.mobiltif.viewmodel.TifIslemTransferViewModel;
 
 import java.util.List;
 
-import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
-
-public class TifIslemTransferFragment extends Fragment implements ITif, ITifIslem<TifIslemTransferDto> {
+public class TifIslemTransferFragment extends Fragment implements ITifCommon, ITifIslem<TifIslemTransferDto> {
 
     private TifIslemTransferViewModel islemTransferViewModel;
     private Spinner actGirisYapilanAmbar;
-    private SearchableSpinner sspnrGirisYapilanAmbar;
-    private AutoCompleteTextView actAmbarSorumlusu;
     private Spinner spnrAmbarSorumlusu;
-    private TifPresenter presenter;
-    private boolean isSelected;
-
-    public TifIslemTransferFragment() {
-        // Required empty public constructor
-    }
+    private TifIslemTransferPresenter presenter;
 
 
     public static TifIslemTransferFragment newInstance() {
         TifIslemTransferFragment fragment = new TifIslemTransferFragment();
-        TifPresenter presenter = new TifPresenter(fragment);
-        presenter.getAllAmbarDtoList();
+        TifIslemTransferPresenter presenter = new TifIslemTransferPresenter(fragment);
+        presenter.fillAllAmbarDtoList();
         fragment.presenter = presenter;
         return fragment;
     }
@@ -85,9 +72,8 @@ public class TifIslemTransferFragment extends Fragment implements ITif, ITifIsle
                 int x = 0;
                 AmbarDto selectedItem = (AmbarDto) parent.getAdapter().getItem(position);
                 islemTransferViewModel.setSelectedAmbarDto(selectedItem);
-                presenter.getAllPersonelDtoList(selectedItem.getId());
+                presenter.fillAllPersonelDtoListByAmbarId(selectedItem.getId());
                 spnrAmbarSorumlusu.setSelected(false);
-                isSelected = true;
             }
 
             @Override
@@ -124,20 +110,6 @@ public class TifIslemTransferFragment extends Fragment implements ITif, ITifIsle
         return view;
     }
 
-    @Override
-    public void onSuccess() {
-
-    }
-
-    @Override
-    public void onSuccessForEnvater(Envanter envanter) {
-
-    }
-
-    @Override
-    public void onSuccessForRoom(Room room) {
-
-    }
 
     @Override
     public void onSuccessForAmbarDtoList(List<AmbarDto> ambarDtoList) {
@@ -150,46 +122,6 @@ public class TifIslemTransferFragment extends Fragment implements ITif, ITifIsle
     public void onSuccessforPersonelDtoList(List<PersonelDto> personelDtoList) {
         PersonelAdapter personelAdapter = new PersonelAdapter(personelDtoList, getActivity());
         spnrAmbarSorumlusu.setAdapter(personelAdapter);
-    }
-
-    @Override
-    public void onSuccessForSaveTasinirTransferIslem() {
-
-    }
-
-    @Override
-    public void onSuccess(String message) {
-
-    }
-
-    @Override
-    public void notifyDepartment() {
-
-    }
-
-    @Override
-    public void notifyTasinir() {
-
-    }
-
-    @Override
-    public void logOut() {
-
-    }
-
-    @Override
-    public void showProgressBar() {
-
-    }
-
-    @Override
-    public void showWarningDialog(String title, String explanation) {
-
-    }
-
-    @Override
-    public Context getApplicationContext() {
-        return null;
     }
 
     @Override

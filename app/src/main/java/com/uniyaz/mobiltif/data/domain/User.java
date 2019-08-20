@@ -8,15 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class User extends BaseModel {
 
-    public final static String TABLE_NAME = "User";
-    public final static String keyId = "id";
-    public final static String keyName = "name";
-    public final static String keySurname = "surname";
-    public final static String keyUserName = "username";
-    public final static String keyEmail = "e_mail";
-    public final static String keyPassword = "password";
-    public final static String keyToken = "token";
-
     private Long id;
     private String name;
     private String surname;

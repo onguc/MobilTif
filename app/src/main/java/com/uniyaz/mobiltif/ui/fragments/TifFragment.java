@@ -1,6 +1,5 @@
 package com.uniyaz.mobiltif.ui.fragments;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +20,6 @@ import com.annimon.stream.Stream;
 import com.github.andreilisun.swipedismissdialog.SwipeDismissDialog;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
-import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.data.dto.TifDto;
@@ -84,13 +82,6 @@ public class TifFragment extends Fragment implements ITif {
 
     public void onClicBtnIslemiGerceklestir() {
 
-        View dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit, null);
-        new SwipeDismissDialog.Builder(getActivity())
-                .setView(dialog)
-                .build()
-                .show();
-
-
         TifDto dto = new TifDto();
         Long[] idEnvanterList = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -100,7 +91,7 @@ public class TifFragment extends Fragment implements ITif {
         }
         dto.setIdEnvanterList(idEnvanterList);
         dto.setIslemTuru(enumIslemTuru);
-        dto.setVysTasinirTransferRequestDto(iTifIslem.getIslemDto());
+        dto.setVysTasinirRequestDto(iTifIslem.getIslemDto());
         presenter.saveVysTasinirTransferIslem(dto);
     }
 
@@ -117,21 +108,6 @@ public class TifFragment extends Fragment implements ITif {
     }
 
     @Override
-    public void onSuccess() {
-
-    }
-
-    @Override
-    public void onSuccessForEnvater(Envanter envanter) {
-
-    }
-
-    @Override
-    public void onSuccessForRoom(Room room) {
-
-    }
-
-    @Override
     public void onSuccessForAmbarDtoList(List<AmbarDto> ambarDtoList) {
         this.ambarDtoList = ambarDtoList;
     }
@@ -143,43 +119,10 @@ public class TifFragment extends Fragment implements ITif {
 
     @Override
     public void onSuccessForSaveTasinirTransferIslem() {
-        int x = 0;
+        View dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit, null);
+        new SwipeDismissDialog.Builder(getActivity())
+                .setView(dialog)
+                .build()
+                .show();
     }
-
-    @Override
-    public void onSuccess(String message) {
-
-    }
-
-    @Override
-    public void notifyDepartment() {
-
-    }
-
-    @Override
-    public void notifyTasinir() {
-
-    }
-
-    @Override
-    public void logOut() {
-
-    }
-
-    @Override
-    public void showProgressBar() {
-
-    }
-
-    @Override
-    public void showWarningDialog(String title, String explanation) {
-
-    }
-
-    @Override
-    public Context getApplicationContext() {
-        return getContext();
-    }
-
-
 }
