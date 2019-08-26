@@ -28,7 +28,6 @@
                 android:background="@color/colorBackgroundToolbar"
                 app:titleTextColor="@color/colorBlack"
                 app:navigationIcon="@mipmap/ic_icon"
-                app:layout_scrollFlags="scroll|enterAlways"
                 app:title="@{viewModel.titleToolbar}"
 
                 />

@@ -49,7 +49,7 @@ public class TifIslemTransferPresenter {
 
     public void fillAllPersonelDtoListByAmbarId(Long vysTasinirAmbarId) {
         RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "vysTasinirAmbarId=" + vysTasinirAmbarId);
-        Call<ResponseInfo<List<PersonelDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.getAllPersonelDtoList(getAuthorizationForTest(), bodyQrCode);
+        Call<ResponseInfo<List<PersonelDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.getAllPersonelDtoListByAmbarId(getAuthorizationForTest(), bodyQrCode);
         responseInfoCall.enqueue(new Callback<ResponseInfo<List<PersonelDto>>>() {
             @Override
             public void onResponse(Call<ResponseInfo<List<PersonelDto>>> call, Response<ResponseInfo<List<PersonelDto>>> response) {

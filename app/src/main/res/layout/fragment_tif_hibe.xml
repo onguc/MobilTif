@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.TifIslemTransferFragment">
-        <data>
-            <variable
-                name="viewModel"
-                type="com.uniyaz.mobiltif.viewmodel.TifIslemHibeViewModel" />
-        </data>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.uniyaz.mobiltif.viewmodel.TifIslemHibeViewModel" />
+        <variable
+            name="fragment"
+            type="com.uniyaz.mobiltif.ui.fragments.TifIslemHibeFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,8 +33,7 @@
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="İşlem Tarihi"
-                android:text="@={viewModel.islemTarihi}"
-                />
+                android:text="@={viewModel.islemTarihi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -40,12 +45,15 @@
             app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
             app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/etMuhatap"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
-                android:hint="Muhatap"
-                android:text="@={viewModel.muhatapName}"/>
+                android:onClick="@{()->fragment.onClicEtMuhatap()}"
+                android:text="@={viewModel.muhatapName}"
+                android:drawableRight="@drawable/ic_search"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +70,7 @@
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Dayanak Belge Tarihi"
-                android:text="@={viewModel.dayanakBelgeTarihi}"/>
+                android:text="@={viewModel.dayanakBelgeTarihi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +87,7 @@
                 android:layout_height="@dimen/editTextAciklamaHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Açıklama"
-                android:text="@={viewModel.aciklama}"/>
+                android:text="@={viewModel.aciklama}" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,5 +1,7 @@
 package com.uniyaz.mobiltif.data.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -8,8 +10,10 @@ import java.util.Date;
 
 public class TifIslemHibeDto {
     private String islemTarihi;
+    @SerializedName("sbsMuhatapId")
     private Long idMuhatap;
     private String dayanakBelgeTarihi;
+    @SerializedName("aciklama")
     private String aciklama;
 
     public String getIslemTarihi() {

@@ -7,6 +7,7 @@ import com.uniyaz.mobiltif.data.repo.DepartmentRepo;
 import com.uniyaz.mobiltif.iface.IMain;
 import com.uniyaz.mobiltif.retrofit.RetrofitInterface;
 import com.uniyaz.mobiltif.utils.ObjectUtil;
+import com.uniyaz.mobiltif.utils.StaticUtils;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -38,7 +39,7 @@ public class MainPresenter {
 
 
     public void callRoomByQrCode(String qrCode) {
-        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode);
+        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode+"&kullaniciAdi="+ StaticUtils.kullaniciAdi);
         Call<ResponseInfo<Room>> callEnvanterList = RetrofitInterface.retrofitInterface.getRoomAndEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
         view.showProgressBar();
         callEnvanterList.enqueue(new Callback<ResponseInfo<Room>>() {
@@ -58,7 +59,7 @@ public class MainPresenter {
     }
 
     public void callEnvanterByQrCode(String qrCode) {
-        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode);
+        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode+"&kullaniciAdi="+ StaticUtils.kullaniciAdi);
         Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthorizationForTest(), bodyQrCode);
         view.showProgressBar();
         callEnvanter.enqueue(new Callback<ResponseInfo<Envanter>>() {

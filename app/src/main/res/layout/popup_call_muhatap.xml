@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/margin_view"
+    android:background="@color/colorBtnOrange"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/etAdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext"/>
+        <Button
+            android:id="@+id/btnCallMuhatap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ara"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvMuhatapList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>

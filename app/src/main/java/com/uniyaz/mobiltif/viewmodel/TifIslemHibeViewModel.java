@@ -1,18 +1,21 @@
 package com.uniyaz.mobiltif.viewmodel;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
-import com.uniyaz.mobiltif.data.dto.PersonelDto;
+import com.uniyaz.mobiltif.BR;
+import com.uniyaz.mobiltif.data.dto.MuhatapDto;
 import com.uniyaz.mobiltif.utils.TranslateDateFormat;
 
 import java.util.Date;
 
 public class TifIslemHibeViewModel extends BaseObservable {
     private String islemTarihi;
+    @Bindable
     private String muhatapName;
     private String dayanakBelgeTarihi;
     private String aciklama;
-    private PersonelDto muhatap;
+    private MuhatapDto muhatap;
 
     public TifIslemHibeViewModel() {
         String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
@@ -52,11 +55,20 @@ public class TifIslemHibeViewModel extends BaseObservable {
         this.aciklama = aciklama;
     }
 
-    public PersonelDto getMuhatap() {
+    public MuhatapDto getMuhatap() {
         return muhatap;
     }
 
-    public void setMuhatap(PersonelDto muhatap) {
+    public void setMuhatap(MuhatapDto muhatap) {
         this.muhatap = muhatap;
+        if (muhatap != null)
+            muhatapName = muhatap.getIsim();
+        notifyPropertyChanged(BR.muhatapName);
+    }
+
+    public String getMuhatapIsim() {
+        if (muhatap != null)
+            return muhatap.getIsim();
+        else return "";
     }
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.data.dto.TifDto;
+import com.uniyaz.mobiltif.data.dto.TifIslemResponseDto;
 import com.uniyaz.mobiltif.data.enums.EnumIslemTuru;
 import com.uniyaz.mobiltif.databinding.FragmentTifBinding;
 import com.uniyaz.mobiltif.iface.ITif;
@@ -62,6 +64,7 @@ public class TifFragment extends Fragment implements ITif {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         presenter = new TifPresenter(this);
+        presenter.fillAllMuhatapDto();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif, container, false);
         binding.setFragment(this);
         TifAdapter adapter = new TifAdapter(this, envanters);
@@ -118,8 +121,10 @@ public class TifFragment extends Fragment implements ITif {
     }
 
     @Override
-    public void onSuccessForSaveTasinirTransferIslem() {
+    public void onSuccessForSaveTasinirTransferIslem(TifIslemResponseDto responseDto) {
         View dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit, null);
+        TextView tvNo = dialog.findViewById(R.id.tvNo);
+        tvNo.setText(responseDto.getDosyaNo());
         new SwipeDismissDialog.Builder(getActivity())
                 .setView(dialog)
                 .build()

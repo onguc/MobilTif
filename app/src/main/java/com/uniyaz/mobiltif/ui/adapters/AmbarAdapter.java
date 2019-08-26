@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import gr.escsoft.michaelprimez.searchablespinner.interfaces.ISpinnerSelectedView;
-
 /**
  * Created by İrfan Öngüç on 15.04.2019.
  */
@@ -65,7 +63,6 @@ public class AmbarAdapter extends BaseAdapter implements Filterable {
     public Filter getFilter() {
         return new TasinirFilter();
     }
-
 
 
     public class TasinirFilter extends Filter {

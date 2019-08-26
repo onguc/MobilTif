@@ -143,6 +143,12 @@ public class MainActivity extends AppCompatActivity implements IMain {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        boolean destroyed = fragmentManager.isDestroyed();
+        super.onBackPressed();
+    }
+
     private void showPopupCallRoomAndEnvanter() {
         popupWindow.showAtLocation(activityMainBinding.toolbar, Gravity.CENTER, 0, 0);
     }

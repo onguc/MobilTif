@@ -2,14 +2,14 @@ package com.uniyaz.mobiltif.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.LoginInfo;
 import com.uniyaz.mobiltif.data.domain.ResponseInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
-import com.uniyaz.mobiltif.data.domain.Tasinir;
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
+import com.uniyaz.mobiltif.data.dto.MuhatapDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
+import com.uniyaz.mobiltif.data.dto.TifIslemResponseDto;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -30,46 +30,37 @@ import retrofit2.http.POST;
 public interface RetrofitInterface {
 
     boolean isUriFlex = true;
-    String uriFlex = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/json/vys/";
+    String uriFlex = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/json/";
     String uri = "http://tarihisozluk.site/TarihZumresi/rest/tifislem/";   //test
 
-    @POST("../../auth/login")
+    @POST("../auth/login")
     Call<LoginInfo> loginAndGetToken(@Body RequestBody loginInfo);
 
 
-    //    @POST("getEnvanterByQrCode.php")
-    @POST("FindVysTasinirDemirbasByEtiketNo")
+    @POST("vys/FindVysTasinirDemirbasByEtiketNo")
     Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
 //    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
 
 
-    @POST("FindVysVarlikLokasyonDtoByOdaEtiketNo")
-        //@POST("getRoomAndEnvanterListByQrCodeRoom.php")
+    @POST("vys/FindVysVarlikLokasyonDtoByOdaEtiketNo")
     Call<ResponseInfo<Room>> getRoomAndEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
 //    Call<ResponseInfo<List<Envanter>>> getRoomAndEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
 
 
-    @POST("FindAllVysTasinirAmbar")
+    @POST("vys/FindAllVysTasinirAmbar")
     Call<ResponseInfo<List<AmbarDto>>> getAllAmbarDtoList(@Header("Authorization") String authTicket);
 
-    @POST("FindAllPbsPersonelKayitYetkilisiByVysTasinirAmbarId")
-    Call<ResponseInfo<List<PersonelDto>>> getAllPersonelDtoList(@Header("Authorization") String authTicket, @Body RequestBody bodyIdAmbar);
+    @POST("vys/FindAllPbsPersonelKayitYetkilisiByVysTasinirAmbarId")
+    Call<ResponseInfo<List<PersonelDto>>> getAllPersonelDtoListByAmbarId(@Header("Authorization") String authTicket, @Body RequestBody bodyIdAmbar);
 
-
-    //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
-    @POST("json/kbs/FindAllKbsServisDto")
-    Call<ResponseInfo<List<Department>>> getDepartmList(@Header("Authorization") String authTicket, @Body RequestBody servisTuru);
-//    Call<ResponseInfo<List<Department>>> getDepartmList(@Header("AuthorizationTicket") String authTicket, @Body RequestBody servisTuru);
-
-    //    @Headers({"Content-Type: application/json", "Authorization:applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0"})
-    @POST("json/vys/FindAllVysSayimTasinirKod")
-    Call<ResponseInfo<List<Tasinir>>> getTasinirList(@Header("AuthorizationTicket") String authTicket);
-
-    @POST("FindAllVysTasinirDemirbasImagesByUrl")
+    @POST("vys/FindAllVysTasinirDemirbasImagesByUrl")
     Call<ResponseInfo<byte[]>> loadImage(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
 
-    @POST("MobilTifIslem")//SaveVysTasinirTransferIslem
-    Call<ResponseInfo> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+    @POST("vys/MobilTifIslem") //SaveVysTasinirTransferIslem
+    Call<ResponseInfo<TifIslemResponseDto>> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+
+    @POST("sbs/FindAllSbsMuhatap")
+    Call<ResponseInfo<List<MuhatapDto>>> findAllSbsMuhatap(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
 
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")

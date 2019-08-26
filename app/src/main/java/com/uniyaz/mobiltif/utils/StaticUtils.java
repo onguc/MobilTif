@@ -5,6 +5,7 @@ import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.domain.Tasinir;
 import com.uniyaz.mobiltif.data.domain.User;
 import com.uniyaz.mobiltif.data.domain.UserDto;
+import com.uniyaz.mobiltif.data.dto.MuhatapDto;
 import com.uniyaz.mobiltif.iface.IMain;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class StaticUtils {
     private static List<Room> roomList = new ArrayList<>();
     public static String authTicket = null;
     public static UserDto userDto = null;
+    public static List<MuhatapDto> muhatapDtoList=null;
 
     public static SuccessControl successControl = new SuccessControl();
 
