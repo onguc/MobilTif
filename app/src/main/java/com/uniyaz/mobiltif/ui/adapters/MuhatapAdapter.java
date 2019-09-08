@@ -24,7 +24,7 @@ public class MuhatapAdapter extends BaseAdapter {
     List<MuhatapDto> muhatapDtoListAll;
     private LayoutInflater layoutInflater;
 
-    public MuhatapAdapter(List<MuhatapDto> muhatapDtoList, Activity activity) {
+    public MuhatapAdapter(List<MuhatapDto> muhatapDtoList, Context activity) {
         if (muhatapDtoList == null) muhatapDtoList = new ArrayList<>();
         layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.muhatapDtoListAll = muhatapDtoList;

@@ -26,4 +26,6 @@ public interface IMain extends ICommon {
     Activity getActivity();
 
     void showProgressBar();
+
+    void hideProgressBar();
 }

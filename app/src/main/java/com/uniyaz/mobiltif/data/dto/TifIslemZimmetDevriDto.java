@@ -1,12 +1,17 @@
 package com.uniyaz.mobiltif.data.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by İrfan Öngüç on 23.07.2019
  */
 
 public class TifIslemZimmetDevriDto {
+    @SerializedName("islemTarihi")
     private String islemTarihi;
-    private Long idDevirYapilacakPersonel;
+    @SerializedName("zimmetlenecekPersonelId")
+    private Long zimmetlenecekPersonelId;
+    @SerializedName("aciklama")
     private String aciklama;
 
     public String getIslemTarihi() {
@@ -17,12 +22,12 @@ public class TifIslemZimmetDevriDto {
         this.islemTarihi = islemTarihi;
     }
 
-    public Long getIdDevirYapilacakPersonel() {
-        return idDevirYapilacakPersonel;
+    public Long getZimmetlenecekPersonelId() {
+        return zimmetlenecekPersonelId;
     }
 
-    public void setIdDevirYapilacakPersonel(Long idDevirYapilacakPersonel) {
-        this.idDevirYapilacakPersonel = idDevirYapilacakPersonel;
+    public void setZimmetlenecekPersonelId(Long zimmetlenecekPersonelId) {
+        this.zimmetlenecekPersonelId = zimmetlenecekPersonelId;
     }
 
     public String getAciklama() {

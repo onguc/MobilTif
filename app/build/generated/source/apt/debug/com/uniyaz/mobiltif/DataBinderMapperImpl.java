@@ -266,27 +266,33 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(19);
+    static final SparseArray<String> sKeys = new SparseArray<String>(25);
 
     static {
       sKeys.put(0, "_all");
       sKeys.put(1, "showProgressBar");
       sKeys.put(2, "girisYapilanAmbar");
-      sKeys.put(3, "activity");
-      sKeys.put(4, "toastMessage");
-      sKeys.put(5, "contentMainViewModel");
-      sKeys.put(6, "titleToolbar");
-      sKeys.put(7, "room");
-      sKeys.put(8, "ambarName");
-      sKeys.put(9, "fragment");
-      sKeys.put(10, "password");
-      sKeys.put(11, "aciklama");
-      sKeys.put(12, "muhatapName");
-      sKeys.put(13, "viewModel");
-      sKeys.put(14, "checked");
-      sKeys.put(15, "progressBarViewModel");
-      sKeys.put(16, "selected");
-      sKeys.put(17, "username");
+      sKeys.put(3, "komisyonUyesi2Adi");
+      sKeys.put(4, "activity");
+      sKeys.put(5, "toastMessage");
+      sKeys.put(6, "contentMainViewModel");
+      sKeys.put(7, "harcamaYetkilisiAdi");
+      sKeys.put(8, "titleToolbar");
+      sKeys.put(9, "room");
+      sKeys.put(10, "ambarName");
+      sKeys.put(11, "fragment");
+      sKeys.put(12, "password");
+      sKeys.put(13, "aciklama");
+      sKeys.put(14, "harcamaYetkilisi");
+      sKeys.put(15, "komisyonUyesi1TKY_YetkilisiAdi");
+      sKeys.put(16, "muhatapName");
+      sKeys.put(17, "viewModel");
+      sKeys.put(18, "checked");
+      sKeys.put(19, "komisyonBaskaniAdi");
+      sKeys.put(20, "progressBarViewModel");
+      sKeys.put(21, "selected");
+      sKeys.put(22, "devirYapilacakPersonel");
+      sKeys.put(23, "username");
     }
   }
 

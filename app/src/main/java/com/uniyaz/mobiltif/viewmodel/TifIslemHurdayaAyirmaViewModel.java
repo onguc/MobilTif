@@ -1,9 +1,11 @@
 package com.uniyaz.mobiltif.viewmodel;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
+import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
@@ -14,22 +16,29 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     private String digerKayittanDusmeNedeni;
     private String imhaOlurAciklamasi;
     private String digerImhaOlurAciklamasi;
+    @Bindable
     private String komisyonBaskaniAdi;
+    @Bindable
     private String komisyonUyesi1TKY_YetkilisiAdi;
+    @Bindable
     private String komisyonUyesi2Adi;
+    @Bindable
     private String harcamaYetkilisiAdi;
 
     private PersonelDto komisyonBaskani;
     private PersonelDto komisyonUyesi1TKY;
     private PersonelDto komisyonUyesi2;
+    @Bindable
     private PersonelDto harcamaYetkilisi;
 
     public TifIslemHurdayaAyirmaViewModel() {
-        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
         setIslemTarihi(convertedStringFromDate);
     }
 
     public String getIslemTarihi() {
+        if (islemTarihi == null)
+            islemTarihi = getConvertedStringDate();
         return islemTarihi;
     }
 
@@ -38,7 +47,15 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     }
 
     public String getDayanakBelgeTarihi() {
+        if (dayanakBelgeTarihi == null) {
+            dayanakBelgeTarihi = getConvertedStringDate();
+        }
         return dayanakBelgeTarihi;
+    }
+
+    private String getConvertedStringDate() {
+        Date date = new Date();
+        return DateUtils.getConvertedStringFromDate(date);
     }
 
     public void setDayanakBelgeTarihi(String dayanakBelgeTarihi) {
@@ -137,7 +154,21 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
         return harcamaYetkilisi;
     }
 
-    public void setHarcamaYetkilisi(PersonelDto harcamaYetkilisi) {
-        this.harcamaYetkilisi = harcamaYetkilisi;
+    public void setHarcamaYetkilisi(PersonelDto personelDto) {
+        harcamaYetkilisi = personelDto;
+        komisyonBaskani = personelDto;
+        komisyonUyesi1TKY = personelDto;
+        komisyonUyesi2 = personelDto;
+
+        harcamaYetkilisiAdi = personelDto.getIsim();
+        komisyonBaskaniAdi = personelDto.getIsim();
+        komisyonUyesi1TKY_YetkilisiAdi = personelDto.getIsim();
+        komisyonUyesi2Adi = personelDto.getIsim();
+
+        notifyPropertyChanged(BR.harcamaYetkilisiAdi);
+        notifyPropertyChanged(BR.komisyonBaskaniAdi);
+        notifyPropertyChanged(BR.komisyonUyesi1TKY_YetkilisiAdi);
+        notifyPropertyChanged(BR.komisyonUyesi2Adi);
+
     }
 }

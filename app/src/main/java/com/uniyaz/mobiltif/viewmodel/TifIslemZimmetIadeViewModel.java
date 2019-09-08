@@ -2,7 +2,7 @@ package com.uniyaz.mobiltif.viewmodel;
 
 import androidx.databinding.BaseObservable;
 
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
@@ -11,7 +11,7 @@ public class TifIslemZimmetIadeViewModel extends BaseObservable {
     private String aciklama;
 
     public TifIslemZimmetIadeViewModel() {
-        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
         setIslemTarihi(convertedStringFromDate);
     }
 

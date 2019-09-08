@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationForTest;
+import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationTicket;
 
 /**
  * Created by İrfan Öngüç on 19.05.2019
@@ -39,8 +39,8 @@ public class MainPresenter {
 
 
     public void callRoomByQrCode(String qrCode) {
-        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode+"&kullaniciAdi="+ StaticUtils.kullaniciAdi);
-        Call<ResponseInfo<Room>> callEnvanterList = RetrofitInterface.retrofitInterface.getRoomAndEnvanterListByQrCodeRoom(getAuthorizationForTest(), bodyQrCodeRoom);
+        RequestBody bodyQrCodeRoom = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode + "&kullaniciAdi=" + StaticUtils.kullaniciAdi);
+        Call<ResponseInfo<Room>> callEnvanterList = RetrofitInterface.retrofitInterface.getRoomAndEnvanterListByQrCodeRoom(getAuthorizationTicket(), bodyQrCodeRoom);
         view.showProgressBar();
         callEnvanterList.enqueue(new Callback<ResponseInfo<Room>>() {
             @Override
@@ -59,8 +59,8 @@ public class MainPresenter {
     }
 
     public void callEnvanterByQrCode(String qrCode) {
-        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode+"&kullaniciAdi="+ StaticUtils.kullaniciAdi);
-        Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthorizationForTest(), bodyQrCode);
+        RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "etiketNo=" + qrCode + "&kullaniciAdi=" + StaticUtils.kullaniciAdi);
+        Call<ResponseInfo<Envanter>> callEnvanter = RetrofitInterface.retrofitInterface.getEnvanterByQrCode(getAuthorizationTicket(), bodyQrCode);
         view.showProgressBar();
         callEnvanter.enqueue(new Callback<ResponseInfo<Envanter>>() {
             @Override

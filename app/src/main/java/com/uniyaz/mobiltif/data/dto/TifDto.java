@@ -87,9 +87,9 @@ public class TifDto<T> {
         } else if (vysTasinirRequestDto instanceof TifIslemZimmetDto) {
             return "vysTasinirZimmetRequestDto";
         } else if (vysTasinirRequestDto instanceof TifIslemZimmetDevriDto) {
-            return "vysTasinirZimmetDevriRequestDto";
+            return "vysTasinirZimmetRequestDto";
         } else if (vysTasinirRequestDto instanceof TifIslemZimmetIadeDto) {
-            return "vysTasinirZimmetIadeRequestDto";
+            return "vysTasinirZimmetRequestDto";
         } else return "result";
     }
 }

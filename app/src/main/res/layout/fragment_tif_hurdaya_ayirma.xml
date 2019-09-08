@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.fragments.TifIslemTransferFragment">
-        <data>
-            <variable
-                name="viewModel"
-                type="com.uniyaz.mobiltif.viewmodel.TifIslemHurdayaAyirmaViewModel" />
-        </data>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.uniyaz.mobiltif.viewmodel.TifIslemHurdayaAyirmaViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.uniyaz.mobiltif.ui.fragments.TifIslemHurdayaAyirmaFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,7 +24,6 @@
             android:id="@+id/tilIslemTarihi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -25,15 +31,15 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
-                android:paddingBottom="10dp"
                 android:background="@drawable/bg_edittext"
                 android:hint="İşlem Tarihi"
-                android:text="@={viewModel.islemTarihi}"
-                />
+                android:translationY="@dimen/translationY"
+                android:paddingBottom="10dp"
+                android:text="@={viewModel.islemTarihi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDevirYapilacakPersonel"
+            android:id="@+id/tilDayanakBelgeTarihi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -46,41 +52,46 @@
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Dayanak Belge Tarihi"
-                android:text="@={viewModel.dayanakBelgeTarihi}"/>
+                android:translationY="@dimen/translationY"
+                android:text="@={viewModel.dayanakBelgeTarihi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAmbarSorumlusu"
+            android:id="@+id/tilKayittanDusmeNedeni"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilDevirYapilacakPersonel"
-            app:layout_constraintStart_toStartOf="@+id/tilDevirYapilacakPersonel"
-            app:layout_constraintTop_toBottomOf="@+id/tilDevirYapilacakPersonel">
+            app:layout_constraintEnd_toEndOf="@+id/tilDayanakBelgeTarihi"
+            app:layout_constraintStart_toStartOf="@+id/tilDayanakBelgeTarihi"
+            app:layout_constraintTop_toBottomOf="@+id/tilDayanakBelgeTarihi">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Kayıttan Düşme Nedeni"
-                android:text="@={viewModel.kayittanDusmeNedeni}"/>
+                android:translationY="@dimen/translationY"
+                android:text="@={viewModel.kayittanDusmeNedeni}" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAciklama"
+            android:id="@+id/tilDigerKayittanDusmeNedeni"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilAmbarSorumlusu"
-            app:layout_constraintStart_toStartOf="@+id/tilAmbarSorumlusu"
-            app:layout_constraintTop_toBottomOf="@+id/tilAmbarSorumlusu">
+            app:layout_constraintEnd_toEndOf="@+id/tilKayittanDusmeNedeni"
+            app:layout_constraintStart_toStartOf="@+id/tilKayittanDusmeNedeni"
+            app:layout_constraintTop_toBottomOf="@+id/tilKayittanDusmeNedeni">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Diğer Kayıttan Düşme Nedeni"
-                android:text="@={viewModel.digerKayittanDusmeNedeni}"/>
+                android:translationY="@dimen/translationY"
+                android:text="@={viewModel.digerKayittanDusmeNedeni}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -88,16 +99,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilAciklama"
-            app:layout_constraintStart_toStartOf="@+id/tilAciklama"
-            app:layout_constraintTop_toBottomOf="@+id/tilAciklama">
+            app:layout_constraintEnd_toEndOf="@+id/tilDigerKayittanDusmeNedeni"
+            app:layout_constraintStart_toStartOf="@+id/tilDigerKayittanDusmeNedeni"
+            app:layout_constraintTop_toBottomOf="@+id/tilDigerKayittanDusmeNedeni">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="İmha Olur Açıklaması"
-                android:text="@={viewModel.imhaOlurAciklamasi}"/>
+                android:translationY="@dimen/translationY"
+                android:text="@={viewModel.imhaOlurAciklamasi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -114,76 +126,57 @@
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Diğer İmha Olur Açıklaması"
-                android:text="@={viewModel.digerImhaOlurAciklamasi}"/>
+                android:translationY="@dimen/translationY"
+                android:text="@={viewModel.digerImhaOlurAciklamasi}" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilKomisyonBaskani"
+        <com.uniyaz.mobiltif.ui.components.PersonelComponent
+            android:id="@+id/pcKomisyonBaskani"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            app:hint="*Komisyon Başkanı"
             app:layout_constraintEnd_toEndOf="@+id/tilDigerImhaOlurAciklamasi"
             app:layout_constraintStart_toStartOf="@+id/tilDigerImhaOlurAciklamasi"
             app:layout_constraintTop_toBottomOf="@+id/tilDigerImhaOlurAciklamasi">
+        </com.uniyaz.mobiltif.ui.components.PersonelComponent>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="*Komisyon Başkanı"
-                android:text="@={viewModel.komisyonBaskaniAdi}"/>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
+        <com.uniyaz.mobiltif.ui.components.PersonelComponent
+            android:id="@+id/pcKomisyonUyesi1TKY_Yetkilisi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilKomisyonBaskani"
-            app:layout_constraintStart_toStartOf="@+id/tilKomisyonBaskani"
-            app:layout_constraintTop_toBottomOf="@+id/tilKomisyonBaskani">
+            app:hint="*Komisyon Üyesi 1 / TKY Yetkilisi"
+            app:layout_constraintEnd_toEndOf="@+id/pcKomisyonBaskani"
+            app:layout_constraintStart_toStartOf="@+id/pcKomisyonBaskani"
+            app:layout_constraintTop_toBottomOf="@+id/pcKomisyonBaskani">
+        </com.uniyaz.mobiltif.ui.components.PersonelComponent>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="*Komisyon Üyesi 1 / TKY Yetkilisi"
-                android:text="@={viewModel.komisyonUyesi1TKY_YetkilisiAdi}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilKomisyonUyesi2"
+        <com.uniyaz.mobiltif.ui.components.PersonelComponent
+            android:id="@+id/pcKomisyonUyesi2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
-            app:layout_constraintStart_toStartOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi"
-            app:layout_constraintTop_toBottomOf="@+id/tilKomisyonUyesi1TKY_Yetkilisi">
+            app:hint="*Komisyon Üyesi 2"
+            app:layout_constraintEnd_toEndOf="@+id/pcKomisyonUyesi1TKY_Yetkilisi"
+            app:layout_constraintStart_toStartOf="@+id/pcKomisyonUyesi1TKY_Yetkilisi"
+            app:layout_constraintTop_toBottomOf="@+id/pcKomisyonUyesi1TKY_Yetkilisi">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="*Komisyon Üyesi 2"
-                android:text="@={viewModel.komisyonUyesi2Adi}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.uniyaz.mobiltif.ui.components.PersonelComponent>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilHarcamaYetkilisi"
+        <com.uniyaz.mobiltif.ui.components.PersonelComponent
+            android:id="@+id/pcHarcamaYetkilisi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilKomisyonUyesi2"
-            app:layout_constraintStart_toStartOf="@+id/tilKomisyonUyesi2"
-            app:layout_constraintTop_toBottomOf="@+id/tilKomisyonUyesi2">
+            app:hint="Harcama Yetkilisi"
+            app:layout_constraintEnd_toEndOf="@+id/pcKomisyonUyesi2"
+            app:layout_constraintStart_toStartOf="@+id/pcKomisyonUyesi2"
+            app:layout_constraintTop_toBottomOf="@+id/pcKomisyonUyesi2">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="*Harcama Yetkilisi"
-                android:text="@={viewModel.harcamaYetkilisiAdi}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.uniyaz.mobiltif.ui.components.PersonelComponent>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

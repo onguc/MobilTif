@@ -60,6 +60,7 @@ public class DemirbasDetayFragment extends Fragment {
         envanters.add(envanter);
         TifFragment tifFragment = TifFragment.getNewInstance(envanters);
         MainActivity activity = (MainActivity) getActivity();
-        activity.startFragmentByBackStack(tifFragment);
+
+        activity.startFragmentByBackStack(tifFragment,"Online Tif İşlemleri Demirbaş");
     }
 }

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.uniyaz.mobiltif.data.db.DbManager;
 import com.uniyaz.mobiltif.data.domain.BaseModel;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,8 @@ public abstract class BaseRepo<T extends BaseModel> {
 
     public ContentValues getContentValuesBaseModel(BaseModel baseModel) {
         ContentValues values = new ContentValues();
-        values.put(baseModel.KEY_RecordDateTime, TranslateDateFormat.getConvertedStringFromDate(baseModel.getRecordDateTime()));
-        values.put(baseModel.KEY_UpdateDateTime, TranslateDateFormat.getConvertedStringFromDate(baseModel.getUpdateDateTime()));
+        values.put(baseModel.KEY_RecordDateTime, DateUtils.getConvertedStringFromDate(baseModel.getRecordDateTime()));
+        values.put(baseModel.KEY_UpdateDateTime, DateUtils.getConvertedStringFromDate(baseModel.getUpdateDateTime()));
         return values;
     }
 

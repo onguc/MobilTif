@@ -5,14 +5,14 @@ import androidx.databinding.Bindable;
 
 import com.uniyaz.mobiltif.data.dto.AmbarDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
 public class TifIslemTransferViewModel extends BaseObservable {
 
     public TifIslemTransferViewModel() {
-        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
         setIslemTarihi(convertedStringFromDate);
     }
 

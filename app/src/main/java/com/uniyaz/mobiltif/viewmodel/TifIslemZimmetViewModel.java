@@ -3,7 +3,7 @@ package com.uniyaz.mobiltif.viewmodel;
 import androidx.databinding.BaseObservable;
 
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ public class TifIslemZimmetViewModel extends BaseObservable {
     private PersonelDto zimmetYapilacakPersonel;
 
     public TifIslemZimmetViewModel() {
-        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
         setIslemTarihi(convertedStringFromDate);
     }
 

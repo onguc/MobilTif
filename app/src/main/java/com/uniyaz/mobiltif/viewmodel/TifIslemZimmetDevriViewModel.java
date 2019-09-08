@@ -1,9 +1,11 @@
 package com.uniyaz.mobiltif.viewmodel;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
+import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
@@ -11,10 +13,11 @@ public class TifIslemZimmetDevriViewModel extends BaseObservable {
     private String islemTarihi;
     private String muhatapName;
     private String aciklama;
+    @Bindable
     private PersonelDto devirYapilacakPersonel;
 
     public TifIslemZimmetDevriViewModel() {
-        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
         setIslemTarihi(convertedStringFromDate);
     }
 
@@ -49,5 +52,6 @@ public class TifIslemZimmetDevriViewModel extends BaseObservable {
 
     public void setDevirYapilacakPersonel(PersonelDto devirYapilacakPersonel) {
         this.devirYapilacakPersonel = devirYapilacakPersonel;
+        notifyPropertyChanged(BR.devirYapilacakPersonel);
     }
 }

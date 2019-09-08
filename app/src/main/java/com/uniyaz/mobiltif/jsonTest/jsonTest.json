@@ -1,0 +1,41 @@
+zimmet: {
+"vysTifIslemResponseDto": {
+"vysTasinirAmbarId": null,
+"pbsPersonelKayitSorumlusuId": null,
+"aciklama": null,
+"vysTasinirDemirbasIdList": null,
+"dosyaNo": null,
+"zimmetSiraNo": "2019-10"
+},
+"success": true
+}
+
+TRANSFER: vysTifIslemRequestDto={
+"kullaniciAdi": "uniyaz",
+"vysTasinirDemirbasIdList": [
+23157,
+10030
+],
+"islemTuru": "TRANSFER",
+"vysTasinirTransferRequestDto": {
+"aciklama": "yhh",
+"pbsPersonelKayitSorumlusuId": 920000093,
+"vysTasinirAmbarId": 1501,
+"islemTarihi": "01.09.2019"
+}
+}
+
+ZIMMET DEVRI:
+
+vysTifIslemRequestDto={
+  "kullaniciAdi": "uniyaz",
+  "vysTasinirDemirbasIdList": [
+    226461
+  ],
+  "islemTuru": "ZIMMET_DEVRI",
+  "vysTasinirZimmetDevriRequestDto": {
+    "aciklama": "fufu",
+    "islemTarihi": "02.09.2019",
+    "zimmetlenecekPersonelId": 2
+  }
+}

@@ -15,3 +15,43 @@
     ]
   }
 }
+
+{
+  "kullaniciAdi": "uniyaz",
+  "vysTasinirDemirbasIdList": [
+    61
+  ],
+  "islemTuru": "HURDAYA_AYIRMA",
+  "vysTasinirHurdayaAyirmaRequestDto": {
+    "dayanakBelgeTarihi": "28.08.2019",
+    "digerImhaOlurAciklamasi": "asdf",
+    "digerKayittanDusmeNedeni": "ttt",
+    "idHarcamaYetkilisi": 2,
+    "idKomisyonBaskani": 2,
+    "idKomisyonUyesi1TKY": 2,
+    "idKomisyonUyesi2": 2,
+    "imhaOlurAciklamasi": "asd",
+    "islemTarihi": "28.08.2019",
+    "kayittanDusmeNedeni": "tt"
+  }
+}
+
+{
+"kullaniciAdi": "uniyaz",
+"vysTasinirDemirbasIdList": [
+61
+],
+"islemTuru": "HURDAYA_AYIRMA",
+"vysTasinirHurdayaAyirmaRequestDto": {
+"dayanakBelgeTarihi": "28.08.2019",
+"digerImhaOlurAciklamasi": "asdf",
+"digerKayittanDusmeNedeni": "ttt",
+"harcamaYetkilisiId": 2,
+"komisyonBaskaniId": 2,
+"komisyonUyesiBirId": 2,
+"komisyonUyesiIkiId": 2,
+"imhaOlurAciklamasi": "asd",
+"islemTarihi": "28.08.2019",
+"kayittanDusmeNedeni": "tt"
+}
+}

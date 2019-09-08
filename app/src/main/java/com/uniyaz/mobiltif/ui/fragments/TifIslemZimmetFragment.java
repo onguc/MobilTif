@@ -39,6 +39,7 @@ public class TifIslemZimmetFragment extends Fragment implements ITifIslem<TifIsl
 
         FragmentTifZimmetBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_zimmet, container, false);
         binding.setViewModel(islemZimmetViewModel);
+        islemZimmetViewModel.setZimmetYapilacakPersonel(binding.pcZimmetYapilacakPersonel.getSelectedPersonelDto());
         View view = binding.getRoot();
 
         return view;
@@ -48,7 +49,7 @@ public class TifIslemZimmetFragment extends Fragment implements ITifIslem<TifIsl
     public TifIslemZimmetDto getIslemDto() {
         TifIslemZimmetDto dto = new TifIslemZimmetDto();
         dto.setIslemTarihi(islemZimmetViewModel.getIslemTarihi());
-        dto.setIdZimmetYapilacakPersonel(islemZimmetViewModel.getZimmetYapilacakPersonel().getId());
+        dto.setZimmetlenecekPersonelId(islemZimmetViewModel.getZimmetYapilacakPersonel().getId());
         dto.setAciklama(islemZimmetViewModel.getAciklama());
         return dto;
     }

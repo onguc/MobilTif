@@ -18,19 +18,21 @@
                 android:id="@+id/etAdi"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
-                android:hint="İsim"
+                android:hint="Kullanıcı Adı"
+                android:translationY="@dimen/translationY"
+                android:text="uniyaz"
                 android:background="@drawable/bg_edittext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnCallMuhatap"
+            android:id="@+id/btnCallPersonel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ara"/>
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lvMuhatapList"
+        android:id="@+id/lvPersonelList"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

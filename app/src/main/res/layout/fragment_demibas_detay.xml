@@ -52,6 +52,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Adı"
+                        android:translationY="@dimen/translationY"
                         android:text="@={viewModel.envanter.tasinirAdi}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,6 +71,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Sicil No"
+                        android:translationY="@dimen/translationY"
                         android:text="@{viewModel.sicilNo}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,6 +90,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Servis/Ambar"
+                        android:translationY="@dimen/translationY"
                         android:text="@={viewModel.envanter.servisAmbar}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,6 +112,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Tutar"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.tutar}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -131,6 +135,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Birim"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.birimi}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -152,6 +157,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Zimmetli Personel"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.zimmetliPersonel}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -173,13 +179,14 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Durumu"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.durumu}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilAciklama"
+                    android:id="@+id/tilDigerKayittanDusmeNedeni"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:ems="10"
@@ -197,6 +204,7 @@
                         android:background="@drawable/bg_edittext"
                         android:gravity="start|top"
                         android:hint="Açıklama"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.envanter.aciklama}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -208,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/marginTopEditText"
                     android:ems="10"
-                    app:layout_constraintEnd_toEndOf="@+id/tilAciklama"
+                    app:layout_constraintEnd_toEndOf="@+id/tilDigerKayittanDusmeNedeni"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tilDurumu">
 
@@ -218,6 +226,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Temin Edilen Firma"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.teminEdilenFirma}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -238,6 +247,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Seri No"
+                        android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.seriNo}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -258,6 +268,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Fatura Tarihi"
+                        android:translationY="@dimen/translationY"
                         android:inputType="date"
                         android:text="@={viewModel.envanter.faturaTarihi}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -268,9 +279,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    app:layout_constraintEnd_toEndOf="@+id/tilAciklama"
+                    app:layout_constraintEnd_toEndOf="@+id/tilDigerKayittanDusmeNedeni"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/tilAciklama"
+                    app:layout_constraintStart_toStartOf="@+id/tilDigerKayittanDusmeNedeni"
                     app:layout_constraintTop_toTopOf="@+id/tilFaturaTarihi">
 
                     <EditText
@@ -279,6 +290,7 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Fatura No"
+                        android:translationY="@dimen/translationY"
                         android:inputType="number"
                         android:text="@={viewModel.envanter.faturaNo}" />
                 </com.google.android.material.textfield.TextInputLayout>

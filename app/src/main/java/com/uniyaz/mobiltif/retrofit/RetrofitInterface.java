@@ -29,38 +29,49 @@ import retrofit2.http.POST;
 
 public interface RetrofitInterface {
 
-    boolean isUriFlex = true;
+    boolean isUriFlex = false;
     String uriFlex = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/json/";
-    String uri = "http://tarihisozluk.site/TarihZumresi/rest/tifislem/";   //test
+    String uriBesiktasTest = "https://demoybs.besiktas.bel.tr/FlexCityUi/rest/json/";
 
     @POST("../auth/login")
     Call<LoginInfo> loginAndGetToken(@Body RequestBody loginInfo);
 
 
     @POST("vys/FindVysTasinirDemirbasByEtiketNo")
-    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
-//    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
+//    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
+    Call<ResponseInfo<Envanter>> getEnvanterByQrCode(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
 
 
     @POST("vys/FindVysVarlikLokasyonDtoByOdaEtiketNo")
-    Call<ResponseInfo<Room>> getRoomAndEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
-//    Call<ResponseInfo<List<Envanter>>> getRoomAndEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
+//    Call<ResponseInfo<Room>> getRoomAndEnvanterListByQrCodeRoom(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCodeRoom);
+    Call<ResponseInfo<Room>> getRoomAndEnvanterListByQrCodeRoom(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCodeRoom);
 
 
     @POST("vys/FindAllVysTasinirAmbar")
-    Call<ResponseInfo<List<AmbarDto>>> getAllAmbarDtoList(@Header("Authorization") String authTicket);
+    Call<ResponseInfo<List<AmbarDto>>> getAllAmbarDtoList(@Header("AuthorizationTicket") String authTicket);
 
     @POST("vys/FindAllPbsPersonelKayitYetkilisiByVysTasinirAmbarId")
-    Call<ResponseInfo<List<PersonelDto>>> getAllPersonelDtoListByAmbarId(@Header("Authorization") String authTicket, @Body RequestBody bodyIdAmbar);
+//    Call<ResponseInfo<List<PersonelDto>>> getAllPersonelDtoListByAmbarId(@Header("Authorization") String authTicket, @Body RequestBody bodyIdAmbar);
+    Call<ResponseInfo<List<PersonelDto>>> getAllPersonelDtoListByAmbarId(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyIdAmbar);
+
 
     @POST("vys/FindAllVysTasinirDemirbasImagesByUrl")
-    Call<ResponseInfo<byte[]>> loadImage(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
+//    Call<ResponseInfo<byte[]>> loadImage(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
+    Call<ResponseInfo<byte[]>> loadImage(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
 
     @POST("vys/MobilTifIslem") //SaveVysTasinirTransferIslem
-    Call<ResponseInfo<TifIslemResponseDto>> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+//    Call<ResponseInfo<TifIslemResponseDto>> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+    Call<ResponseInfo<TifIslemResponseDto>> saveVysTasinirTransferIslem(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyDto);
 
     @POST("sbs/FindAllSbsMuhatap")
-    Call<ResponseInfo<List<MuhatapDto>>> findAllSbsMuhatap(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+//    Call<ResponseInfo<List<MuhatapDto>>> findAllSbsMuhatap(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+    Call<ResponseInfo<List<MuhatapDto>>> findAllSbsMuhatap(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyDto);
+
+
+    @POST("pbs/FindAllPbsPersonelBilgileriDtoByKullaniciAdi")
+//    Call<ResponseInfo<List<PersonelDto>>> findAllPbsPersonelBilgileriDtoByKullaniciAdi(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
+    Call<ResponseInfo<List<PersonelDto>>> findAllPbsPersonelBilgileriDtoByKullaniciAdi(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyDto);
+
 
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -73,7 +84,7 @@ public interface RetrofitInterface {
             .build();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            .baseUrl(isUriFlex ? uriFlex : uri)
+            .baseUrl(isUriFlex ? uriFlex : uriBesiktasTest)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()

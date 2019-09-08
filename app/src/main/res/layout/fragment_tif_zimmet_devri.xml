@@ -7,7 +7,12 @@
             <variable
                 name="viewModel"
                 type="com.uniyaz.mobiltif.viewmodel.TifIslemZimmetDevriViewModel" />
+
+            <variable
+                name="fragment"
+                type="com.uniyaz.mobiltif.ui.fragments.TifIslemZimmetDevriFragment" />
         </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,42 +32,39 @@
                 android:layout_height="@dimen/editTextHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="İşlem Tarihi"
+                android:translationY="@dimen/translationY"
                 android:text="@={viewModel.islemTarihi}"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDevirYapilacakPersonel"
+        <com.uniyaz.mobiltif.ui.components.PersonelComponent
+            android:id="@+id/pcDevirYapilacakPersonel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            app:hint="Devir Yapılacak Personel"
             app:layout_constraintEnd_toEndOf="@+id/tilIslemTarihi"
             app:layout_constraintStart_toStartOf="@+id/tilIslemTarihi"
             app:layout_constraintTop_toBottomOf="@+id/tilIslemTarihi">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:background="@drawable/bg_edittext"
-                android:hint="Devir Yapılacak Personel"
-                android:text="@={viewModel.muhatapName}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.uniyaz.mobiltif.ui.components.PersonelComponent>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilAciklama"
+            android:id="@+id/tilDigerKayittanDusmeNedeni"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/tilDevirYapilacakPersonel"
-            app:layout_constraintStart_toStartOf="@+id/tilDevirYapilacakPersonel"
-            app:layout_constraintTop_toBottomOf="@+id/tilDevirYapilacakPersonel">
+            app:layout_constraintEnd_toEndOf="@+id/pcDevirYapilacakPersonel"
+            app:layout_constraintStart_toStartOf="@+id/pcDevirYapilacakPersonel"
+            app:layout_constraintTop_toBottomOf="@+id/pcDevirYapilacakPersonel">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextAciklamaHeight"
                 android:background="@drawable/bg_edittext"
                 android:hint="Açıklama"
+                android:translationY="@dimen/translationY"
                 android:text="@={viewModel.aciklama}"/>
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

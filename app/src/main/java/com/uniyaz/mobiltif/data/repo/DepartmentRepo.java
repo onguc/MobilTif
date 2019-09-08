@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.uniyaz.mobiltif.data.domain.Department;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 /**
  * Created by İrfan Öngüç on 19.05.2019
@@ -45,8 +45,8 @@ public class DepartmentRepo extends BaseRepo<Department> {
         department.setId(cursor.getInt(0));
         department.setName(cursor.getString(1));
         department.setCode(cursor.getString(2));
-        department.setRecordDateTime(TranslateDateFormat.getConvertedDateFromString(cursor.getString(3)));
-        department.setUpdateDateTime(TranslateDateFormat.getConvertedDateFromString(cursor.getString(4)));
+        department.setRecordDateTime(DateUtils.getConvertedDateFromString(cursor.getString(3)));
+        department.setUpdateDateTime(DateUtils.getConvertedDateFromString(cursor.getString(4)));
         return department;
     }
 

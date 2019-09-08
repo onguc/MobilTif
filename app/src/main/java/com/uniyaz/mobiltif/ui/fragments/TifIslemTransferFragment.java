@@ -120,7 +120,7 @@ public class TifIslemTransferFragment extends Fragment implements ITifCommon, IT
 
     @Override
     public void onSuccessforPersonelDtoList(List<PersonelDto> personelDtoList) {
-        PersonelAdapter personelAdapter = new PersonelAdapter(personelDtoList, getActivity());
+        PersonelAdapter personelAdapter = new PersonelAdapter(personelDtoList,getActivity());
         spnrAmbarSorumlusu.setAdapter(personelAdapter);
     }
 

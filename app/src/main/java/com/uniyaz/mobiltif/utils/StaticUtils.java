@@ -5,7 +5,6 @@ import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.domain.Tasinir;
 import com.uniyaz.mobiltif.data.domain.User;
 import com.uniyaz.mobiltif.data.domain.UserDto;
-import com.uniyaz.mobiltif.data.dto.MuhatapDto;
 import com.uniyaz.mobiltif.iface.IMain;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class StaticUtils {
     private static List<Room> roomList = new ArrayList<>();
     public static String authTicket = null;
     public static UserDto userDto = null;
-    public static List<MuhatapDto> muhatapDtoList=null;
 
     public static SuccessControl successControl = new SuccessControl();
 
@@ -88,6 +86,10 @@ public class StaticUtils {
 
     public static String getAuthorizationForTest() {
         return "applicationkey=FLX_EBELEDIYE,requestdate=2014-10-01T2:32:50+02:00,md5hashcode=61411bbfbd3675953aa1e3738ce8a5c0";
+    }
+
+    public static String getAuthorizationTicket() {
+        return authTicket;
     }
 
 }

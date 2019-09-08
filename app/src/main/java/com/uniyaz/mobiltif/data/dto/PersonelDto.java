@@ -16,25 +16,25 @@ public class PersonelDto {
     @SerializedName("isim")
     private String isim;
     @SerializedName("sbsKisiId")
-    private Integer sbsKisiId;
+    private Long sbsKisiId;
     @SerializedName("yas")
     private Integer yas;
     @SerializedName("birim")
     private String birim;
     @SerializedName("birimId")
-    private Integer birimId;
+    private Long birimId;
     @SerializedName("dogumGunu")
     private String dogumGunu;
     @SerializedName("kbsOrgut")
     private String kbsOrgut;
     @SerializedName("kbsOrgutId")
-    private Integer kbsOrgutId;
+    private Long kbsOrgutId;
     @SerializedName("dahiliTel")
     private Object dahiliTel;
     @SerializedName("eposta")
     private String eposta;
     @SerializedName("kurumSicilNo")
-    private Integer kurumSicilNo;
+    private Long kurumSicilNo;
     @SerializedName("kbsServisGorev")
     private Object kbsServisGorev;
     @SerializedName("lokasyonBilgisi")
@@ -80,11 +80,11 @@ public class PersonelDto {
         this.isim = isim;
     }
 
-    public Integer getSbsKisiId() {
+    public Long getSbsKisiId() {
         return sbsKisiId;
     }
 
-    public void setSbsKisiId(Integer sbsKisiId) {
+    public void setSbsKisiId(Long sbsKisiId) {
         this.sbsKisiId = sbsKisiId;
     }
 
@@ -104,11 +104,11 @@ public class PersonelDto {
         this.birim = birim;
     }
 
-    public Integer getBirimId() {
+    public Long getBirimId() {
         return birimId;
     }
 
-    public void setBirimId(Integer birimId) {
+    public void setBirimId(Long birimId) {
         this.birimId = birimId;
     }
 
@@ -128,11 +128,11 @@ public class PersonelDto {
         this.kbsOrgut = kbsOrgut;
     }
 
-    public Integer getKbsOrgutId() {
+    public Long getKbsOrgutId() {
         return kbsOrgutId;
     }
 
-    public void setKbsOrgutId(Integer kbsOrgutId) {
+    public void setKbsOrgutId(Long kbsOrgutId) {
         this.kbsOrgutId = kbsOrgutId;
     }
 
@@ -152,11 +152,11 @@ public class PersonelDto {
         this.eposta = eposta;
     }
 
-    public Integer getKurumSicilNo() {
+    public Long getKurumSicilNo() {
         return kurumSicilNo;
     }
 
-    public void setKurumSicilNo(Integer kurumSicilNo) {
+    public void setKurumSicilNo(Long kurumSicilNo) {
         this.kurumSicilNo = kurumSicilNo;
     }
 

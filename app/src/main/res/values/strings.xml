@@ -12,6 +12,8 @@
     <string name="toolbar_title">Tif Ekranı</string>
     <string name="toolbar_title_demirbas">ONLIN TİF İŞLEMLERİ / Demirbaş Bilgisi</string>
     <string name="toolbar_title_demirbas_list">Oda Bilgisi</string>
+    <string name="toolbar_title_image_list">Envanter - Fotoğrafları</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

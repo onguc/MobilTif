@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationForTest;
+import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationTicket;
 
 /**
  * Created by İrfan Öngüç on 19.05.2019
@@ -30,7 +30,7 @@ public class TifIslemTransferPresenter {
 
 
     public void fillAllAmbarDtoList() {
-        Call<ResponseInfo<List<AmbarDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.getAllAmbarDtoList(getAuthorizationForTest());
+        Call<ResponseInfo<List<AmbarDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.getAllAmbarDtoList(getAuthorizationTicket());
         responseInfoCall.enqueue(new Callback<ResponseInfo<List<AmbarDto>>>() {
             @Override
             public void onResponse(Call<ResponseInfo<List<AmbarDto>>> call, Response<ResponseInfo<List<AmbarDto>>> response) {
@@ -49,7 +49,7 @@ public class TifIslemTransferPresenter {
 
     public void fillAllPersonelDtoListByAmbarId(Long vysTasinirAmbarId) {
         RequestBody bodyQrCode = RequestBody.create(MediaType.parse("text/plain"), "vysTasinirAmbarId=" + vysTasinirAmbarId);
-        Call<ResponseInfo<List<PersonelDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.getAllPersonelDtoListByAmbarId(getAuthorizationForTest(), bodyQrCode);
+        Call<ResponseInfo<List<PersonelDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.getAllPersonelDtoListByAmbarId(getAuthorizationTicket(), bodyQrCode);
         responseInfoCall.enqueue(new Callback<ResponseInfo<List<PersonelDto>>>() {
             @Override
             public void onResponse(Call<ResponseInfo<List<PersonelDto>>> call, Response<ResponseInfo<List<PersonelDto>>> response) {

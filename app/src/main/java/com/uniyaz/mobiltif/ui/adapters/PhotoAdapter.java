@@ -15,12 +15,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.uniyaz.mobiltif.R;
-import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBinding;
 import com.uniyaz.mobiltif.presenter.PhotoAdapterPresenter;
 import com.uniyaz.mobiltif.ui.components.TouchImageView;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +30,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 
     List<String> imageUrlList;
     Activity activity;
+    boolean isForImageListEnvanter = false;
 
     public PhotoAdapter(Activity activity, List<String> imageUrlList) {
         if (imageUrlList == null) imageUrlList = new ArrayList<>();
@@ -69,6 +68,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
             super(binding.getRoot());
             this.binding = binding;
             imgViewChapture = binding.imgViewChapture;
+            if (isForImageListEnvanter) {
+                imgViewChapture.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                imgViewChapture.getLayoutParams().width = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+                ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) binding.cardViewChapture.getLayoutParams();
+                marginParams.bottomMargin = 25;
+                marginParams.topMargin = 25;
+            }
 
             imgViewChapture.setOnClickListener(v -> {
                 int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -96,5 +103,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 //                Glide.with(activity).load(glideUrl).into(imgViewChapture);
             }
         }
+    }
+
+    public void setForImageListEnvanter(boolean forImageListEnvanter) {
+        isForImageListEnvanter = forImageListEnvanter;
     }
 }

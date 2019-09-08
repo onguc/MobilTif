@@ -5,7 +5,7 @@ import androidx.databinding.Bindable;
 
 import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.data.dto.MuhatapDto;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
@@ -18,8 +18,9 @@ public class TifIslemHibeViewModel extends BaseObservable {
     private MuhatapDto muhatap;
 
     public TifIslemHibeViewModel() {
-        String convertedStringFromDate = TranslateDateFormat.getConvertedStringFromDate(new Date());
+        String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
         setIslemTarihi(convertedStringFromDate);
+        setDayanakBelgeTarihi(convertedStringFromDate);
     }
 
 

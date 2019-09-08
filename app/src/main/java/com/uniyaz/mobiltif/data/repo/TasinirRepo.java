@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.uniyaz.mobiltif.data.domain.Tasinir;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.List;
 
@@ -47,8 +47,8 @@ public class TasinirRepo extends BaseRepo<Tasinir> {
         tasinir.setId(cursor.getString(0));
         tasinir.setName(cursor.getString(1));
         tasinir.setTasinirKodu(cursor.getLong(2));
-        tasinir.setRecordDateTime(TranslateDateFormat.getConvertedDateFromString(cursor.getString(3)));
-        tasinir.setUpdateDateTime(TranslateDateFormat.getConvertedDateFromString(cursor.getString(4)));
+        tasinir.setRecordDateTime(DateUtils.getConvertedDateFromString(cursor.getString(3)));
+        tasinir.setUpdateDateTime(DateUtils.getConvertedDateFromString(cursor.getString(4)));
         return tasinir;
     }
 

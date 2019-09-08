@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Room;
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 /**
  * Created by İrfan Öngüç on 19.05.2019
@@ -51,8 +51,8 @@ public class RoomRepo extends BaseRepo<Room> {
         contentValues.put(room.keyName, room.getName());
         contentValues.put(room.keyDepartment, room.getDepartment().getIdString());
         contentValues.put(room.keyIsSentToServer, room.getSentToServer());
-        contentValues.put(room.KEY_RecordDateTime, TranslateDateFormat.getConvertedStringFromDate(room.getRecordDateTime()));
-        contentValues.put(room.KEY_UpdateDateTime, TranslateDateFormat.getConvertedStringFromDate(room.getUpdateDateTime()));
+        contentValues.put(room.KEY_RecordDateTime, DateUtils.getConvertedStringFromDate(room.getRecordDateTime()));
+        contentValues.put(room.KEY_UpdateDateTime, DateUtils.getConvertedStringFromDate(room.getUpdateDateTime()));
     }
 
     @Override
@@ -74,8 +74,8 @@ public class RoomRepo extends BaseRepo<Room> {
         room.setName(cursor.getString(1));
         Long departmentId = cursor.getLong(2);
         room.setSentToServer(cursor.getInt(3));
-        room.setRecordDateTime(TranslateDateFormat.getConvertedDateFromString(cursor.getString(4)));
-        room.setUpdateDateTime(TranslateDateFormat.getConvertedDateFromString(cursor.getString(5)));
+        room.setRecordDateTime(DateUtils.getConvertedDateFromString(cursor.getString(4)));
+        room.setUpdateDateTime(DateUtils.getConvertedDateFromString(cursor.getString(5)));
 
         Department department = new DepartmentRepo().getById(String.valueOf(departmentId));
         room.setDepartment(department);

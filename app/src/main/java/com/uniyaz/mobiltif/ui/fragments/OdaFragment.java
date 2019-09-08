@@ -92,7 +92,7 @@ public class OdaFragment extends Fragment {
         }
         TifFragment tifFragment = TifFragment.getNewInstance(envanters);
         MainActivity activity = (MainActivity) getActivity();
-        activity.startFragmentByBackStack(tifFragment);
+        activity.startFragmentByBackStack(tifFragment,"Online Tif İşlemleri Oda");
     }
 
     public void setBackGroundBtnOnlineTifIslemleri(int resource) {

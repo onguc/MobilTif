@@ -9,14 +9,15 @@
     <dimen name="marginStart">10dp</dimen>
     <dimen name="marginEnd">10dp</dimen>
 
-    <dimen name="input_label_vertical_spacing">8dp</dimen>
+    <dimen name="input_label_vertical_spacing">5dp</dimen>
     <dimen name="input_label_horizontal_spacing">4dp</dimen>
 
     <dimen name="width_view">50dp</dimen>
     <dimen name="height_view">70dp</dimen>
     <dimen name="width_border">1dp</dimen>
-    <dimen name="margin_view">18dp</dimen>
+    <dimen name="margin_view">10dp</dimen>
 
     <dimen name="margin_end">20dp</dimen>
+    <dimen name="translationY">5dp</dimen>
 
 </resources>

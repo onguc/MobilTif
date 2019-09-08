@@ -15,33 +15,25 @@ import java.util.List;
  */
 
 public class PhotoIslem {
-    PhotoAdapter adapter;
+    private PhotoAdapter adapter;
+    private LinearLayoutManager linearLayoutManager=null;
 
-    public PhotoIslem() {
-    }
-
-    public void createView(RecyclerView recyclerView, Activity activity, List<String> imageUrlList) {
-//        for (int i = 0; i < 5; i++) {
-//            ImageInfo imageInfo = new ImageInfo();
-//            Bitmap bitmap = BitmapFactory.decodeResource(activity.getResources(), R.drawable.test);
-//            InputStream inStream = activity.getResources().openRawResource(R.drawable.test);
-//            try {
-//                byte[] bytes = new byte[inStream.available()];
-//                Bitmap  bitmap2 = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//                activity.getAssets().open("test.png");
-//                imageInfo.setBitmap(bitmap2);
-//                int y=0;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            bitmapList.add(imageInfo);
-//        }
-
+    public PhotoIslem createView(RecyclerView recyclerView, Activity activity, List<String> imageUrlList) {
         adapter = new PhotoAdapter(activity, imageUrlList);
         recyclerView.setAdapter(adapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity.getApplicationContext());
+        linearLayoutManager = new LinearLayoutManager(activity.getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
+        return this;
+    }
+
+    public void setForImageListEnvanter(boolean isForImageListEnvanter){
+        if(adapter!=null){
+            adapter.setForImageListEnvanter(isForImageListEnvanter);
+            if(isForImageListEnvanter)
+                linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        }
+
     }
 
 

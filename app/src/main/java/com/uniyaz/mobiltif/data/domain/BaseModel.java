@@ -1,6 +1,6 @@
 package com.uniyaz.mobiltif.data.domain;
 
-import com.uniyaz.mobiltif.utils.TranslateDateFormat;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.Date;
 
@@ -47,11 +47,11 @@ public abstract class BaseModel implements IBase {
 
     public String getDateAsString(Date date) {
         if (date == null) return null;
-        return TranslateDateFormat.getConvertedStringFromDate(date);
+        return DateUtils.getConvertedStringFromDate(date);
     }
 
     public Date getDateFromString(String stringDate) {
-        return TranslateDateFormat.getConvertedDateFromString(stringDate);
+        return DateUtils.getConvertedDateFromString(stringDate);
     }
 
     public void fillUpdateDates() {

@@ -1,6 +1,6 @@
 package com.uniyaz.mobiltif.data.dto;
 
-import java.util.Date;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by İrfan Öngüç on 23.07.2019
@@ -8,16 +8,26 @@ import java.util.Date;
 
 public class TifIslemHurdayaAyirmaDto {
 
+    @SerializedName("islemTarihi")
     private String islemTarihi;
+    @SerializedName("dayanakBelgeTarihi")
     private String dayanakBelgeTarihi;
+    @SerializedName("kayittanDusmeNedeni")
     private String kayittanDusmeNedeni;
+    @SerializedName("digerKayittanDusmeNedeni")
     private String digerKayittanDusmeNedeni;
+    @SerializedName("imhaOlurAciklamasi")
     private String imhaOlurAciklamasi;
+    @SerializedName("digerImhaOlurAciklamasi")
     private String digerImhaOlurAciklamasi;
-    private Long idKomisyonBaskani;
-    private Long idKomisyonUyesi1TKY;
-    private Long idKomisyonUyesi2;
-    private Long idHarcamaYetkilisi;
+    @SerializedName("komisyonBaskaniId")
+    private Long komisyonBaskaniId;
+    @SerializedName("komisyonUyesiBirId")
+    private Long komisyonUyesiBirId;
+    @SerializedName("komisyonUyesiIkiId")
+    private Long komisyonUyesiIkiId;
+    @SerializedName("harcamaYetkilisiId")
+    private Long harcamaYetkilisiId;
 
     public String getIslemTarihi() {
         return islemTarihi;
@@ -67,35 +77,35 @@ public class TifIslemHurdayaAyirmaDto {
         this.digerImhaOlurAciklamasi = digerImhaOlurAciklamasi;
     }
 
-    public Long getIdKomisyonBaskani() {
-        return idKomisyonBaskani;
+    public Long getKomisyonBaskaniId() {
+        return komisyonBaskaniId;
     }
 
-    public void setIdKomisyonBaskani(Long idKomisyonBaskani) {
-        this.idKomisyonBaskani = idKomisyonBaskani;
+    public void setKomisyonBaskaniId(Long komisyonBaskaniId) {
+        this.komisyonBaskaniId = komisyonBaskaniId;
     }
 
-    public Long getIdKomisyonUyesi1TKY() {
-        return idKomisyonUyesi1TKY;
+    public Long getKomisyonUyesiBirId() {
+        return komisyonUyesiBirId;
     }
 
-    public void setIdKomisyonUyesi1TKY(Long idKomisyonUyesi1TKY) {
-        this.idKomisyonUyesi1TKY = idKomisyonUyesi1TKY;
+    public void setKomisyonUyesiBirId(Long komisyonUyesiBirId) {
+        this.komisyonUyesiBirId = komisyonUyesiBirId;
     }
 
-    public Long getIdKomisyonUyesi2() {
-        return idKomisyonUyesi2;
+    public Long getKomisyonUyesiIkiId() {
+        return komisyonUyesiIkiId;
     }
 
-    public void setIdKomisyonUyesi2(Long idKomisyonUyesi2) {
-        this.idKomisyonUyesi2 = idKomisyonUyesi2;
+    public void setKomisyonUyesiIkiId(Long komisyonUyesiIkiId) {
+        this.komisyonUyesiIkiId = komisyonUyesiIkiId;
     }
 
-    public Long getIdHarcamaYetkilisi() {
-        return idHarcamaYetkilisi;
+    public Long getHarcamaYetkilisiId() {
+        return harcamaYetkilisiId;
     }
 
-    public void setIdHarcamaYetkilisi(Long idHarcamaYetkilisi) {
-        this.idHarcamaYetkilisi = idHarcamaYetkilisi;
+    public void setHarcamaYetkilisiId(Long harcamaYetkilisiId) {
+        this.harcamaYetkilisiId = harcamaYetkilisiId;
     }
 }

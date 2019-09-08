@@ -64,7 +64,6 @@ public class TifFragment extends Fragment implements ITif {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         presenter = new TifPresenter(this);
-        presenter.fillAllMuhatapDto();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif, container, false);
         binding.setFragment(this);
         TifAdapter adapter = new TifAdapter(this, envanters);
@@ -122,9 +121,14 @@ public class TifFragment extends Fragment implements ITif {
 
     @Override
     public void onSuccessForSaveTasinirTransferIslem(TifIslemResponseDto responseDto) {
-        View dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit, null);
-        TextView tvNo = dialog.findViewById(R.id.tvNo);
-        tvNo.setText(responseDto.getDosyaNo());
+        View dialog =null;
+        if (enumIslemTuru == EnumIslemTuru.ZIMMET_IADE) {
+            dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit_2, null);
+        } else {
+            dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit, null);
+            TextView tvNo = dialog.findViewById(R.id.tvNo);
+            tvNo.setText(responseDto.getDosyaNo());
+        }
         new SwipeDismissDialog.Builder(getActivity())
                 .setView(dialog)
                 .build()

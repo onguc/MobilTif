@@ -14,13 +14,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationForTest;
+import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationTicket;
 
 public class PhotoAdapterPresenter {
 
     public void loadImage(String imageUrl, ImageView imageViev) {
         RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"), "demirbasUrl=" + imageUrl);
-        Call<ResponseInfo<byte[]>> imageCall = RetrofitInterface.retrofitInterface.loadImage(getAuthorizationForTest(), requestBody);
+        Call<ResponseInfo<byte[]>> imageCall = RetrofitInterface.retrofitInterface.loadImage(getAuthorizationTicket(), requestBody);
         imageCall.enqueue(new Callback<ResponseInfo<byte[]>>() {
             @Override
             public void onResponse(Call<ResponseInfo<byte[]>> call, Response<ResponseInfo<byte[]>> response) {
@@ -28,7 +28,7 @@ public class PhotoAdapterPresenter {
                     ResponseInfo<byte[]> responseInfo = response.body();
                     if (responseInfo == null) {
                         String errorInfo = response.errorBody().source().buffer().readUtf8();
-                        Log.i("PhotoAdapterPresenter", "responseInfo == null && errorInfo = " + errorInfo);
+                        Log.i("PhotoAdapterPresenter", "image byte is null : errorInfo = " + errorInfo);
                     } else if (!responseInfo.getSuccess()) {
                         Log.i("PhotoAdapterPresenter", "loadImage not success!");
                     } else {

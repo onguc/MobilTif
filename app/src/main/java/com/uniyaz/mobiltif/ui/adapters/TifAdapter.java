@@ -68,19 +68,20 @@ public class TifAdapter extends RecyclerView.Adapter<TifAdapter.TifViewHolder> {
 
         } else if (viewType == TYPE_FRAGMENT) {
             ItemTifIslemBinding islemBinding = DataBindingUtil.inflate(inflater, R.layout.item_tif_islem, parent, false);
-            List<EnumIslemTuru> listEnum = new ArrayList<>(Arrays.asList(EnumIslemTuru.values()));
+            List<EnumIslemTuru> listEnum = new ArrayList<>();
+            listEnum.add(EnumIslemTuru.TRANSFER);
+            listEnum.add(EnumIslemTuru.HIBE);
+            listEnum.add(EnumIslemTuru.HURDAYA_AYIRMA);
+
 
             if (countZimmetliEnvanter == 0) {
-                listEnum.remove(EnumIslemTuru.ZIMMET);
+                listEnum.add(EnumIslemTuru.ZIMMET);
             } else if (countZimmetliEnvanter == envanters.size()) {
-                listEnum.remove(EnumIslemTuru.ZIMMET_DEVRI);
-                listEnum.remove(EnumIslemTuru.ZIMMET_IADE);
-            } else {
-                listEnum.remove(EnumIslemTuru.ZIMMET);
-                listEnum.remove(EnumIslemTuru.ZIMMET_DEVRI);
-                listEnum.remove(EnumIslemTuru.ZIMMET_IADE);
+                listEnum.add(EnumIslemTuru.ZIMMET_DEVRI);
+                listEnum.add(EnumIslemTuru.ZIMMET_IADE);
             }
-            ArrayAdapter<EnumIslemTuru> islemTuruAdapter = new ArrayAdapter<EnumIslemTuru>(fragment.getContext(), android.R.layout.simple_list_item_1, listEnum);
+
+            ArrayAdapter<EnumIslemTuru> islemTuruAdapter = new ArrayAdapter<>(fragment.getContext(), android.R.layout.simple_list_item_1, listEnum);
 
             islemBinding.spinner.setAdapter(islemTuruAdapter);
             islemBinding.executePendingBindings(); // ilk spinner geldiğind onItemSelected içine girmiyordu. olması için eklendi.
