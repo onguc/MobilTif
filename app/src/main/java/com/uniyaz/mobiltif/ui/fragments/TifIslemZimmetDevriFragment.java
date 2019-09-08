@@ -17,7 +17,7 @@ import com.uniyaz.mobiltif.iface.ITifIslem;
 import com.uniyaz.mobiltif.viewmodel.TifIslemZimmetDevriViewModel;
 
 public class TifIslemZimmetDevriFragment extends Fragment implements ITifIslem<TifIslemZimmetDevriDto>, IPersonel {
-    TifIslemZimmetDevriViewModel islemZimmetDevriViewModel;
+    TifIslemZimmetDevriViewModel viewModel;
 
     public static TifIslemZimmetDevriFragment newInstance() {
         TifIslemZimmetDevriFragment fragment = new TifIslemZimmetDevriFragment();
@@ -32,11 +32,11 @@ public class TifIslemZimmetDevriFragment extends Fragment implements ITifIslem<T
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        islemZimmetDevriViewModel = new TifIslemZimmetDevriViewModel();
+        viewModel = new TifIslemZimmetDevriViewModel();
 
         FragmentTifZimmetDevriBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_zimmet_devri, container, false);
-        islemZimmetDevriViewModel.setDevirYapilacakPersonel(binding.pcDevirYapilacakPersonel.getSelectedPersonelDto());
-        binding.setViewModel(islemZimmetDevriViewModel);
+        viewModel.setDevirYapilacakPersonel(binding.pcDevirYapilacakPersonel.getSelectedPersonelDto());
+        binding.setViewModel(viewModel);
         View view = binding.getRoot();
 
         return view;
@@ -44,15 +44,20 @@ public class TifIslemZimmetDevriFragment extends Fragment implements ITifIslem<T
 
     @Override
     public TifIslemZimmetDevriDto getIslemDto() {
+        PersonelDto devirYapilacakPersonel = viewModel.getDevirYapilacakPersonel();
+        if(devirYapilacakPersonel==null){
+            viewModel.setError("Zimmet Yapılacak Personel Seçiniz!");
+            return null;
+        }
         TifIslemZimmetDevriDto dto = new TifIslemZimmetDevriDto();
-        dto.setIslemTarihi(islemZimmetDevriViewModel.getIslemTarihi());
-        dto.setZimmetlenecekPersonelId(islemZimmetDevriViewModel.getDevirYapilacakPersonel().getId());
-        dto.setAciklama(islemZimmetDevriViewModel.getAciklama());
+        dto.setIslemTarihi(viewModel.getIslemTarihi());
+        dto.setZimmetlenecekPersonelId(devirYapilacakPersonel.getId());
+        dto.setAciklama(viewModel.getAciklama());
         return dto;
     }
 
     @Override
     public void setPersonelDto(PersonelDto personelDto) {
-        islemZimmetDevriViewModel.setDevirYapilacakPersonel(personelDto);
+        viewModel.setDevirYapilacakPersonel(personelDto);
     }
 }

@@ -17,6 +17,9 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     private String imhaOlurAciklamasi;
     private String digerImhaOlurAciklamasi;
     @Bindable
+    private String error;
+
+    @Bindable
     private String komisyonBaskaniAdi;
     @Bindable
     private String komisyonUyesi1TKY_YetkilisiAdi;
@@ -170,5 +173,14 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
         notifyPropertyChanged(BR.komisyonUyesi1TKY_YetkilisiAdi);
         notifyPropertyChanged(BR.komisyonUyesi2Adi);
 
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+        notifyPropertyChanged(BR.error);
     }
 }

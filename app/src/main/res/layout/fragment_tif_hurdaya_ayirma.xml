@@ -170,7 +170,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:hint="Harcama Yetkilisi"
+            app:hint="*Harcama Yetkilisi"
             app:layout_constraintEnd_toEndOf="@+id/pcKomisyonUyesi2"
             app:layout_constraintStart_toStartOf="@+id/pcKomisyonUyesi2"
             app:layout_constraintTop_toBottomOf="@+id/pcKomisyonUyesi2">

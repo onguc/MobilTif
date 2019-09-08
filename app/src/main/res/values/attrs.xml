@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomButtonSearch">
+        <attr name="buttonText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="PersonelComponent">
+        <attr name="hint" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="MuhatapComponent">
+        <attr name="hint" />
+    </declare-styleable>
+</resources>

@@ -27,7 +27,7 @@ import java.util.List;
 
 public class TifIslemTransferFragment extends Fragment implements ITifCommon, ITifIslem<TifIslemTransferDto> {
 
-    private TifIslemTransferViewModel islemTransferViewModel;
+    private TifIslemTransferViewModel viewModel;
     private Spinner actGirisYapilanAmbar;
     private Spinner spnrAmbarSorumlusu;
     private TifIslemTransferPresenter presenter;
@@ -49,10 +49,10 @@ public class TifIslemTransferFragment extends Fragment implements ITifCommon, IT
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        islemTransferViewModel = new TifIslemTransferViewModel();
+        viewModel = new TifIslemTransferViewModel();
 
         FragmentTifTransferBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_transfer, container, false);
-        binding.setViewModel(islemTransferViewModel);
+        binding.setViewModel(viewModel);
 //        this.sspnrGirisYapilanAmbar = binding.actGirisYapilanAmbar;
         this.actGirisYapilanAmbar = binding.actGirisYapilanAmbar;
 
@@ -71,7 +71,7 @@ public class TifIslemTransferFragment extends Fragment implements ITifCommon, IT
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int x = 0;
                 AmbarDto selectedItem = (AmbarDto) parent.getAdapter().getItem(position);
-                islemTransferViewModel.setSelectedAmbarDto(selectedItem);
+                viewModel.setSelectedAmbarDto(selectedItem);
                 presenter.fillAllPersonelDtoListByAmbarId(selectedItem.getId());
                 spnrAmbarSorumlusu.setSelected(false);
             }
@@ -95,7 +95,7 @@ public class TifIslemTransferFragment extends Fragment implements ITifCommon, IT
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 PersonelDto selectedItem = (PersonelDto) parent.getSelectedItem();
-                islemTransferViewModel.setSelectedPersonelDto(selectedItem);
+                viewModel.setSelectedPersonelDto(selectedItem);
             }
 
             @Override
@@ -126,13 +126,26 @@ public class TifIslemTransferFragment extends Fragment implements ITifCommon, IT
 
     @Override
     public TifIslemTransferDto getIslemDto() {
+        AmbarDto  girisYapilanAmbar= viewModel.getSelectedAmbarDto();
+        PersonelDto ambarSorumlusu = viewModel.getSelectedPersonelDto();
+
+        if(girisYapilanAmbar==null){
+            viewModel.setError("Ambar Seçiniz!");
+            return null;
+        }
+
+        if(ambarSorumlusu ==null){
+            viewModel.setError("Ambar Sorumlusu Seçiniz!");
+            return null;
+        }
+
         TifIslemTransferDto dto = new TifIslemTransferDto();
-        dto.setIslemTarihi(islemTransferViewModel.getIslemTarihi());
-        if (islemTransferViewModel.getSelectedPersonelDto() != null)
-            dto.setIdAmbarSorumlusu(islemTransferViewModel.getSelectedPersonelDto().getId());
-        if (islemTransferViewModel.getSelectedAmbarDto() != null)
-            dto.setIdGirisYapilanAmbar(islemTransferViewModel.getSelectedAmbarDto().getId());
-        dto.setAciklama(islemTransferViewModel.getAciklama());
+        dto.setIslemTarihi(viewModel.getIslemTarihi());
+        if (viewModel.getSelectedPersonelDto() != null)
+            dto.setIdAmbarSorumlusu(viewModel.getSelectedPersonelDto().getId());
+        if (viewModel.getSelectedAmbarDto() != null)
+            dto.setIdGirisYapilanAmbar(viewModel.getSelectedAmbarDto().getId());
+        dto.setAciklama(viewModel.getAciklama());
         return dto;
     }
 }

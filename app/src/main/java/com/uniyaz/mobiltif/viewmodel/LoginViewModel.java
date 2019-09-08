@@ -14,11 +14,7 @@ import com.uniyaz.mobiltif.ui.activities.LoginActivity;
 public class LoginViewModel extends BaseObservable {
     private UserDto userDto;
     private boolean checked;
-    //    ActivityLoginBinding activityLoginBinding;
     LoginActivity loginActivity;
-
-    private String successMessage = "Login was successful";
-    private String errorMessage = "Email or Password not valid";
 
     private boolean showProgressBar;
 

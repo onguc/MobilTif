@@ -19,8 +19,7 @@ import com.uniyaz.mobiltif.ui.components.PersonelComponent;
 import com.uniyaz.mobiltif.viewmodel.TifIslemHurdayaAyirmaViewModel;
 
 public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem<TifIslemHurdayaAyirmaDto>, IPersonel {
-    TifIslemHurdayaAyirmaViewModel islemHurdayaAyirmaViewModel;
-
+    TifIslemHurdayaAyirmaViewModel viewModel;
 
 
     public static TifIslemHurdayaAyirmaFragment newInstance() {
@@ -36,19 +35,19 @@ public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        islemHurdayaAyirmaViewModel = new TifIslemHurdayaAyirmaViewModel();
+        viewModel = new TifIslemHurdayaAyirmaViewModel();
         FragmentTifHurdayaAyirmaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_hurdaya_ayirma, container, false);
         PersonelComponent tilKomisyonBaskani = binding.pcKomisyonBaskani;
         PersonelComponent tilKomisyonUyesi1TKYYetkilisi = binding.pcKomisyonUyesi1TKYYetkilisi;
         PersonelComponent tilKomisyonUyesi2 = binding.pcKomisyonUyesi2;
         PersonelComponent tilHarcamaYetkilisi = binding.pcHarcamaYetkilisi;
-        islemHurdayaAyirmaViewModel.setKomisyonBaskani(tilKomisyonBaskani.getSelectedPersonelDto());
-        islemHurdayaAyirmaViewModel.setKomisyonUyesi1TKY(tilKomisyonUyesi1TKYYetkilisi.getSelectedPersonelDto());
-        islemHurdayaAyirmaViewModel.setKomisyonUyesi2(tilKomisyonUyesi2.getSelectedPersonelDto());
-        islemHurdayaAyirmaViewModel.setHarcamaYetkilisi(tilHarcamaYetkilisi.getSelectedPersonelDto());
+        viewModel.setKomisyonBaskani(tilKomisyonBaskani.getSelectedPersonelDto());
+        viewModel.setKomisyonUyesi1TKY(tilKomisyonUyesi1TKYYetkilisi.getSelectedPersonelDto());
+        viewModel.setKomisyonUyesi2(tilKomisyonUyesi2.getSelectedPersonelDto());
+        viewModel.setHarcamaYetkilisi(tilHarcamaYetkilisi.getSelectedPersonelDto());
 
 
-        binding.setViewModel(islemHurdayaAyirmaViewModel);
+        binding.setViewModel(viewModel);
         binding.setFragment(this);
         View view = binding.getRoot();
 
@@ -57,34 +56,55 @@ public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem
 
     @Override
     public TifIslemHurdayaAyirmaDto getIslemDto() {
+        PersonelDto komisyonBaskani = viewModel.getKomisyonBaskani();
+        PersonelDto komisyonUyesi1TKY = viewModel.getKomisyonUyesi1TKY();
+        PersonelDto komisyonUyesi2 = viewModel.getKomisyonUyesi2();
+        PersonelDto harcamaYetkilisi = viewModel.getHarcamaYetkilisi();
+
+        if (komisyonBaskani == null) {
+            viewModel.setError("Komisyon Başkanı Seçiniz!");
+            return null;
+        }
+        if (komisyonUyesi1TKY == null) {
+            viewModel.setError("Komisyon Üyesi Seçiniz!");
+            return null;
+        }
+
+        if (komisyonUyesi2 == null) {
+            viewModel.setError("Komisyon Üyesi 2 Seçiniz!");
+            return null;
+        }
+
+        if (harcamaYetkilisi == null) {
+            viewModel.setError("Harcama Yetkilisi Seçiniz!");
+            return null;
+        }
         TifIslemHurdayaAyirmaDto dto = new TifIslemHurdayaAyirmaDto();
-        dto.setIslemTarihi(islemHurdayaAyirmaViewModel.getIslemTarihi());
-        dto.setDayanakBelgeTarihi(islemHurdayaAyirmaViewModel.getDayanakBelgeTarihi());
-        dto.setKayittanDusmeNedeni(islemHurdayaAyirmaViewModel.getKayittanDusmeNedeni());
-        dto.setDigerKayittanDusmeNedeni(islemHurdayaAyirmaViewModel.getDigerKayittanDusmeNedeni());
-        dto.setImhaOlurAciklamasi(islemHurdayaAyirmaViewModel.getImhaOlurAciklamasi());
-        dto.setDigerImhaOlurAciklamasi(islemHurdayaAyirmaViewModel.getDigerImhaOlurAciklamasi());
-        dto.setKomisyonBaskaniId(islemHurdayaAyirmaViewModel.getKomisyonBaskani().getId());
-        dto.setKomisyonUyesiBirId(islemHurdayaAyirmaViewModel.getKomisyonUyesi1TKY().getId());
-        dto.setKomisyonUyesiIkiId(islemHurdayaAyirmaViewModel.getKomisyonUyesi2().getId());
-        dto.setHarcamaYetkilisiId(islemHurdayaAyirmaViewModel.getHarcamaYetkilisi().getId());
+        dto.setIslemTarihi(viewModel.getIslemTarihi());
+        dto.setDayanakBelgeTarihi(viewModel.getDayanakBelgeTarihi());
+        dto.setKayittanDusmeNedeni(viewModel.getKayittanDusmeNedeni());
+        dto.setDigerKayittanDusmeNedeni(viewModel.getDigerKayittanDusmeNedeni());
+        dto.setImhaOlurAciklamasi(viewModel.getImhaOlurAciklamasi());
+        dto.setDigerImhaOlurAciklamasi(viewModel.getDigerImhaOlurAciklamasi());
+        dto.setKomisyonBaskaniId(viewModel.getKomisyonBaskani().getId());
+        dto.setKomisyonUyesiBirId(viewModel.getKomisyonUyesi1TKY().getId());
+        dto.setKomisyonUyesiIkiId(viewModel.getKomisyonUyesi2().getId());
+        dto.setHarcamaYetkilisiId(viewModel.getHarcamaYetkilisi().getId());
         return dto;
     }
 
     private ListView lvPersonel;
 
     //public void onClicEtMuhatap() {
-        //PersonelComponent personelComponent = new PersonelComponent(this, this);
-      //  personelComponent.showPopup();
+    //PersonelComponent personelComponent = new PersonelComponent(this, this);
+    //  personelComponent.showPopup();
     //}
 
     IPersonel iPersonel = this;
 
 
-
-
     @Override
     public void setPersonelDto(PersonelDto personelDto) {
-        islemHurdayaAyirmaViewModel.setHarcamaYetkilisi(personelDto);
+        viewModel.setHarcamaYetkilisi(personelDto);
     }
 }

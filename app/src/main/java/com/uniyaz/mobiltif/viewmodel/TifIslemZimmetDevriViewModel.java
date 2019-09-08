@@ -15,6 +15,8 @@ public class TifIslemZimmetDevriViewModel extends BaseObservable {
     private String aciklama;
     @Bindable
     private PersonelDto devirYapilacakPersonel;
+    @Bindable
+    private String error;
 
     public TifIslemZimmetDevriViewModel() {
         String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
@@ -53,5 +55,13 @@ public class TifIslemZimmetDevriViewModel extends BaseObservable {
     public void setDevirYapilacakPersonel(PersonelDto devirYapilacakPersonel) {
         this.devirYapilacakPersonel = devirYapilacakPersonel;
         notifyPropertyChanged(BR.devirYapilacakPersonel);
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

@@ -1,5 +1,6 @@
 package com.uniyaz.mobiltif.ui.components;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,7 +43,7 @@ import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationTicket;
  */
 
 public class MuhatapComponent extends CoordinatorLayout {
-
+    private TextInputLayout tilMuhatapField;
     private TextInputEditText tietMuhatapField;
     private ListView lvMuhatap;
     private PopupBuilder popupBuilder;
@@ -55,7 +57,7 @@ public class MuhatapComponent extends CoordinatorLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.muhatap_field, this);
         tietMuhatapField = findViewById(R.id.tietMuhatapField);
-        TextInputLayout tilMuhatapField = findViewById(R.id.tilMuhatapField);
+        tilMuhatapField = findViewById(R.id.tilMuhatapField);
         tietMuhatapField.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -69,15 +71,29 @@ public class MuhatapComponent extends CoordinatorLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, sets);
         CharSequence text = typedArray.getText(0);
 
-        tilMuhatapField.setHint(text);
+        //tilMuhatapField.setHint(text);
+        setHint(text);
+        //tilMuhatapField.setError(textForError);
+        //tilMuhatapField.setErrorEnabled(false);
     }
 
     public void setHint(CharSequence text) {
         tietMuhatapField.setHint(text);
     }
 
+    public void setError(CharSequence error) {
+        if (error != null){
+            tietMuhatapField.setError(error);
+            requestFocus(tietMuhatapField);
+        }
+    }
+
     public CharSequence getHint() {
         return tietMuhatapField.getHint();
+    }
+
+    public CharSequence getError() {
+        return tilMuhatapField.getError();
     }
 
     public void openComponent() {
@@ -92,6 +108,7 @@ public class MuhatapComponent extends CoordinatorLayout {
             selectedMuhatapDto.setIsim(dto.getIsim());
             hidePopup();
             tietMuhatapField.setText(selectedMuhatapDto.getIsim());
+            tilMuhatapField.setErrorEnabled(false);
         });
         btnCall.setOnClickListener(view -> {
             String adi = etAdi.getText().toString();
@@ -133,5 +150,12 @@ public class MuhatapComponent extends CoordinatorLayout {
 
     public MuhatapDto getSelectedMuhatapDto() {
         return selectedMuhatapDto;
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            Activity activity = (Activity) getContext();
+            activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.uniyaz.mobiltif.viewmodel;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.utils.DateUtils;
@@ -12,6 +13,8 @@ public class TifIslemZimmetViewModel extends BaseObservable {
     private String muhatapName;
     private String aciklama;
     private PersonelDto zimmetYapilacakPersonel;
+    @Bindable
+    private String error;
 
     public TifIslemZimmetViewModel() {
         String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
@@ -49,5 +52,13 @@ public class TifIslemZimmetViewModel extends BaseObservable {
 
     public void setZimmetYapilacakPersonel(PersonelDto zimmetYapilacakPersonel) {
         this.zimmetYapilacakPersonel = zimmetYapilacakPersonel;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

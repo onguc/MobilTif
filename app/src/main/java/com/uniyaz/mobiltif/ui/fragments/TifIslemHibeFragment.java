@@ -20,7 +20,7 @@ import com.uniyaz.mobiltif.pattern.PopupBuilder;
 import com.uniyaz.mobiltif.viewmodel.TifIslemHibeViewModel;
 
 public class TifIslemHibeFragment extends Fragment implements ITifIslem<TifIslemHibeDto>, IMuhatap {
-    TifIslemHibeViewModel islemHibeViewModel;
+    TifIslemHibeViewModel viewModel;
     ListView lvMuhatap;
     SwipeDismissDialog dismissDialog;
     PopupBuilder popupBuilder;
@@ -43,13 +43,9 @@ public class TifIslemHibeFragment extends Fragment implements ITifIslem<TifIslem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        islemHibeViewModel = new TifIslemHibeViewModel();
-        MuhatapDto muhatapDto = new MuhatapDto();
-        muhatapDto.setIsim("İRFAN HACI BILGIN OZKORKMAZ");
-        muhatapDto.setSbsMuhatapId(30023l);
-        islemHibeViewModel.setMuhatap(muhatapDto);
+        viewModel = new TifIslemHibeViewModel();
         FragmentTifHibeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_hibe, container, false);
-        binding.setViewModel(islemHibeViewModel);
+        binding.setViewModel(viewModel);
         binding.setFragment(this);
         View view = binding.getRoot();
 
@@ -58,17 +54,23 @@ public class TifIslemHibeFragment extends Fragment implements ITifIslem<TifIslem
 
     @Override
     public TifIslemHibeDto getIslemDto() {
+        MuhatapDto muhatapDto = viewModel.getMuhatap();
+        if (muhatapDto == null) {
+            viewModel.setError("Bir Muhatap Seçiniz!");
+            return null;
+        }
+
         TifIslemHibeDto dto = new TifIslemHibeDto();
-        dto.setIslemTarihi(islemHibeViewModel.getIslemTarihi());
-        dto.setIdMuhatap(islemHibeViewModel.getMuhatap().getSbsMuhatapId());
-        dto.setDayanakBelgeTarihi(islemHibeViewModel.getDayanakBelgeTarihi());
-        dto.setAciklama(islemHibeViewModel.getAciklama());
+        dto.setIslemTarihi(viewModel.getIslemTarihi());
+        dto.setIdMuhatap(muhatapDto.getSbsMuhatapId());
+        dto.setDayanakBelgeTarihi(viewModel.getDayanakBelgeTarihi());
+        dto.setAciklama(viewModel.getAciklama());
         return dto;
     }
 
 
     @Override
     public void setMuhatapDto(MuhatapDto muhatapDto) {
-        islemHibeViewModel.setMuhatap(muhatapDto);
+        viewModel.setMuhatap(muhatapDto);
     }
 }

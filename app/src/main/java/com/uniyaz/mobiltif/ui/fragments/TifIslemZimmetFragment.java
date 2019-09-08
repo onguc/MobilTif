@@ -9,13 +9,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.uniyaz.mobiltif.R;
+import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.data.dto.TifIslemZimmetDto;
 import com.uniyaz.mobiltif.databinding.FragmentTifZimmetBinding;
 import com.uniyaz.mobiltif.iface.ITifIslem;
 import com.uniyaz.mobiltif.viewmodel.TifIslemZimmetViewModel;
 
 public class TifIslemZimmetFragment extends Fragment implements ITifIslem<TifIslemZimmetDto> {
-    TifIslemZimmetViewModel islemZimmetViewModel;
+    TifIslemZimmetViewModel viewModel;
 
     public TifIslemZimmetFragment() {
         // Required empty public constructor
@@ -35,11 +36,11 @@ public class TifIslemZimmetFragment extends Fragment implements ITifIslem<TifIsl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        islemZimmetViewModel = new TifIslemZimmetViewModel();
+        viewModel = new TifIslemZimmetViewModel();
 
         FragmentTifZimmetBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_zimmet, container, false);
-        binding.setViewModel(islemZimmetViewModel);
-        islemZimmetViewModel.setZimmetYapilacakPersonel(binding.pcZimmetYapilacakPersonel.getSelectedPersonelDto());
+        binding.setViewModel(viewModel);
+        viewModel.setZimmetYapilacakPersonel(binding.pcZimmetYapilacakPersonel.getSelectedPersonelDto());
         View view = binding.getRoot();
 
         return view;
@@ -47,10 +48,15 @@ public class TifIslemZimmetFragment extends Fragment implements ITifIslem<TifIsl
 
     @Override
     public TifIslemZimmetDto getIslemDto() {
+        PersonelDto zimmetYapilacakPersonel = viewModel.getZimmetYapilacakPersonel();
+        if (zimmetYapilacakPersonel == null) {
+            viewModel.setError("Zimmet Yapılacak Personel Seçiniz!");
+            return null;
+        }
         TifIslemZimmetDto dto = new TifIslemZimmetDto();
-        dto.setIslemTarihi(islemZimmetViewModel.getIslemTarihi());
-        dto.setZimmetlenecekPersonelId(islemZimmetViewModel.getZimmetYapilacakPersonel().getId());
-        dto.setAciklama(islemZimmetViewModel.getAciklama());
+        dto.setIslemTarihi(viewModel.getIslemTarihi());
+        dto.setZimmetlenecekPersonelId(viewModel.getZimmetYapilacakPersonel().getId());
+        dto.setAciklama(viewModel.getAciklama());
         return dto;
     }
 }

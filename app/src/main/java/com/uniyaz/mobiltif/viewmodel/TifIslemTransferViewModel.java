@@ -24,6 +24,8 @@ public class TifIslemTransferViewModel extends BaseObservable {
     private String aciklama;
     private AmbarDto selectedAmbarDto;
     private PersonelDto selectedPersonelDto;
+    @Bindable
+    private String error;
 
 
     public String getIslemTarihi() {
@@ -72,5 +74,13 @@ public class TifIslemTransferViewModel extends BaseObservable {
 
     public void setAciklama(String aciklama) {
         this.aciklama = aciklama;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

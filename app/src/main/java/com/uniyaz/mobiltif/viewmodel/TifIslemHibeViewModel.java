@@ -11,11 +11,12 @@ import java.util.Date;
 
 public class TifIslemHibeViewModel extends BaseObservable {
     private String islemTarihi;
-    @Bindable
-    private String muhatapName;
+
     private String dayanakBelgeTarihi;
     private String aciklama;
     private MuhatapDto muhatap;
+    @Bindable
+    private String error;
 
     public TifIslemHibeViewModel() {
         String convertedStringFromDate = DateUtils.getConvertedStringFromDate(new Date());
@@ -23,21 +24,12 @@ public class TifIslemHibeViewModel extends BaseObservable {
         setDayanakBelgeTarihi(convertedStringFromDate);
     }
 
-
     public String getIslemTarihi() {
         return islemTarihi;
     }
 
     public void setIslemTarihi(String islemTarihi) {
         this.islemTarihi = islemTarihi;
-    }
-
-    public String getMuhatapName() {
-        return muhatapName;
-    }
-
-    public void setMuhatapName(String muhatapName) {
-        this.muhatapName = muhatapName;
     }
 
     public String getDayanakBelgeTarihi() {
@@ -62,14 +54,16 @@ public class TifIslemHibeViewModel extends BaseObservable {
 
     public void setMuhatap(MuhatapDto muhatap) {
         this.muhatap = muhatap;
-        if (muhatap != null)
-            muhatapName = muhatap.getIsim();
-        notifyPropertyChanged(BR.muhatapName);
     }
 
-    public String getMuhatapIsim() {
-        if (muhatap != null)
-            return muhatap.getIsim();
-        else return "";
+    public void setError(CharSequence error) {
+        if (error != null){
+            this.error = error.toString();
+            notifyPropertyChanged(BR.error);
+        }
+    }
+
+    public CharSequence getError() {
+        return error;
     }
 }

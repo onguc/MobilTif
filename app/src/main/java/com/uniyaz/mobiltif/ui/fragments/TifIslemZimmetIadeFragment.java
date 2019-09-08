@@ -15,7 +15,7 @@ import com.uniyaz.mobiltif.iface.ITifIslem;
 import com.uniyaz.mobiltif.viewmodel.TifIslemZimmetIadeViewModel;
 
 public class TifIslemZimmetIadeFragment extends Fragment implements ITifIslem<TifIslemZimmetIadeDto> {
-    TifIslemZimmetIadeViewModel islemZimmetIadeViewModel;
+    TifIslemZimmetIadeViewModel viewModel;
 
     public TifIslemZimmetIadeFragment() {
         // Required empty public constructor
@@ -35,10 +35,10 @@ public class TifIslemZimmetIadeFragment extends Fragment implements ITifIslem<Ti
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        islemZimmetIadeViewModel = new TifIslemZimmetIadeViewModel();
+        viewModel = new TifIslemZimmetIadeViewModel();
 
         FragmentTifZimmetIadeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_zimmet_iade, container, false);
-        binding.setViewModel(islemZimmetIadeViewModel);
+        binding.setViewModel(viewModel);
         View view = binding.getRoot();
 
         return view;
@@ -47,8 +47,8 @@ public class TifIslemZimmetIadeFragment extends Fragment implements ITifIslem<Ti
     @Override
     public TifIslemZimmetIadeDto getIslemDto() {
         TifIslemZimmetIadeDto dto = new TifIslemZimmetIadeDto();
-        dto.setIslemTarihi(islemZimmetIadeViewModel.getIslemTarihi());
-        dto.setAciklama(islemZimmetIadeViewModel.getAciklama());
+        dto.setIslemTarihi(viewModel.getIslemTarihi());
+        dto.setAciklama(viewModel.getAciklama());
         return dto;
     }
 }

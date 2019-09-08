@@ -83,6 +83,8 @@ public class TifFragment extends Fragment implements ITif {
     }
 
     public void onClicBtnIslemiGerceklestir() {
+        if (iTifIslem.getIslemDto() == null)
+            return;
 
         TifDto dto = new TifDto();
         Long[] idEnvanterList = null;
@@ -93,6 +95,7 @@ public class TifFragment extends Fragment implements ITif {
         }
         dto.setIdEnvanterList(idEnvanterList);
         dto.setIslemTuru(enumIslemTuru);
+
         dto.setVysTasinirRequestDto(iTifIslem.getIslemDto());
         presenter.saveVysTasinirTransferIslem(dto);
     }
@@ -121,7 +124,8 @@ public class TifFragment extends Fragment implements ITif {
 
     @Override
     public void onSuccessForSaveTasinirTransferIslem(TifIslemResponseDto responseDto) {
-        View dialog =null;
+        View dialog = null;
+
         if (enumIslemTuru == EnumIslemTuru.ZIMMET_IADE) {
             dialog = LayoutInflater.from(getActivity()).inflate(R.layout.popup_basarili_kayit_2, null);
         } else {
