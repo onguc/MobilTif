@@ -82,8 +82,8 @@ public class MuhatapComponent extends CoordinatorLayout {
     }
 
     public void setError(CharSequence error) {
-        if (error != null){
-            tietMuhatapField.setError(error);
+        tietMuhatapField.setError(error);
+        if (error != null) {
             requestFocus(tietMuhatapField);
         }
     }
@@ -93,7 +93,7 @@ public class MuhatapComponent extends CoordinatorLayout {
     }
 
     public CharSequence getError() {
-        return tilMuhatapField.getError();
+        return tietMuhatapField.getError();
     }
 
     public void openComponent() {
@@ -108,7 +108,7 @@ public class MuhatapComponent extends CoordinatorLayout {
             selectedMuhatapDto.setIsim(dto.getIsim());
             hidePopup();
             tietMuhatapField.setText(selectedMuhatapDto.getIsim());
-            tilMuhatapField.setErrorEnabled(false);
+            setError(null);
         });
         btnCall.setOnClickListener(view -> {
             String adi = etAdi.getText().toString();

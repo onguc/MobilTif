@@ -17,6 +17,7 @@ import com.uniyaz.mobiltif.databinding.FragmentTifHibeBinding;
 import com.uniyaz.mobiltif.iface.IMuhatap;
 import com.uniyaz.mobiltif.iface.ITifIslem;
 import com.uniyaz.mobiltif.pattern.PopupBuilder;
+import com.uniyaz.mobiltif.ui.components.MuhatapComponent;
 import com.uniyaz.mobiltif.viewmodel.TifIslemHibeViewModel;
 
 public class TifIslemHibeFragment extends Fragment implements ITifIslem<TifIslemHibeDto>, IMuhatap {
@@ -46,6 +47,8 @@ public class TifIslemHibeFragment extends Fragment implements ITifIslem<TifIslem
         viewModel = new TifIslemHibeViewModel();
         FragmentTifHibeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_hibe, container, false);
         binding.setViewModel(viewModel);
+        MuhatapComponent mcMuhatap = binding.mcMuhatap;
+        viewModel.setMuhatap(mcMuhatap.getSelectedMuhatapDto());
         binding.setFragment(this);
         View view = binding.getRoot();
 
@@ -55,7 +58,7 @@ public class TifIslemHibeFragment extends Fragment implements ITifIslem<TifIslem
     @Override
     public TifIslemHibeDto getIslemDto() {
         MuhatapDto muhatapDto = viewModel.getMuhatap();
-        if (muhatapDto == null) {
+        if (muhatapDto == null || muhatapDto.getSbsMuhatapId() == null) {
             viewModel.setError("Bir Muhatap Seçiniz!");
             return null;
         }
