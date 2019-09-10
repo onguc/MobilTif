@@ -5,6 +5,7 @@ import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.domain.Tasinir;
 import com.uniyaz.mobiltif.data.domain.User;
 import com.uniyaz.mobiltif.data.domain.UserDto;
+import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.iface.IMain;
 
 import java.util.ArrayList;
@@ -90,6 +91,10 @@ public class StaticUtils {
 
     public static String getAuthorizationTicket() {
         return authTicket;
+    }
+
+    public static boolean isEmptyPersonelDto(PersonelDto personelDto){
+        return personelDto==null || personelDto.getId()==null;
     }
 
 }

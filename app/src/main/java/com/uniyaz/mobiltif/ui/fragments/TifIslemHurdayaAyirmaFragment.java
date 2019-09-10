@@ -16,11 +16,12 @@ import com.uniyaz.mobiltif.databinding.FragmentTifHurdayaAyirmaBinding;
 import com.uniyaz.mobiltif.iface.IPersonel;
 import com.uniyaz.mobiltif.iface.ITifIslem;
 import com.uniyaz.mobiltif.ui.components.PersonelComponent;
+import com.uniyaz.mobiltif.utils.StaticUtils;
 import com.uniyaz.mobiltif.viewmodel.TifIslemHurdayaAyirmaViewModel;
 
 public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem<TifIslemHurdayaAyirmaDto>, IPersonel {
     TifIslemHurdayaAyirmaViewModel viewModel;
-
+    FragmentTifHurdayaAyirmaBinding binding;
 
     public static TifIslemHurdayaAyirmaFragment newInstance() {
         TifIslemHurdayaAyirmaFragment fragment = new TifIslemHurdayaAyirmaFragment();
@@ -36,7 +37,7 @@ public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         viewModel = new TifIslemHurdayaAyirmaViewModel();
-        FragmentTifHurdayaAyirmaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_hurdaya_ayirma, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_hurdaya_ayirma, container, false);
         PersonelComponent tilKomisyonBaskani = binding.pcKomisyonBaskani;
         PersonelComponent tilKomisyonUyesi1TKYYetkilisi = binding.pcKomisyonUyesi1TKYYetkilisi;
         PersonelComponent tilKomisyonUyesi2 = binding.pcKomisyonUyesi2;
@@ -45,7 +46,6 @@ public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem
         viewModel.setKomisyonUyesi1TKY(tilKomisyonUyesi1TKYYetkilisi.getSelectedPersonelDto());
         viewModel.setKomisyonUyesi2(tilKomisyonUyesi2.getSelectedPersonelDto());
         viewModel.setHarcamaYetkilisi(tilHarcamaYetkilisi.getSelectedPersonelDto());
-
 
         binding.setViewModel(viewModel);
         binding.setFragment(this);
@@ -61,22 +61,22 @@ public class TifIslemHurdayaAyirmaFragment extends Fragment implements ITifIslem
         PersonelDto komisyonUyesi2 = viewModel.getKomisyonUyesi2();
         PersonelDto harcamaYetkilisi = viewModel.getHarcamaYetkilisi();
 
-        if (komisyonBaskani == null) {
-            viewModel.setError("Komisyon Başkanı Seçiniz!");
+        if (StaticUtils.isEmptyPersonelDto(komisyonBaskani)) {
+            binding.pcKomisyonBaskani.setError("Komisyon Başkanı Seçiniz!");
             return null;
         }
-        if (komisyonUyesi1TKY == null) {
-            viewModel.setError("Komisyon Üyesi Seçiniz!");
-            return null;
-        }
-
-        if (komisyonUyesi2 == null) {
-            viewModel.setError("Komisyon Üyesi 2 Seçiniz!");
+        if (StaticUtils.isEmptyPersonelDto(komisyonUyesi1TKY)) {
+            binding.pcKomisyonUyesi1TKYYetkilisi.setError("Komisyon Üyesi Seçiniz!");
             return null;
         }
 
-        if (harcamaYetkilisi == null) {
-            viewModel.setError("Harcama Yetkilisi Seçiniz!");
+        if (StaticUtils.isEmptyPersonelDto(komisyonUyesi2)) {
+            binding.pcKomisyonUyesi2.setError("Komisyon Üyesi 2 Seçiniz!");
+            return null;
+        }
+
+        if (StaticUtils.isEmptyPersonelDto(harcamaYetkilisi)) {
+            binding.pcHarcamaYetkilisi.setError("Harcama Yetkilisi Seçiniz!");
             return null;
         }
         TifIslemHurdayaAyirmaDto dto = new TifIslemHurdayaAyirmaDto();

@@ -16,17 +16,23 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
     private String digerKayittanDusmeNedeni;
     private String imhaOlurAciklamasi;
     private String digerImhaOlurAciklamasi;
+
+    private String errorKomisyonBaskani;
+    private String errorKomisyonUyesi1TKY_Yetkilisi;
+    private String errorKomisyonUyesi2;
+    private String errorHarcamaYetkilisi;
     @Bindable
     private String error;
 
-    @Bindable
-    private String komisyonBaskaniAdi;
-    @Bindable
-    private String komisyonUyesi1TKY_YetkilisiAdi;
-    @Bindable
-    private String komisyonUyesi2Adi;
-    @Bindable
-    private String harcamaYetkilisiAdi;
+
+//    @Bindable
+//    private String komisyonBaskaniAdi;
+//    @Bindable
+//    private String komisyonUyesi1TKY_YetkilisiAdi;
+//    @Bindable
+//    private String komisyonUyesi2Adi;
+//    @Bindable
+//    private String harcamaYetkilisiAdi;
 
     private PersonelDto komisyonBaskani;
     private PersonelDto komisyonUyesi1TKY;
@@ -97,37 +103,37 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
         this.digerImhaOlurAciklamasi = digerImhaOlurAciklamasi;
     }
 
-    public String getKomisyonBaskaniAdi() {
-        return komisyonBaskaniAdi;
-    }
-
-    public void setKomisyonBaskaniAdi(String komisyonBaskaniAdi) {
-        this.komisyonBaskaniAdi = komisyonBaskaniAdi;
-    }
-
-    public String getKomisyonUyesi1TKY_YetkilisiAdi() {
-        return komisyonUyesi1TKY_YetkilisiAdi;
-    }
-
-    public void setKomisyonUyesi1TKY_YetkilisiAdi(String komisyonUyesi1TKY_YetkilisiAdi) {
-        this.komisyonUyesi1TKY_YetkilisiAdi = komisyonUyesi1TKY_YetkilisiAdi;
-    }
-
-    public String getKomisyonUyesi2Adi() {
-        return komisyonUyesi2Adi;
-    }
-
-    public void setKomisyonUyesi2Adi(String komisyonUyesi2Adi) {
-        this.komisyonUyesi2Adi = komisyonUyesi2Adi;
-    }
-
-    public String getHarcamaYetkilisiAdi() {
-        return harcamaYetkilisiAdi;
-    }
-
-    public void setHarcamaYetkilisiAdi(String harcamaYetkilisiAdi) {
-        this.harcamaYetkilisiAdi = harcamaYetkilisiAdi;
-    }
+//    public String getKomisyonBaskaniAdi() {
+//        return komisyonBaskaniAdi;
+//    }
+//
+//    public void setKomisyonBaskaniAdi(String komisyonBaskaniAdi) {
+//        this.komisyonBaskaniAdi = komisyonBaskaniAdi;
+//    }
+//
+//    public String getKomisyonUyesi1TKY_YetkilisiAdi() {
+//        return komisyonUyesi1TKY_YetkilisiAdi;
+//    }
+//
+//    public void setKomisyonUyesi1TKY_YetkilisiAdi(String komisyonUyesi1TKY_YetkilisiAdi) {
+//        this.komisyonUyesi1TKY_YetkilisiAdi = komisyonUyesi1TKY_YetkilisiAdi;
+//    }
+//
+//    public String getKomisyonUyesi2Adi() {
+//        return komisyonUyesi2Adi;
+//    }
+//
+//    public void setKomisyonUyesi2Adi(String komisyonUyesi2Adi) {
+//        this.komisyonUyesi2Adi = komisyonUyesi2Adi;
+//    }
+//
+//    public String getHarcamaYetkilisiAdi() {
+//        return harcamaYetkilisiAdi;
+//    }
+//
+//    public void setHarcamaYetkilisiAdi(String harcamaYetkilisiAdi) {
+//        this.harcamaYetkilisiAdi = harcamaYetkilisiAdi;
+//    }
 
     public PersonelDto getKomisyonBaskani() {
         return komisyonBaskani;
@@ -157,22 +163,8 @@ public class TifIslemHurdayaAyirmaViewModel extends BaseObservable {
         return harcamaYetkilisi;
     }
 
-    public void setHarcamaYetkilisi(PersonelDto personelDto) {
-        harcamaYetkilisi = personelDto;
-        komisyonBaskani = personelDto;
-        komisyonUyesi1TKY = personelDto;
-        komisyonUyesi2 = personelDto;
-
-        harcamaYetkilisiAdi = personelDto.getIsim();
-        komisyonBaskaniAdi = personelDto.getIsim();
-        komisyonUyesi1TKY_YetkilisiAdi = personelDto.getIsim();
-        komisyonUyesi2Adi = personelDto.getIsim();
-
-        notifyPropertyChanged(BR.harcamaYetkilisiAdi);
-        notifyPropertyChanged(BR.komisyonBaskaniAdi);
-        notifyPropertyChanged(BR.komisyonUyesi1TKY_YetkilisiAdi);
-        notifyPropertyChanged(BR.komisyonUyesi2Adi);
-
+    public void setHarcamaYetkilisi(PersonelDto harcamaYetkilisi) {
+        this.harcamaYetkilisi = harcamaYetkilisi;
     }
 
     public String getError() {

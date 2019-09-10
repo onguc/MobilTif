@@ -1,5 +1,6 @@
 package com.uniyaz.mobiltif.ui.components;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -92,6 +94,7 @@ public class PersonelComponent extends CoordinatorLayout {
             selectedPersonelDto.setIsim(dto.getIsim());
             hidePopup();
             tietPersonelField.setText(selectedPersonelDto.getIsim());
+            setError(null);
         });
         btnCall.setOnClickListener(view -> {
             String adi = etAdi.getText().toString();
@@ -134,4 +137,24 @@ public class PersonelComponent extends CoordinatorLayout {
     public PersonelDto getSelectedPersonelDto() {
         return selectedPersonelDto;
     }
+
+    public void setError(CharSequence error) {
+        tietPersonelField.setError(error);
+        if (error != null) {
+            requestFocus(tietPersonelField);
+        }
+    }
+
+    public CharSequence getError() {
+        return tietPersonelField.getError();
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            Activity activity = (Activity) getContext();
+            activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+
 }

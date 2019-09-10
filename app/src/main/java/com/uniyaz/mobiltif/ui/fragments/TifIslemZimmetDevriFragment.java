@@ -14,11 +14,12 @@ import com.uniyaz.mobiltif.data.dto.TifIslemZimmetDevriDto;
 import com.uniyaz.mobiltif.databinding.FragmentTifZimmetDevriBinding;
 import com.uniyaz.mobiltif.iface.IPersonel;
 import com.uniyaz.mobiltif.iface.ITifIslem;
+import com.uniyaz.mobiltif.utils.StaticUtils;
 import com.uniyaz.mobiltif.viewmodel.TifIslemZimmetDevriViewModel;
 
 public class TifIslemZimmetDevriFragment extends Fragment implements ITifIslem<TifIslemZimmetDevriDto>, IPersonel {
     TifIslemZimmetDevriViewModel viewModel;
-
+    FragmentTifZimmetDevriBinding binding;
     public static TifIslemZimmetDevriFragment newInstance() {
         TifIslemZimmetDevriFragment fragment = new TifIslemZimmetDevriFragment();
         return fragment;
@@ -34,7 +35,7 @@ public class TifIslemZimmetDevriFragment extends Fragment implements ITifIslem<T
                              Bundle savedInstanceState) {
         viewModel = new TifIslemZimmetDevriViewModel();
 
-        FragmentTifZimmetDevriBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_zimmet_devri, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tif_zimmet_devri, container, false);
         viewModel.setDevirYapilacakPersonel(binding.pcDevirYapilacakPersonel.getSelectedPersonelDto());
         binding.setViewModel(viewModel);
         View view = binding.getRoot();
@@ -45,8 +46,8 @@ public class TifIslemZimmetDevriFragment extends Fragment implements ITifIslem<T
     @Override
     public TifIslemZimmetDevriDto getIslemDto() {
         PersonelDto devirYapilacakPersonel = viewModel.getDevirYapilacakPersonel();
-        if(devirYapilacakPersonel==null){
-            viewModel.setError("Zimmet Yapılacak Personel Seçiniz!");
+        if(StaticUtils.isEmptyPersonelDto(devirYapilacakPersonel)){
+            binding.pcDevirYapilacakPersonel.setError("Zimmet Yapılacak Personel Seçiniz!");
             return null;
         }
         TifIslemZimmetDevriDto dto = new TifIslemZimmetDevriDto();

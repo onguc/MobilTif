@@ -136,6 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:hint="*Komisyon Başkanı"
+            app:error="@{viewModel.error}"
             app:layout_constraintEnd_toEndOf="@+id/tilDigerImhaOlurAciklamasi"
             app:layout_constraintStart_toStartOf="@+id/tilDigerImhaOlurAciklamasi"
             app:layout_constraintTop_toBottomOf="@+id/tilDigerImhaOlurAciklamasi">
@@ -148,6 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:hint="*Komisyon Üyesi 1 / TKY Yetkilisi"
+            app:error="@{viewModel.error}"
             app:layout_constraintEnd_toEndOf="@+id/pcKomisyonBaskani"
             app:layout_constraintStart_toStartOf="@+id/pcKomisyonBaskani"
             app:layout_constraintTop_toBottomOf="@+id/pcKomisyonBaskani">
@@ -159,6 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:hint="*Komisyon Üyesi 2"
+            app:error="@{viewModel.error}"
             app:layout_constraintEnd_toEndOf="@+id/pcKomisyonUyesi1TKY_Yetkilisi"
             app:layout_constraintStart_toStartOf="@+id/pcKomisyonUyesi1TKY_Yetkilisi"
             app:layout_constraintTop_toBottomOf="@+id/pcKomisyonUyesi1TKY_Yetkilisi">
@@ -171,6 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:hint="*Harcama Yetkilisi"
+            app:error="@{viewModel.error}"
             app:layout_constraintEnd_toEndOf="@+id/pcKomisyonUyesi2"
             app:layout_constraintStart_toStartOf="@+id/pcKomisyonUyesi2"
             app:layout_constraintTop_toBottomOf="@+id/pcKomisyonUyesi2">
