@@ -1,39 +1,95 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/margin_view"
-    android:paddingLeft="@dimen/margin_view"
-    android:paddingRight="@dimen/margin_view"
+    android:paddingStart="10dp"
     android:background="@drawable/bg_fragment_demirbas"
-    android:orientation="vertical">
-    <LinearLayout
+
+    android:paddingEnd="10dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAdi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAdi"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editTextHeight"
+            android:background="@drawable/bg_edittext"
+            android:hint="İsim" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilKisaAdi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        app:layout_constraintEnd_toEndOf="@+id/tilAdi"
+        app:layout_constraintStart_toStartOf="@+id/tilAdi"
+        app:layout_constraintTop_toBottomOf="@+id/tilAdi">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAdi"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editTextHeight"
-                android:hint="İsim"
-                android:background="@drawable/bg_edittext"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btnCallMuhatap"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etKisaAdi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ara"/>
-    </LinearLayout>
+            android:layout_height="@dimen/editTextHeight"
+            android:background="@drawable/bg_edittext"
+            android:hint="Kısa Adı" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilVergiNo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tilKisaAdi"
+        app:layout_constraintStart_toStartOf="@+id/tilKisaAdi"
+        app:layout_constraintTop_toBottomOf="@+id/tilKisaAdi">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etVergiNo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editTextHeight"
+            android:background="@drawable/bg_edittext"
+            android:inputType="phone"
+            android:hint="Vergi No" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnCallMuhatap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ara"
+        app:layout_constraintEnd_toEndOf="@+id/tilVergiNo"
+        app:layout_constraintStart_toStartOf="@+id/tilVergiNo"
+        app:layout_constraintTop_toBottomOf="@+id/tilVergiNo" />
 
     <ListView
         android:id="@+id/lvMuhatapList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="@dimen/margin_view"
+        android:paddingTop="@dimen/margin_view"
+        android:paddingRight="@dimen/margin_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnCallMuhatap"
+        app:layout_constraintStart_toStartOf="@+id/btnCallMuhatap"
+        app:layout_constraintTop_toBottomOf="@+id/btnCallMuhatap"></ListView>
 
-    </ListView>
+    <include
+        android:id="@+id/include_progress_bar"
+        layout="@layout/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,13 @@
 package com.uniyaz.mobiltif.utils;
 
+import android.app.Activity;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
+
 import com.uniyaz.mobiltif.data.domain.Department;
 import com.uniyaz.mobiltif.data.domain.Room;
 import com.uniyaz.mobiltif.data.domain.Tasinir;
-import com.uniyaz.mobiltif.data.domain.User;
 import com.uniyaz.mobiltif.data.domain.UserDto;
 import com.uniyaz.mobiltif.data.dto.PersonelDto;
 import com.uniyaz.mobiltif.iface.IMain;
@@ -17,7 +21,6 @@ import java.util.List;
 
 public class StaticUtils {
 
-    public static User user = null;
     public static IMain iMain;
     public static String kullaniciAdi = "uniyaz";
     private static List<Tasinir> tasinirList = new ArrayList<>();
@@ -93,8 +96,21 @@ public class StaticUtils {
         return authTicket;
     }
 
-    public static boolean isEmptyPersonelDto(PersonelDto personelDto){
-        return personelDto==null || personelDto.getId()==null;
+    public static boolean isEmptyPersonelDto(PersonelDto personelDto) {
+        return personelDto == null || personelDto.getId() == null;
+    }
+
+    public static void showProgressBar(ProgressBar progressBar) {
+        progressBar.setVisibility(View.VISIBLE);
+        Activity activity = (Activity) progressBar.getContext();
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    public static void hideProgressBar(ProgressBar progressBar) {
+        progressBar.setVisibility(View.GONE);
+        Activity activity = (Activity) progressBar.getContext();
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
 }

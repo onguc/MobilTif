@@ -10,8 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +29,9 @@ import com.uniyaz.mobiltif.retrofit.RetrofitInterface;
 import com.uniyaz.mobiltif.ui.adapters.MuhatapAdapter;
 import com.uniyaz.mobiltif.utils.StaticUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -48,6 +51,7 @@ public class MuhatapComponent extends CoordinatorLayout {
     private ListView lvMuhatap;
     private PopupBuilder popupBuilder;
     private MuhatapDto selectedMuhatapDto = new MuhatapDto();
+    ProgressBar progressBar;
 
     public MuhatapComponent(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -98,7 +102,10 @@ public class MuhatapComponent extends CoordinatorLayout {
 
     public void openComponent() {
         View dialog = LayoutInflater.from(getContext()).inflate(R.layout.popup_call_muhatap, null);
-        TextView etAdi = dialog.findViewById(R.id.etAdi);
+        EditText etAdi = dialog.findViewById(R.id.etAdi);
+        EditText etKisAdi = dialog.findViewById(R.id.etKisaAdi);
+        EditText etVergiNo = dialog.findViewById(R.id.etVergiNo);
+        progressBar = dialog.findViewById(R.id.include_progress_bar);
         Button btnCall = dialog.findViewById(R.id.btnCallMuhatap);
 
         lvMuhatap = dialog.findViewById(R.id.lvMuhatapList);
@@ -111,14 +118,31 @@ public class MuhatapComponent extends CoordinatorLayout {
             setError(null);
         });
         btnCall.setOnClickListener(view -> {
+            boolean shown = progressBar.isShown();
+//            progressBar.setVisibility(VISIBLE);
+            StaticUtils.showProgressBar(progressBar);
+
             String adi = etAdi.getText().toString();
-            if (adi == null || "".equals(adi))
-                return;
+            String unvani = etKisAdi.getText().toString();
+            String vergiNo = etVergiNo.getText().toString();
+            String sorgu = "";
+            Map<String, String> map = new HashMap<>();
+
+            if (adi != null && !"".equals(adi))
+                map.put("adi", adi);
+
+            if (unvani != null && !"".equals(unvani))
+                map.put("unvani", unvani);
+
+            if (vergiNo != null && !"".equals(vergiNo))
+                map.put("vergiNo", vergiNo);
+
             StaticUtils.iMain.showProgressBar();
-            fillAllMuhatapDto(adi);
+            fillAllMuhatapDto(map);
         });
 
         popupBuilder = new PopupBuilder(dialog, getRootView());
+
         popupBuilder.show();
     }
 
@@ -127,8 +151,17 @@ public class MuhatapComponent extends CoordinatorLayout {
         StaticUtils.iMain.hideProgressBar();
     }
 
-    public void fillAllMuhatapDto(String adi) {
-        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"), "adi=" + adi);
+    public void fillAllMuhatapDto(Map<String, String> map) {
+        if (map.size() == 0)
+            return;
+        StringBuilder sorgu = new StringBuilder();
+        for (String keyset : map.keySet()) {
+            String keyValue = map.get(keyset);
+            sorgu.append(keyset + "=" + keyValue + "&");
+        }
+        sorgu.append("muhatapTuru=KURUM");
+
+        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"), sorgu.toString());
         Call<ResponseInfo<List<MuhatapDto>>> responseInfoCall = RetrofitInterface.retrofitInterface.findAllSbsMuhatap(getAuthorizationTicket(), requestBody);
         responseInfoCall.enqueue(new Callback<ResponseInfo<List<MuhatapDto>>>() {
             @Override
@@ -136,6 +169,8 @@ public class MuhatapComponent extends CoordinatorLayout {
                 ResponseResult<List<MuhatapDto>> responseResult = responseDto -> {
                     MuhatapAdapter adapter = new MuhatapAdapter(responseDto, getContext());
                     lvMuhatap.setAdapter(adapter);
+                    StaticUtils.hideProgressBar(progressBar);
+//                    progressBar.setVisibility(GONE);
                 };
                 responseResult.onReult(response);
             }

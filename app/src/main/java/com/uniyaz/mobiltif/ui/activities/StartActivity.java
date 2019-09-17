@@ -8,10 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.uniyaz.mobiltif.data.db.DbHelper;
 import com.uniyaz.mobiltif.data.db.DbManager;
-import com.uniyaz.mobiltif.data.domain.User;
 import com.uniyaz.mobiltif.iface.IStartActivity;
-import com.uniyaz.mobiltif.presenter.StartActivityPresenter;
-import com.uniyaz.mobiltif.utils.StaticUtils;
 
 
 /**
@@ -20,13 +17,13 @@ import com.uniyaz.mobiltif.utils.StaticUtils;
 
 public class StartActivity extends AppCompatActivity implements IStartActivity {
 
-    StartActivityPresenter presenter;
+//    StartActivityPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initializeInstanceDb();
+//        initializeInstanceDb();
 
 
 //        goMainActivity();
@@ -35,14 +32,15 @@ public class StartActivity extends AppCompatActivity implements IStartActivity {
     }
 
     private void goControlLoginActivity() {
-        presenter = new StartActivityPresenter(this);
-        User user = presenter.getSavedUser();
-        if (user == null || user.isNull()) {
-            goLoginActivity();
-        } else {
-            StaticUtils.user = user;
-            goMainActivity();
-        }
+//        presenter = new StartActivityPresenter(this);
+        goLoginActivity();
+//        User user = presenter.getSavedUser();
+//        if (user == null || user.isNull()) {
+//            goLoginActivity();
+//        } else {
+//            StaticUtils.user = user;
+//            goMainActivity();
+//        }
     }
 
 

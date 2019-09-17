@@ -1,5 +1,7 @@
 package com.uniyaz.mobiltif.presenter;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.uniyaz.mobiltif.data.domain.LoginInfo;
 import com.uniyaz.mobiltif.data.domain.UserDto;
@@ -91,6 +93,7 @@ public class LoginPresenter {
                         StaticUtils.kullaniciAdi = userDto.getUsername();
                         view.onSuccess();
                     } else if ("0900".equals(loginInfo.getResultCode())) {
+                        Log.d("LoginPresenter","loginControl : "+ loginInfo.getResultMessage());
                         view.showWarningDialog("Kullanıcı Adı ya da Şifre Yanlış!");
                     } else {
                         view.showWarningDialog("Hata", "Bilinmeyen Hata! Lütfen Sistem Yöneticisi İle İletişime Geçiniz!\n" + response.message());

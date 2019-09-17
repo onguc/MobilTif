@@ -52,6 +52,10 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Adı"
+
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:text="@={viewModel.envanter.tasinirAdi}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +75,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Sicil No"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:text="@{viewModel.sicilNo}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -87,9 +94,14 @@
                     <EditText
                         android:id="@+id/etServisAmbar"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/editTextHeight"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Servis/Ambar"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:paddingBottom="5dp"
                         android:translationY="@dimen/translationY"
                         android:text="@={viewModel.envanter.servisAmbar}" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -112,6 +124,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Tutar"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.tutar}" />
@@ -135,6 +150,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Birim"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.birimi}" />
@@ -157,6 +175,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Zimmetli Personel"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.zimmetliPersonel}" />
@@ -179,6 +200,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Durumu"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.durumu}" />
@@ -204,6 +228,9 @@
                         android:background="@drawable/bg_edittext"
                         android:gravity="start|top"
                         android:hint="Açıklama"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.envanter.aciklama}" />
@@ -226,6 +253,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Temin Edilen Firma"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.teminEdilenFirma}" />
@@ -247,6 +277,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Seri No"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="textPersonName"
                         android:text="@={viewModel.envanter.seriNo}" />
@@ -268,6 +301,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Fatura Tarihi"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="date"
                         android:text="@={viewModel.envanter.faturaTarihi}" />
@@ -290,6 +326,9 @@
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
                         android:hint="Fatura No"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:cursorVisible="false"
                         android:translationY="@dimen/translationY"
                         android:inputType="number"
                         android:text="@={viewModel.envanter.faturaNo}" />

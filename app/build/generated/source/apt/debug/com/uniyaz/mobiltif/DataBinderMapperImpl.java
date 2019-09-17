@@ -24,6 +24,7 @@ import com.uniyaz.mobiltif.databinding.ItemEnvanterTifCardBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemTifIslemBindingImpl;
+import com.uniyaz.mobiltif.databinding.ProgressBarBindingBindingImpl;
 import com.uniyaz.mobiltif.databinding.ProgressBarBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
@@ -74,7 +75,9 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_PROGRESSBAR = 19;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(19);
+  private static final int LAYOUT_PROGRESSBARBINDING = 20;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(20);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_login, LAYOUT_ACTIVITYLOGIN);
@@ -96,6 +99,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_photo_card, LAYOUT_ITEMPHOTOCARD);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_tif_islem, LAYOUT_ITEMTIFISLEM);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.progress_bar, LAYOUT_PROGRESSBAR);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.progress_bar_binding, LAYOUT_PROGRESSBARBINDING);
   }
 
   @Override
@@ -221,6 +225,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for progress_bar is invalid. Received: " + tag);
         }
+        case  LAYOUT_PROGRESSBARBINDING: {
+          if ("layout/progress_bar_binding_0".equals(tag)) {
+            return new ProgressBarBindingBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for progress_bar_binding is invalid. Received: " + tag);
+        }
       }
     }
     return null;
@@ -270,8 +280,8 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
     static {
       sKeys.put(0, "_all");
-      sKeys.put(1, "showProgressBar");
-      sKeys.put(2, "girisYapilanAmbar");
+      sKeys.put(1, "girisYapilanAmbar");
+      sKeys.put(2, "showProgressBar");
       sKeys.put(3, "activity");
       sKeys.put(4, "toastMessage");
       sKeys.put(5, "contentMainViewModel");
@@ -293,7 +303,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(19);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(20);
 
     static {
       sKeys.put("layout/activity_login_0", com.uniyaz.mobiltif.R.layout.activity_login);
@@ -315,6 +325,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/item_photo_card_0", com.uniyaz.mobiltif.R.layout.item_photo_card);
       sKeys.put("layout/item_tif_islem_0", com.uniyaz.mobiltif.R.layout.item_tif_islem);
       sKeys.put("layout/progress_bar_0", com.uniyaz.mobiltif.R.layout.progress_bar);
+      sKeys.put("layout/progress_bar_binding_0", com.uniyaz.mobiltif.R.layout.progress_bar_binding);
     }
   }
 }

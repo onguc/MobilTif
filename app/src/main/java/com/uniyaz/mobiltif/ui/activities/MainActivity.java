@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements IMain {
     private FragmentManager fragmentManager;
     DemirbasDetayFragment demirbasDetayFragment;
     OdaFragment odaFragment;
-    PopupWindow popupWindow;
     ActivityMainBinding activityMainBinding;
     MainViewModel viewModel;
 
@@ -87,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
 
-
-
     private LinkedList<String> stackTitle;
 
     @Override
@@ -103,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements IMain {
             showAlertDialog();
         }
     }
-
 
 
     private void showPopupCallRoomAndEnvanter() {
@@ -251,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
 
     private void showCallRoomAndEnvanterFragment() {
         CallRoomAndEnvanterFragment fragment = CallRoomAndEnvanterFragment.getNewInstance(this);
-        startFragmentByBackStack(fragment,"Arama");
+        startFragmentByBackStack(fragment, "Arama");
     }
 
     @Override
@@ -303,8 +298,8 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
     public boolean goImageListFragment(Envanter envanter) {
-        if(envanter !=null){
-            if(envanter.getUrlResimList()!=null && envanter.getUrlResimList().size()>0){
+        if (envanter != null) {
+            if (envanter.getUrlResimList() != null && envanter.getUrlResimList().size() > 0) {
                 String titleDemirbarDetay = getString(R.string.toolbar_title_image_list);
 
                 ImageListFragment fragment = ImageListFragment.getNewInstance(envanter.getUrlResimList());

@@ -1,11 +1,7 @@
 package com.uniyaz.mobiltif.viewmodel;
 
-import android.text.TextUtils;
-import android.view.WindowManager;
-
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.lifecycle.MutableLiveData;
 
 import com.uniyaz.mobiltif.BR;
 import com.uniyaz.mobiltif.data.domain.UserDto;
@@ -15,7 +11,8 @@ public class LoginViewModel extends BaseObservable {
     private UserDto userDto;
     private boolean checked;
     LoginActivity loginActivity;
-
+    @Bindable
+    ProgressBarViewModel progressBarViewModel;
     private boolean showProgressBar;
 
 
@@ -26,6 +23,7 @@ public class LoginViewModel extends BaseObservable {
         userDto.setChecked(true);
         checked = true;
         this.loginActivity = loginActivity;
+        progressBarViewModel = new ProgressBarViewModel(loginActivity);
     }
 
     @Bindable
@@ -75,22 +73,24 @@ public class LoginViewModel extends BaseObservable {
     }
 
 
+    @Bindable
+    public boolean isShowProgressBar() {
+        return progressBarViewModel.isShowProgressBar();
+    }
 
     public void showProgressBar() {
-        showProgressBar = true;
-        notifyPropertyChanged(BR.showProgressBar);
-        loginActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        progressBarViewModel.showProgressBar();
     }
 
     public void hideProgressBar() {
-        showProgressBar = false;
-        notifyPropertyChanged(BR.showProgressBar);
-        loginActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        progressBarViewModel.hideProgressBar();
     }
 
-    @Bindable
-    public boolean isShowProgressBar() {
-        return showProgressBar;
+    public ProgressBarViewModel getProgressBarViewModel() {
+        return progressBarViewModel;
+    }
+
+    public void setProgressBarViewModel(ProgressBarViewModel progressBarViewModel) {
+        this.progressBarViewModel = progressBarViewModel;
     }
 }
