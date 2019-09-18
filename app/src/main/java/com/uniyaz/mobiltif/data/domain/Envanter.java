@@ -1,6 +1,7 @@
 package com.uniyaz.mobiltif.data.domain;
 
 import com.google.gson.annotations.SerializedName;
+import com.uniyaz.mobiltif.utils.DateUtils;
 
 import java.util.List;
 
@@ -49,7 +50,8 @@ public class Envanter extends BaseModel implements Cloneable {
     private Boolean isSentToServer;
     private Room room;
     private Tasinir tasinir;
-
+    @SerializedName("vysVarlikLokasyon")
+    private String roomName;
     @SerializedName("degeri")
     private String tutar;
     @SerializedName("pbsPersonelTeslimAlan")
@@ -252,6 +254,7 @@ public class Envanter extends BaseModel implements Cloneable {
     }
 
     public String getFaturaTarihi() {
+        faturaTarihi = DateUtils.getNewDateFormat(faturaTarihi);
         return faturaTarihi;
     }
 
@@ -316,5 +319,13 @@ public class Envanter extends BaseModel implements Cloneable {
             return false;
         else
             return true;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

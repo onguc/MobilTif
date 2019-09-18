@@ -3,7 +3,6 @@ package com.uniyaz.mobiltif.presenter;
 import com.uniyaz.mobiltif.data.domain.Envanter;
 import com.uniyaz.mobiltif.data.domain.ResponseInfo;
 import com.uniyaz.mobiltif.data.domain.Room;
-import com.uniyaz.mobiltif.data.repo.DepartmentRepo;
 import com.uniyaz.mobiltif.iface.IMain;
 import com.uniyaz.mobiltif.retrofit.RetrofitInterface;
 import com.uniyaz.mobiltif.utils.ObjectUtil;
@@ -24,8 +23,6 @@ import static com.uniyaz.mobiltif.utils.StaticUtils.getAuthorizationTicket;
 public class MainPresenter {
     IMain view;
     ObjectUtil<String> objectUtil;
-
-    DepartmentRepo departmentRepo;
 
     public MainPresenter(IMain view) {
         this.view = view;

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -14,6 +15,9 @@ import java.lang.Deprecated;
 import java.lang.Object;
 
 public abstract class ActivityMainBinding extends ViewDataBinding {
+  @NonNull
+  public final CoordinatorLayout constraintLayout;
+
   @NonNull
   public final ContentMainBinding includedContentMain;
 
@@ -24,8 +28,9 @@ public abstract class ActivityMainBinding extends ViewDataBinding {
   protected MainViewModel mViewModel;
 
   protected ActivityMainBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      ContentMainBinding includedContentMain, Toolbar toolbar) {
+      CoordinatorLayout constraintLayout, ContentMainBinding includedContentMain, Toolbar toolbar) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.constraintLayout = constraintLayout;
     this.includedContentMain = includedContentMain;
     setContainedBinding(this.includedContentMain);;
     this.toolbar = toolbar;

@@ -45,6 +45,7 @@ public class DemirbasDetayFragment extends Fragment {
         FragmentDemibasDetayBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
         binding.setViewModel(viewModel);
         binding.setFragment(this);
+
         recyclerView = binding.rvDemirbasPhotoList;
         View root = binding.getRoot();
         defineView(envanter);

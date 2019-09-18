@@ -18,10 +18,7 @@ public class LoginViewModel extends BaseObservable {
 
     public LoginViewModel(LoginActivity loginActivity) {
         userDto = new UserDto();
-        userDto.setPassword("1q24et");
-        userDto.setUsername("uniyaz");
-        userDto.setChecked(true);
-        checked = true;
+//        checked = true;
         this.loginActivity = loginActivity;
         progressBarViewModel = new ProgressBarViewModel(loginActivity);
     }
@@ -34,7 +31,6 @@ public class LoginViewModel extends BaseObservable {
     }
 
     private void setToastMessage(String toastMessage) {
-
         this.toastMessage = toastMessage;
         notifyPropertyChanged(BR.toastMessage);
     }

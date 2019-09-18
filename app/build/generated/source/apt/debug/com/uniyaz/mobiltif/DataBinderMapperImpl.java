@@ -7,7 +7,6 @@ import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import com.uniyaz.mobiltif.databinding.ActivityLoginBindingImpl;
-import com.uniyaz.mobiltif.databinding.ActivityLoginGelistirBindingImpl;
 import com.uniyaz.mobiltif.databinding.ActivityMainBindingImpl;
 import com.uniyaz.mobiltif.databinding.ContentMainBindingImpl;
 import com.uniyaz.mobiltif.databinding.FragmentDemibasDetayBindingImpl;
@@ -25,7 +24,6 @@ import com.uniyaz.mobiltif.databinding.ItemOdaBilgiBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBindingImpl;
 import com.uniyaz.mobiltif.databinding.ItemTifIslemBindingImpl;
 import com.uniyaz.mobiltif.databinding.ProgressBarBindingBindingImpl;
-import com.uniyaz.mobiltif.databinding.ProgressBarBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
 import java.lang.Object;
@@ -39,49 +37,44 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_ACTIVITYLOGIN = 1;
 
-  private static final int LAYOUT_ACTIVITYLOGINGELISTIR = 2;
+  private static final int LAYOUT_ACTIVITYMAIN = 2;
 
-  private static final int LAYOUT_ACTIVITYMAIN = 3;
+  private static final int LAYOUT_CONTENTMAIN = 3;
 
-  private static final int LAYOUT_CONTENTMAIN = 4;
+  private static final int LAYOUT_FRAGMENTDEMIBASDETAY = 4;
 
-  private static final int LAYOUT_FRAGMENTDEMIBASDETAY = 5;
+  private static final int LAYOUT_FRAGMENTODA = 5;
 
-  private static final int LAYOUT_FRAGMENTODA = 6;
+  private static final int LAYOUT_FRAGMENTTIF = 6;
 
-  private static final int LAYOUT_FRAGMENTTIF = 7;
+  private static final int LAYOUT_FRAGMENTTIFHIBE = 7;
 
-  private static final int LAYOUT_FRAGMENTTIFHIBE = 8;
+  private static final int LAYOUT_FRAGMENTTIFHURDAYAAYIRMA = 8;
 
-  private static final int LAYOUT_FRAGMENTTIFHURDAYAAYIRMA = 9;
+  private static final int LAYOUT_FRAGMENTTIFTRANSFER = 9;
 
-  private static final int LAYOUT_FRAGMENTTIFTRANSFER = 10;
+  private static final int LAYOUT_FRAGMENTTIFZIMMET = 10;
 
-  private static final int LAYOUT_FRAGMENTTIFZIMMET = 11;
+  private static final int LAYOUT_FRAGMENTTIFZIMMETDEVRI = 11;
 
-  private static final int LAYOUT_FRAGMENTTIFZIMMETDEVRI = 12;
+  private static final int LAYOUT_FRAGMENTTIFZIMMETIADE = 12;
 
-  private static final int LAYOUT_FRAGMENTTIFZIMMETIADE = 13;
+  private static final int LAYOUT_ITEMENVANTERCARDSELECTABLE = 13;
 
-  private static final int LAYOUT_ITEMENVANTERCARDSELECTABLE = 14;
+  private static final int LAYOUT_ITEMENVANTERTIFCARD = 14;
 
-  private static final int LAYOUT_ITEMENVANTERTIFCARD = 15;
+  private static final int LAYOUT_ITEMODABILGI = 15;
 
-  private static final int LAYOUT_ITEMODABILGI = 16;
+  private static final int LAYOUT_ITEMPHOTOCARD = 16;
 
-  private static final int LAYOUT_ITEMPHOTOCARD = 17;
+  private static final int LAYOUT_ITEMTIFISLEM = 17;
 
-  private static final int LAYOUT_ITEMTIFISLEM = 18;
+  private static final int LAYOUT_PROGRESSBARBINDING = 18;
 
-  private static final int LAYOUT_PROGRESSBAR = 19;
-
-  private static final int LAYOUT_PROGRESSBARBINDING = 20;
-
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(20);
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(18);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_login, LAYOUT_ACTIVITYLOGIN);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_login_gelistir, LAYOUT_ACTIVITYLOGINGELISTIR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.content_main, LAYOUT_CONTENTMAIN);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.fragment_demibas_detay, LAYOUT_FRAGMENTDEMIBASDETAY);
@@ -98,7 +91,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_oda_bilgi, LAYOUT_ITEMODABILGI);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_photo_card, LAYOUT_ITEMPHOTOCARD);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.item_tif_islem, LAYOUT_ITEMTIFISLEM);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.progress_bar, LAYOUT_PROGRESSBAR);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.uniyaz.mobiltif.R.layout.progress_bar_binding, LAYOUT_PROGRESSBARBINDING);
   }
 
@@ -116,12 +108,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityLoginBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_login is invalid. Received: " + tag);
-        }
-        case  LAYOUT_ACTIVITYLOGINGELISTIR: {
-          if ("layout/activity_login_gelistir_0".equals(tag)) {
-            return new ActivityLoginGelistirBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for activity_login_gelistir is invalid. Received: " + tag);
         }
         case  LAYOUT_ACTIVITYMAIN: {
           if ("layout/activity_main_0".equals(tag)) {
@@ -219,12 +205,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for item_tif_islem is invalid. Received: " + tag);
         }
-        case  LAYOUT_PROGRESSBAR: {
-          if ("layout/progress_bar_0".equals(tag)) {
-            return new ProgressBarBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for progress_bar is invalid. Received: " + tag);
-        }
         case  LAYOUT_PROGRESSBARBINDING: {
           if ("layout/progress_bar_binding_0".equals(tag)) {
             return new ProgressBarBindingBindingImpl(component, view);
@@ -280,8 +260,8 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
     static {
       sKeys.put(0, "_all");
-      sKeys.put(1, "girisYapilanAmbar");
-      sKeys.put(2, "showProgressBar");
+      sKeys.put(1, "showProgressBar");
+      sKeys.put(2, "girisYapilanAmbar");
       sKeys.put(3, "activity");
       sKeys.put(4, "toastMessage");
       sKeys.put(5, "contentMainViewModel");
@@ -303,11 +283,10 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(20);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(18);
 
     static {
       sKeys.put("layout/activity_login_0", com.uniyaz.mobiltif.R.layout.activity_login);
-      sKeys.put("layout/activity_login_gelistir_0", com.uniyaz.mobiltif.R.layout.activity_login_gelistir);
       sKeys.put("layout/activity_main_0", com.uniyaz.mobiltif.R.layout.activity_main);
       sKeys.put("layout/content_main_0", com.uniyaz.mobiltif.R.layout.content_main);
       sKeys.put("layout/fragment_demibas_detay_0", com.uniyaz.mobiltif.R.layout.fragment_demibas_detay);
@@ -324,7 +303,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/item_oda_bilgi_0", com.uniyaz.mobiltif.R.layout.item_oda_bilgi);
       sKeys.put("layout/item_photo_card_0", com.uniyaz.mobiltif.R.layout.item_photo_card);
       sKeys.put("layout/item_tif_islem_0", com.uniyaz.mobiltif.R.layout.item_tif_islem);
-      sKeys.put("layout/progress_bar_0", com.uniyaz.mobiltif.R.layout.progress_bar);
       sKeys.put("layout/progress_bar_binding_0", com.uniyaz.mobiltif.R.layout.progress_bar_binding);
     }
   }

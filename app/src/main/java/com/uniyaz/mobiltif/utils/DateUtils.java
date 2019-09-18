@@ -10,31 +10,44 @@ import java.util.Date;
 
 public class DateUtils {
 
-    public static Date getConvertedDateFromString(String stringDate){
-        SimpleDateFormat dateFormat=getSimpleDateFormat();
+    public static Date getConvertedDateFromString(String stringDate) {
+        SimpleDateFormat dateFormat = getSimpleDateFormat();
 
-        Date date=null;
-        if(stringDate!=null){
+        Date date = null;
+        if (stringDate != null) {
             try {
-                date=dateFormat.parse(stringDate);
+                date = dateFormat.parse(stringDate);
             } catch (ParseException e) {
-                date=null;
+                date = null;
                 e.printStackTrace();
             }
         }
         return date;
     }
 
-    public static String getConvertedStringFromDate(Date date){
-        String stringDate=null;
-        SimpleDateFormat dateFormat=getSimpleDateFormat();
-        if(date!=null){
-            stringDate=dateFormat.format(date);
+    public static String getConvertedStringFromDate(Date date) {
+        if (date != null) {
+            SimpleDateFormat dateFormat = getSimpleDateFormat();
+            return dateFormat.format(date);
         }
-        return stringDate;
+        return null;
     }
 
-    private static SimpleDateFormat getSimpleDateFormat(){
-        return new SimpleDateFormat("dd.MM.yyyy");
+    public static String getNewDateFormat(String firsDateFormat) {
+        if (firsDateFormat != null && !"".equals(firsDateFormat)) {
+            SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");  //yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+            try {
+                Date date = simpleDateFormat1.parse(firsDateFormat);
+                return DateUtils.getConvertedStringFromDate(date);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    private static SimpleDateFormat getSimpleDateFormat() {
+        return new SimpleDateFormat("dd/MM/yyyy");
     }
 }

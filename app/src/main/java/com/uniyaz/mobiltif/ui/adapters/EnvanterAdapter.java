@@ -3,7 +3,6 @@ package com.uniyaz.mobiltif.ui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -163,5 +162,9 @@ public class EnvanterAdapter extends RecyclerView.Adapter<EnvanterAdapter.Envant
 
     public Map<Integer, Envanter> getSelectedEnvanterlist() {
         return selectedEnvanterlist;
+    }
+
+    public void showSnackBar(String message) {
+        mainActivity.showSnackbar(message);
     }
 }

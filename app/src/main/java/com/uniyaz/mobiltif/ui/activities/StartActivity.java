@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.uniyaz.mobiltif.data.db.DbHelper;
-import com.uniyaz.mobiltif.data.db.DbManager;
 import com.uniyaz.mobiltif.iface.IStartActivity;
 
 
@@ -57,10 +55,5 @@ public class StartActivity extends AppCompatActivity implements IStartActivity {
     @Override
     public void showWarningDialog(String title, String statusInfo) {
 
-    }
-
-    private void initializeInstanceDb() {
-        DbHelper dbHelper = new DbHelper(getApplicationContext());
-        DbManager.initializeInstance(dbHelper);
     }
 }

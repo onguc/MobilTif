@@ -2,7 +2,9 @@ package com.uniyaz.mobiltif.ui.adapters;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBinding;
 import com.uniyaz.mobiltif.presenter.PhotoAdapterPresenter;
@@ -84,7 +87,17 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
 
                 BitmapDrawable bitmapDrawable = (BitmapDrawable) imgViewChapture.getDrawable();
                 Bitmap bitmap = bitmapDrawable.getBitmap();
-
+                Bitmap picture = BitmapFactory.decodeResource(activity.getResources(), R.mipmap.picture);
+                Log.d("Bitmap1", String.valueOf(bitmap));
+                Log.d("Bitmap2", String.valueOf(picture));
+                if (bitmap == null) {
+                    int x = 0;
+                }
+                if (picture.getByteCount() == bitmap.getByteCount()) {
+                    Snackbar.make(activity.findViewById(R.id.constraintLayout), "Resim Boş!", Snackbar.LENGTH_LONG)
+                            .show();
+                    return;
+                }
                 View popupView = activity.getLayoutInflater().inflate(R.layout.popup_show_image, null);
                 TouchImageView imageView = popupView.findViewById(R.id.ivShowImageFragment);
                 imageView.setImageBitmap(bitmap);

@@ -13,10 +13,7 @@ public class Room extends BaseModel {
     public static final String TABLE_NAME = "Oda";
     //    public final static String keyReferanceCode ="referans_kodu";
 //    public final static String keyId = "id";
-    public final static String keyQrCode = "qr_kod";
-    public final static String keyName = "name";
-    public final static String keyDepartment = "id_department";
-    public final static String keyIsSentToServer = "sunucuya_gonderildi_mi";
+
 
     public Room() {
         isSentToServer = false;

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.uniyaz.mobiltif.R;
 import com.uniyaz.mobiltif.data.domain.Envanter;
@@ -209,10 +210,10 @@ public class MainActivity extends AppCompatActivity implements IMain {
         startActivity(intent);
     }
 
-//    private void showSnackbar(String message) {
-//        Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_LONG)
-//                .show();
-//    }
+    public void showSnackbar(String message) {
+        Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_LONG)
+                .show();
+    }
 
 
     @Override
@@ -306,6 +307,8 @@ public class MainActivity extends AppCompatActivity implements IMain {
                 startFragmentByBackStack(fragment, titleDemirbarDetay);
 //                ImageListPopupWindow window = new ImageListPopupWindow(this, activityMainBinding.toolbar, envanter.getUrlResimList());
 //                window.show();
+            } else {
+                showSnackbar("Resim Yok!");
             }
         }
         return true;

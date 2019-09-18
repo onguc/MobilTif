@@ -29,7 +29,7 @@ import retrofit2.http.POST;
 
 public interface RetrofitInterface {
 
-    boolean isUriFlex = true;
+    boolean isUriFlex = false;
     String uriFlex = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/json/";
     String uriBesiktasTest = "https://demoybs.besiktas.bel.tr/FlexCityUi/rest/json/";
 
@@ -59,7 +59,8 @@ public interface RetrofitInterface {
 //    Call<ResponseInfo<byte[]>> loadImage(@Header("Authorization") String authTicket, @Body RequestBody bodyQrCode);
     Call<ResponseInfo<byte[]>> loadImage(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyQrCode);
 
-    @POST("vys/MobilTifIslem") //SaveVysTasinirTransferIslem
+    @POST("vys/MobilTifIslem")
+        //SaveVysTasinirTransferIslem
 //    Call<ResponseInfo<TifIslemResponseDto>> saveVysTasinirTransferIslem(@Header("Authorization") String authTicket, @Body RequestBody bodyDto);
     Call<ResponseInfo<TifIslemResponseDto>> saveVysTasinirTransferIslem(@Header("AuthorizationTicket") String authTicket, @Body RequestBody bodyDto);
 

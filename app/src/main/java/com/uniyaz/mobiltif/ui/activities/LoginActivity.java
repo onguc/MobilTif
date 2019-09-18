@@ -45,13 +45,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
         activityLoginBinding.executePendingBindings();
 
         presenter = new LoginPresenter(this);
-//
-//
-//        UserDto dto = presenter.getUserDto();
-//        if (userDto != null) {
-//            presenter.loginControl(userDto);
-//        }
-//
+
         String savedUserName = presenter.getSavedUserName();
         if (savedUserName != null && !"".equals(savedUserName.trim())) {
             userDto.setUsername(savedUserName);
@@ -103,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements ILogin {
     //
     private boolean validatePassword() {
         String password = userDto.getPassword();
-        if (password.isEmpty() || password.trim().isEmpty()) {
+        if (password == null || password.isEmpty() || password.trim().isEmpty()) {
             activityLoginBinding.etPassword.setError(getString(R.string.err_msg_password));
             requestFocus(activityLoginBinding.etPassword);
             return false;

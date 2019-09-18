@@ -32,7 +32,11 @@ public class EnvanterCardViewModel extends BaseObservable {
         if (selected) {
             adapter.removeSelectedEnvanter(index);
         } else {
-            adapter.addSelectedEnvanter(index, envanter);
+            if ("PASIF".equals(envanter.getDurumu())) {
+                adapter.showSnackBar("Pasif Envanter Seçilemez!");
+                return false;
+            } else
+                adapter.addSelectedEnvanter(index, envanter);
         }
         setSelected(!selected);
         return true;

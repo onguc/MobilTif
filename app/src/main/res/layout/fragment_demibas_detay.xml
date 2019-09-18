@@ -7,6 +7,7 @@
 
     <data>
 
+
         <variable
             name="viewModel"
             type="com.uniyaz.mobiltif.viewmodel.EnvanterViewModel" />
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/marginStart"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/btnTifIslemDemirbas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -51,18 +52,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Adı"
-
-                        android:focusable="false"
                         android:clickable="false"
+
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
-                        android:text="@={viewModel.envanter.tasinirAdi}" />
+                        android:focusable="false"
+                        android:hint="Adı"
+                        android:text="@={viewModel.envanter.tasinirAdi}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilSicilNo"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tilOdaAdi"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/marginTopEditText"
                     app:layout_constraintEnd_toEndOf="@+id/tilAdi"
@@ -70,16 +71,40 @@
                     app:layout_constraintTop_toBottomOf="@+id/tilAdi">
 
                     <EditText
+                        android:id="@+id/etOdaAdi"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/editTextHeight"
+                        android:background="@drawable/bg_edittext"
+                        android:clickable="false"
+
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:hint="Bulunduğu Oda"
+                        android:text="@={viewModel.envanter.roomName}"
+                        android:translationY="@dimen/translationY" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilSicilNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginTopEditText"
+                    app:layout_constraintEnd_toEndOf="@+id/tilOdaAdi"
+                    app:layout_constraintStart_toStartOf="@+id/tilOdaAdi"
+                    app:layout_constraintTop_toBottomOf="@+id/tilOdaAdi">
+
+                    <EditText
                         android:id="@+id/etSicilNo"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Sicil No"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
-                        android:text="@{viewModel.sicilNo}" />
+                        android:focusable="false"
+                        android:hint="Sicil No"
+                        android:text="@{viewModel.sicilNo}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -95,15 +120,15 @@
                         android:id="@+id/etServisAmbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Servis/Ambar"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
+                        android:focusable="false"
+                        android:hint="Ambar"
+                        android:minHeight="@dimen/editTextHeight"
                         android:paddingBottom="5dp"
-                        android:translationY="@dimen/translationY"
-                        android:text="@={viewModel.envanter.servisAmbar}" />
+                        android:text="@={viewModel.envanter.ambar}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -123,13 +148,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Tutar"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Tutar"
                         android:inputType="textPersonName"
-                        android:text="@={viewModel.envanter.tutar}" />
+                        android:text="@={viewModel.envanter.tutar}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -149,13 +174,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Birim"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Birim"
                         android:inputType="textPersonName"
-                        android:text="@={viewModel.envanter.birimi}" />
+                        android:text="@={viewModel.envanter.birimi}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -174,13 +199,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Zimmetli Personel"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Zimmetli Personel"
                         android:inputType="textPersonName"
-                        android:text="@={viewModel.envanter.zimmetliPersonel}" />
+                        android:text="@={viewModel.envanter.zimmetliPersonel}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -199,13 +224,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Durumu"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Durumu"
                         android:inputType="textPersonName"
-                        android:text="@={viewModel.envanter.durumu}" />
+                        android:text="@={viewModel.envanter.durumu}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -226,19 +251,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bg_edittext"
-                        android:gravity="start|top"
-                        android:hint="Açıklama"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:gravity="start|top"
+                        android:hint="Açıklama"
                         android:inputType="textMultiLine"
-                        android:text="@={viewModel.envanter.aciklama}" />
+                        android:text="@={viewModel.envanter.aciklama}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilTEFirma"
+                    android:id="@+id/tilSeriNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/marginTopEditText"
@@ -248,42 +272,44 @@
                     app:layout_constraintTop_toBottomOf="@+id/tilDurumu">
 
                     <EditText
-                        android:id="@+id/etTEFirma"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editTextHeight"
-                        android:background="@drawable/bg_edittext"
-                        android:hint="Temin Edilen Firma"
-                        android:focusable="false"
-                        android:clickable="false"
-                        android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
-                        android:inputType="textPersonName"
-                        android:text="@={viewModel.envanter.teminEdilenFirma}" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilSeriNo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginTopEditText"
-                    android:ems="10"
-                    app:layout_constraintEnd_toEndOf="@+id/tilTEFirma"
-                    app:layout_constraintStart_toStartOf="@+id/tilTEFirma"
-                    app:layout_constraintTop_toBottomOf="@+id/tilTEFirma">
-
-                    <EditText
                         android:id="@+id/etSeriNo"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Seri No"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Seri No"
                         android:inputType="textPersonName"
-                        android:text="@={viewModel.envanter.seriNo}" />
+                        android:text="@={viewModel.envanter.seriNo}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilTEFirma"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginTopEditText"
+                    android:ems="10"
+                    app:layout_constraintEnd_toEndOf="@+id/tilSeriNo"
+                    app:layout_constraintStart_toStartOf="@+id/tilSeriNo"
+                    app:layout_constraintTop_toBottomOf="@+id/tilSeriNo">
+
+                    <EditText
+                        android:id="@+id/etTEFirma"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/editTextHeight"
+                        android:background="@drawable/bg_edittext"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:hint="Temin Edilen Firma"
+                        android:inputType="textPersonName"
+                        android:text="@={viewModel.envanter.teminEdilenFirma}"
+                        android:translationY="@dimen/translationY" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilFaturaTarihi"
@@ -293,20 +319,20 @@
                     android:ems="10"
                     app:layout_constraintEnd_toEndOf="@+id/tilDurumu"
                     app:layout_constraintStart_toStartOf="@+id/tilDurumu"
-                    app:layout_constraintTop_toBottomOf="@+id/tilSeriNo">
+                    app:layout_constraintTop_toBottomOf="@+id/tilTEFirma">
 
                     <EditText
                         android:id="@+id/etFaturaTarihi"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Fatura Tarihi"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Fatura Tarihi"
                         android:inputType="date"
-                        android:text="@={viewModel.envanter.faturaTarihi}" />
+                        android:text="@={viewModel.envanter.faturaTarihi}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -325,13 +351,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editTextHeight"
                         android:background="@drawable/bg_edittext"
-                        android:hint="Fatura No"
-                        android:focusable="false"
                         android:clickable="false"
                         android:cursorVisible="false"
-                        android:translationY="@dimen/translationY"
+                        android:focusable="false"
+                        android:hint="Fatura No"
                         android:inputType="number"
-                        android:text="@={viewModel.envanter.faturaNo}" />
+                        android:text="@={viewModel.envanter.faturaNo}"
+                        android:translationY="@dimen/translationY" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -349,16 +375,18 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnTifIslemDemirbas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:text="Online Tif İşlemleri"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/bg_btn_active"
+            android:background="@{viewModel.enable ? @drawable/bg_btn_active:@drawable/bg_btn_passive}"
+            android:enabled="@{viewModel.enable}"
             android:onClick="@{()->fragment.onClickBtnOnlineTifIslemleri()}"
+            android:text="Online Tif İşlemleri"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
