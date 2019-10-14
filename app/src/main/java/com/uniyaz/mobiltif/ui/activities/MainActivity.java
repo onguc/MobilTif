@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements IMain {
     }
 
     public void showSnackbar(String message) {
-        Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_SHORT)
                 .show();
     }
 

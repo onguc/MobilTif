@@ -1,26 +1,19 @@
 package com.uniyaz.mobiltif.ui.adapters;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.uniyaz.mobiltif.R;
+import com.uniyaz.mobiltif.data.domain.ImageViewBitmap;
 import com.uniyaz.mobiltif.databinding.ItemPhotoCardBinding;
 import com.uniyaz.mobiltif.presenter.PhotoAdapterPresenter;
-import com.uniyaz.mobiltif.ui.components.TouchImageView;
+import com.uniyaz.mobiltif.ui.activities.MainActivity;
+import com.uniyaz.mobiltif.ui.fragments.ImageListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +27,13 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
     List<String> imageUrlList;
     Activity activity;
     boolean isForImageListEnvanter = false;
+    List<ImageViewBitmap> imageBitmapList;
 
     public PhotoAdapter(Activity activity, List<String> imageUrlList) {
         if (imageUrlList == null) imageUrlList = new ArrayList<>();
         this.imageUrlList = imageUrlList;
         this.activity = activity;
+        imageBitmapList = new ArrayList<>();
     }
 
     @NonNull
@@ -66,11 +61,15 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         AppCompatImageView imgViewChapture;
         ItemPhotoCardBinding binding;
+        ImageViewBitmap viewBitmap;
 
         public MyViewHolder(ItemPhotoCardBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
             imgViewChapture = binding.imgViewChapture;
+            viewBitmap = new ImageViewBitmap(imgViewChapture);
+            imageBitmapList.add(viewBitmap);
+
             if (isForImageListEnvanter) {
                 imgViewChapture.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
                 imgViewChapture.getLayoutParams().width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -81,39 +80,26 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.MyViewHolder
             }
 
             imgViewChapture.setOnClickListener(v -> {
-                int width = LinearLayout.LayoutParams.MATCH_PARENT;
-                int height = LinearLayout.LayoutParams.MATCH_PARENT;
-                boolean focusable = true; // lets taps outside the popup also dismiss it
-
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) imgViewChapture.getDrawable();
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-                Bitmap picture = BitmapFactory.decodeResource(activity.getResources(), R.mipmap.picture);
-                Log.d("Bitmap1", String.valueOf(bitmap));
-                Log.d("Bitmap2", String.valueOf(picture));
-                if (bitmap == null) {
-                    int x = 0;
-                }
-                if (picture.getByteCount() == bitmap.getByteCount()) {
-                    Snackbar.make(activity.findViewById(R.id.constraintLayout), "Resim Boş!", Snackbar.LENGTH_LONG)
-                            .show();
+                if (!viewBitmap.isSuccesLoad()) {
+                    ((MainActivity) activity).showSnackbar("Resim Boş!");
                     return;
                 }
-                View popupView = activity.getLayoutInflater().inflate(R.layout.popup_show_image, null);
-                TouchImageView imageView = popupView.findViewById(R.id.ivShowImageFragment);
-                imageView.setImageBitmap(bitmap);
 
-                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-                popupWindow.showAtLocation(imgViewChapture, Gravity.CENTER, 0, 0);
+                String titleDemirbarDetay = "Fotoğraflar";
+
+                ImageListFragment fragment = ImageListFragment.getNewInstance(imageBitmapList, viewBitmap);
+                MainActivity mainActivity = (MainActivity) activity;
+                mainActivity.startFragmentByBackStack(fragment, titleDemirbarDetay);
+//                ImageListPopupWindow window = new ImageListPopupWindow(this, activityMainBinding.toolbar, envanter.getUrlResimList());
+//                window.show();
+
             });
         }
 
         public void setData(String imageUrl) {
             if (imageUrl != null) {
-                new PhotoAdapterPresenter().loadImage(imageUrl, imgViewChapture);
-//                GlideUrl glideUrl = new GlideUrl(imageUrl, new LazyHeaders.Builder()
-//                        .addHeader("Authorization", getAuthorizationForTest())
-//                        .build());
-//                Glide.with(activity).load(glideUrl).into(imgViewChapture);
+                if (!viewBitmap.isSuccesLoad())
+                    new PhotoAdapterPresenter().loadImage(imageUrl, viewBitmap);
             }
         }
     }

@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,8 +31,9 @@ public class OdaFragment extends Fragment {
 
     private Room room;
     private MainActivity mainActivity;
-    EnvanterAdapter adapter;
-    Button btnTifIslemleri;
+    private EnvanterAdapter adapter;
+    private Button btnTifIslemleri;
+    private FragmentOdaBinding binding;
 
     public static OdaFragment getNewInstance(MainActivity mainActivity, Room room) {
         if (room == null) return null;
@@ -52,12 +52,12 @@ public class OdaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        FragmentOdaBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_oda, container, false);
-        binding.setFragment(this);
+        if (binding == null) {
+            binding = DataBindingUtil.inflate(inflater, R.layout.fragment_oda, container, false);
+            binding.setFragment(this);
+            defineView(binding);
+        }
         View root = binding.getRoot();
-
-
-        defineView(binding);
         return root;
     }
 
@@ -92,7 +92,7 @@ public class OdaFragment extends Fragment {
         }
         TifFragment tifFragment = TifFragment.getNewInstance(envanters);
         MainActivity activity = (MainActivity) getActivity();
-        activity.startFragmentByBackStack(tifFragment,"Online Tif İşlemleri Oda");
+        activity.startFragmentByBackStack(tifFragment, "Online Tif İşlemleri Oda");
     }
 
     public void setBackGroundBtnOnlineTifIslemleri(int resource) {

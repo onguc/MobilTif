@@ -19,9 +19,8 @@
                 android:id="@+id/etAdi"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editTextHeight"
-                android:hint="Kullanıcı Adı"
+                android:hint="İsim Ve Soyisim"
                 android:translationY="@dimen/translationY"
-                android:text="uniyaz"
                 android:background="@drawable/bg_edittext"/>
         </com.google.android.material.textfield.TextInputLayout>
 

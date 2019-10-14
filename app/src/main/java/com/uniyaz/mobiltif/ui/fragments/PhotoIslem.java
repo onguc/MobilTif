@@ -5,7 +5,6 @@ import android.app.Activity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.uniyaz.mobiltif.data.domain.ImageInfo;
 import com.uniyaz.mobiltif.ui.adapters.PhotoAdapter;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class PhotoIslem {
     private PhotoAdapter adapter;
-    private LinearLayoutManager linearLayoutManager=null;
+    private LinearLayoutManager linearLayoutManager = null;
 
     public PhotoIslem createView(RecyclerView recyclerView, Activity activity, List<String> imageUrlList) {
         adapter = new PhotoAdapter(activity, imageUrlList);
@@ -27,10 +26,11 @@ public class PhotoIslem {
         return this;
     }
 
-    public void setForImageListEnvanter(boolean isForImageListEnvanter){
-        if(adapter!=null){
+
+    public void setForImageListEnvanter(boolean isForImageListEnvanter) {
+        if (adapter != null) {
             adapter.setForImageListEnvanter(isForImageListEnvanter);
-            if(isForImageListEnvanter)
+            if (isForImageListEnvanter)
                 linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         }
 

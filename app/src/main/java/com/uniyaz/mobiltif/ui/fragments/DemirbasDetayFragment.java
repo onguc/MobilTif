@@ -37,19 +37,27 @@ public class DemirbasDetayFragment extends Fragment {
         return demirbasDetayFragment;
     }
 
+    FragmentDemibasDetayBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        MainActivity mainActivity = (MainActivity) getActivity();
-        EnvanterViewModel viewModel = new EnvanterViewModel(envanter);
-        FragmentDemibasDetayBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
-        binding.setViewModel(viewModel);
-        binding.setFragment(this);
+        if (binding == null) {
+            EnvanterViewModel viewModel = new EnvanterViewModel(envanter);
+            binding = DataBindingUtil.inflate(inflater, R.layout.fragment_demibas_detay, container, false);
+            binding.setViewModel(viewModel);
+            binding.setFragment(this);
 
-        recyclerView = binding.rvDemirbasPhotoList;
+            recyclerView = binding.rvDemirbasPhotoList;
+            defineView(envanter);
+        }
         View root = binding.getRoot();
-        defineView(envanter);
         return root;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     private void defineView(Envanter envanter) {
@@ -62,6 +70,6 @@ public class DemirbasDetayFragment extends Fragment {
         TifFragment tifFragment = TifFragment.getNewInstance(envanters);
         MainActivity activity = (MainActivity) getActivity();
 
-        activity.startFragmentByBackStack(tifFragment,"Online Tif İşlemleri Demirbaş");
+        activity.startFragmentByBackStack(tifFragment, "Online Tif İşlemleri Demirbaş");
     }
 }

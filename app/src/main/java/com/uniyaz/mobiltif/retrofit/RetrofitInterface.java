@@ -29,7 +29,7 @@ import retrofit2.http.POST;
 
 public interface RetrofitInterface {
 
-    boolean isUriFlex = false;
+    boolean isUriFlex = true;
     String uriFlex = "http://flextest2.uni-yaz.com:8070/FlexCityUi/rest/json/";
     String uriBesiktasTest = "https://demoybs.besiktas.bel.tr/FlexCityUi/rest/json/";
 

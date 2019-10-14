@@ -47,8 +47,8 @@ public class EnvanterCardViewModel extends BaseObservable {
     }
 
     public String getAlt() {
-        return "Masaüstü alcatel Lucent Siyah Dijital";
-//        return envanter.getTasinirAdi();
+//        return "Masaüstü alcatel Lucent Siyah Dijital";
+        return envanter.getTasinirAdi();
 //        return envanter.getAdi();
     }
 
